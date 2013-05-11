@@ -38,7 +38,31 @@ public class R {
     public void setMatR(double[][][] matR) {
         this.matR = matR;
     }
+
+    public void setFilaI(int filaI) {
+        this.filaI = filaI;
+    }
+
+    public void setColumnaI(int columnaI) {
+        this.columnaI = columnaI;
+    }
+
+    public void setFilaF(int filaF) {
+        this.filaF = filaF;
+    }
+
+    public void setColumnaF(int columnaF) {
+        this.columnaF = columnaF;
+    }
     
+//    public int estadoI(){
+//        
+//        
+//    }
+
+
+      
+           
     public double[][][] cero() {
        
         for (int i = 0; i < matR.length; i++) {
