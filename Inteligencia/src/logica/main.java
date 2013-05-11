@@ -11,13 +11,10 @@ package logica;
 public class main {
  
   public static void main (String[] args){
-  MatrizR mat;
-  Estados e;
-  e=new Estados();
-  mat = new MatrizR(6);
-  mat.generarR();
+  R mat;
+  mat= new R(6);
+  
   mat.imprimirR();
-//  String bueno = e.getBueno(mat.getRecompensa(6, 6, 6));
-  return;
+   
   }
 }

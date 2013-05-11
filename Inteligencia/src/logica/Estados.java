@@ -13,7 +13,7 @@ public class Estados {
     public double bueno = 0.5;
     public double excelente = 0.8;
     public double neutral = 0;
-    public double aleatorio;
+
     public Estados() {//constructor
     }
     //Inicio geters
@@ -24,9 +24,6 @@ public class Estados {
         return "no es malo";
     }
 
-    public double getAleatorio() {
-        return aleatorio;
-    }
 
     public String getBueno(double valor) {
         if ((valor >0.2)&&(valor <=0.5)){
@@ -63,23 +60,26 @@ public class Estados {
         this.excelente = excelente;
     }
 
-    public void setAleatorio() {
-        this.aleatorio = Math.random();
-    }
 
     public void setNeutral(double neutral) {
         this.neutral = neutral;
     }//Fin seters
     
     public double estadoA(){
-        if (aleatorio <=0.2){
-        aleatorio = 0.2;}
-        else if ((aleatorio >0.2) && (aleatorio <=0.5)){
-        aleatorio = 0.5;}
+        double aleatorio;
+        aleatorio = Math.random();
+        if ((aleatorio >=0) && (aleatorio <=0.39)){
+            aleatorio=0;
+        }
+        else if ((aleatorio >=0.4) && (aleatorio <=0.79)){
+        aleatorio = 0.4;
+        }
+        else if ((aleatorio >=0.8) && (aleatorio <=0.99)){
+        aleatorio = 0.8;
+        }
         else {
-            aleatorio = 0.8;}
+            aleatorio = 1;}
         return aleatorio;
-    
-    }
+        }
 
         }
