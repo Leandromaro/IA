@@ -11,10 +11,10 @@ package logica;
 public class main {
  
   public static void main (String[] args){
-  R mat;
-  mat= new R(6);
+  RMat mat;
+  mat= new RMat(6);
   
-  mat.imprimirR();
+  mat.estadosProhibidos();
    
   }
 }

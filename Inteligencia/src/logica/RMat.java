@@ -8,17 +8,17 @@ package logica;
  *
  * @author Leandro
  */
-public class R {
+public class RMat {
     public double matR [][][];
     int filaI; 
     int columnaI;
     int filaF; 
     int columnaF;
-    public R(double[][][] matR) {
+    public RMat(double[][][] matR) {
         this.matR = matR;
     }
 
-    public R(int x){
+    public RMat(int x){
     this.matR = new double [x][x][8];
     Estados aleatorio;
     aleatorio = new Estados();
@@ -74,17 +74,36 @@ public class R {
         }
     return matR;
     }
+    public void estadosProhibidos (){
+        int a;
+        a=matR.length;
+        matR[0][0][6]=-1.0;
+        matR[0][a][2]=-1.0;
+        matR[a][0][6]=-1.0;
+        matR[a][a][2]=-1.0;//mirar porque no corresponde los movimientos del cuaderno con los de el fondo
+        for (int i=0; i< matR.length;i++){
+            for(int j=0;j<matR[i].length;j++){
+                for(int k=0; k<8;k++){
+                   
+                   
+                }
+            }
+        }
+    }
     public void imprimirR(){
             for (int i=0; i < matR.length; i++) {
                 //System.out.println(i);
                 //System.out.println("");
                 for (int j=0; j < matR[i].length; j++) {
-                    for (int k=0;k<8; k++){
-                    System.out.print(matR[i][j][k]+"\t");
-                    } 
-                    }
+                                     
+                   for (int k=0;k<8; k++){
+//                  System.out.println("Matriz R posicion " + i + j + " accion "+k);
+                    System.out.print(matR[i][j][k]+"\t"); 
+                   }
+                      
+                }
                   System.out.println("");
             }
         }
-
+    
 }

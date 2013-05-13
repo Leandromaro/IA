@@ -8,12 +8,13 @@ public class MatrizQ
     private static final int ITERATIONS = 10;
     private static final int INITIAL_STATES[] = new int[] {1, 3, 5, 2, 4, 0};
 
-    private static final int R[][] = new int[][] {{-1, -1, -1, -1, 0, -1}, 
-                                                  {-1, -1, -1, 0, -1, 100}, 
-                                                  {-1, -1, -1, 0, -1, -1}, 
-                                                  {-1, 0, 0, -1, 0, -1}, 
-                                                  {0, -1, -1, 0, -1, 100}, 
-                                                  {-1, 0, -1, -1, 0, 100}};
+   private static final int R[][]; 
+//           new int[][] {{-1, -1, -1, -1, 0, -1}, 
+//                                                  {-1, -1, -1, 0, -1, 100}, 
+//                                                  {-1, -1, -1, 0, -1, -1}, 
+//                                                  {-1, 0, 0, -1, 0, -1}, 
+//                                                  {0, -1, -1, 0, -1, 100}, 
+//                                                  {-1, 0, -1, -1, 0, 100}};
 
     private static int q[][] = new int[Q_SIZE][Q_SIZE];
     private static int currentState = 0;
@@ -21,7 +22,7 @@ public class MatrizQ
     private static void train()
     {
         initialize();
-
+        
         // Perform training, starting at all initial states.
         for(int j = 0; j < ITERATIONS; j++)
         {
