@@ -20,7 +20,7 @@ public Tablero(int x) {
 }
     
 public double[][] getMat() {
-        
+    
     return mat;
     }
 
@@ -59,6 +59,8 @@ return mat;
         
     
 public void imprimirTab(){
+    mat = this.iniciar();
+    mat = this.rellenar();
             for (int i=0; i < mat.length; i++) {
                 //System.out.println(i);
                 //System.out.println("");
