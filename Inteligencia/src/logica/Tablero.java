@@ -20,7 +20,8 @@ public Tablero(int x) {
 }
     
 public double[][] getMat() {
-        return mat;
+        
+    return mat;
     }
 
 public void setMat(double[][] mat) {
