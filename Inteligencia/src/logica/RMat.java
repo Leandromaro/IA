@@ -18,18 +18,7 @@ public class RMat {
         this.matR = matR;
     }
 
-    public RMat(int x){
-    this.matR = new double [x][x][8];
-    Estados aleatorio;
-    aleatorio = new Estados();
-    for (int i = 0; i < matR.length; i++) {
-            for (int j = 0; j < matR[i].length; j++) {
-                for (int k = 0; k < 8; k++) {
-                    matR[i][j][k] = aleatorio.estadoA();
-                }
-            }
-        }
-    }
+    
 
     public double[][][] getMatR() {
         return matR;
@@ -55,31 +44,6 @@ public class RMat {
         this.columnaF = columnaF;
     }
     
-//    public int estadoI(){
-//        
-//        
-//    }
-
-
-      
-           
-    
-    public void estadosProhibidos (){
-        int a;
-        a=matR.length;
-        matR[0][0][6]=-1.0;
-        matR[0][a][2]=-1.0;
-        matR[a][0][6]=-1.0;
-        matR[a][a][2]=-1.0;//mirar porque no corresponde los movimientos del cuaderno con los de el fondo
-        for (int i=0; i< matR.length;i++){
-            for(int j=0;j<matR[i].length;j++){
-                for(int k=0; k<8;k++){
-                   
-                   
-                }
-            }
-        }
-    }
     public void imprimirR(){
             for (int i=0; i < matR.length; i++) {
                 //System.out.println(i);

@@ -73,24 +73,6 @@ public class Estados {
         this.neutral = neutral;
     }//Fin seters
     
-    public double estadoA(){
-        double aleatorio;
-        aleatorio = Math.random();
-        if (aleatorio <=0.2) {
-            aleatorio =-1;
-        } 
-        else if ((aleatorio >=0.2) && (aleatorio <=0.39)){
-            aleatorio=0;
-        }
-        else if ((aleatorio >=0.4) && (aleatorio <=0.79)){
-        aleatorio = 0.4;
-        }
-        else if ((aleatorio >=0.8) && (aleatorio <=0.99)){
-        aleatorio = 0.8;
-        }
-        else {
-            aleatorio = 1;}
-        return aleatorio;
-        }
+   
 
         }

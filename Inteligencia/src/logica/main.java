@@ -11,10 +11,12 @@ package logica;
 public class main {
  
   public static void main (String[] args){
-  RMat mat;
-  mat= new RMat(6);
-  
-  mat.estadosProhibidos();
+  Tablero mat;
+  mat= new Tablero(6);
+  mat.iniciar();
+  mat.rellenar();
+  mat.imprimirTab();
+ 
    
   }
 }
