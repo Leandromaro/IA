@@ -42,7 +42,7 @@ return mat;
 }
     
 public double [][] rellenar() {
-       
+mat = this.iniciar();   
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
                 double porcentaje;
@@ -61,7 +61,7 @@ return mat;
         
     
 public void imprimirTab(){
-    mat = this.iniciar();
+    
     mat = this.rellenar();
             for (int i=0; i < mat.length; i++) {
                 //System.out.println(i);

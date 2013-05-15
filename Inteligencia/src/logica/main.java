@@ -12,7 +12,7 @@ public class main {
  
   public static void main (String[] args){
   Tablero mat;
-  mat= new Tablero(6);
+  mat= new Tablero(10);
   mat.imprimirTab();
  
    
