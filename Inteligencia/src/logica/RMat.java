@@ -63,17 +63,7 @@ public class RMat {
 
       
            
-    public double[][][] cero() {
-       
-        for (int i = 0; i < matR.length; i++) {
-            for (int j = 0; j < matR[i].length; j++) {
-                for (int k = 0; k < 8; k++) {
-                    matR[i][j][k] = 0;
-                }
-            }
-        }
-    return matR;
-    }
+    
     public void estadosProhibidos (){
         int a;
         a=matR.length;
