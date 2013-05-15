@@ -55,10 +55,10 @@ public class Aleatorio {
         else if ((aleatorio >=0.2) && (aleatorio <=0.39)){
             aleatorio=0;
         }
-        else if ((aleatorio >=0.4) && (aleatorio <=0.79)){
+        else if ((aleatorio >=0.4) && (aleatorio <=0.69)){
         aleatorio = 0.4;
         }
-        else if ((aleatorio >=0.8) && (aleatorio <=0.99)){
+        else if ((aleatorio >=0.7) && (aleatorio <=0.89)){
         aleatorio = 0.8;
         }
         else {

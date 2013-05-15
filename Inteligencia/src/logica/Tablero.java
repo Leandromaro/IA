@@ -10,6 +10,8 @@ package logica;
  */
 public class Tablero {
 public double mat[][];
+public int ei;
+public int ef;
     
 public Tablero() {
     }
