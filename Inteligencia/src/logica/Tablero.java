@@ -10,22 +10,48 @@ package logica;
  */
 public class Tablero {
 public double mat[][];
-public int ei;
-public int ef;
-    
+public int ei [];
+public int ef [];
+public int dimension;    
 public Tablero() {
+    }
+
+    public int getDimension() {
+        return dimension;
+    }
+
+    public void setEi(int fila, int columna) {
+        this.ei[0] = fila;
+        this.ei[1] = columna;
+    }
+
+    public void setEf(int fila, int columna) {
+        this.ef[0] = fila;
+        this.ef[1] = columna;
+    }
+
+    public int[] getEi() {
+    return ei;
+    }
+
+    public int[] getEf() {
+        return ef;
     }
 
 public Tablero(int x) {
     mat=new double [x][x];
-     
+    dimension=x; 
 }
     
 public double[][] getMat() {
     
     return mat;
     }
-
+public double getPos (int fila, int columna){
+    double valor;
+    valor = mat[fila][columna];
+    return valor;
+}
 public void setMat(double[][] mat) {
         this.mat = mat;
 }

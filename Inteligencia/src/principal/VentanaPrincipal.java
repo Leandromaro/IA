@@ -225,9 +225,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             for (int j = 0; j < dimension; j++) {
                 
 		if ((i + j) % 2 == 0) {
-                    jLayeredPane1[i][j].setBackground(Color.red);
+                   // jLayeredPane1[i][j].setBackground(Color.red);
 		} else {
-                    jLayeredPane1[i][j].setBackground(Color.white);
+                //    jLayeredPane1[i][j].setBackground(Color.white);
                 }   
                 jInternalFrame1.getContentPane().add(jLayeredPane1[i][j]);
             }

@@ -10,18 +10,18 @@ package logica;
  */
 public class Estado {
     public double valor;
-    public double [] posicionA; 
-    public double [] posicionR;
-
+    public int [] posicionA; 
+    public int [] posicionR;
+    
     public double getValor() {
         return valor;
     }
 
-    public double[] getPosicionA() {
+    public int[] getPosicionA() {
         return posicionA;
     }
 
-    public double[] getPosicionR() {
+    public int[] getPosicionR() {
         return posicionR;
     }
 
@@ -29,12 +29,15 @@ public class Estado {
         this.valor = valor;
     }
 
-    public void setPosicionA(double[] posicionA) {
-        this.posicionA = posicionA;
+    public void setPosicionA(int fila, int columna) {
+        this.posicionA[0] = fila;
+        this.posicionA[1] = columna;
     }
 
-    public void setPosicionR(double[] posicionR) {
-        this.posicionR = posicionR;
+    public void setPosicionR(int fila, int columna) {
+        this.posicionR[0] = fila;
+        this.posicionR[1] = columna;
     }
+
     
 }
