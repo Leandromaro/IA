@@ -12,7 +12,10 @@ public class Tablero {
 public double mat[][];
 public int ei [];
 public int ef [];
-public int dimension;    
+public int dimension;
+public double matR;
+public double matQ;
+
 public Tablero() {
     }
 
@@ -44,9 +47,9 @@ public Tablero(int x) {
 }
     
 public double[][] getMat() {
-    
     return mat;
     }
+
 public double getPos (int fila, int columna){
     double valor;
     valor = mat[fila][columna];

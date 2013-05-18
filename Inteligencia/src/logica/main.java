@@ -13,8 +13,10 @@ public class main {
   public static void main (String[] args){
   Tablero mat;
   mat= new Tablero(10);
-  mat.imprimirTab();
- 
+  mat.rellenar();
+  MatAux aux;
+  aux= new MatAux(mat);
+  aux.imprimirR();
    
   }
 }

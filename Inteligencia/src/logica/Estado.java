@@ -12,9 +12,16 @@ public class Estado {
     public double valor;
     public int [] posicionA; 
     public int [] posicionR;
-    
+
+       
     public double getValor() {
         return valor;
+    }
+
+    public Estado(double valor, int[] posicionA, int[] posicionR) {
+        this.valor = valor;
+        this.posicionA = posicionA;
+        this.posicionR = posicionR;
     }
 
     public int[] getPosicionA() {
@@ -30,8 +37,8 @@ public class Estado {
     }
 
     public void setPosicionA(int fila, int columna) {
-        this.posicionA[0] = fila;
-        this.posicionA[1] = columna;
+        posicionA[0] = fila;
+        posicionA[1] = columna;
     }
 
     public void setPosicionR(int fila, int columna) {
