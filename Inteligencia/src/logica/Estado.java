@@ -18,10 +18,8 @@ public class Estado {
         return valor;
     }
 
-    public Estado(double valor, int[] posicionA, int[] posicionR) {
-        this.valor = valor;
-        this.posicionA = posicionA;
-        this.posicionR = posicionR;
+    public Estado() {
+     
     }
 
     public int[] getPosicionA() {
