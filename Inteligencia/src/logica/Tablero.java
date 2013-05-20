@@ -13,32 +13,8 @@ public double mat[][];
 public int ei [];
 public int ef [];
 public int dimension;
-public double matR;
-public double matQ;
 
 public Tablero() {
-    }
-
-    public int getDimension() {
-        return dimension;
-    }
-
-    public void setEi(int fila, int columna) {
-        this.ei[0] = fila;
-        this.ei[1] = columna;
-    }
-
-    public void setEf(int fila, int columna) {
-        this.ef[0] = fila;
-        this.ef[1] = columna;
-    }
-
-    public int[] getEi() {
-    return ei;
-    }
-
-    public int[] getEf() {
-        return ef;
     }
 
 public Tablero(int x) {
@@ -46,22 +22,8 @@ public Tablero(int x) {
     dimension=x; 
 }
     
-public double[][] getMat() {
-    return mat;
-    }
-
-public double getPos (int fila, int columna){
-    double valor;
-    valor = mat[fila][columna];
-    return valor;
-}
-public void setMat(double[][] mat) {
-        this.mat = mat;
-}
-
 public double [][] iniciar() {
-       
-        for (int i = 0; i < mat.length; i++) {
+       for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
                 mat[i][j] = -1;
                 
@@ -85,9 +47,6 @@ mat = this.iniciar();
         }
 return mat;
 }    
-    
-    
-        
     
 public void imprimirTab(){
     

@@ -25,10 +25,10 @@ public class Aleatorio {
         if (aleatorio <=0.2) {
         tipoA ="Pared";
         } 
-        else if ((aleatorio >=0.2) && (aleatorio <=0.39)){
+        else if ((aleatorio >=0.2) && (aleatorio <=0.49)){
         tipoA ="Malo";
         }
-        else if ((aleatorio >=0.4) && (aleatorio <=0.79)){
+        else if ((aleatorio >=0.5) && (aleatorio <=0.79)){
         tipoA ="Bueno";
         }
         else{
@@ -48,20 +48,20 @@ public class Aleatorio {
 
     
     public Aleatorio(){
+        
         aleatorio = Math.random();
+        
         if (aleatorio <=0.2) {
-            aleatorio =-1;
+            aleatorio = Configuraciones.getValorPared();
         } 
-        else if ((aleatorio >=0.2) && (aleatorio <=0.39)){
-            aleatorio=0;
+        else if ((aleatorio >=0.2) && (aleatorio <=0.49)){
+            aleatorio=Configuraciones.getValorMalo();
         }
-        else if ((aleatorio >=0.4) && (aleatorio <=0.69)){
-        aleatorio = 0.4;
-        }
-        else if ((aleatorio >=0.7) && (aleatorio <=0.89)){
-        aleatorio = 0.8;
+        else if ((aleatorio >=0.5) && (aleatorio <=0.79)){
+        aleatorio = Configuraciones.getValorBueno();
         }
         else {
-            aleatorio = 1;}
+        aleatorio = Configuraciones.getValorExcelente();
         }
+    }
 }
