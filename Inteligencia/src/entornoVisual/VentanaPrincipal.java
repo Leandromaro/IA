@@ -1,0 +1,379 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package entornoVisual;
+
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Random;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
+
+/**
+ *
+ * @author Maty
+ */
+public class VentanaPrincipal extends javax.swing.JFrame {
+
+    /**
+     * Creates new form VentanaPrincipal
+     */
+    public VentanaPrincipal() {
+        initComponents();
+    }
+
+    public void cargarTablero(int dim){
+       
+        jifTablero.setLayout(new GridLayout(dim,dim));
+        
+        Border blackline, raisedetched, loweredetched, raisedbevel,
+                loweredbevel, empty;
+
+        blackline = BorderFactory.createLineBorder(Color.black);
+        raisedetched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
+        loweredetched = BorderFactory.createEtchedBorder(EtchedBorder.LOWERED);
+        raisedbevel = BorderFactory.createRaisedBevelBorder();
+        loweredbevel = BorderFactory.createLoweredBevelBorder();
+        empty = BorderFactory.createEmptyBorder();
+        
+        JPanel squares[][] = new JPanel[dim][dim];
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                squares[i][j] = new JPanel();
+                squares[i][j].setBorder(blackline);
+         
+
+                switch(this.aleatorio(1, 5)){
+                    
+                    case Recompensa.Bueno: squares[i][j].setBackground(Color.black);
+                        break;
+                    case 2: squares[i][j].setBackground(Color.gray);
+                        break;
+                    case 3: squares[i][j].setBackground(Color.blue);
+                        break;
+                    case 4: squares[i][j].setBackground(Color.red);
+                        break;
+                    case 5: squares[i][j].setBackground(Color.orange);
+                        break;
+                   default: squares[i][j].setBackground(Color.white);
+                       break;
+                }
+                
+                
+                squares[i][j].addMouseListener(new MouseAdapter(){
+		
+		public void mouseClicked(MouseEvent e) {
+                    
+                  
+                    JPanel s = (JPanel)e.getComponent();
+                                    
+                    if(s.getBackground() == Color.black){
+                        s.setBackground(Color.gray);
+                        s.repaint();
+                    }else{
+                        if(s.getBackground() == Color.gray){
+                            s.setBackground(Color.blue);
+                            s.repaint();
+                        }else{
+                            if(s.getBackground() == Color.blue){
+                                s.setBackground(Color.red);
+                                s.repaint();
+                            }else{
+                               if(s.getBackground() == Color.red){
+                                    s.setBackground(Color.orange);
+                                    s.repaint();
+                                }else{
+                                   if(s.getBackground() == Color.orange){
+                                        s.setBackground(Color.white);
+                                        s.repaint();
+                                    }else{
+                                       if(s.getBackground() == Color.white){
+                                            s.setBackground(Color.black);
+                                            s.repaint();
+                                       }
+                                   }
+                               } 
+                            }
+                        }
+                    }
+                    
+                }});
+                
+               /* if ((i + j) % 2 == 0) {
+                    squares[i][j].setBackground(Color.black);
+                } else {
+                    squares[i][j].setBackground(Color.white);
+                }  
+               */ 
+            jifTablero.add(squares[i][j]);           
+            }
+        }
+        
+        jifTablero.setFocusTraversalPolicyProvider(true);
+    } 
+    
+    public int aleatorio(int min, int max){
+        
+        int randomNum=0;
+        Random rn = new Random();
+        int n = max - min + 1;
+        int i = rn.nextInt() % n;
+        randomNum =  min + i;
+        return randomNum;
+        
+    }
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jpSuperior = new javax.swing.JPanel();
+        jlConfig = new javax.swing.JLabel();
+        jlDim = new javax.swing.JLabel();
+        jcbDim = new javax.swing.JComboBox();
+        jlManOAlea = new javax.swing.JLabel();
+        jrbAuto = new javax.swing.JRadioButton();
+        jrbManual = new javax.swing.JRadioButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jbGenerarTablero = new javax.swing.JButton();
+        jifTablero = new javax.swing.JInternalFrame();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ventana Princial");
+
+        jlConfig.setText("Creación del escenario");
+
+        jlDim.setText("Dimensión");
+
+        jcbDim.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "6x6", "7x7", "8x8", "9x9", "10x10" }));
+
+        jlManOAlea.setText("Creación:");
+
+        jrbAuto.setText("Automática");
+        jrbAuto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbAutoActionPerformed(evt);
+            }
+        });
+
+        jrbManual.setText("Manual");
+        jrbManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbManualActionPerformed(evt);
+            }
+        });
+
+        jbGenerarTablero.setText("Generar escenario");
+        jbGenerarTablero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGenerarTableroActionPerformed(evt);
+            }
+        });
+
+        jifTablero.setTitle("Escenario");
+        jifTablero.setToolTipText("");
+        jifTablero.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jifTablero.setNextFocusableComponent(jifTablero);
+        jifTablero.setVisible(true);
+        jifTablero.getContentPane().setLayout(new java.awt.GridLayout(8, 8));
+
+        javax.swing.GroupLayout jpSuperiorLayout = new javax.swing.GroupLayout(jpSuperior);
+        jpSuperior.setLayout(jpSuperiorLayout);
+        jpSuperiorLayout.setHorizontalGroup(
+            jpSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpSuperiorLayout.createSequentialGroup()
+                .addGroup(jpSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpSuperiorLayout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addGroup(jpSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpSuperiorLayout.createSequentialGroup()
+                                .addComponent(jlDim)
+                                .addGap(35, 35, 35)
+                                .addComponent(jcbDim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpSuperiorLayout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jlConfig))
+                            .addGroup(jpSuperiorLayout.createSequentialGroup()
+                                .addComponent(jlManOAlea)
+                                .addGap(35, 35, 35)
+                                .addGroup(jpSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jrbManual)
+                                    .addGroup(jpSuperiorLayout.createSequentialGroup()
+                                        .addComponent(jrbAuto)
+                                        .addGap(58, 58, 58)
+                                        .addComponent(jbGenerarTablero))))))
+                    .addComponent(jifTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jpSuperiorLayout.setVerticalGroup(
+            jpSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpSuperiorLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jlConfig)
+                .addGroup(jpSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpSuperiorLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jpSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlDim)
+                            .addComponent(jcbDim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jpSuperiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jlManOAlea)
+                            .addComponent(jrbAuto)))
+                    .addGroup(jpSuperiorLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jbGenerarTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addComponent(jrbManual)
+                .addGap(23, 23, 23)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jifTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jMenu1.setText("Menu");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem1.setText("Crear escenario");
+        jMenuItem1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem1MouseClicked(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jpSuperior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jpSuperior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+
+        
+    }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem1MouseClicked
+
+    }//GEN-LAST:event_jMenuItem1MouseClicked
+
+    private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
+        
+        String aux = (String)jcbDim.getSelectedItem();
+        switch(aux){
+            case "6x6":this.cargarTablero(6);
+                break;
+            case "7x7":this.cargarTablero(7);
+                break;
+            case "8x8":this.cargarTablero(8);
+                break;
+            case "9x9":this.cargarTablero(9);
+                break;
+            case "10x10":this.cargarTablero(10);
+                break;
+        } 
+       
+    }//GEN-LAST:event_jbGenerarTableroActionPerformed
+
+    private void jrbManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbManualActionPerformed
+
+        jrbManual.setSelected(true);
+        jrbAuto.setSelected(false);
+    }//GEN-LAST:event_jrbManualActionPerformed
+
+    private void jrbAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAutoActionPerformed
+
+        jrbManual.setSelected(false);
+        jrbAuto.setSelected(true);
+    }//GEN-LAST:event_jrbAutoActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VentanaPrincipal().setVisible(true);
+            }
+        });
+    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JButton jbGenerarTablero;
+    private javax.swing.JComboBox jcbDim;
+    private javax.swing.JInternalFrame jifTablero;
+    private javax.swing.JLabel jlConfig;
+    private javax.swing.JLabel jlDim;
+    private javax.swing.JLabel jlManOAlea;
+    private javax.swing.JPanel jpSuperior;
+    private javax.swing.JRadioButton jrbAuto;
+    private javax.swing.JRadioButton jrbManual;
+    // End of variables declaration//GEN-END:variables
+}
