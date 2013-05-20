@@ -1,4 +1,4 @@
-/*
+/* c
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -11,12 +11,14 @@ package logica;
 public class main {
  
   public static void main (String[] args){
-  Tablero mat;
-  mat= new Tablero(10);
+  RMat mat;
+  Configuraciones.setDimension(11);
+  mat= new RMat(Configuraciones.getDimension());
+  Configuraciones.setValorExcelente(100);
+  Configuraciones.setValorBueno(50);
+  Configuraciones.setValorMalo(5);
+  Configuraciones.setValorPared(-15);
   mat.rellenar();
-  MatAux aux;
-  aux= new MatAux(mat);
-  aux.imprimirR();
-   
+  mat.imprimirTab(); 
   }
 }

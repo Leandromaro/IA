@@ -4,45 +4,39 @@
  */
 package logica;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Leandro
  */
 public class Estado {
-    public double valor;
-    public int [] posicionA; 
-    public int [] posicionR;
+    ArrayList accionesPosibles [];
+    int posI;
+    int posJ;
 
-       
-    public double getValor() {
-        return valor;
+    public ArrayList[] getAccionesPosibles() {
+        return accionesPosibles;
     }
 
-    public Estado() {
-     
+    public int getPosI() {
+        return posI;
     }
 
-    public int[] getPosicionA() {
-        return posicionA;
+    public int getPosJ() {
+        return posJ;
     }
 
-    public int[] getPosicionR() {
-        return posicionR;
+    public void setAccionesPosibles(ArrayList[] accionesPosibles) {
+        this.accionesPosibles = accionesPosibles;
     }
 
-    public void setValor(double valor) {
-        this.valor = valor;
+    public void setPosI(int posI) {
+        this.posI = posI;
     }
 
-    public void setPosicionA(int fila, int columna) {
-        posicionA[0] = fila;
-        posicionA[1] = columna;
+    public void setPosJ(int posJ) {
+        this.posJ = posJ;
     }
-
-    public void setPosicionR(int fila, int columna) {
-        this.posicionR[0] = fila;
-        this.posicionR[1] = columna;
-    }
-
     
 }

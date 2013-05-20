@@ -8,24 +8,24 @@ package logica;
  *
  * @author Leandro
  */
-public class Tablero {
+public class RMat {
 public double mat[][];
 public int ei [];
 public int ef [];
 public int dimension;
 
-public Tablero() {
+public RMat() {
     }
 
-public Tablero(int x) {
-    mat=new double [x][x];
+public RMat(int x) {
+    mat=new double [x][x];// cambiar por el getter de Configuraciones
     dimension=x; 
 }
     
 public double [][] iniciar() {
        for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
-                mat[i][j] = -1;
+                mat[i][j] = Configuraciones.getValorPared();
                 
             }
         }

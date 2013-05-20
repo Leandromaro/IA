@@ -54,10 +54,13 @@ public class Aleatorio {
         if (aleatorio <=0.2) {
             aleatorio = Configuraciones.getValorPared();
         } 
-        else if ((aleatorio >=0.2) && (aleatorio <=0.49)){
-            aleatorio=Configuraciones.getValorMalo();
+        else if ((aleatorio >=0.2) && (aleatorio <=0.39)){
+            aleatorio=Configuraciones.getValorNeutro();
         }
-        else if ((aleatorio >=0.5) && (aleatorio <=0.79)){
+        else if ((aleatorio >=0.4) && (aleatorio <=0.59)){
+        aleatorio = Configuraciones.getValorMalo();
+        }
+        else if ((aleatorio >=0.6) && (aleatorio <=0.79)){
         aleatorio = Configuraciones.getValorBueno();
         }
         else {
