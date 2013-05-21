@@ -19,6 +19,7 @@ public class main {
   Configuraciones.setValorMalo(5);
   Configuraciones.setValorPared(-15);
   mat.rellenar();
-  mat.imprimirTab(); 
+  mat.devolverR(2,2);
+//  mat.imprimirTab(); 
   }
 }
