@@ -11,11 +11,13 @@ import java.util.ArrayList;
  * @author Leandro
  */
 public class Estado {
-    ArrayList accionesPosibles [];
-    int posI;
-    int posJ;
+    
+    public ArrayList accionesPosibles [];
+    public int posI;
+    public int posJ;
+    
 
-    public ArrayList[] getAccionesPosibles() {
+     public ArrayList[] getAccionesPosibles() {
         return accionesPosibles;
     }
 

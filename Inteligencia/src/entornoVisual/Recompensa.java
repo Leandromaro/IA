@@ -11,8 +11,8 @@ package entornoVisual;
 public class Recompensa {
     
     public static enum Rec{
-        Bueno 15,
-        Malo,
+//        Bueno 15,
+//        Malo,
     };
     
     public static  int Neutro=0;

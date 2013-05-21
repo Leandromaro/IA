@@ -29,7 +29,7 @@ public class Acciones {
         this.valor = valor;
     }
 
-    public void setEstadoOrig(int[] estadoOrig) {
+    public void setEstadoOrig() {
         this.estadoOrig = estadoOrig;
     }
 
