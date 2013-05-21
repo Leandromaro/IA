@@ -12,14 +12,16 @@ public class main {
  
   public static void main (String[] args){
   RMat mat;
-  Configuraciones.setDimension(11);
+  Configuraciones.setDimension(3);
   mat= new RMat(Configuraciones.getDimension());
   Configuraciones.setValorExcelente(100);
   Configuraciones.setValorBueno(50);
   Configuraciones.setValorMalo(5);
   Configuraciones.setValorPared(-15);
   mat.rellenar();
-  System.out.println(mat.devolverR(2,2));
-//  mat.imprimirTab(); 
+  mat.setInicial(1,1);
+  //System.out.println(mat.devolverR(2,2));
+  mat.setFinal(2, 2);
+  mat.imprimirTab(); 
   }
 }

@@ -10,18 +10,33 @@ package logica;
  */
 public class RMat {
 public double mat[][];
-public int ei [];
-public int ef [];
+public int filaI;
+public int filaF;
+public int colI;
+public int colF;
 public int dimension;
 
 public RMat() {
     }
 
 public RMat(int x) {
-    mat=new double [x][x];// cambiar por el getter de Configuraciones
+    mat=new double [x][x];
     dimension=x; 
 }
+
+public void setInicial(int fila, int col){
+    mat[fila][col]=0;
+    filaI=fila;
+    colI=col;
     
+}
+
+public void setFinal(int fila, int col){
+    mat[fila][col]=100;
+    filaF=fila;
+    colF=col;
+    
+}
 public double [][] iniciar() {
        for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
@@ -51,10 +66,8 @@ return mat;
     
 public void imprimirTab(){
     
-    mat = this.rellenar();
+    
             for (int i=0; i < mat.length; i++) {
-                //System.out.println(i);
-                //System.out.println("");
                 for (int j=0; j < mat[i].length; j++) {
                     System.out.print(mat[i][j]+"\t");
                     
@@ -63,28 +76,9 @@ public void imprimirTab(){
             }
         }
     
- public double devolverR(int fila, int col){//mirar porque no devuelve el valor
-    
+ public double devolverR(int fila, int col){
      return mat[fila][col];
-     
-//     int f=0;
-//    int c=0;
-//    boolean find;
-//    find = false;
-//    
-//     while((fila < mat.length)&&(f< mat.length)&&(find = false)){
-//        while((col < mat.length)&&(col< mat.length)&&(find = false)){
-//                if ((fila ==f) && (col==c)){
-//                    find= true;
-//                    System.out.println(mat[fila][col]);
-//                    return(mat[fila][col]);
-//                }
-//          c=c++;
-//         }
-//     f=f++;   
-//     }
-//    return 0;
-     
+   
 }
  
  
