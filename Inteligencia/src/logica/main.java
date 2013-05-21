@@ -19,7 +19,7 @@ public class main {
   Configuraciones.setValorMalo(5);
   Configuraciones.setValorPared(-15);
   mat.rellenar();
-  mat.devolverR(2,2);
+  System.out.println(mat.devolverR(2,2));
 //  mat.imprimirTab(); 
   }
 }

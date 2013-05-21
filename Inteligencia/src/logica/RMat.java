@@ -64,23 +64,26 @@ public void imprimirTab(){
         }
     
  public double devolverR(int fila, int col){//mirar porque no devuelve el valor
-    int f=0;
-    int c=0;
-    boolean find;
-    find = false;
     
-     while((fila < mat.length)&&(f< mat.length)&&(find = false)){
-        while((col < mat.length)&&(col< mat.length)&&(find = false)){
-                if ((fila ==f) && (col==c)){
-                    find= true;
-                    System.out.println(mat[fila][col]);
-                    return(mat[fila][col]);
-                }
-          c=c++;
-         }
-     f=f++;   
-     }
-    return 0;
+     return mat[fila][col];
+     
+//     int f=0;
+//    int c=0;
+//    boolean find;
+//    find = false;
+//    
+//     while((fila < mat.length)&&(f< mat.length)&&(find = false)){
+//        while((col < mat.length)&&(col< mat.length)&&(find = false)){
+//                if ((fila ==f) && (col==c)){
+//                    find= true;
+//                    System.out.println(mat[fila][col]);
+//                    return(mat[fila][col]);
+//                }
+//          c=c++;
+//         }
+//     f=f++;   
+//     }
+//    return 0;
      
 }
  
