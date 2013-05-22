@@ -9,12 +9,10 @@ package logica;
  * @author Leandro
  */
 public class Accion {
-    private double valor;
     private Estado estadoOrigen;
     private Estado estadoDestino;
 
-    public Accion(Estado origen, Estado destino, double recompensa){
-        this.valor= recompensa;
+    public Accion(Estado origen, Estado destino){
         this.estadoDestino= destino;
         this.estadoOrigen= origen;
     }
@@ -23,26 +21,10 @@ public class Accion {
     @Override
     public String toString(){
         StringBuilder desc= new StringBuilder();
-        desc.append(" A:");
-        desc.append(" ed:");
+        desc.append(" A ");
+        desc.append("ed:");
         desc.append(this.getEstadoDestino().toString());
-        desc.append(" v:");
-        desc.append(this.valor);
         return desc.toString();
-    }
-
-    /**
-     * @return the valor
-     */
-    public double getValor() {
-        return valor;
-    }
-
-    /**
-     * @param valor the valor to set
-     */
-    public void setValor(double valor) {
-        this.valor = valor;
     }
 
     /**

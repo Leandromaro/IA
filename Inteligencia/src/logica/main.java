@@ -24,8 +24,12 @@ public class main {
   mat.imprimirTab(); 
   
   QMat matrizQ= new QMat(mat);
-  
   System.out.println(matrizQ);
+  
+  PoliticaAleatoria politica= new PoliticaAleatoria();
+  QMat nuevaQ= CalculadorQ.calcularSiguienteQ(matrizQ.getEstado(0, 0),politica , matrizQ, mat);
+  
+  System.out.println(nuevaQ);
   
   }
 }

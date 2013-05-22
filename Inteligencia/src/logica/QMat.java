@@ -23,7 +23,7 @@ public class QMat {
        //rellenemos la matriz con objetos Estado
        for (int i=0; i<dimension;i++){
              for (int j=0; j<dimension;j++){
-                matQ[i][j]= new Estado(i,j);
+                matQ[i][j]= new Estado(i,j,Configuraciones.getValorPorDefectoMatQ());
              }   
         }
        
@@ -49,7 +49,7 @@ public class QMat {
                                 //si llegamos aca el estado es valido
                                 //deberiamos cargarlo com destino de una accion posible
                                 Estado estadoActual= this.getEstado(posI, posJ);
-                                Accion nuevaAccion= new Accion(estadoActual, this.getEstado(i, j), Configuraciones.getValorPorDefectoMatQ());
+                                Accion nuevaAccion= new Accion(estadoActual, this.getEstado(i, j));
                                 estadoActual.getAccionesPosibles().add(nuevaAccion);
                             }
                         }
