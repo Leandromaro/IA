@@ -23,7 +23,7 @@ public class QMat {
        //rellenemos la matriz con objetos Estado
        for (int i=0; i<dimension;i++){
              for (int j=0; j<dimension;j++){
-                matQ[i][j]= new Estado(i,j,Configuraciones.getValorPorDefectoMatQ());
+                matQ[i][j]= new Estado(i,j);
              }   
         }
        
@@ -45,11 +45,11 @@ public class QMat {
                         //verificar si los indices son validos
                         if(this.indicesValidos(i, j, matR.getDimension()) && !(i==posI && j==posJ)){
                             //verificar si no hay una pared en la posicion
-                            if(matR.devolverR(i, j)!=-1){
+                            if(matR.devolverR(i, j)!=Configuraciones.getValorPared()){
                                 //si llegamos aca el estado es valido
                                 //deberiamos cargarlo com destino de una accion posible
                                 Estado estadoActual= this.getEstado(posI, posJ);
-                                Accion nuevaAccion= new Accion(estadoActual, this.getEstado(i, j));
+                                Accion nuevaAccion= new Accion(estadoActual, this.getEstado(i, j),Configuraciones.getValorPorDefectoMatQ());
                                 estadoActual.getAccionesPosibles().add(nuevaAccion);
                             }
                         }

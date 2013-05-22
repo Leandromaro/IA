@@ -12,15 +12,14 @@ import java.util.ArrayList;
  */
 public class Estado {
     
-    public ArrayList<Accion> accionesPosibles;
+    private ArrayList<Accion> accionesPosibles;
     private double valor;
-    public int posI;
-    public int posJ;
+    private int posI;
+    private int posJ;
     
-    public Estado(int posI, int posJ, double valorInicial){
+    public Estado(int posI, int posJ){
         this.setPosI(posI);
         this.setPosJ(posJ);
-        this.setValor(valorInicial);
         this.setAccionesPosibles(new ArrayList<Accion>());
     }
     
@@ -31,13 +30,12 @@ public class Estado {
         desc.append(this.getPosI());
         desc.append(",");
         desc.append(this.getPosJ());
-        desc.append(") v:");
-        desc.append(this.getValor());
+        desc.append(")");
         return desc.toString();
     }
 
      public ArrayList<Accion> getAccionesPosibles() {
-        return accionesPosibles;
+         return accionesPosibles;
     }
 
     public int getPosI() {
@@ -59,23 +57,43 @@ public class Estado {
     public void setPosJ(int posJ) {
         this.posJ = posJ;
     }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
     
     public double maximoValorParaAcciones(){
         double maximoValor=0;
-        for(Accion acc: this.getAccionesPosibles()){
-            if(acc.getEstadoDestino().getValor() > maximoValor){
-                maximoValor= acc.getEstadoDestino().getValor();
+        for(int i=0; i< this.getAccionesPosibles().size();i++){
+            double valorAccion= this.getAccionesPosibles().get(i).getValor();
+            if(valorAccion>maximoValor){
+                maximoValor= valorAccion;
             }
         }
         return maximoValor;
+    }
+    
+    public Accion accionDeMaximoValor(){
+        for(Accion acc:this.accionesPosibles){
+            if(acc.getValor()==this.maximoValorParaAcciones()){
+                return acc;
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public boolean equals(Object estado){
+        if(estado.getClass()==this.getClass()){
+            if(this.hashCode()==estado.hashCode()){
+                return true;
+            }
+        }
+        return false; 
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 73 * hash + this.posI;
+        hash = 73 * hash + this.posJ;
+        return hash;
     }
     
 }

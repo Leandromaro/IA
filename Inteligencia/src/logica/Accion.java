@@ -11,10 +11,12 @@ package logica;
 public class Accion {
     private Estado estadoOrigen;
     private Estado estadoDestino;
-
-    public Accion(Estado origen, Estado destino){
+    private double valor;
+    
+    public Accion(Estado origen, Estado destino, double valor){
         this.estadoDestino= destino;
         this.estadoOrigen= origen;
+        this.valor= valor;
     }
     
     
@@ -24,6 +26,8 @@ public class Accion {
         desc.append(" A ");
         desc.append("ed:");
         desc.append(this.getEstadoDestino().toString());
+        desc.append("v:");
+        desc.append(this.getValor());
         return desc.toString();
     }
 
@@ -55,6 +59,13 @@ public class Accion {
         this.estadoDestino = estadoDestino;
     }
     
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
 
 
 }

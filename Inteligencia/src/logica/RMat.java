@@ -12,6 +12,14 @@ public class RMat {
 public double mat[][];
 public int filaI;
 public int filaF;
+
+    public int getFilaF() {
+        return filaF;
+    }
+
+    public int getColF() {
+        return colF;
+    }
 public int colI;
 public int colF;
 private int dimension;
@@ -34,7 +42,7 @@ public void setInicial(int fila, int col){
 }
 
 public void setFinal(int fila, int col){
-    mat[fila][col]=100;
+    mat[fila][col]=1000;
     filaF=fila;
     colF=col;
     
@@ -56,7 +64,7 @@ mat = this.iniciar();
             for (int j = 0; j < mat[i].length; j++) {
                 double porcentaje;
                 porcentaje= Math.random();
-                if (porcentaje >0.2){
+                if (porcentaje >0.1){
                 Aleatorio a;
                 a= new Aleatorio();
                 mat[i][j] = a.getAleatorio();

@@ -11,8 +11,8 @@ public class PoliticaAleatoria implements Politica{
 
     @Override
     public Accion seleccionarAccionSiguiente(Estado estadoActual) {
-        int indiceRandom= (int) Math.floor(Math.random() * estadoActual.accionesPosibles.size());
-        return estadoActual.accionesPosibles.get(indiceRandom );
+        int indiceRandom= (int) Math.floor(Math.random() * estadoActual.getAccionesPosibles().size());
+        return estadoActual.getAccionesPosibles().get(indiceRandom );
     }
     
 }
