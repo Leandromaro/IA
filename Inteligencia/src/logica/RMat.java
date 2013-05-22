@@ -14,10 +14,12 @@ public int filaI;
 public int filaF;
 public int colI;
 public int colF;
-public int dimension;
+private int dimension;
+
+
 
 public RMat() {
-    }
+}
 
 public RMat(int x) {
     mat=new double [x][x];
@@ -37,6 +39,7 @@ public void setFinal(int fila, int col){
     colF=col;
     
 }
+
 public double [][] iniciar() {
        for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat[i].length; j++) {
@@ -46,7 +49,6 @@ public double [][] iniciar() {
         }
 return mat;
 }
-
 
 public double [][] rellenar() {
 mat = this.iniciar();   
@@ -78,8 +80,17 @@ public void imprimirTab(){
     
  public double devolverR(int fila, int col){
      return mat[fila][col];
-   
 }
- 
- 
+
+    public int getDimension() {
+        return dimension;
+    }
+
+    /**
+     * @param dimension the dimension to set
+     */
+    public void setDimension(int dimension) {
+        this.dimension = dimension;
+    }
+
 }

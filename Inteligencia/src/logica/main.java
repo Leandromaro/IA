@@ -20,8 +20,12 @@ public class main {
   Configuraciones.setValorPared(-15);
   mat.rellenar();
   mat.setInicial(1,1);
-  //System.out.println(mat.devolverR(2,2));
   mat.setFinal(2, 2);
   mat.imprimirTab(); 
+  
+  QMat matrizQ= new QMat(mat);
+  
+  System.out.println(matrizQ);
+  
   }
 }

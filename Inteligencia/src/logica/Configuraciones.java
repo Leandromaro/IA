@@ -17,6 +17,7 @@ public class Configuraciones {
     private static double valorBueno= 0.8;
     private static double valorExcelente = 1.0;
     private static int dimension = 6; 
+    private static int valorPorDefectoMatQ= 0;
 
     public static double getGamma() {
         return gamma;
@@ -72,6 +73,20 @@ public class Configuraciones {
 
     public static void setValorNeutro(double ValorNeutro) {
         Configuraciones.ValorNeutro = ValorNeutro;
+    }
+
+    /**
+     * @return the valorPorDefectoMatQ
+     */
+    public static int getValorPorDefectoMatQ() {
+        return valorPorDefectoMatQ;
+    }
+
+    /**
+     * @param aValorPorDefectoMatQ the valorPorDefectoMatQ to set
+     */
+    public static void setValorPorDefectoMatQ(int aValorPorDefectoMatQ) {
+        valorPorDefectoMatQ = aValorPorDefectoMatQ;
     }
 
     

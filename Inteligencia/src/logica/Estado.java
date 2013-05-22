@@ -12,12 +12,27 @@ import java.util.ArrayList;
  */
 public class Estado {
     
-    public ArrayList accionesPosibles [];
+    public ArrayList<Accion> accionesPosibles;
     public int posI;
     public int posJ;
     
+    public Estado(int posI, int posJ){
+        this.setPosI(posI);
+        this.setPosJ(posJ);
+        this.setAccionesPosibles(new ArrayList<Accion>());
+    }
+    
+    @Override
+    public String toString(){
+        StringBuilder desc= new StringBuilder();
+        desc.append(" E:");
+        desc.append(this.getPosI());
+        desc.append(",");
+        desc.append(this.getPosJ());
+        return desc.toString();
+    }
 
-     public ArrayList[] getAccionesPosibles() {
+     public ArrayList<Accion> getAccionesPosibles() {
         return accionesPosibles;
     }
 
@@ -29,7 +44,7 @@ public class Estado {
         return posJ;
     }
 
-    public void setAccionesPosibles(ArrayList[] accionesPosibles) {
+    public void setAccionesPosibles(ArrayList<Accion> accionesPosibles) {
         this.accionesPosibles = accionesPosibles;
     }
 
@@ -40,5 +55,7 @@ public class Estado {
     public void setPosJ(int posJ) {
         this.posJ = posJ;
     }
+
+
     
 }

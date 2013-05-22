@@ -218,6 +218,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
         
+        if(jrbAuto.isSelected()){
         String aux = (String)jcbDim.getSelectedItem();
         switch(aux){
             case "6x6":this.cargarTablero(6);
@@ -230,8 +231,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 break;
             case "10x10":this.cargarTablero(10);
                 break;
-        } 
-       
+        }    
+        }else{
+            if(jrbManual.isSelected()){
+                // FALTA1
+            }
+                
+        }  
     }//GEN-LAST:event_jbGenerarTableroActionPerformed
 
     private void jrbManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbManualActionPerformed
