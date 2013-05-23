@@ -9,7 +9,6 @@ package logica;
  * @author Leandro
  */
 public class PoliticaGreedy implements Politica{ 
-
     @Override
     public Accion seleccionarAccionSiguiente(Estado estadoActual) {
         double maximoValor=0;

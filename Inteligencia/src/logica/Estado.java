@@ -58,6 +58,7 @@ public class Estado {
         this.posJ = posJ;
     }
     
+    
     public double maximoValorParaAcciones(){
         double maximoValor=0;
         for(int i=0; i< this.getAccionesPosibles().size();i++){
