@@ -76,6 +76,9 @@ public RMat(int x) {
         
     }
  
+    public void setFinal(int fila, int col){
+      mat[fila][col]=1000;
+      }
     public int getDimension() {
         return dimension;
     }

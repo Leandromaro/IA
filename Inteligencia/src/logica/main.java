@@ -21,6 +21,8 @@ public class main {
   mat.rellenar();
   Configuraciones.setInicial(1,1);
   Configuraciones.setFinal(7, 7);
+  
+  mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
   mat.imprimirTab(); 
   
   QMat matrizQ= new QMat(mat);
@@ -31,20 +33,22 @@ public class main {
   //TODO: agregar estadoi final a configuraciones
 
   Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
-  Episodio[] episodios= new Episodio[100];
+  System.out.println("Estado final");
+  System.out.println(estadoFinal);
+  Episodio[] episodios= new Episodio[1000];
   
-  for(int i=0; i<100;i++){
+  for(int i=0; i<1000;i++){
       episodios[i]= new Episodio(matrizQ,estadoFinal,politica,mat,i);
   }
   
-  System.out.println(episodios[99].getMatrizQ());
+  System.out.println(episodios[999].getMatrizQ());
   
   System.out.println("Buscando mejor camino");
   System.out.println("Estado Inicial");
 //  int i= 0;
 //  int j=0;
   
-  Estado estadoActual= episodios[99].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.colF);
+  Estado estadoActual= episodios[99].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
   System.out.println(estadoActual);
   
     System.out.println("Movimientos:");
