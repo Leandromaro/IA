@@ -18,7 +18,28 @@ public class Configuraciones {
     private static double valorExcelente = 1.0;
     private static int dimension = 6; 
     private static int valorPorDefectoMatQ= 0;
+    public static int filaI;
+    public static int filaF;
+    public static int colI;
+    public static int colF;
 
+    public static int getFilaI() {
+        return filaI;
+    }
+
+    public static int getFilaF() {
+        return filaF;
+    }
+
+    public static int getColI() {
+        return colI;
+    }
+
+    public static int getColF() {
+        return colF;
+    }
+    
+    
     public static double getGamma() {
         return gamma;
     }
@@ -47,7 +68,18 @@ public class Configuraciones {
     public static double getValorExcelente() {
         return valorExcelente;
     }
+    
+    public static void setInicial(int fila, int col){
+    filaI=fila;
+    colI=col;
+    
+}
 
+    public static void setFinal(int fila, int col){
+    filaF=fila;
+    colF=col;
+    }
+    
     public static void setDimension(int dim) {
         if (dim<6){
         Configuraciones.dimension = 6;    
