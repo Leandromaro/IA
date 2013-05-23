@@ -6,7 +6,7 @@ package logica;
 
 /**
  *
- * @author Fer
+ * @author Leandro
  */
 public interface Politica {
     /**

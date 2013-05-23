@@ -19,9 +19,10 @@ public class main {
   Configuraciones.setValorMalo(5);
   Configuraciones.setValorPared(15);
   mat.rellenar();
-  Configuraciones.setInicial(1,1);
+  Configuraciones.setInicial(0,0);
   Configuraciones.setFinal(7, 7);
   
+  mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
   mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
   mat.imprimirTab(); 
   

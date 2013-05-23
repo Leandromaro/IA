@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class Estado {
     
-    private ArrayList<Accion> accionesPosibles;
+    public ArrayList<Accion> accionesPosibles;
     private double valor;
     private int posI;
     private int posJ;
@@ -77,7 +77,8 @@ public class Estado {
         }
         return null;
     }
-    
+   
+           
     @Override
     public boolean equals(Object estado){
         if(estado.getClass()==this.getClass()){

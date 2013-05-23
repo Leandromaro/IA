@@ -5,7 +5,7 @@
 package logica;
 /**
  *
- * @author Fer
+ * @author Leandro
  */
 public class PoliticaAleatoria implements Politica{
 
