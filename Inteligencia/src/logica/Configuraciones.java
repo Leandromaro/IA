@@ -84,10 +84,11 @@ public class Configuraciones {
         if (dim<6){
         Configuraciones.dimension = 6;    
         }
-        else {
+        else if (dim<11){
             Configuraciones.dimension = dim;
         }
     }
+    
     public static void setGamma(double valorGamma){
         Configuraciones.gamma = valorGamma;
     }

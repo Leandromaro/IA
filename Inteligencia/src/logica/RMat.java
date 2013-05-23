@@ -10,7 +10,7 @@ package logica;
  */
 public class RMat {
 public double mat[][];
-private int dimension;
+public int dimension;
 
 
 
@@ -19,8 +19,8 @@ public RMat() {
 
 public RMat(int x) {
     mat=new double [x][x];
-    dimension=x; 
-}
+    dimension=x;
+    }
 
 
 
@@ -79,15 +79,14 @@ public RMat(int x) {
     public void setFinal(int fila, int col){
       mat[fila][col]=1000;
       }
+
+    public double[][] getMat() {
+        return mat;
+    }
+
     public int getDimension() {
         return dimension;
     }
 
-    /**
-     * @param dimension the dimension to set
-     */
-    public void setDimension(int dimension) {
-        this.dimension = dimension;
-    }
-
+    
 }
