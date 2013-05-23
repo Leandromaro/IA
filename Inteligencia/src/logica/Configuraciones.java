@@ -49,14 +49,24 @@ public class Configuraciones {
     }
 
     public static void setDimension(int dim) {
-        Configuraciones.dimension = dim;
+        if (dim<6){
+        Configuraciones.dimension = 6;    
+        }
+        else {
+            Configuraciones.dimension = dim;
+        }
     }
     public static void setGamma(double valorGamma){
         Configuraciones.gamma = valorGamma;
     }
     
     public static void setValorPared(double valorPared) {
+        if (valorPared <0){
         Configuraciones.valorPared = valorPared;
+        }  
+        else{
+            Configuraciones.valorPared = valorPared*-1;
+        }
     }
 
     public static void setValorMalo(double valorMalo) {

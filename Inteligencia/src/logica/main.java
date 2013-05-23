@@ -17,7 +17,7 @@ public class main {
   Configuraciones.setValorExcelente(100);
   Configuraciones.setValorBueno(50);
   Configuraciones.setValorMalo(5);
-  Configuraciones.setValorPared(-1);
+  Configuraciones.setValorPared(15);
   mat.rellenar();
   mat.setInicial(1,1);
   mat.setFinal(7, 7);
