@@ -5,13 +5,23 @@
 package entornoVisual;
 
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 /**
@@ -33,37 +43,87 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(dim,dim));
         
+//
+//        ImageIcon image = new ImageIcon("images/Excelente.png"); 
+//                int scale = 1;        
+//                int width = image.getIconWidth();  
+//                int height = image.getIconHeight();  
+//                BufferedImage buffer = new BufferedImage(scale * width, scale * height,
+//                        BufferedImage.TYPE_INT_ARGB);  
+//                Graphics2D graphics = buffer.createGraphics();  
+//                graphics.scale(scale,scale);  
+//                image.paintIcon(null, graphics, 0, 0);  
+//                graphics.dispose();  
+//                JLabel jlLabel = new JLabel();
+//                Icon icono = new ImageIcon(image.getImage()
+//                        .getScaledInstance(jlLabel.getWidth(), jlLabel.getHeight(),
+//                        Image.SCALE_DEFAULT));
+//                jlLabel.setIcon(icono);
+//                this.repaint();
+        
+        
+        
+        
         Border blackline;
         blackline = BorderFactory.createLineBorder(Color.black);
 
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
-                JPanel jpEstado = new JPanel();
-                jpEstado.setBorder(blackline);
+                JButton jbEstado = new JButton();
+                jbEstado.setBorder(blackline);
+                
+//                ImageIcon icon = new ImageIcon("images/Excelente.png");
+                
+                // pego
+//                int scale =1;
+//                BufferedImage bi = new BufferedImage(
+//                        scale*icon.getIconWidth(),
+//                        scale*icon.getIconHeight(),
+//                        BufferedImage.TYPE_INT_ARGB);
+//                Graphics2D g = bi.createGraphics();
+//                g.scale(scale,scale);
+//                icon.paintIcon(null,g,0,0);
+//                g.dispose();
+                
+                
+                
+                
+//                JLabel jlLabel = new JLabel("Excelente");
+//                
+//                jlLabel.setBackground(Color.GREEN);
+//                
+//                jlLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+//                jlLabel.setVerticalTextPosition(SwingConstants.CENTER);
+//            
+                jbEstado.setText("Excelente");
+                Font font = new Font("Arial", Font.BOLD, 9);
+                
+                jbEstado.setFont(font);
+               
 
                 switch(this.aleatorio(1, 5)){
                     
-                    case 1: jpEstado.setBackground(Color.black);
+                    case 1: jbEstado.setBackground(Color.black);
                         break;
-                    case 2: jpEstado.setBackground(Color.gray);
+                    case 2: jbEstado.setBackground(Color.gray);
                         break;
-                    case 3: jpEstado.setBackground(Color.blue);
+                    case 3: jbEstado.setBackground(Color.blue);
                         break;
-                    case 4: jpEstado.setBackground(Color.red);
+                    case 4: jbEstado.setBackground(Color.red);
                         break;
-                    case 5: jpEstado.setBackground(Color.orange);
+                    case 5: jbEstado.setBackground(Color.orange);
                         break;
-                   default: jpEstado.setBackground(Color.white);
+                   default: jbEstado.setBackground(Color.white);
                        break;
                 }
                 
                 
-                jpEstado.addMouseListener(new MouseAdapter(){
+                jbEstado.addMouseListener(new MouseAdapter(){
 		
 		public void mouseClicked(MouseEvent e) {
                     
                   
-                    JPanel s = (JPanel)e.getComponent();
+                    JButton s = (JButton)e.getComponent();
                                     
                     if(s.getBackground() == Color.black){
                         s.setBackground(Color.gray);
@@ -97,7 +157,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     
                 }});
                 
-            jpTablero.add(jpEstado);           
+            jpTablero.add(jbEstado);           
             }
         }
         jpTablero.setVisible(true);
@@ -153,7 +213,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jpSuperior.add(jcbDim, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 31, -1, -1));
 
         jlManOAlea.setText("Creación:");
-        jpSuperior.add(jlManOAlea, new org.netbeans.lib.awtextra.AbsoluteConstraints(212, 57, -1, -1));
+        jpSuperior.add(jlManOAlea, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, 20));
 
         jrbAuto.setText("Automática");
         jrbAuto.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +221,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbAutoActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 53, -1, -1));
+        jpSuperior.add(jrbAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, -1, -1));
 
         jrbManual.setText("Manual");
         jrbManual.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +229,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbManualActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(293, 87, -1, -1));
+        jpSuperior.add(jrbManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
 
         jbGenerarTablero.setText("Generar escenario");
         jbGenerarTablero.addActionListener(new java.awt.event.ActionListener() {
@@ -182,7 +242,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 635, 130));
 
         jpTablero.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jpTablero.setLayout(new java.awt.GridLayout());
+        jpTablero.setLayout(new java.awt.GridLayout(1, 0));
         getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 440, 410));
 
         jMenu1.setText("Menu");
