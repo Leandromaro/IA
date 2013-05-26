@@ -29,7 +29,7 @@ public class main {
   QMat matrizQ= new QMat(mat);
   System.out.println(matrizQ);
   
-  PoliticaAleatoria politica= new PoliticaAleatoria();
+  PoliticaGreedy politica= new PoliticaGreedy();
   
   //TODO: agregar estadoi final a configuraciones
 
@@ -38,18 +38,18 @@ public class main {
   System.out.println(estadoFinal);
   Episodio[] episodios= new Episodio[1000];
   
-  for(int i=0; i<1000;i++){
+  for(int i=0; i<100000;i++){
       episodios[i]= new Episodio(matrizQ,estadoFinal,politica,mat,i);
   }
   
-  System.out.println(episodios[999].getMatrizQ());
+  System.out.println(episodios[99999].getMatrizQ());
   
   System.out.println("Buscando mejor camino");
   System.out.println("Estado Inicial");
 //  int i= 0;
 //  int j=0;
   
-  Estado estadoActual= episodios[99].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+  Estado estadoActual= episodios[99999].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
   System.out.println(estadoActual);
   
     System.out.println("Movimientos:");

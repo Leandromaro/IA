@@ -34,7 +34,7 @@ public class Estado {
         return desc.toString();
     }
 
-     public ArrayList<Accion> getAccionesPosibles() {
+    public ArrayList<Accion> getAccionesPosibles() {
          return accionesPosibles;
     }
 
