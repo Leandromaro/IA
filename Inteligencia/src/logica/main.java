@@ -49,7 +49,7 @@ public class main {
 //  int i= 0;
 //  int j=0;
   
-  Estado estadoActual= episodios[99].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+  Estado estadoActual= episodios[999].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
   System.out.println(estadoActual);
   
     System.out.println("Movimientos:");

@@ -15,4 +15,5 @@ public interface Politica {
      * @return
      */
     public Accion seleccionarAccionSiguiente(Estado estadoActual);
+    
 }
