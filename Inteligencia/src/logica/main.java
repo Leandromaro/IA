@@ -29,8 +29,8 @@ public class main {
   QMat matrizQ= new QMat(mat);
   System.out.println(matrizQ);
   
-  PoliticaAleatoria politica= new PoliticaAleatoria();
-  
+  //PoliticaAleatoria politica= new PoliticaAleatoria();
+  PoliticaGreedy politica= new PoliticaGreedy();
   //TODO: agregar estadoi final a configuraciones
 
   Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
