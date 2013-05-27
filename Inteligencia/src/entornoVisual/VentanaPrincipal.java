@@ -69,51 +69,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
+                
                 JButton jbEstado = new JButton();
                 jbEstado.setBorder(blackline);
                 
-//                ImageIcon icon = new ImageIcon("images/Excelente.png");
-                
-                // pego
-//                int scale =1;
-//                BufferedImage bi = new BufferedImage(
-//                        scale*icon.getIconWidth(),
-//                        scale*icon.getIconHeight(),
-//                        BufferedImage.TYPE_INT_ARGB);
-//                Graphics2D g = bi.createGraphics();
-//                g.scale(scale,scale);
-//                icon.paintIcon(null,g,0,0);
-//                g.dispose();
-                
-                
-                
-                
-//                JLabel jlLabel = new JLabel("Excelente");
-//                
-//                jlLabel.setBackground(Color.GREEN);
-//                
-//                jlLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-//                jlLabel.setVerticalTextPosition(SwingConstants.CENTER);
-//            
-                jbEstado.setText("Excelente");
                 Font font = new Font("Arial", Font.BOLD, 9);
+                
+                final Color rojo = new Color(240, 90, 82);
+                final Color amarillo = new Color(220, 246, 53);
+                final Color verde = new Color(72, 237, 255);
                 
                 jbEstado.setFont(font);
                
 
                 switch(this.aleatorio(1, 5)){
                     
-                    case 1: jbEstado.setBackground(Color.black);
+                    case 1: jbEstado.setBackground(Color.white);
                         break;
-                    case 2: jbEstado.setBackground(Color.gray);
+                    case 2: jbEstado.setBackground(Color.black);
                         break;
-                    case 3: jbEstado.setBackground(Color.blue);
+                    case 3: jbEstado.setBackground(rojo);
+                    jbEstado.setText("Malo");
                         break;
-                    case 4: jbEstado.setBackground(Color.red);
+                    case 4: jbEstado.setBackground(amarillo);
+                    jbEstado.setText("Bueno");
                         break;
-                    case 5: jbEstado.setBackground(Color.orange);
+                    case 5: jbEstado.setBackground(verde);
+                    jbEstado.setText("Excelente");
                         break;
-                   default: jbEstado.setBackground(Color.white);
+                   default: //jbEstado.setBackground(Color.red);
+                   jbEstado.setText("OTRO");
                        break;
                 }
                 
@@ -125,30 +110,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                   
                     JButton s = (JButton)e.getComponent();
                                     
-                    if(s.getBackground() == Color.black){
-                        s.setBackground(Color.gray);
+                    if(s.getBackground() == Color.white){
+                        s.setBackground(Color.black);
                         s.repaint();
                     }else{
-                        if(s.getBackground() == Color.gray){
-                            s.setBackground(Color.blue);
+                        if(s.getBackground() == Color.black){
+                            s.setBackground(rojo);
+                            s.setText("Malo");
                             s.repaint();
                         }else{
-                            if(s.getBackground() == Color.blue){
-                                s.setBackground(Color.red);
+                            if(s.getBackground() == rojo){
+                                s.setBackground(amarillo);
+                                s.setText("Bueno");
                                 s.repaint();
                             }else{
-                               if(s.getBackground() == Color.red){
-                                    s.setBackground(Color.orange);
+                               if(s.getBackground() == amarillo){
+                                    s.setBackground(verde);
+                                    s.setText("Excelente");
                                     s.repaint();
                                 }else{
-                                   if(s.getBackground() == Color.orange){
+                                   if(s.getBackground() == verde){
                                         s.setBackground(Color.white);
+                                        s.setText("");
                                         s.repaint();
-                                    }else{
-                                       if(s.getBackground() == Color.white){
-                                            s.setBackground(Color.black);
-                                            s.repaint();
-                                       }
+//                                    }else{
+//                                       if(s.getBackground() == Color.white){
+//                                            s.setBackground(Color.black);
+//                                            s.repaint();
+//                                       }
                                    }
                                } 
                             }
@@ -167,11 +156,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         int randomNum=0;
         Random rn = new Random();
-        int n = max - min + 1;
-        int i = rn.nextInt() % n;
-        randomNum =  min + i;
-        return randomNum;
-        
+       // int n = max - min + 1;
+        int n = rn.nextInt(max);
+        //int i = rn.nextInt() % n;
+        //randomNum =  min + i;
+        //return randomNum;
+        return n+1;
     }
     
     /**
