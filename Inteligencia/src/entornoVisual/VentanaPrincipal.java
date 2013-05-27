@@ -81,28 +81,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 
                 jbEstado.setFont(font);
                
-
-                switch(this.aleatorio(1, 5)){
+                if (dim < 8){
+                    switch(this.aleatorio(1, 5)){
                     
-                    case 1: jbEstado.setBackground(Color.white);
-                        break;
-                    case 2: jbEstado.setBackground(Color.black);
-                        break;
-                    case 3: jbEstado.setBackground(rojo);
-                    jbEstado.setText("Malo");
-                        break;
-                    case 4: jbEstado.setBackground(amarillo);
-                    jbEstado.setText("Bueno");
-                        break;
-                    case 5: jbEstado.setBackground(verde);
-                    jbEstado.setText("Excelente");
-                        break;
-                   default: //jbEstado.setBackground(Color.red);
-                   jbEstado.setText("OTRO");
-                       break;
-                }
-                
-                
+                        case 1: jbEstado.setBackground(Color.white);
+                            break;
+                        case 2: jbEstado.setBackground(Color.black);
+                            break;
+                        case 3: jbEstado.setBackground(rojo);
+                            jbEstado.setText("Malo");
+                            break;
+                        case 4: jbEstado.setBackground(amarillo);
+                            jbEstado.setText("Bueno");
+                            break;
+                        case 5: jbEstado.setBackground(verde);
+                            jbEstado.setText("Excelente");
+                            break;
+                        default: //jbEstado.setBackground(Color.red);
+                            jbEstado.setText("OTRO");
+                            break;
+                    }
+                    
+                     
                 jbEstado.addMouseListener(new MouseAdapter(){
 		
 		public void mouseClicked(MouseEvent e) {
@@ -145,6 +145,73 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     }
                     
                 }});
+                    
+                }else{
+                    switch(this.aleatorio(1, 5)){
+                    
+                        case 1: jbEstado.setBackground(Color.white);
+                            break;
+                        case 2: jbEstado.setBackground(Color.black);
+                            break;
+                        case 3: jbEstado.setBackground(rojo);
+                            jbEstado.setText("M");
+                            break;
+                        case 4: jbEstado.setBackground(amarillo);
+                            jbEstado.setText("B");
+                            break;
+                        case 5: jbEstado.setBackground(verde);
+                            jbEstado.setText("E");
+                            break;
+                        default: //jbEstado.setBackground(Color.red);
+                            jbEstado.setText("OTRO");
+                            break;
+                    }
+                    
+                     
+                    jbEstado.addMouseListener(new MouseAdapter(){
+		
+                    public void mouseClicked(MouseEvent e) {
+                    
+                  
+                    JButton s = (JButton)e.getComponent();
+                                    
+                    if(s.getBackground() == Color.white){
+                        s.setBackground(Color.black);
+                        s.repaint();
+                    }else{
+                        if(s.getBackground() == Color.black){
+                            s.setBackground(rojo);
+                            s.setText("M");
+                            s.repaint();
+                        }else{
+                            if(s.getBackground() == rojo){
+                                s.setBackground(amarillo);
+                                s.setText("B");
+                                s.repaint();
+                            }else{
+                               if(s.getBackground() == amarillo){
+                                    s.setBackground(verde);
+                                    s.setText("E");
+                                    s.repaint();
+                                }else{
+                                   if(s.getBackground() == verde){
+                                        s.setBackground(Color.white);
+                                        s.setText("");
+                                        s.repaint();
+//                                    }else{
+//                                       if(s.getBackground() == Color.white){
+//                                            s.setBackground(Color.black);
+//                                            s.repaint();
+//                                       }
+                                   }
+                               } 
+                            }
+                        }
+                    }
+                    
+                }});
+                    
+                }
                 
             jpTablero.add(jbEstado);           
             }
