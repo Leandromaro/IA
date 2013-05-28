@@ -37,33 +37,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void cargarTablero(int dim){
-       
+    
+    public void cargarTableroManual(int dim){
         jpTablero.setVisible(false);
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(dim,dim));
-        
-//
-//        ImageIcon image = new ImageIcon("images/Excelente.png"); 
-//                int scale = 1;        
-//                int width = image.getIconWidth();  
-//                int height = image.getIconHeight();  
-//                BufferedImage buffer = new BufferedImage(scale * width, scale * height,
-//                        BufferedImage.TYPE_INT_ARGB);  
-//                Graphics2D graphics = buffer.createGraphics();  
-//                graphics.scale(scale,scale);  
-//                image.paintIcon(null, graphics, 0, 0);  
-//                graphics.dispose();  
-//                JLabel jlLabel = new JLabel();
-//                Icon icono = new ImageIcon(image.getImage()
-//                        .getScaledInstance(jlLabel.getWidth(), jlLabel.getHeight(),
-//                        Image.SCALE_DEFAULT));
-//                jlLabel.setIcon(icono);
-//                this.repaint();
-        
-        
-        
-        
+          
         Border blackline;
         blackline = BorderFactory.createLineBorder(Color.black);
 
@@ -81,6 +60,120 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 
                 jbEstado.setFont(font);
                
+                if (dim < 8){
+                    jbEstado.setBackground(Color.white);
+                    
+                     
+                jbEstado.addMouseListener(new MouseAdapter(){
+		
+		public void mouseClicked(MouseEvent e) {
+                    
+                  
+                    JButton s = (JButton)e.getComponent();
+                                    
+                    if(s.getBackground() == Color.white){
+                        s.setBackground(Color.black);
+                        s.repaint();
+                    }else{
+                        if(s.getBackground() == Color.black){
+                            s.setBackground(rojo);
+                            s.setText("Malo");
+                            s.repaint();
+                        }else{
+                            if(s.getBackground() == rojo){
+                                s.setBackground(amarillo);
+                                s.setText("Bueno");
+                                s.repaint();
+                            }else{
+                               if(s.getBackground() == amarillo){
+                                    s.setBackground(verde);
+                                    s.setText("Excelente");
+                                    s.repaint();
+                                }else{
+                                   if(s.getBackground() == verde){
+                                        s.setBackground(Color.white);
+                                        s.setText("");
+                                        s.repaint();                                    
+                                   }
+                               } 
+                            }
+                        }
+                    }
+                    
+                }});
+                    
+                }else{
+                    jbEstado.setBackground(Color.white);
+                    jbEstado.addMouseListener(new MouseAdapter(){
+                    public void mouseClicked(MouseEvent e) {  
+                    JButton s = (JButton)e.getComponent();
+                                    
+                    if(s.getBackground() == Color.white){
+                        s.setBackground(Color.black);
+                        s.repaint();
+                    }else{
+                        if(s.getBackground() == Color.black){
+                            s.setBackground(rojo);
+                            s.setText("M");
+                            s.repaint();
+                        }else{
+                            if(s.getBackground() == rojo){
+                                s.setBackground(amarillo);
+                                s.setText("B");
+                                s.repaint();
+                            }else{
+                               if(s.getBackground() == amarillo){
+                                    s.setBackground(verde);
+                                    s.setText("E");
+                                    s.repaint();
+                                }else{
+                                   if(s.getBackground() == verde){
+                                        s.setBackground(Color.white);
+                                        s.setText("");
+                                        s.repaint();
+                                   }
+                               } 
+                            }
+                        }
+                    }
+                    
+                }});
+                    
+                }
+                
+            jpTablero.add(jbEstado);           
+            }
+        }
+        jpTablero.setVisible(true);
+                
+            }
+        
+    
+
+    public void cargarTablero(int dim){
+       
+        jpTablero.setVisible(false);
+        jpTablero.removeAll();
+        jpTablero.setLayout(new GridLayout(dim,dim));
+          
+        Border blackline;
+        blackline = BorderFactory.createLineBorder(Color.black);
+
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                
+                JButton jbEstado = new JButton();
+                jbEstado.setBorder(blackline);
+                
+                Font font = new Font("Arial", Font.BOLD, 9);
+                
+                final Color rojo = new Color(240, 90, 82);
+                final Color amarillo = new Color(220, 246, 53);
+                final Color verde = new Color(72, 237, 255);
+                
+                jbEstado.setFont(font);
+               
+                
                 if (dim < 8){
                     switch(this.aleatorio(1, 5)){
                     
@@ -133,11 +226,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                         s.setBackground(Color.white);
                                         s.setText("");
                                         s.repaint();
-//                                    }else{
-//                                       if(s.getBackground() == Color.white){
-//                                            s.setBackground(Color.black);
-//                                            s.repaint();
-//                                       }
                                    }
                                } 
                             }
@@ -198,11 +286,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                         s.setBackground(Color.white);
                                         s.setText("");
                                         s.repaint();
-//                                    }else{
-//                                       if(s.getBackground() == Color.white){
-//                                            s.setBackground(Color.black);
-//                                            s.repaint();
-//                                       }
                                    }
                                } 
                             }
@@ -351,9 +434,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }    
         }else{
             if(jrbManual.isSelected()){
-                // FALTA1
-            }
-                
+               String aux = (String)jcbDim.getSelectedItem();
+               switch(aux){
+                    case "6x6":this.cargarTableroManual(6);
+                    break;
+                case "7x7":this.cargarTableroManual(7);
+                    break;
+                case "8x8":this.cargarTableroManual(8);
+                    break;
+                case "9x9":this.cargarTableroManual(9);
+                    break;
+                case "10x10":this.cargarTableroManual(10);
+                    break;
+               }    
+            } 
         }  
     }//GEN-LAST:event_jbGenerarTableroActionPerformed
 
