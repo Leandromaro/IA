@@ -4,6 +4,8 @@
  */
 package logica;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Leandro
@@ -15,5 +17,5 @@ public interface Politica {
      * @return
      */
     public Accion seleccionarAccionSiguiente(Estado estadoActual);
-    
+    public boolean existe (ArrayList<Estado> estadosAnteriores, Estado estadoSiguiente); 
 }

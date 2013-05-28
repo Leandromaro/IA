@@ -97,5 +97,6 @@ public class Estado {
         hash = 73 * hash + this.posJ;
         return hash;
     }
-    
+
+ 
 }
