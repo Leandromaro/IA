@@ -9,7 +9,7 @@ package logica;
  * @author Leandro
  */
 public class Movimiento {
-    
+
     public static Estado realizarMovimiento(Estado estadoActual, Politica politica, RMat matrizR){
         //seleccionamos accion con la politica pasada por parametro
         Accion accionARealizar= politica.seleccionarAccionSiguiente(estadoActual);

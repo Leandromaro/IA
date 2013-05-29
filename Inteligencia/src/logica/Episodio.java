@@ -22,7 +22,6 @@ public class Episodio {
         this.matrizR= matR;
         this.politica= politica;
         this.numeroEpisodio= numeroEpisodio;
-        
         this.realizarMovimientos();
     }
 

@@ -29,9 +29,9 @@ public class main {
   QMat matrizQ= new QMat(mat);
   System.out.println(matrizQ);
   
-  PoliticaEGreedy politica= new PoliticaEGreedy();
-  politica.setEpsilon(0.9);
-  //PoliticaAleatoria politica= new PoliticaAleatoria();
+  //PoliticaEGreedy politica= new PoliticaEGreedy();
+  //politica.setEpsilon(0.9);
+  PoliticaAleatoria politica= new PoliticaAleatoria();
   //PoliticaGreedy politica= new PoliticaGreedy();
   //TODO: agregar estadoi final a configuraciones
 
