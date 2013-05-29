@@ -30,6 +30,7 @@ public class Episodio {
         int dimension= this.getMatrizR().getDimension();
         int iRandom= (int) Math.floor(Math.random() * dimension);
         int jRandom= (int) Math.floor(Math.random() * dimension);
+        
         Estado estadoActual= this.getMatrizQ().getEstado(iRandom, jRandom);
         //mientras estado actual distinto de estado final
         while(! estadoActual.equals(this.estadoFinal)){

@@ -31,8 +31,8 @@ public class main {
   
   //PoliticaEGreedy politica= new PoliticaEGreedy();
   //politica.setEpsilon(0.9);
-  PoliticaAleatoria politica= new PoliticaAleatoria();
-  //PoliticaGreedy politica= new PoliticaGreedy();
+  //PoliticaAleatoria politica= new PoliticaAleatoria();
+  PoliticaGreedy politica= new PoliticaGreedy();
   //TODO: agregar estadoi final a configuraciones
 
   Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
@@ -40,7 +40,7 @@ public class main {
   System.out.println(estadoFinal);
   
   System.out.println("Entrenando");
-    int cantEpisodios= 1000;
+    int cantEpisodios= 1000000;
   Episodio[] episodios= new Episodio[cantEpisodios];
 
 
