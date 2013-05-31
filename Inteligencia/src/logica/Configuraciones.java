@@ -16,7 +16,7 @@ public class Configuraciones {
     private static double valorMalo = 0.2;
     private static double valorBueno= 0.8;
     private static double valorExcelente = 1.0;
-    private static int dimension = 6; 
+    private static int dimension = 3; 
     private static int valorPorDefectoMatQ= 0;
     public static int filaI;
     public static int filaF;
@@ -82,7 +82,7 @@ public class Configuraciones {
     
     public static void setDimension(int dim) {
         if (dim<6){
-        Configuraciones.dimension = 6;    
+        Configuraciones.dimension = 6;    //cambiar por 6
         }
         else if (dim<11){
             Configuraciones.dimension = dim;

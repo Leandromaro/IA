@@ -77,7 +77,7 @@ public RMat(int x) {
     }
  
     public void setFinal(int fila, int col){
-      mat[fila][col]=1000;
+      mat[fila][col]=1000000;
       }
 
     public double[][] getMat() {

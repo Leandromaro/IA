@@ -32,8 +32,8 @@ public class QMat {
             for (int posJ=0; posJ<dimension;posJ++){             
                 //dependiendo de la posicion y de las paredes que existen en la matriz,
                 //deberiamos cargar las acciones posibles en el ArrayList
-        
                 //ver cuales son las acciones posibles
+                
                 for(int offsetI=-1; offsetI<=1;offsetI++){
                     for(int offsetJ=-1; offsetJ<=1;offsetJ++){
                         //obetenemos i y j del estado
