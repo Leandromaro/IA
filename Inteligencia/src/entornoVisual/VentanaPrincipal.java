@@ -464,6 +464,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbAuto = new javax.swing.JRadioButton();
         jrbManual = new javax.swing.JRadioButton();
         jbGenerarTablero = new javax.swing.JButton();
+        jlConfigPoliticas = new javax.swing.JLabel();
+        jlPolitica = new javax.swing.JLabel();
+        jcbPolitica = new javax.swing.JComboBox();
         jpTablero = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -477,7 +480,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlConfig.setText("Creación del escenario:");
         jpSuperior.add(jlConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
 
-        jlDim.setText("Dimensión");
+        jlDim.setText("Dimensión:");
         jpSuperior.add(jlDim, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jcbDim.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "6x6", "7x7", "8x8", "9x9", "10x10" }));
@@ -510,7 +513,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbGenerarTableroActionPerformed(evt);
             }
         });
-        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, 54));
+        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 54));
+
+        jlConfigPoliticas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlConfigPoliticas.setText("Configuración de la Política:");
+        jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 200, 20));
+
+        jlPolitica.setText("Política: ");
+        jpSuperior.add(jlPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+
+        jcbPolitica.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "E-Greedy", "SoftMax", "Greedy", "Aleatorio" }));
+        jpSuperior.add(jcbPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, 120, -1));
 
         getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 635, 130));
 
@@ -608,9 +621,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbGenerarTablero;
     private javax.swing.JComboBox jcbDim;
+    private javax.swing.JComboBox jcbPolitica;
     private javax.swing.JLabel jlConfig;
+    private javax.swing.JLabel jlConfigPoliticas;
     private javax.swing.JLabel jlDim;
     private javax.swing.JLabel jlManOAlea;
+    private javax.swing.JLabel jlPolitica;
     private javax.swing.JPanel jpSuperior;
     private javax.swing.JPanel jpTablero;
     private javax.swing.JRadioButton jrbAuto;
