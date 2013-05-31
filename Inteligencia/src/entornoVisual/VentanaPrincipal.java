@@ -21,7 +21,9 @@ import javax.swing.border.Border;
  * @author Maty
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
+    
+    private Boolean estadoFinal;
+    
     /**
      * Creates new form VentanaPrincipal
      */
@@ -49,14 +51,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 
                 JButton jbEstado = new JButton();
                 jbEstado.setBorder(blackline);
-
-                
                 jbEstado.setFont(font);
-               
+                jbEstado.setBackground(Color.white);
                 if (dim < 8){
-                    jbEstado.setBackground(Color.white);
-                    
-                jbEstado.addMouseWheelListener(new MouseAdapter() {
+                    jbEstado.addMouseWheelListener(new MouseAdapter() {
                     
                    public void mouseWheelMoved(MouseWheelEvent e){
                           
@@ -90,7 +88,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                    } 
                     
                 });
-                jbEstado.addMouseListener(new MouseAdapter(){
+                    jbEstado.addMouseListener(new MouseAdapter(){
 		
 		public void mouseClicked(MouseEvent e) {
                     JButton s = (JButton)e.getComponent();
@@ -119,10 +117,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         }
                     }
                     s.repaint();
-                }});
-                    
+                }}); 
                 }else{
-                    
                     jbEstado.addMouseWheelListener(new MouseAdapter() {
                     
                         public void mouseWheelMoved(MouseWheelEvent e){
@@ -155,9 +151,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         s.repaint();
                    }                  
                 });
-                    
-                    
-                    jbEstado.setBackground(Color.white);
                     jbEstado.addMouseListener(new MouseAdapter(){
                     public void mouseClicked(MouseEvent e) {  
                     JButton s = (JButton)e.getComponent();
@@ -190,11 +183,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     
                 }
                 
-            jpTablero.add(jbEstado);           
+                jpTablero.add(jbEstado);           
             }
         }
-        jpTablero.setVisible(true);
-                
+//        Se agrega Estado Final
+        
+        
+        jpTablero.remove(this.posAbosAleatoria(dim-1));
+        jpTablero.add(this.estadoFinal(), this.posAbosAleatoria(dim-1));
+        
+        jpTablero.setVisible(true);       
         }
 
     public void cargarTablero(int dim){
@@ -396,6 +394,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jpTablero.add(jbEstado);           
             }
         }
+//        Se agrega Estado Final
+        jpTablero.remove(this.posAbosAleatoria(dim-1));
+        jpTablero.add(this.estadoFinal(), this.posAbosAleatoria(dim-1));
+        
         jpTablero.setVisible(true);
     } 
     
@@ -409,6 +411,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //randomNum =  min + i;
         //return randomNum;
         return n+1;
+    }
+    
+//    Devuelve una posición absoluta aleatoria para usar en el GridLayout
+//            de la Interfaz grafica. 
+//    Verificar que abarque todos los estados
+    public int posAbosAleatoria(int dim){   
+        
+        int fila = this.aleatorio(0, dim);
+        int columna = this.aleatorio(0, dim);
+        
+        return ((fila*dim)+columna);
+    }
+    
+    public JButton estadoFinal(){
+        
+        Border blackline;
+        blackline = BorderFactory.createLineBorder(Color.black);
+        Font font = new Font("Arial", Font.BOLD, 9);
+        
+        JButton jbEstado = new JButton();
+        jbEstado.setBorder(blackline);
+        jbEstado.setFont(font);
+        jbEstado.setBackground(Color.white);
+        jbEstado.setText("FINAL");
+        
+        jbEstado.repaint();
+        
+        return jbEstado;     
     }
     
     /**
