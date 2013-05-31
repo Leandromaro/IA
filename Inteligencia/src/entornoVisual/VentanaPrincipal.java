@@ -189,8 +189,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //        Se agrega Estado Final
         
         
-        jpTablero.remove(this.posAbosAleatoria(dim-1));
-        jpTablero.add(this.estadoFinal(), this.posAbosAleatoria(dim-1));
+        jpTablero.remove(this.posAbosAleatoria(dim));
+        jpTablero.add(this.estadoFinal(), this.posAbosAleatoria(dim));
         
         jpTablero.setVisible(true);       
         }
@@ -395,8 +395,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         }
 //        Se agrega Estado Final
-        jpTablero.remove(this.posAbosAleatoria(dim-1));
-        jpTablero.add(this.estadoFinal(), this.posAbosAleatoria(dim-1));
+        jpTablero.remove(this.posAbosAleatoria(dim));
+        jpTablero.add(this.estadoFinal(), this.posAbosAleatoria(dim));
         
         jpTablero.setVisible(true);
     } 
@@ -413,13 +413,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         return n+1;
     }
     
+    public int aleatorioConCero(int max){
+        Random rn = new Random();
+        int n = rn.nextInt(max);
+        return n;
+    }
+    
 //    Devuelve una posición absoluta aleatoria para usar en el GridLayout
 //            de la Interfaz grafica. 
 //    Verificar que abarque todos los estados
     public int posAbosAleatoria(int dim){   
         
-        int fila = this.aleatorio(0, dim);
-        int columna = this.aleatorio(0, dim);
+        int fila = this.aleatorioConCero(dim);
+        int columna = this.aleatorioConCero(dim);
         
         return ((fila*dim)+columna);
     }
