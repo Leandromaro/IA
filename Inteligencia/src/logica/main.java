@@ -40,9 +40,8 @@ public class main {
   System.out.println("Estado final");
   System.out.println(estadoFinal);
   
-  Entrenador e=new Entrenador();
-  Episodio [] episodios=e.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
-  Estado estadoActual= episodios[Configuraciones.cantEpisodios-1].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+  Entrenador.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
+  Estado estadoActual= Entrenador.getEpisodios()[Configuraciones.cantEpisodios-1].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
   System.out.println(estadoActual);
   
   System.out.println("Movimientos:");

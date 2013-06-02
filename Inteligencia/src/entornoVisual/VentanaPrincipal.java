@@ -20,6 +20,7 @@ import logica.Configuraciones;
 import logica.Entrenador;
 import logica.Episodio;
 import logica.Estado;
+import logica.PoliticaAleatoria;
 import logica.PoliticaEGreedy;
 import logica.QMat;
 import logica.RMat;
@@ -63,7 +64,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             for (int j = 0; j < dim; j++) {
                 
                 JButton jbEstado = new JButton();
-                jbEstado.setBorder(blackline);
+                //jbEstado.setBorder(blackline);
                 jbEstado.setFont(font);
                 jbEstado.setBackground(Color.white);
                 if (dim < 8){
@@ -230,7 +231,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             for (int j = 0; j < dim; j++) {
                 
                 JButton jbEstado = new JButton();
-                jbEstado.setBorder(blackline);
+                //jbEstado.setBorder(blackline);
                 jbEstado.setFont(font);
                 
                 //cargar el background y el tex en base a lo que tiene la matriz r
@@ -459,7 +460,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Font font = new Font("Arial", Font.BOLD, 9);
         
         JButton jbEstado = new JButton();
-        jbEstado.setBorder(blackline);
+        //jbEstado.setBorder(blackline);
         jbEstado.setFont(font);
         jbEstado.setBackground(Color.white);
         jbEstado.setText("FINAL");
@@ -607,6 +608,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 180, 40));
 
         jBAvanza.setText("Avanzar al final");
+        jBAvanza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAvanzaActionPerformed(evt);
+            }
+        });
         jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 190, 310));
@@ -702,9 +708,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         QMat matrizQ= new QMat(mat);
         System.out.println(matrizQ);
 
-        PoliticaEGreedy politica= new PoliticaEGreedy();
-        politica.setEpsilon(0.2);
-        //PoliticaAleatoria politica= new PoliticaAleatoria();
+//        PoliticaEGreedy politica= new PoliticaEGreedy();
+//        politica.setEpsilon(0.2);
+        PoliticaAleatoria politica= new PoliticaAleatoria();
         //PoliticaGreedy politica= new PoliticaGreedy();
         //TODO: agregar estadoi final a configuraciones
 
@@ -712,21 +718,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.out.println("Estado final");
         System.out.println(estadoFinal);
 
-        Entrenador e=new Entrenador();
-        Episodio [] episodios=e.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
-        Estado estadoActual= episodios[Configuraciones.cantEpisodios-1].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
-        System.out.println(estadoActual);
-
-        System.out.println("Movimientos:");
-        //mientras estado actual distinto de estado final
-
-        while(! estadoActual.equals(estadoFinal)){
-              Estado estadoProximo = estadoActual.accionDeMaximoValor().getEstadoDestino();
-              System.out.println(estadoProximo);
-              estadoActual= estadoProximo;
-  }
+        Entrenador.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
         
     }//GEN-LAST:event_jBEntrenaActionPerformed
+
+    private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
+                //recorriendo para ver mejor camino
+        QMat matrizQ = Entrenador.getEpisodios()[Configuraciones.cantEpisodios-1].getMatrizQ();
+        Estado estadoInicial= matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+        Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
+        System.out.println(estadoInicial);
+        System.out.println("Movimientos:");
+        //pner todos bootnes a disabled
+//        for(Component comp: jpTablero.getComponents()){
+//            JButton boton= (JButton)comp;
+//            boton.setBorderPainted(false);
+//        }
+        
+        //habilitar el estado inical
+        int ind= (estadoInicial.getPosI()*Configuraciones.getDimension() ) +estadoInicial.getPosJ();
+        JButton botonInicial = (JButton) jpTablero.getComponent(ind);
+        botonInicial.setBorder(BorderFactory.createLineBorder(Color.magenta,4));
+        
+        //mientras estado actual distinto de estado final
+        while(! estadoInicial.equals(estadoFinal)){
+                
+              Estado estadoProximo = estadoInicial.accionDeMaximoValor().getEstadoDestino();
+              System.out.println(estadoProximo);
+              int indice= (estadoProximo.getPosI()*Configuraciones.getDimension() ) +estadoProximo.getPosJ();
+              JButton boton = (JButton) jpTablero.getComponent(indice);
+              boton.setBorder(BorderFactory.createLineBorder(Color.magenta,4));
+              
+              estadoInicial= estadoProximo;
+        }
+        
+    }//GEN-LAST:event_jBAvanzaActionPerformed
 
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
@@ -743,8 +769,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             case "10x10":dimension=10;
                 break;
         }    
+        Configuraciones.setDimension(dimension);
         
-        RMat matR= new RMat(dimension);
+        RMat matR= new RMat(Configuraciones.getDimension());
         
         for(int i=0;i<matR.dimension;i++){
             for(int j=0;j<matR.dimension;j++){
