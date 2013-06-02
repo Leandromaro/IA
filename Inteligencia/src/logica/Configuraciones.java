@@ -22,7 +22,7 @@ public class Configuraciones {
     public static int filaF;
     public static int colI;
     public static int colF;
-
+    public static int cantEpisodios= 1000000;
     public static int getFilaI() {
         return filaI;
     }
@@ -68,6 +68,31 @@ public class Configuraciones {
     public static double getValorExcelente() {
         return valorExcelente;
     }
+
+    public static int getCantEpisodios() {
+        return cantEpisodios;
+    }
+
+    public static void setFilaI(int filaI) {
+        Configuraciones.filaI = filaI;
+    }
+
+    public static void setFilaF(int filaF) {
+        Configuraciones.filaF = filaF;
+    }
+
+    public static void setColI(int colI) {
+        Configuraciones.colI = colI;
+    }
+
+    public static void setColF(int colF) {
+        Configuraciones.colF = colF;
+    }
+
+    public static void setCantEpisodios(int cantEpisodios) {
+        Configuraciones.cantEpisodios = cantEpisodios;
+    }
+
     
     public static void setInicial(int fila, int col){
     filaI=fila;

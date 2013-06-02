@@ -6,6 +6,7 @@ package entornoVisual;
 
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -15,6 +16,13 @@ import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.border.Border;
+import logica.Configuraciones;
+import logica.Entrenador;
+import logica.Episodio;
+import logica.Estado;
+import logica.PoliticaEGreedy;
+import logica.QMat;
+import logica.RMat;
 
 /**
  *
@@ -202,6 +210,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void cargarTablero(int dim){
         
+        
+        //instanciar matriz, aleatoriament, y modificar codigo para que tome valores de esa matriz
+        
         Font font = new Font("Arial", Font.BOLD, 9);
                 
         final Color rojo = new Color(240, 90, 82);
@@ -221,6 +232,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 JButton jbEstado = new JButton();
                 jbEstado.setBorder(blackline);
                 jbEstado.setFont(font);
+                
+                //cargar el background y el tex en base a lo que tiene la matriz r
+                
+                //if(matR[i][j]==Configuraciones.Pared){
+                //jbEstado.setBackground(Color.black);
                 
                 if (dim < 8){
                     switch(this.aleatorio(1, 5)){
@@ -244,12 +260,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     }
                     
                 jbEstado.addMouseWheelListener(new MouseAdapter() {
+                   @Override
                    public void mouseWheelMoved(MouseWheelEvent e){
                           
                     JButton s = (JButton)e.getComponent();
                                     
                     if(s.getBackground() == Color.white){
-                        s.setBackground(Color.black);
+                        s.setBackground(Color.black);                        
                     }else{
                         if(s.getBackground() == Color.black){
                             s.setBackground(rojo);
@@ -592,13 +609,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jBAvanza.setText("Avanzar al final");
         jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 220, 320));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 190, 310));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
+
+        //
         
         if(jrbAuto.isSelected()){
         String aux = (String)jcbDim.getSelectedItem();
@@ -671,9 +690,102 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbSoftMaxMouseClicked
 
     private void jBEntrenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrenaActionPerformed
-        // TODO add your handling code here:
+        
+        RMat mat= this.obtenerRdesdePantalla();
+        
+        Configuraciones.setInicial(0,0);
+
+        mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
+        mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
+        mat.imprimirTab(); 
+
+        QMat matrizQ= new QMat(mat);
+        System.out.println(matrizQ);
+
+        PoliticaEGreedy politica= new PoliticaEGreedy();
+        politica.setEpsilon(0.2);
+        //PoliticaAleatoria politica= new PoliticaAleatoria();
+        //PoliticaGreedy politica= new PoliticaGreedy();
+        //TODO: agregar estadoi final a configuraciones
+
+        Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
+        System.out.println("Estado final");
+        System.out.println(estadoFinal);
+
+        Entrenador e=new Entrenador();
+        Episodio [] episodios=e.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
+        Estado estadoActual= episodios[Configuraciones.cantEpisodios-1].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+        System.out.println(estadoActual);
+
+        System.out.println("Movimientos:");
+        //mientras estado actual distinto de estado final
+
+        while(! estadoActual.equals(estadoFinal)){
+              Estado estadoProximo = estadoActual.accionDeMaximoValor().getEstadoDestino();
+              System.out.println(estadoProximo);
+              estadoActual= estadoProximo;
+  }
+        
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
+    private RMat obtenerRdesdePantalla(){
+        int dimension= 0;
+        String aux = (String)jcbDim.getSelectedItem();
+        switch(aux){
+            case "6x6":dimension= 6;
+                break;
+            case "7x7":dimension= 7;
+                break;
+            case "8x8":dimension= 8;
+                break;
+            case "9x9":dimension= 9;
+                break;
+            case "10x10":dimension=10;
+                break;
+        }    
+        
+        RMat matR= new RMat(dimension);
+        
+        for(int i=0;i<matR.dimension;i++){
+            for(int j=0;j<matR.dimension;j++){
+                int indice=(i*matR.dimension) + j;
+                Component componente= jpTablero.getComponent(indice);
+                if(componente.getClass()==JButton.class){
+                JButton boton= (JButton) componente;
+                String txt= boton.getText();
+                Color fondo= boton.getBackground();
+                
+                if(txt.equalsIgnoreCase("Malo") || txt.equalsIgnoreCase("M")){
+                    matR.mat[i][j]=Configuraciones.getValorMalo();
+                }
+               
+                if(txt == "Bueno" || txt == "B"){
+                    matR.mat[i][j]=Configuraciones.getValorBueno();
+                }
+                if(txt == "Excelente" || txt == "E"){
+                    matR.mat[i][j]=Configuraciones.getValorExcelente();
+                }
+                if(txt == "Malo" || txt == "M"){
+                    matR.mat[i][j]=Configuraciones.getValorMalo();
+                }
+                if(fondo == Color.WHITE){
+                    matR.mat[i][j]=Configuraciones.getValorNeutro();
+                }
+                
+                if(fondo == Color.BLACK){
+                    matR.mat[i][j]=Configuraciones.getValorPared();
+                }
+                
+                if(txt== "FINAL" || txt=="F"){
+                    Configuraciones.setFinal(i,j);
+                }
+
+                }
+            }
+        }
+        return matR;
+    }
+    
     /**
      * @param args the command line arguments
      */

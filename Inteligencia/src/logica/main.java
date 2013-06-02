@@ -19,6 +19,7 @@ public class main {
   Configuraciones.setValorMalo(5);
   Configuraciones.setValorPared(15);
   mat.rellenar();
+  
   Configuraciones.setInicial(0,0);
   Configuraciones.setFinal(3, 3);
   
@@ -39,31 +40,14 @@ public class main {
   System.out.println("Estado final");
   System.out.println(estadoFinal);
   
-  System.out.println("Entrenando");
-    int cantEpisodios= 1000000;
-  Episodio[] episodios= new Episodio[cantEpisodios];
-
-
-  
-  for(int i=0; i<cantEpisodios;i++){
-      episodios[i]= new Episodio(matrizQ,estadoFinal,politica,mat,i);
-      //System.out.println(episodios[i].getMatrizQ());
-  }
-  
-  System.out.println(episodios[cantEpisodios-1].getMatrizQ());
-  
-  System.out.println("Buscando mejor camino");
-  System.out.println("Estado Inicial");
-//  int i= 0;
-//  int j=0;
-  
-  Estado estadoActual= episodios[cantEpisodios-1].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+  Entrenador e=new Entrenador();
+  Episodio [] episodios=e.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
+  Estado estadoActual= episodios[Configuraciones.cantEpisodios-1].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
   System.out.println(estadoActual);
   
   System.out.println("Movimientos:");
   //mientras estado actual distinto de estado final
-  
-  System.out.println("Avanzando");
+ 
   while(! estadoActual.equals(estadoFinal)){
         Estado estadoProximo = estadoActual.accionDeMaximoValor().getEstadoDestino();
         System.out.println(estadoProximo);
