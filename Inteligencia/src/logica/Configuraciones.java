@@ -4,6 +4,8 @@
  */
 package logica;
 
+import javax.swing.JTextField;
+
 /**
  *
  * @author Leandro
@@ -23,6 +25,9 @@ public class Configuraciones {
     public static int colI;
     public static int colF;
     public static int cantEpisodios= 1000000;
+    public static double epsilon=0.1;
+    public static double tau=0.1;
+    
     public static int getFilaI() {
         return filaI;
     }
@@ -71,6 +76,22 @@ public class Configuraciones {
 
     public static int getCantEpisodios() {
         return cantEpisodios;
+    }
+
+    public static double getEpsilon() {
+        return epsilon;
+    }
+
+    public static void setEpsilon(double epsilon) {
+        Configuraciones.epsilon = epsilon;
+    }
+
+    public static double getTau() {
+        return tau;
+    }
+
+    public static void setTau(double tau) {
+        Configuraciones.tau = tau;
     }
 
     public static void setFilaI(int filaI) {
@@ -157,6 +178,7 @@ public class Configuraciones {
         valorPorDefectoMatQ = aValorPorDefectoMatQ;
     }
 
+   
     
     
 }

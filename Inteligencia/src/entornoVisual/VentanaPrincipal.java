@@ -22,6 +22,7 @@ import logica.Episodio;
 import logica.Estado;
 import logica.PoliticaAleatoria;
 import logica.PoliticaEGreedy;
+import logica.PoliticaSoftMax;
 import logica.QMat;
 import logica.RMat;
 
@@ -604,8 +605,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 140, 50));
 
-        jLabel1.setText("Numero de ciclos de entrenamiento");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 180, 40));
+        jLabel1.setText("Ciclos de entrenamiento");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, 40));
 
         jBAvanza.setText("Avanzar al final");
         jBAvanza.addActionListener(new java.awt.event.ActionListener() {
@@ -615,7 +616,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 190, 310));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 200, 310));
 
         pack();
         setLocationRelativeTo(null);
@@ -708,16 +709,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         QMat matrizQ= new QMat(mat);
         System.out.println(matrizQ);
 
-//        PoliticaEGreedy politica= new PoliticaEGreedy();
-//        politica.setEpsilon(0.2);
-        PoliticaAleatoria politica= new PoliticaAleatoria();
-        //PoliticaGreedy politica= new PoliticaGreedy();
-        //TODO: agregar estadoi final a configuraciones
-
+        if (jrbEGreedy.isSelected()){
+            PoliticaEGreedy politica= new PoliticaEGreedy();
+            double e = Double.parseDouble(jtfEpsTau.getText());
+            Configuraciones.setEpsilon(e);
+        }
+        if (jrbSoftMax.isSelected()){
+            PoliticaSoftMax politica= new PoliticaSoftMax();
+            double t = Double.parseDouble(jtfEpsTau.getText());
+            Configuraciones.setTau(t);
+        }
+       
         Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
         System.out.println("Estado final");
         System.out.println(estadoFinal);
-
         Entrenador.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
         
     }//GEN-LAST:event_jBEntrenaActionPerformed
