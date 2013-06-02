@@ -71,19 +71,19 @@ public class Estado {
     }
     
     
-    public double segundaAccionMaxima(){
-        double maximoValor=this.maximoValorParaAcciones();
-        double segundaAccionMaxima=0;
-        for(int i=0; i< this.getAccionesPosibles().size();i++){
-            double accionI= this.getAccionesPosibles().get(i).getValor();
-            if(accionI<maximoValor){
-                if(accionI>segundaAccionMaxima){
-                    segundaAccionMaxima=accionI;
-                }
-            }
-        }
-        return segundaAccionMaxima;
-    }
+//    public double segundaAccionMaxima(){
+//        double maximoValor=this.maximoValorParaAcciones();
+//        double segundaAccionMaxima=0;
+//        for(int i=0; i< this.getAccionesPosibles().size();i++){
+//            double accionI= this.getAccionesPosibles().get(i).getValor();
+//            if(accionI<maximoValor){
+//                if(accionI>segundaAccionMaxima){
+//                    segundaAccionMaxima=accionI;
+//                }
+//            }
+//        }
+//        return segundaAccionMaxima;
+//    }
     
     public Accion accionDeMaximoValor(){
         for(Accion acc:this.accionesPosibles){

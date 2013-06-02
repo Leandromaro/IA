@@ -12,7 +12,9 @@ public class Accion {
     private Estado estadoOrigen;
     private Estado estadoDestino;
     private double valor;
-    
+    private double prob;
+
+   
     public Accion(Estado origen, Estado destino, double valor){
         this.estadoDestino= destino;
         this.estadoOrigen= origen;
@@ -31,30 +33,28 @@ public class Accion {
         return desc.toString();
     }
 
-    /**
-     * @return the estadoOrigen
-     */
     public Estado getEstadoOrigen() {
         return estadoOrigen;
     }
 
-    /**
-     * @param estadoOrigen the estadoOrigen to set
-     */
+    public double getProb() {
+        return prob;
+    }
+
+    public void setProb(double prob) {
+        this.prob = prob;
+    }
+    
+    
     public void setEstadoOrigen(Estado estadoOrigen) {
         this.estadoOrigen = estadoOrigen;
     }
 
-    /**
-     * @return the estadoDestino
-     */
     public Estado getEstadoDestino() {
         return estadoDestino;
     }
 
-    /**
-     * @param estadoDestino the estadoDestino to set
-     */
+
     public void setEstadoDestino(Estado estadoDestino) {
         this.estadoDestino = estadoDestino;
     }

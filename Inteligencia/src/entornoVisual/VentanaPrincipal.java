@@ -477,6 +477,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbSoftMax = new javax.swing.JRadioButton();
         jrbEGreedy = new javax.swing.JRadioButton();
         jpTablero = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jBEntrena = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jBAvanza = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Princial");
@@ -563,11 +568,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
 
-        getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 635, 130));
+        getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 130));
 
         jpTablero.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpTablero.setLayout(new java.awt.GridLayout(1, 0));
         getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 440, 410));
+
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 140, 30));
+
+        jBEntrena.setText("Entrenar");
+        jBEntrena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEntrenaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 140, 50));
+
+        jLabel1.setText("Numero de ciclos de entrenamiento");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 180, 40));
+
+        jBAvanza.setText("Avanzar al final");
+        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, 50));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 220, 320));
 
         pack();
         setLocationRelativeTo(null);
@@ -645,6 +670,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbEGreedy.setSelected(false);
     }//GEN-LAST:event_jrbSoftMaxMouseClicked
 
+    private void jBEntrenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBEntrenaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -680,6 +709,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBAvanza;
+    private javax.swing.JButton jBEntrena;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbGenerarTablero;
     private javax.swing.JComboBox jcbDim;
     private javax.swing.JLabel jlConfig;

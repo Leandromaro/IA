@@ -12,7 +12,7 @@ public class main {
  
   public static void main (String[] args){
   RMat mat;
-  Configuraciones.setDimension(3);
+  Configuraciones.setDimension(4);
   mat= new RMat(Configuraciones.getDimension());
   Configuraciones.setValorExcelente(100);
   Configuraciones.setValorBueno(50);
@@ -20,7 +20,7 @@ public class main {
   Configuraciones.setValorPared(15);
   mat.rellenar();
   Configuraciones.setInicial(0,0);
-  Configuraciones.setFinal(2, 2);
+  Configuraciones.setFinal(3, 3);
   
   mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
   mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
@@ -29,9 +29,9 @@ public class main {
   QMat matrizQ= new QMat(mat);
   System.out.println(matrizQ);
   
-  //PoliticaEGreedy politica= new PoliticaEGreedy();
-  //politica.setEpsilon(0.9);
-  PoliticaAleatoria politica= new PoliticaAleatoria();
+  PoliticaEGreedy politica= new PoliticaEGreedy();
+  politica.setEpsilon(0.2);
+  //PoliticaAleatoria politica= new PoliticaAleatoria();
   //PoliticaGreedy politica= new PoliticaGreedy();
   //TODO: agregar estadoi final a configuraciones
 

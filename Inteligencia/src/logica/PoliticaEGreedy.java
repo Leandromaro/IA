@@ -17,31 +17,27 @@ private double epsilon=0.1;
 
 @Override
 public Accion seleccionarAccionSiguiente(Estado estadoActual) {
- 
+
     if (!estadoActual.getAccionesPosibles().isEmpty()){
-        Accion accionMaxima= null;
+        Accion accionSiguiente= null;
+        PoliticaAleatoria politicaAleatoria= new PoliticaAleatoria();
         
         if(Math.random()<this.getEpsilon()){
-            PoliticaAleatoria politicaAleatoria= new PoliticaAleatoria();
-            accionMaxima= politicaAleatoria.seleccionarAccionSiguiente(estadoActual);    
+            accionSiguiente= politicaAleatoria.seleccionarAccionSiguiente(estadoActual);    
         }else{
             
-            for (int i=0; i<estadoActual.getAccionesPosibles().size();i++){
-                Accion accionI= estadoActual.getAccionesPosibles().get(i);
-           
-                if(accionMaxima==null){//si es null elijo un estado aleatorio la primera vez
-                    PoliticaAleatoria politicaAleatoria= new PoliticaAleatoria();
-                    accionMaxima= politicaAleatoria.seleccionarAccionSiguiente(estadoActual);    
-                }else{
-                    if ( accionI.getValor()>accionMaxima.getValor() && !this.existe(estadosAnteriores, accionI.getEstadoDestino() ) ){//recorrer el array y que no hay ninguno
-                           accionMaxima= accionI;
-                    }
-                } 
-            }           
+            accionSiguiente= estadoActual.accionDeMaximoValor();
+            
+//            if (!this.existe(estadosAnteriores, estadoActual.accionDeMaximoValor().getEstadoDestino() ) ){//recorrer el array y que no hay ninguno
+//               accionSiguiente= estadoActual.accionDeMaximoValor();
+//            }else{
+//               accionSiguiente= politicaAleatoria.seleccionarAccionSiguiente(estadoActual);
+//            }
+            
         }
-        System.out.println(accionMaxima);
-        estadosAnteriores.add(accionMaxima.getEstadoDestino());
-        return accionMaxima;
+        //System.out.println(accionSiguiente);
+        estadosAnteriores.add(accionSiguiente.getEstadoDestino());
+        return accionSiguiente;
     }
     else{
       System.out.println("No tiene estados Accesibles");
