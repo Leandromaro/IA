@@ -709,16 +709,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         QMat matrizQ= new QMat(mat);
         System.out.println(matrizQ);
 
-        if (jrbEGreedy.isSelected()){
-            PoliticaEGreedy politica= new PoliticaEGreedy();
-            double e = Double.parseDouble(jtfEpsTau.getText());
-            Configuraciones.setEpsilon(e);
-        }
-        if (jrbSoftMax.isSelected()){
+//        if (jrbEGreedy.isSelected()){
+//            PoliticaEGreedy politica= new PoliticaEGreedy();
+//            double e = Double.parseDouble(jtfEpsTau.getText());
+//            Configuraciones.setEpsilon(e);
+//        }
+//        if (jrbSoftMax.isSelected()){
             PoliticaSoftMax politica= new PoliticaSoftMax();
-            double t = Double.parseDouble(jtfEpsTau.getText());
-            Configuraciones.setTau(t);
-        }
+//            double t = Double.parseDouble(jtfEpsTau.getText());
+//            Configuraciones.setTau(t);
+//        }
        
         Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
         System.out.println("Estado final");

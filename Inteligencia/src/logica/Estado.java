@@ -58,6 +58,10 @@ public class Estado {
         this.posJ = posJ;
     }
     
+    public double getValorAccion(int posI){
+        return accionesPosibles.get(posI).getValor();
+       
+    }
     
     public double maximoValorParaAcciones(){
         double maximoValor=0;
@@ -69,23 +73,8 @@ public class Estado {
         }
         return maximoValor;
     }
-    
-    
-//    public double segundaAccionMaxima(){
-//        double maximoValor=this.maximoValorParaAcciones();
-//        double segundaAccionMaxima=0;
-//        for(int i=0; i< this.getAccionesPosibles().size();i++){
-//            double accionI= this.getAccionesPosibles().get(i).getValor();
-//            if(accionI<maximoValor){
-//                if(accionI>segundaAccionMaxima){
-//                    segundaAccionMaxima=accionI;
-//                }
-//            }
-//        }
-//        return segundaAccionMaxima;
-//    }
-    
-    public Accion accionDeMaximoValor(){
+ 
+   public Accion accionDeMaximoValor(){
         for(Accion acc:this.accionesPosibles){
             if(acc.getValor()==this.maximoValorParaAcciones()){
                 return acc;

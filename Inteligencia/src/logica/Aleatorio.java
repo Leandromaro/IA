@@ -12,11 +12,7 @@ public class Aleatorio {
     public double aleatorio;
     public String tipoA;   
 
-    public Aleatorio(double aleatorio, String tipoA) {
-        this.aleatorio = aleatorio;
-        this.tipoA = tipoA;
-    }
-    
+       
     public double getAleatorio() {
         return aleatorio;
     }
@@ -50,6 +46,7 @@ public class Aleatorio {
     public Aleatorio(){
         
         aleatorio = Math.random();
+        //double valorInfimo=Math.random()*0.000001;
         
         if (aleatorio <=0.2) {
             aleatorio = Configuraciones.getValorPared();

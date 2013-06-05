@@ -31,7 +31,7 @@ public class main {
   System.out.println(matrizQ);
   
   PoliticaEGreedy politica= new PoliticaEGreedy();
-  politica.setEpsilon(0.2);
+  Configuraciones.setEpsilon(0.2);
   //PoliticaAleatoria politica= new PoliticaAleatoria();
   //PoliticaGreedy politica= new PoliticaGreedy();
   //TODO: agregar estadoi final a configuraciones

@@ -19,15 +19,15 @@ public class PoliticaAleatoria implements Politica{
         return estadoActual.getAccionesPosibles().get(indiceRandom );
     }
 
-    @Override
-     public boolean existe(ArrayList<Estado> estadosAnteriores, Estado estadoSiguiente) {
-        boolean bandera=false;
-        for (int i=0; i<estadosAnteriores.size();i++){
-            if (estadosAnteriores.get(i).equals(estadoSiguiente)){
-                bandera=true;
-            }
-        }
-        return bandera;
-    }
+//    @Override
+//     public boolean existe(ArrayList<Estado> estadosAnteriores, Estado estadoSiguiente) {
+//        boolean bandera=false;
+//        for (int i=0; i<estadosAnteriores.size();i++){
+//            if (estadosAnteriores.get(i).equals(estadoSiguiente)){
+//                bandera=true;
+//            }
+//        }
+//        return bandera;
+//    }
     
 }
