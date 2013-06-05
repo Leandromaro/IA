@@ -18,14 +18,17 @@ public class PoliticaSoftMax implements Politica {
     public Accion seleccionarAccionSiguiente(Estado estadoActual) {
     double sumatoriaE=0;
     double[] Ei=new double[estadoActual.accionesPosibles.size()];
+    double tau= Configuraciones.getTau();
     
     for (int i=0; i<estadoActual.getAccionesPosibles().size();i++){
-        Ei[i]=Math.exp(estadoActual.getValorAccion(i)/Configuraciones.getTau());
+        double accionI=estadoActual.getValorAccion(i);
+        Ei[i]=Math.exp(accionI/tau);
         sumatoriaE=sumatoriaE+Ei[i];
     }
     
     for (int j=0; j<estadoActual.getAccionesPosibles().size();j++){
         Ei[j]= Ei[j]/sumatoriaE;
+//        System.out.print(Ei[j]);
 //        Ei[j]= this.redondearAccion(Ei[j]/sumatoriaE);
     }
         
@@ -34,9 +37,9 @@ public class PoliticaSoftMax implements Politica {
     double limiteSuperior;    
     int pos=0;
     
-    for (int k=0; k<estadoActual.getAccionesPosibles().size();k++){
-        limiteSuperior=limiteInferior+Ei[k];
-        if ((prob>limiteInferior)&&(prob<=limiteSuperior)){//Mirar porque nunca entra en este if
+    for (int k=0; k<Ei.length;k++){ //recorro el arreglo con las probabilidades 
+    limiteSuperior=limiteInferior+Ei[k];//y veo en que rango cae el numero alearorio
+        if ((prob>=limiteInferior)&&(prob<=limiteSuperior)){//Mirar porque nunca entra en este if
             pos =k;
         }
         limiteInferior=limiteSuperior;
