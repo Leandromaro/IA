@@ -21,8 +21,8 @@ public class PoliticaSoftMax implements Politica {
     double tau= Configuraciones.getTau();
     
     for (int i=0; i<estadoActual.getAccionesPosibles().size();i++){
-        double accionI=estadoActual.getValorAccion(i);
-        Ei[i]=Math.exp(accionI/tau);
+        double accionI=redondeo (estadoActual.getValorAccion(i),4);
+        Ei[i]=redondeo(Math.exp(accionI/tau),4);
         sumatoriaE=sumatoriaE+Ei[i];
     }
     
@@ -49,12 +49,19 @@ public class PoliticaSoftMax implements Politica {
     
     }
     
-//    public double redondearAccion(double valorAccion) {
-//       double d=valorAccion; 
-//       BigDecimal bd = new BigDecimal(Double.toString(d));
-//       bd = bd.setScale(4, BigDecimal.ROUND_HALF_UP);
-//       return bd.doubleValue();
-//   }             
+    private double redondeo(double decimal,int numeroDecimales){
+    decimal = decimal*(java.lang.Math.pow(10, numeroDecimales));
+    decimal = java.lang.Math.round(decimal);
+    decimal = decimal/java.lang.Math.pow(10, numeroDecimales);
+
+return decimal;
+}
+    public double redondearAccion(double valorAccion) {
+       double d=valorAccion; 
+       BigDecimal bd = new BigDecimal(Double.toString(d));
+       bd = bd.setScale(4, BigDecimal.ROUND_HALF_UP);
+       return bd.doubleValue();
+   }             
         
     
 }
