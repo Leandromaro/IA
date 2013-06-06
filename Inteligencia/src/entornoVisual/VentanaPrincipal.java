@@ -501,6 +501,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jBEntrena = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jBAvanza = new javax.swing.JButton();
+        jLabelItera = new javax.swing.JLabel();
+        jLabelDiferencia = new javax.swing.JLabel();
+        jLabelContador1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Princial");
@@ -577,12 +580,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbSoftMaxMouseClicked(evt);
             }
         });
+        jrbSoftMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbSoftMaxActionPerformed(evt);
+            }
+        });
         jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
 
         jrbEGreedy.setText("E-Greedy");
         jrbEGreedy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jrbEGreedyMouseClicked(evt);
+            }
+        });
+        jrbEGreedy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbEGreedyActionPerformed(evt);
             }
         });
         jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
@@ -595,7 +608,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 140, 30));
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 140, -1));
 
         jBEntrena.setText("Entrenar");
         jBEntrena.addActionListener(new java.awt.event.ActionListener() {
@@ -603,18 +622,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jBEntrenaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 140, 50));
+        jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 90, 50));
 
         jLabel1.setText("Ciclos de entrenamiento");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, 40));
 
-        jBAvanza.setText("Avanzar al final");
+        jBAvanza.setText("Avanzar");
         jBAvanza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAvanzaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, 50));
+        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 90, 50));
+
+        jLabelItera.setText("Iteraciones Realizadas");
+        jPanel1.add(jLabelItera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel1.add(jLabelDiferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, 30));
+        jLabelDiferencia.getAccessibleContext().setAccessibleDescription("");
+
+        jPanel1.add(jLabelContador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 140, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 200, 310));
 
@@ -710,12 +736,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.out.println(matrizQ);
 
 //        if (jrbEGreedy.isSelected()){
-//            PoliticaEGreedy politica= new PoliticaEGreedy();
+            PoliticaEGreedy politica= new PoliticaEGreedy();
 //            double e = Double.parseDouble(jtfEpsTau.getText());
 //            Configuraciones.setEpsilon(e);
 //        }
 //        if (jrbSoftMax.isSelected()){
-            PoliticaSoftMax politica= new PoliticaSoftMax();
+//            PoliticaSoftMax politica= new PoliticaSoftMax();
 //            double t = Double.parseDouble(jtfEpsTau.getText());
 //            Configuraciones.setTau(t);
 //        }
@@ -728,17 +754,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
-                //recorriendo para ver mejor camino
+        //recorriendo para ver mejor camino
         QMat matrizQ = Entrenador.getEpisodios()[Configuraciones.cantEpisodios-1].getMatrizQ();
         Estado estadoInicial= matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
         Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
         System.out.println(estadoInicial);
         System.out.println("Movimientos:");
-        //pner todos bootnes a disabled
-//        for(Component comp: jpTablero.getComponents()){
-//            JButton boton= (JButton)comp;
-//            boton.setBorderPainted(false);
-//        }
+
         
         //habilitar el estado inical
         int ind= (estadoInicial.getPosI()*Configuraciones.getDimension() ) +estadoInicial.getPosJ();
@@ -753,11 +775,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
               int indice= (estadoProximo.getPosI()*Configuraciones.getDimension() ) +estadoProximo.getPosJ();
               JButton boton = (JButton) jpTablero.getComponent(indice);
               boton.setBorder(BorderFactory.createLineBorder(Color.magenta,4));
-              
               estadoInicial= estadoProximo;
         }
         
     }//GEN-LAST:event_jBAvanzaActionPerformed
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
@@ -856,7 +880,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBAvanza;
     private javax.swing.JButton jBEntrena;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    public static javax.swing.JLabel jLabelContador1;
+    public static javax.swing.JLabel jLabelDiferencia;
+    private javax.swing.JLabel jLabelItera;
+    public static javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbGenerarTablero;
     private javax.swing.JComboBox jcbDim;

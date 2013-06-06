@@ -14,12 +14,7 @@ public class main {
   RMat mat;
   Configuraciones.setDimension(4);
   mat= new RMat(Configuraciones.getDimension());
-  Configuraciones.setValorExcelente(100);
-  Configuraciones.setValorBueno(50);
-  Configuraciones.setValorMalo(5);
-  Configuraciones.setValorPared(15);
-  mat.rellenar();
-  
+    
   Configuraciones.setInicial(0,0);
   Configuraciones.setFinal(3, 3);
   
@@ -41,6 +36,7 @@ public class main {
   System.out.println(estadoFinal);
   
   Entrenador.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
+  
   Estado estadoActual= Entrenador.getEpisodios()[Configuraciones.cantEpisodios-1].getMatrizQ().getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
   System.out.println(estadoActual);
   

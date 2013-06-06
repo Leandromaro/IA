@@ -27,9 +27,7 @@ public class PoliticaSoftMax implements Politica {
     }
     
     for (int j=0; j<estadoActual.getAccionesPosibles().size();j++){
-        Ei[j]= Ei[j]/sumatoriaE;
-//        System.out.print(Ei[j]);
-//        Ei[j]= this.redondearAccion(Ei[j]/sumatoriaE);
+        Ei[j]= redondeo(Ei[j]/sumatoriaE,4);
     }
         
     double prob = Math.random();
@@ -39,7 +37,7 @@ public class PoliticaSoftMax implements Politica {
     
     for (int k=0; k<Ei.length;k++){ //recorro el arreglo con las probabilidades 
     limiteSuperior=limiteInferior+Ei[k];//y veo en que rango cae el numero alearorio
-        if ((prob>=limiteInferior)&&(prob<=limiteSuperior)){//Mirar porque nunca entra en este if
+        if ((prob>=limiteInferior)&&(prob<=limiteSuperior)){
             pos =k;
         }
         limiteInferior=limiteSuperior;
@@ -49,19 +47,12 @@ public class PoliticaSoftMax implements Politica {
     
     }
     
-    private double redondeo(double decimal,int numeroDecimales){
+private double redondeo(double decimal,int numeroDecimales){
     decimal = decimal*(java.lang.Math.pow(10, numeroDecimales));
     decimal = java.lang.Math.round(decimal);
     decimal = decimal/java.lang.Math.pow(10, numeroDecimales);
 
 return decimal;
 }
-    public double redondearAccion(double valorAccion) {
-       double d=valorAccion; 
-       BigDecimal bd = new BigDecimal(Double.toString(d));
-       bd = bd.setScale(4, BigDecimal.ROUND_HALF_UP);
-       return bd.doubleValue();
-   }             
-        
-    
+     
 }

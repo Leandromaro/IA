@@ -4,6 +4,8 @@
  */
 package logica;
 
+import entornoVisual.VentanaPrincipal;
+
 /**
  *
  * @author Leandro
@@ -18,10 +20,56 @@ public class Entrenador {
     
     public static void entrenar(int cantEpisodios, QMat matrizQ , Estado estadoFinal , Politica politica, RMat mat){
          episodios= new Episodio[Configuraciones.getCantEpisodios()];
-            for(int i=0; i<cantEpisodios;i++){
+         int i=0;   
+         boolean bandera=false;
+         while((i<cantEpisodios) &&(bandera==false)){
             episodios[i]= new Episodio(matrizQ,estadoFinal,politica,mat,i);
-            //System.out.println(episodios[i].getMatrizQ());
+            double indice=i;
+            imprimir (indice);
+            double valorAnterior = qAnterior(matrizQ);
+            bandera= diferenciaQ(valorAnterior,matrizQ);
+            
             }
-            System.out.println(episodios[cantEpisodios-1].getMatrizQ());
+         if (bandera==true){
+         Configuraciones.cantEpisodios=i;    
+         cantEpisodios=i;
+         }
+
+         System.out.println(episodios[cantEpisodios-1].getMatrizQ());
+
+    }
+    private static void imprimir(double indice){
+       
+        VentanaPrincipal.jLabelDiferencia.setText(Double.toString(indice));
+    }
+    private static double qAnterior(QMat q){
+        double QAnterior=0;
+        for (int i=0; i<Configuraciones.getDimension();i++){
+            for (int j=0; j<Configuraciones.getDimension();j++){
+                for (int k=0; k<q.getEstado(i, j).getAccionesPosibles().size();k++){
+                        QAnterior=q.getEstado(i, j).getValorAccion(k);
+                }
+            }
+        }
+        return QAnterior;
+    }
+    private static boolean diferenciaQ(double qAnterior,QMat q){
+        double qSiguiente=0;
+        double diferencia;
+        for (int i=0; i<Configuraciones.getDimension();i++){
+            for (int j=0; j<Configuraciones.getDimension();j++){
+                for (int k=0; k<q.getEstado(i, j).getAccionesPosibles().size();k++){
+                        qSiguiente=q.getEstado(i, j).getValorAccion(k);
+                }
+            }
+            }
+        diferencia=qSiguiente-qAnterior;
+        VentanaPrincipal.jLabelDiferencia.setText(Double.toString(diferencia));
+        if (diferencia<10.0){
+            return true;
+        }
+        else{
+          return false;  
+        }
     }
 }
