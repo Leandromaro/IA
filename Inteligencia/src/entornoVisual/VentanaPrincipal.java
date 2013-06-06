@@ -736,12 +736,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.out.println(matrizQ);
 
 //        if (jrbEGreedy.isSelected()){
-            PoliticaEGreedy politica= new PoliticaEGreedy();
+//            PoliticaEGreedy politica= new PoliticaEGreedy();
 //            double e = Double.parseDouble(jtfEpsTau.getText());
 //            Configuraciones.setEpsilon(e);
 //        }
 //        if (jrbSoftMax.isSelected()){
-//            PoliticaSoftMax politica= new PoliticaSoftMax();
+            PoliticaSoftMax politica= new PoliticaSoftMax();
 //            double t = Double.parseDouble(jtfEpsTau.getText());
 //            Configuraciones.setTau(t);
 //        }

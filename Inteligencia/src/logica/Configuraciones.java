@@ -24,7 +24,7 @@ public class Configuraciones {
     public static int filaF;
     public static int colI;
     public static int colF;
-    public static int cantEpisodios= 1000000;
+    public static int cantEpisodios= 10000;
     public static double epsilon=0.1;
     public static double tau=50;
     

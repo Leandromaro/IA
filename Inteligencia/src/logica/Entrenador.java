@@ -22,13 +22,14 @@ public class Entrenador {
          episodios= new Episodio[Configuraciones.getCantEpisodios()];
          int i=0;   
          boolean bandera=false;
-         while((i<cantEpisodios) &&(bandera==false)){
+         while(i<=cantEpisodios){
             episodios[i]= new Episodio(matrizQ,estadoFinal,politica,mat,i);
-            double indice=i;
-            imprimir (indice);
-            double valorAnterior = qAnterior(matrizQ);
-            bandera= diferenciaQ(valorAnterior,matrizQ);
             
+            VentanaPrincipal.jLabelContador1.setText(Double.toString(i));
+            double valorAnterior = qAnterior(matrizQ);
+            System.out.println(valorAnterior);
+            bandera= diferenciaQ(valorAnterior,matrizQ);
+            i++;
             }
          if (bandera==true){
          Configuraciones.cantEpisodios=i;    
@@ -38,16 +39,14 @@ public class Entrenador {
          System.out.println(episodios[cantEpisodios-1].getMatrizQ());
 
     }
-    private static void imprimir(double indice){
-       
-        VentanaPrincipal.jLabelDiferencia.setText(Double.toString(indice));
-    }
+   
+    
     private static double qAnterior(QMat q){
         double QAnterior=0;
         for (int i=0; i<Configuraciones.getDimension();i++){
             for (int j=0; j<Configuraciones.getDimension();j++){
                 for (int k=0; k<q.getEstado(i, j).getAccionesPosibles().size();k++){
-                        QAnterior=q.getEstado(i, j).getValorAccion(k);
+                        QAnterior=QAnterior+q.getEstado(i, j).getValorAccion(k);
                 }
             }
         }
@@ -59,11 +58,11 @@ public class Entrenador {
         for (int i=0; i<Configuraciones.getDimension();i++){
             for (int j=0; j<Configuraciones.getDimension();j++){
                 for (int k=0; k<q.getEstado(i, j).getAccionesPosibles().size();k++){
-                        qSiguiente=q.getEstado(i, j).getValorAccion(k);
+                        qSiguiente=qSiguiente+q.getEstado(i, j).getValorAccion(k);
                 }
             }
             }
-        diferencia=qSiguiente-qAnterior;
+        diferencia=Math.abs(qAnterior-qSiguiente);
         VentanaPrincipal.jLabelDiferencia.setText(Double.toString(diferencia));
         if (diferencia<10.0){
             return true;
