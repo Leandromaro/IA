@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
@@ -18,10 +19,7 @@ import javax.swing.JButton;
 import javax.swing.border.Border;
 import logica.Configuraciones;
 import logica.Entrenador;
-import logica.Episodio;
 import logica.Estado;
-import logica.PoliticaAleatoria;
-import logica.PoliticaEGreedy;
 import logica.PoliticaSoftMax;
 import logica.QMat;
 import logica.RMat;
@@ -33,7 +31,15 @@ import logica.RMat;
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     private Boolean estadoFinal;
+    private Border blackline;
+    private Boolean flagFinal;
+//    blackline = BorderFactory.createLineBorder(Color.black);
     
+    Font font = new Font("Arial", Font.BOLD, 9);
+                
+        final Color rojo = new Color(240, 90, 82);
+        final Color amarillo = new Color(220, 246, 53);
+        final Color verde = new Color(72, 237, 255);
     
     /**
      * Creates new form VentanaPrincipal
@@ -52,7 +58,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(dim,dim));
           
-        Border blackline;
         blackline = BorderFactory.createLineBorder(Color.black);
                        
         Font font = new Font("Arial", Font.BOLD, 9);
@@ -60,7 +65,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         final Color rojo = new Color(240, 90, 82);
         final Color amarillo = new Color(220, 246, 53);
         final Color verde = new Color(72, 237, 255);
-
+        
+        flagFinal = false;
+        
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 
@@ -68,6 +75,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 //jbEstado.setBorder(blackline);
                 jbEstado.setFont(font);
                 jbEstado.setBackground(Color.white);
+                
                 if (dim < 8){
                     jbEstado.addMouseWheelListener(new MouseAdapter() {
                     
@@ -75,30 +83,42 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                           
                     JButton s = (JButton)e.getComponent();
                                     
-                    if(s.getBackground() == Color.white){
+                    if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
                         s.setBackground(Color.black);
+                        s.setText("");
                     }else{
-                        if(s.getBackground() == Color.black){
-                            s.setBackground(rojo);
-                            s.setText("Malo");
-                        }else{
-                            if(s.getBackground() == rojo){
-                                s.setBackground(amarillo);
-                                s.setText("Bueno");
-                            }else{
-                               if(s.getBackground() == amarillo){
-                                    s.setBackground(verde);
-                                    s.setText("Excelente");
-                                }else{
-                                   if(s.getBackground() == verde){
-                                        s.setBackground(Color.white);
-                                        s.setText("");                                   
-                                   }
-                               } 
-                            }
-                        }
-                    }
-                    
+                           if(s.getBackground() == Color.black){
+                               s.setBackground(rojo);
+                               s.setText("Malo");
+                           }else{
+                               if(s.getBackground() == rojo){
+                                   s.setBackground(amarillo);
+                                   s.setText("Bueno");
+                               }else{
+                                  if(s.getBackground() == amarillo){
+                                       s.setBackground(verde);
+                                       s.setText("Excelente");
+                                   }else{
+                                           if(s.getBackground() == verde){
+                                               if(!flagFinal){
+                                                    s.setBackground(Color.white);
+                                                    s.setText("FINAL");
+                                                    flagFinal = true;
+                                               }else{
+                                                   s.setBackground(Color.white);
+                                                   s.setText("");
+                                               }
+                                           }else{
+                                               if("FINAL".equals(s.getText())){
+                                                   s.setBackground(Color.white);
+                                                   s.setText("");
+                                                   flagFinal = false;
+                                               }
+                                           }
+                                       } 
+                               }
+                           }
+                        }    
                    s.repaint();   
                    } 
                     
@@ -108,8 +128,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 		public void mouseClicked(MouseEvent e) {
                     JButton s = (JButton)e.getComponent();
                                     
-                    if(s.getBackground() == Color.white){
+                    if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
                         s.setBackground(Color.black);
+                        s.setText("");
                     }else{
                         if(s.getBackground() == Color.black){
                             s.setBackground(rojo);
@@ -123,11 +144,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     s.setBackground(verde);
                                     s.setText("Excelente");
                                 }else{
-                                   if(s.getBackground() == verde){
-                                        s.setBackground(Color.white);
-                                        s.setText("");                                   
-                                   }
-                               } 
+                                        if(s.getBackground() == verde){
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("FINAL");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("FINAL".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
+                                        }
+                                    }  
                             }
                         }
                     }
@@ -140,8 +173,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                           
                         JButton s = (JButton)e.getComponent();
                                     
-                        if(s.getBackground() == Color.white){
+                        if(s.getBackground() == Color.white & !("F".equals(s.getText()))){
                             s.setBackground(Color.black);
+                            s.setText("");
                         }else{
                             if(s.getBackground() == Color.black){
                                 s.setBackground(rojo);
@@ -156,10 +190,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                         s.setText("E");
                                     }else{
                                         if(s.getBackground() == verde){
-                                            s.setBackground(Color.white);
-                                            s.setText("");                                    
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("F");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("F".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
                                         }
-                                    } 
+                                    }  
                                 }
                             }
                         }
@@ -170,8 +216,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     public void mouseClicked(MouseEvent e) {  
                     JButton s = (JButton)e.getComponent();
                                     
-                    if(s.getBackground() == Color.white){
+                    if(s.getBackground() == Color.white & !("F".equals(s.getText()))){
                         s.setBackground(Color.black);
+                        s.setText("");
                     }else{
                         if(s.getBackground() == Color.black){
                             s.setBackground(rojo);
@@ -185,11 +232,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     s.setBackground(verde);
                                     s.setText("E");
                                 }else{
-                                   if(s.getBackground() == verde){
-                                        s.setBackground(Color.white);
-                                        s.setText("");
-                                   }
-                               } 
+                                        if(s.getBackground() == verde){
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("F");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("F".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
+                                        }
+                                    }  
                             }
                         }
                     }
@@ -201,33 +260,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jpTablero.add(jbEstado);           
             }
         }
-//        Se agrega Estado Final
-        
-        
-        jpTablero.remove(this.posAbosAleatoria(dim));
-        jpTablero.add(this.estadoFinal(), this.posAbosAleatoria(dim));
         
         jpTablero.setVisible(true);       
         }
 
-    public void cargarTablero(int dim){
+    public void cargarTableroAleatorio(int dim){
         
-        
+        blackline = BorderFactory.createLineBorder(Color.black);
         //instanciar matriz, aleatoriament, y modificar codigo para que tome valores de esa matriz
         
-        Font font = new Font("Arial", Font.BOLD, 9);
-                
-        final Color rojo = new Color(240, 90, 82);
-        final Color amarillo = new Color(220, 246, 53);
-        final Color verde = new Color(72, 237, 255);
+//        Font font = new Font("Arial", Font.BOLD, 9);
+//                
+//        final Color rojo = new Color(240, 90, 82);
+//        final Color amarillo = new Color(220, 246, 53);
+//        final Color verde = new Color(72, 237, 255);
        
         jpTablero.setVisible(false);
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(dim,dim));
-          
-        Border blackline;
-        blackline = BorderFactory.createLineBorder(Color.black);
-
+        
+        
+        flagFinal = true;
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 
@@ -262,13 +315,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     }
                     
                 jbEstado.addMouseWheelListener(new MouseAdapter() {
-                   @Override
+                   
                    public void mouseWheelMoved(MouseWheelEvent e){
                           
                     JButton s = (JButton)e.getComponent();
                                     
-                    if(s.getBackground() == Color.white){
-                        s.setBackground(Color.black);                        
+                    
+                    if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
+                        s.setBackground(Color.black);
+                        s.setText("");
                     }else{
                         if(s.getBackground() == Color.black){
                             s.setBackground(rojo);
@@ -282,11 +337,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     s.setBackground(verde);
                                     s.setText("Excelente");
                                 }else{
-                                   if(s.getBackground() == verde){
-                                        s.setBackground(Color.white);
-                                        s.setText("");                                    
-                                   }
-                               } 
+                                        if(s.getBackground() == verde){
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("FINAL");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("FINAL".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
+                                        }
+                                    }  
                             }
                         }
                     }
@@ -302,8 +369,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                   
                     JButton s = (JButton)e.getComponent();
                                     
-                    if(s.getBackground() == Color.white){
+                    if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
                         s.setBackground(Color.black);
+                        s.setText("");
                     }else{
                         if(s.getBackground() == Color.black){
                             s.setBackground(rojo);
@@ -317,11 +385,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     s.setBackground(verde);
                                     s.setText("Excelente");
                                 }else{
-                                   if(s.getBackground() == verde){
-                                        s.setBackground(Color.white);
-                                        s.setText("");
-                                   }
-                               } 
+                                        if(s.getBackground() == verde){
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("FINAL");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("FINAL".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
+                                        }
+                                    }  
                             }
                         }
                     }
@@ -355,8 +435,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                           
                         JButton s = (JButton)e.getComponent();
                                     
-                        if(s.getBackground() == Color.white){
+                        if(s.getBackground() == Color.white & !("F".equals(s.getText()))){
                             s.setBackground(Color.black);
+                            s.setText("");
                         }else{
                             if(s.getBackground() == Color.black){
                                 s.setBackground(rojo);
@@ -371,10 +452,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                         s.setText("E");
                                     }else{
                                         if(s.getBackground() == verde){
-                                            s.setBackground(Color.white);
-                                            s.setText("");                                    
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("F");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("F".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
                                         }
-                                    } 
+                                    }  
                                 }
                             }
                         }
@@ -387,8 +480,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     
                     JButton s = (JButton)e.getComponent();
                                     
-                    if(s.getBackground() == Color.white){
+                    if(s.getBackground() == Color.white & !("F".equals(s.getText()))){
                         s.setBackground(Color.black);
+                        s.setText("");
                     }else{
                         if(s.getBackground() == Color.black){
                             s.setBackground(rojo);
@@ -402,11 +496,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     s.setBackground(verde);
                                     s.setText("E");
                                 }else{
-                                   if(s.getBackground() == verde){
-                                        s.setBackground(Color.white);
-                                        s.setText("");   
-                                   }
-                               } 
+                                        if(s.getBackground() == verde){
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("F");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("F".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
+                                        }
+                                    }  
                             }
                         }
                     }
@@ -420,8 +526,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
 //        Se agrega Estado Final
         jpTablero.remove(this.posAbosAleatoria(dim));
-        jpTablero.add(this.estadoFinal(), this.posAbosAleatoria(dim));
-        
+        jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
         jpTablero.setVisible(true);
     } 
     
@@ -454,18 +559,205 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         return ((fila*dim)+columna);
     }
     
-    public JButton estadoFinal(){
-        
-        Border blackline;
+    public JButton estadoFinal(int dim){
         blackline = BorderFactory.createLineBorder(Color.black);
-        Font font = new Font("Arial", Font.BOLD, 9);
-        
+ 
         JButton jbEstado = new JButton();
         //jbEstado.setBorder(blackline);
         jbEstado.setFont(font);
         jbEstado.setBackground(Color.white);
-        jbEstado.setText("FINAL");
-        
+    
+        if(dim < 8){
+            jbEstado.setText("FINAL");
+            jbEstado.addMouseWheelListener(new MouseAdapter() {
+                   
+                   public void mouseWheelMoved(MouseWheelEvent e){
+                          
+                    JButton s = (JButton)e.getComponent();
+                                    
+                    
+                    if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
+                        s.setBackground(Color.black);
+                        s.setText("");
+                    }else{
+                        if(s.getBackground() == Color.black){
+                            s.setBackground(rojo);
+                            s.setText("Malo");
+                        }else{
+                            if(s.getBackground() == rojo){
+                                s.setBackground(amarillo);
+                                s.setText("Bueno");
+                            }else{
+                               if(s.getBackground() == amarillo){
+                                    s.setBackground(verde);
+                                    s.setText("Excelente");
+                                }else{
+                                        if(s.getBackground() == verde){
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("FINAL");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("FINAL".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
+                                        }
+                                    }  
+                            }
+                        }
+                    }
+                    s.repaint();
+                   } 
+                });
+                    
+                    
+                jbEstado.addMouseListener(new MouseAdapter(){
+		
+		public void mouseClicked(MouseEvent e) {
+                    
+                  
+                    JButton s = (JButton)e.getComponent();
+                                    
+                    if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
+                        s.setBackground(Color.black);
+                        s.setText("");
+                    }else{
+                        if(s.getBackground() == Color.black){
+                            s.setBackground(rojo);
+                            s.setText("Malo");
+                        }else{
+                            if(s.getBackground() == rojo){
+                                s.setBackground(amarillo);
+                                s.setText("Bueno");
+                            }else{
+                               if(s.getBackground() == amarillo){
+                                    s.setBackground(verde);
+                                    s.setText("Excelente");
+                                }else{
+                                        if(s.getBackground() == verde){
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("FINAL");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("FINAL".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
+                                        }
+                                    }  
+                            }
+                        }
+                    }
+                    s.repaint();
+                }});
+        }
+        else{
+            jbEstado.setText("F");
+            
+            jbEstado.addMouseWheelListener(new MouseAdapter() {
+                    
+                    public void mouseWheelMoved(MouseWheelEvent e){
+                          
+                        JButton s = (JButton)e.getComponent();
+                                    
+                        if(s.getBackground() == Color.white & !("F".equals(s.getText()))){
+                            s.setBackground(Color.black);
+                            s.setText("");
+                        }else{
+                            if(s.getBackground() == Color.black){
+                                s.setBackground(rojo);
+                                s.setText("M");
+                            }else{
+                                if(s.getBackground() == rojo){
+                                    s.setBackground(amarillo);
+                                    s.setText("B");
+                                }else{
+                                    if(s.getBackground() == amarillo){
+                                        s.setBackground(verde);
+                                        s.setText("E");
+                                    }else{
+                                        if(s.getBackground() == verde){
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("F");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("F".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
+                                        }
+                                    }  
+                                }
+                            }
+                        }
+                        s.repaint();
+                    }});
+                    
+                    jbEstado.addMouseListener(new MouseAdapter(){
+		
+                    public void mouseClicked(MouseEvent e) {
+                    
+                    JButton s = (JButton)e.getComponent();
+                                    
+                    if(s.getBackground() == Color.white & !("F".equals(s.getText()))){
+                        s.setBackground(Color.black);
+                        s.setText("");
+                    }else{
+                        if(s.getBackground() == Color.black){
+                            s.setBackground(rojo);
+                            s.setText("M");
+                        }else{
+                            if(s.getBackground() == rojo){
+                                s.setBackground(amarillo);
+                                s.setText("B");
+                            }else{
+                               if(s.getBackground() == amarillo){
+                                    s.setBackground(verde);
+                                    s.setText("E");
+                                }else{
+                                        if(s.getBackground() == verde){
+                                            if(!flagFinal){
+                                                 s.setBackground(Color.white);
+                                                 s.setText("F");
+                                                 flagFinal = true;
+                                            }else{
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                            }
+                                        }else{
+                                            if("F".equals(s.getText())){
+                                                s.setBackground(Color.white);
+                                                s.setText("");
+                                                flagFinal = false;
+                                            }
+                                        }
+                                    }  
+                            }
+                        }
+                    }
+                    s.repaint();
+                }});
+            
+        }
+    
         jbEstado.repaint();
         
         return jbEstado;     
@@ -480,6 +772,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButton1 = new javax.swing.JRadioButton();
         jpSuperior = new javax.swing.JPanel();
         jlConfig = new javax.swing.JLabel();
         jlDim = new javax.swing.JLabel();
@@ -505,8 +798,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelDiferencia = new javax.swing.JLabel();
         jLabelContador = new javax.swing.JLabel();
 
+        jRadioButton1.setText("jRadioButton1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Princial");
+        setMinimumSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpSuperior.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -525,7 +821,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jcbDimActionPerformed(evt);
             }
         });
-        jpSuperior.add(jcbDim, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
+        jpSuperior.add(jcbDim, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
 
         jlManOAlea.setText("Creación:");
         jpSuperior.add(jlManOAlea, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 20));
@@ -536,7 +832,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbAutoActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
+        jpSuperior.add(jrbAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
 
         jrbManual.setText("Manual");
         jrbManual.addActionListener(new java.awt.event.ActionListener() {
@@ -544,7 +840,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbManualActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+        jpSuperior.add(jrbManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
 
         jbGenerarTablero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbGenerarTablero.setText("Generar escenario");
@@ -554,7 +850,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbGenerarTableroActionPerformed(evt);
             }
         });
-        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, -1, 54));
+        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, 54));
 
         jlConfigPoliticas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlConfigPoliticas.setText("Configuración de la Política:");
@@ -600,11 +896,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
 
-        getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 130));
+        getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 140));
 
         jpTablero.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpTablero.setLayout(new java.awt.GridLayout(1, 0));
-        getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 440, 410));
+        getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 450, 450));
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -642,7 +938,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 140, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 200, 310));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 200, 310));
 
         pack();
         setLocationRelativeTo(null);
@@ -655,15 +951,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if(jrbAuto.isSelected()){
         String aux = (String)jcbDim.getSelectedItem();
         switch(aux){
-            case "6x6":this.cargarTablero(6);
+            case "6x6":this.cargarTableroAleatorio(6);
                 break;
-            case "7x7":this.cargarTablero(7);
+            case "7x7":this.cargarTableroAleatorio(7);
                 break;
-            case "8x8":this.cargarTablero(8);
+            case "8x8":this.cargarTableroAleatorio(8);
                 break;
-            case "9x9":this.cargarTablero(9);
+            case "9x9":this.cargarTableroAleatorio(9);
                 break;
-            case "10x10":this.cargarTablero(10);
+            case "10x10":this.cargarTableroAleatorio(10);
                 break;
         }    
         }else{
@@ -690,6 +986,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbManual.setSelected(true);
         jrbAuto.setSelected(false);
         jbGenerarTablero.setEnabled(true);
+       
     }//GEN-LAST:event_jrbManualActionPerformed
 
     private void jrbAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAutoActionPerformed
@@ -697,6 +994,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbManual.setSelected(false);
         jrbAuto.setSelected(true);
         jbGenerarTablero.setEnabled(true);
+        
     }//GEN-LAST:event_jrbAutoActionPerformed
 
     private void jcbDimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbDimActionPerformed
@@ -885,6 +1183,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JLabel jLabelDiferencia;
     private javax.swing.JLabel jLabelItera;
     public static javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbGenerarTablero;
     private javax.swing.JComboBox jcbDim;
