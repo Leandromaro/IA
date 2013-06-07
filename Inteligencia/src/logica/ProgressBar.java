@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 public class ProgressBar {
 
     static JFrame ventana;
-    static JButton boton;
     static JProgressBar barra;
     private static Episodio[] episodios;
 
@@ -22,23 +21,17 @@ public class ProgressBar {
     }
     public ProgressBar() {
 
-        ventana=new JFrame("JProgressBar");
-        boton = new JButton("Comenzar");
+        ventana=new JFrame("Progreso");
+        
         barra=new JProgressBar(0,100);
         
-        boton.addActionListener(new Escucha());
-        
+        new Escucha();        
         ventana.setLayout(new FlowLayout());
         ventana.add(barra);
-        ventana.add(boton);
+        ventana.setLocationRelativeTo(null);
         ventana.pack();
         ventana.setVisible(true);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
-        
-        
-        
         
     }
     public static void main(String[] args){
@@ -57,6 +50,7 @@ public class ProgressBar {
         public void run() {
         episodios= new Episodio[Configuraciones.getCantEpisodios()];
         int i=0;
+        
            while((i<100)){
 //                episodios[i]= new Episodio(MQ,EF,P,R,i);
                 barra.setValue(i);
