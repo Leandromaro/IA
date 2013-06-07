@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
@@ -37,22 +36,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     Font font = new Font("Arial", Font.BOLD, 9);
                 
-        final Color rojo = new Color(240, 90, 82);
-        final Color amarillo = new Color(220, 246, 53);
-        final Color verde = new Color(72, 237, 255);
+    final Color rojo = new Color(240, 90, 82);
+    final Color amarillo = new Color(220, 246, 53);
+    final Color verde = new Color(72, 237, 255);
     
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
-        
-        jlEpsilon.setVisible(false);
+     
+        jlAusenciaEstadoFinal.setVisible(false);
         jlTau.setVisible(false);
-        jtfEpsTau.setVisible(false);
+        jlEpsilon.setVisible(false);
+        this.visibleConfigPoliticas(false);
+
     }
 
-    
+   
     public void cargarTableroManual(int dim){
         jpTablero.setVisible(false);
         jpTablero.removeAll();
@@ -60,12 +61,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
           
         blackline = BorderFactory.createLineBorder(Color.black);
                        
-        Font font = new Font("Arial", Font.BOLD, 9);
-                
-        final Color rojo = new Color(240, 90, 82);
-        final Color amarillo = new Color(220, 246, 53);
-        final Color verde = new Color(72, 237, 255);
-        
         flagFinal = false;
         
         for (int i = 0; i < dim; i++) {
@@ -104,6 +99,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                     s.setBackground(Color.white);
                                                     s.setText("FINAL");
                                                     flagFinal = true;
+                                                    VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                                }else{
                                                    s.setBackground(Color.white);
                                                    s.setText("");
@@ -113,6 +109,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                    s.setBackground(Color.white);
                                                    s.setText("");
                                                    flagFinal = false;
+                                                   VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                                }
                                            }
                                        } 
@@ -149,6 +146,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                  s.setBackground(Color.white);
                                                  s.setText("FINAL");
                                                  flagFinal = true;
+                                                 VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }else{
                                                 s.setBackground(Color.white);
                                                 s.setText("");
@@ -158,6 +156,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                 s.setBackground(Color.white);
                                                 s.setText("");
                                                 flagFinal = false;
+                                                VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }
                                         }
                                     }  
@@ -260,7 +259,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jpTablero.add(jbEstado);           
             }
         }
-        
         jpTablero.setVisible(true);       
         }
 
@@ -268,12 +266,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         blackline = BorderFactory.createLineBorder(Color.black);
         //instanciar matriz, aleatoriament, y modificar codigo para que tome valores de esa matriz
-        
-//        Font font = new Font("Arial", Font.BOLD, 9);
-//                
-//        final Color rojo = new Color(240, 90, 82);
-//        final Color amarillo = new Color(220, 246, 53);
-//        final Color verde = new Color(72, 237, 255);
        
         jpTablero.setVisible(false);
         jpTablero.removeAll();
@@ -342,6 +334,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                  s.setBackground(Color.white);
                                                  s.setText("FINAL");
                                                  flagFinal = true;
+                                                 VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }else{
                                                 s.setBackground(Color.white);
                                                 s.setText("");
@@ -351,6 +344,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                 s.setBackground(Color.white);
                                                 s.setText("");
                                                 flagFinal = false;
+                                                VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }
                                         }
                                     }  
@@ -456,6 +450,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                  s.setBackground(Color.white);
                                                  s.setText("F");
                                                  flagFinal = true;
+                                                 VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }else{
                                                 s.setBackground(Color.white);
                                                 s.setText("");
@@ -465,6 +460,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                 s.setBackground(Color.white);
                                                 s.setText("");
                                                 flagFinal = false;
+                                                VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }
                                         }
                                     }  
@@ -501,6 +497,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                  s.setBackground(Color.white);
                                                  s.setText("F");
                                                  flagFinal = true;
+                                                 VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }else{
                                                 s.setBackground(Color.white);
                                                 s.setText("");
@@ -510,6 +507,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                 s.setBackground(Color.white);
                                                 s.setText("");
                                                 flagFinal = false;
+                                                VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }
                                         }
                                     }  
@@ -520,13 +518,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }});
                     
                 }
-                
+               
             jpTablero.add(jbEstado);           
             }
         }
 //        Se agrega Estado Final
         jpTablero.remove(this.posAbosAleatoria(dim));
         jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
+ 
         jpTablero.setVisible(true);
     } 
     
@@ -597,6 +596,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                  s.setBackground(Color.white);
                                                  s.setText("FINAL");
                                                  flagFinal = true;
+                                                 VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }else{
                                                 s.setBackground(Color.white);
                                                 s.setText("");
@@ -606,6 +606,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                 s.setBackground(Color.white);
                                                 s.setText("");
                                                 flagFinal = false;
+                                                VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }
                                         }
                                     }  
@@ -615,9 +616,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     s.repaint();
                    } 
                 });
-                    
-                    
-                jbEstado.addMouseListener(new MouseAdapter(){
+                            
+            jbEstado.addMouseListener(new MouseAdapter(){
 		
 		public void mouseClicked(MouseEvent e) {
                     
@@ -645,6 +645,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                  s.setBackground(Color.white);
                                                  s.setText("FINAL");
                                                  flagFinal = true;
+                                                 VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }else{
                                                 s.setBackground(Color.white);
                                                 s.setText("");
@@ -654,6 +655,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                 s.setBackground(Color.white);
                                                 s.setText("");
                                                 flagFinal = false;
+                                                VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }
                                         }
                                     }  
@@ -693,6 +695,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                  s.setBackground(Color.white);
                                                  s.setText("F");
                                                  flagFinal = true;
+                                                 VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }else{
                                                 s.setBackground(Color.white);
                                                 s.setText("");
@@ -702,6 +705,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                 s.setBackground(Color.white);
                                                 s.setText("");
                                                 flagFinal = false;
+                                                VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }
                                         }
                                     }  
@@ -711,7 +715,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         s.repaint();
                     }});
                     
-                    jbEstado.addMouseListener(new MouseAdapter(){
+            jbEstado.addMouseListener(new MouseAdapter(){
 		
                     public void mouseClicked(MouseEvent e) {
                     
@@ -738,6 +742,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                  s.setBackground(Color.white);
                                                  s.setText("F");
                                                  flagFinal = true;
+                                                 VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }else{
                                                 s.setBackground(Color.white);
                                                 s.setText("");
@@ -747,6 +752,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                                 s.setBackground(Color.white);
                                                 s.setText("");
                                                 flagFinal = false;
+                                                VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
                                             }
                                         }
                                     }  
@@ -788,6 +794,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlTau = new javax.swing.JLabel();
         jrbSoftMax = new javax.swing.JRadioButton();
         jrbEGreedy = new javax.swing.JRadioButton();
+        jlAusenciaEstadoFinal = new javax.swing.JLabel();
         jpTablero = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
@@ -854,21 +861,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jlConfigPoliticas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlConfigPoliticas.setText("Configuración de la Política:");
-        jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 200, 20));
+        jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 200, 20));
 
         jlPolitica.setText("Política: ");
-        jpSuperior.add(jlPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, -1, -1));
+        jpSuperior.add(jlPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
 
         jlEpsilon.setText("Epsilon:");
         jlEpsilon.setName(""); // NOI18N
-        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, -1, -1));
+        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
 
         jtfEpsTau.setText("0.1");
-        jpSuperior.add(jtfEpsTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, 40, -1));
+        jpSuperior.add(jtfEpsTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 40, -1));
 
         jlTau.setText("Tau: ");
         jlTau.setName(""); // NOI18N
-        jpSuperior.add(jlTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 70, -1));
+        jpSuperior.add(jlTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 70, -1));
 
         jrbSoftMax.setText("SoftMax");
         jrbSoftMax.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -876,12 +883,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbSoftMaxMouseClicked(evt);
             }
         });
-        jrbSoftMax.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbSoftMaxActionPerformed(evt);
-            }
-        });
-        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
+        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
 
         jrbEGreedy.setText("E-Greedy");
         jrbEGreedy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -894,7 +896,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbEGreedyActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 40, -1, -1));
+        jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
+
+        jlAusenciaEstadoFinal.setText("*Advertencia: El escenario no tiene un estado \"Final\"");
+        jpSuperior.add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
 
         getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 140));
 
@@ -944,6 +949,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public final void visibleConfigPoliticas(Boolean visible){
+        jlConfigPoliticas.setVisible(visible);
+        jlPolitica.setVisible(visible);
+        jtfEpsTau.setVisible(visible);
+        jrbEGreedy.setVisible(visible);
+        jrbSoftMax.setVisible(visible);
+    }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
 
         //
@@ -978,7 +990,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     break;
                }    
             } 
-        }  
+        }
+        
     }//GEN-LAST:event_jbGenerarTableroActionPerformed
 
     private void jrbManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbManualActionPerformed
@@ -1080,6 +1093,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jrbEGreedyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEGreedyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jrbEGreedyActionPerformed
 
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
@@ -1187,6 +1204,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jbGenerarTablero;
     private javax.swing.JComboBox jcbDim;
+    private javax.swing.JLabel jlAusenciaEstadoFinal;
     private javax.swing.JLabel jlConfig;
     private javax.swing.JLabel jlConfigPoliticas;
     private javax.swing.JLabel jlDim;
