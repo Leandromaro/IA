@@ -23,7 +23,7 @@ public class Entrenador {
          int i=0;
          
          boolean bandera=false;
-            while((i<=cantEpisodios)&&(bandera==false)){
+            while((i<cantEpisodios)&&(bandera==false)){
                double valorAnterior = qAnterior(matrizQ);
                episodios[i]= new Episodio(matrizQ,estadoFinal,politica,mat,i);
                VentanaPrincipal.jLabelContador.setText(Double.toString(i));
