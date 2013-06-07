@@ -21,10 +21,7 @@ public class ProgressBar {
         return episodios;
     }
     public ProgressBar() {
-//        QMat MQ=matrizQ;
-//        Estado EF=estadoFinal;
-//        Politica P=politica;
-//        RMat R=mat;
+
         ventana=new JFrame("JProgressBar");
         boton = new JButton("Comenzar");
         barra=new JProgressBar(0,100);
@@ -75,13 +72,7 @@ public class ProgressBar {
         System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ());
         
         }
-
-        
-       
-   
-
-    
-        }
+}
 }
     
 
