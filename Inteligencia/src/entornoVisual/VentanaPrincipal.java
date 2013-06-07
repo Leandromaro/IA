@@ -20,6 +20,7 @@ import logica.Configuraciones;
 import logica.Entrenador;
 import logica.Estado;
 import logica.PoliticaSoftMax;
+import logica.ProgressBar;
 import logica.QMat;
 import logica.RMat;
 
@@ -1056,7 +1057,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //            double t = Double.parseDouble(jtfEpsTau.getText());
 //            Configuraciones.setTau(t);
 //        }
-       
+        ProgressBar p =new ProgressBar();
         Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
         System.out.println("Estado final");
         System.out.println(estadoFinal);

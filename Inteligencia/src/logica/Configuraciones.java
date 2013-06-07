@@ -18,7 +18,7 @@ public class Configuraciones {
     private static double valorMalo = 40;
     private static double valorBueno= 80;
     private static double valorExcelente = 200;
-    private static double valorFinal = 10000;
+    private static double valorFinal = 500;
     private static int dimension = 3; 
     private static int valorPorDefectoMatQ= 0;
     public static int filaI;
