@@ -15,9 +15,10 @@ public class Configuraciones {
     private static double gamma = 0.8;
     private static double ValorNeutro= 0;
     private static double valorPared= -1;
-    private static double valorMalo = 0.2;
-    private static double valorBueno= 0.8;
-    private static double valorExcelente = 1.0;
+    private static double valorMalo = 20;
+    private static double valorBueno= 40;
+    private static double valorExcelente = 100;
+    private static double valorFinal = 10000;
     private static int dimension = 3; 
     private static int valorPorDefectoMatQ= 0;
     public static int filaI;
@@ -81,7 +82,14 @@ public class Configuraciones {
     public static double getEpsilon() {
         return epsilon;
     }
+    public static double getValorFinal() {
+        return valorFinal;
+    }
 
+    public static void setValorFinal(double valorFinal) {
+        Configuraciones.valorFinal = valorFinal;
+    }
+    
     public static void setEpsilon(double epsilon) {
         Configuraciones.epsilon = epsilon;
     }

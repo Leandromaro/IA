@@ -503,7 +503,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jBAvanza = new javax.swing.JButton();
         jLabelItera = new javax.swing.JLabel();
         jLabelDiferencia = new javax.swing.JLabel();
-        jLabelContador1 = new javax.swing.JLabel();
+        jLabelContador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Princial");
@@ -640,7 +640,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.add(jLabelDiferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, 30));
         jLabelDiferencia.getAccessibleContext().setAccessibleDescription("");
 
-        jPanel1.add(jLabelContador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 140, 30));
+        jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 140, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, 200, 310));
 
@@ -833,6 +833,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 }
                 
                 if(txt== "FINAL" || txt=="F"){
+                    matR.mat[i][j]=Configuraciones.getValorFinal();
                     Configuraciones.setFinal(i,j);
                 }
 
@@ -880,7 +881,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBAvanza;
     private javax.swing.JButton jBEntrena;
     private javax.swing.JLabel jLabel1;
-    public static javax.swing.JLabel jLabelContador1;
+    public static javax.swing.JLabel jLabelContador;
     public static javax.swing.JLabel jLabelDiferencia;
     private javax.swing.JLabel jLabelItera;
     public static javax.swing.JPanel jPanel1;
