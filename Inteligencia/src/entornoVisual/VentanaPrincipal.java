@@ -1059,6 +1059,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //            Configuraciones.setTau(t);
 //        }
         ProgressBar p =new ProgressBar();
+        
         Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
         System.out.println("Estado final");
         System.out.println(estadoFinal);

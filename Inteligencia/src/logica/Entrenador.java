@@ -37,14 +37,7 @@ public class Entrenador {
         int i=0;
         new Thread(new ProgressBar.Hilo()).start();
             while((i<numEpisodios)){
-               episodios[i]= new Episodio(MQ,EFinal,P,R,i);
-//               barra.setValue(i);
-//               barra.repaint();
-//               try {
-//                Thread.sleep(50);
-//                } catch (InterruptedException ex) {
-//                Logger.getLogger(ProgressBar.class.getName()).log(Level.SEVERE, null, ex);
-//                }
+              
                i++;
                }
         
