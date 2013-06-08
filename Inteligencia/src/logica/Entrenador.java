@@ -34,8 +34,22 @@ public class Entrenador {
         P=politica;
         R=mat;
         episodios= new Episodio[Configuraciones.getCantEpisodios()];
-         
-         new Thread(new ProgressBar.Hilo()).start();
+        int i=0;
+        new Thread(new ProgressBar.Hilo()).start();
+            while((i<numEpisodios)){
+               episodios[i]= new Episodio(MQ,EFinal,P,R,i);
+//               barra.setValue(i);
+//               barra.repaint();
+//               try {
+//                Thread.sleep(50);
+//                } catch (InterruptedException ex) {
+//                Logger.getLogger(ProgressBar.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+               i++;
+               }
+        
+        System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
+//      
             
         }
     

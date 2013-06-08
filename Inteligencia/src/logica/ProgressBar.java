@@ -56,7 +56,7 @@ public class ProgressBar {
                 barra.setValue(i);
                 barra.repaint();
             try {
-                Thread.sleep(50);
+                Thread.sleep(10);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ProgressBar.class.getName()).log(Level.SEVERE, null, ex);
             }

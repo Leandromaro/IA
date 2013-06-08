@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 import logica.Configuraciones;
 import logica.Entrenador;
 import logica.Estado;
+import logica.PoliticaEGreedy;
 import logica.PoliticaSoftMax;
 import logica.ProgressBar;
 import logica.QMat;
@@ -1048,12 +1049,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.out.println(matrizQ);
 
 //        if (jrbEGreedy.isSelected()){
-//            PoliticaEGreedy politica= new PoliticaEGreedy();
+            PoliticaEGreedy politica= new PoliticaEGreedy();
 //            double e = Double.parseDouble(jtfEpsTau.getText());
 //            Configuraciones.setEpsilon(e);
 //        }
 //        if (jrbSoftMax.isSelected()){
-            PoliticaSoftMax politica= new PoliticaSoftMax();
+//            PoliticaSoftMax politica= new PoliticaSoftMax();
 //            double t = Double.parseDouble(jtfEpsTau.getText());
 //            Configuraciones.setTau(t);
 //        }
