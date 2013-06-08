@@ -95,38 +95,40 @@ public class EvJBChico {
             s.setBackground(Color.black);
             s.setText("");
         }else{
-            if(s.getBackground() == Color.black){  
+            if(s.getBackground() == Color.black){
                 s.setBackground(cf.rojo);
                 s.setText("M");
             }else{
-                if(s.getBackground() == cf.rojo){
+                if("M".equals(s.getText())){
                     s.setBackground(cf.amarillo);
                     s.setText("B");
                 }else{
-                    if(s.getBackground() == cf.amarillo){
+                    if("B".equals(s.getText())){
                         s.setBackground(cf.verde);
                         s.setText("E");
                     }else{
-                        if(s.getBackground() == cf.verde){
+                        if("E".equals(s.getText())){
                             if(!flagFinal){
-                                s.setBackground(Color.white);
-                                s.setText("F");
-                                flagFinal = true;
+                                 s.setBackground(Color.white);
+                                 s.setText("F");
+                                 flagFinal = true;
+
                             }else{
-                            s.setBackground(Color.white);
-                            s.setText("");
+                                s.setBackground(Color.white);
+                                s.setText("");
                             }
                         }else{
                             if("F".equals(s.getText())){
-                            s.setBackground(Color.white);
-                            s.setText("");
-                            flagFinal = false;
+                                s.setBackground(Color.white);
+                                s.setText("");
+                                flagFinal = false;
+
                             }
                         }
-                    } 
+                    }  
                 }
-            }     
-        }   
+            }
+        }
         this.jbEstado = s;
         this.jbEstado.repaint();
     };
