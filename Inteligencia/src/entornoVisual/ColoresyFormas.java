@@ -12,18 +12,24 @@ import javax.swing.border.Border;
  *
  * @author Maty
  */
-public class ColoresyFormas {
-    
-    
+public final class ColoresyFormas {
+
     private Boolean estadoFinal;
     private Border blackline;
     private Boolean flagFinal;
     
-    final Font font = new Font("Arial", Font.BOLD, 9);
+    
+    static Font font = new Font("Arial", Font.BOLD, 9);
                 
-    final Color rojo = new Color(240, 90, 82);
-    final Color amarillo = new Color(220, 246, 53);
-    final Color verde = new Color(72, 237, 255);
+    final  Color rojo;
+    final  Color amarillo;
+    final  Color verde;
+
+    public ColoresyFormas() {
+        this.verde = new Color(72, 237, 255);
+        this.rojo = new Color(240, 90, 82);
+        this.amarillo = new Color(220, 246, 53);    
+    }
     
  
     
