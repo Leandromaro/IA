@@ -11,7 +11,9 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -20,11 +22,9 @@ import logica.Configuraciones;
 import logica.Entrenador;
 import logica.Estado;
 import logica.PoliticaEGreedy;
-import logica.PoliticaSoftMax;
 import logica.ProgressBar;
 import logica.QMat;
 import logica.RMat;
-
 /**
  *
  * @author Maty
@@ -42,6 +42,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     final Color amarillo = new Color(220, 246, 53);
     final Color verde = new Color(72, 237, 255);
     
+    final EvJBGrande ma = new EvJBGrande();
     /**
      * Creates new form VentanaPrincipal
      */
@@ -64,7 +65,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         blackline = BorderFactory.createLineBorder(Color.black);
                        
         flagFinal = false;
-        
+         
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 
@@ -74,99 +75,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbEstado.setBackground(Color.white);
                 
                 if (dim < 8){
-                    jbEstado.addMouseWheelListener(new MouseAdapter() {
                     
-                   public void mouseWheelMoved(MouseWheelEvent e){
-                          
-                    JButton s = (JButton)e.getComponent();
-                                    
-                    if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
-                        s.setBackground(Color.black);
-                        s.setText("");
-                    }else{
-                           if(s.getBackground() == Color.black){
-                               s.setBackground(rojo);
-                               s.setText("Malo");
-                           }else{
-                               if(s.getBackground() == rojo){
-                                   s.setBackground(amarillo);
-                                   s.setText("Bueno");
-                               }else{
-                                  if(s.getBackground() == amarillo){
-                                       s.setBackground(verde);
-                                       s.setText("Excelente");
-                                   }else{
-                                           if(s.getBackground() == verde){
-                                               if(!flagFinal){
-                                                    s.setBackground(Color.white);
-                                                    s.setText("FINAL");
-                                                    flagFinal = true;
-                                                    VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
-                                               }else{
-                                                   s.setBackground(Color.white);
-                                                   s.setText("");
-                                               }
-                                           }else{
-                                               if("FINAL".equals(s.getText())){
-                                                   s.setBackground(Color.white);
-                                                   s.setText("");
-                                                   flagFinal = false;
-                                                   VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
-                                               }
-                                           }
-                                       } 
-                               }
-                           }
-                        }    
-                   s.repaint();   
-                   } 
-                    
-                });
-                    jbEstado.addMouseListener(new MouseAdapter(){
-		
-		public void mouseClicked(MouseEvent e) {
-                    JButton s = (JButton)e.getComponent();
-                                    
-                    if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
-                        s.setBackground(Color.black);
-                        s.setText("");
-                    }else{
-                        if(s.getBackground() == Color.black){
-                            s.setBackground(rojo);
-                            s.setText("Malo");
-                        }else{
-                            if(s.getBackground() == rojo){
-                                s.setBackground(amarillo);
-                                s.setText("Bueno");
-                            }else{
-                               if(s.getBackground() == amarillo){
-                                    s.setBackground(verde);
-                                    s.setText("Excelente");
-                                }else{
-                                        if(s.getBackground() == verde){
-                                            if(!flagFinal){
-                                                 s.setBackground(Color.white);
-                                                 s.setText("FINAL");
-                                                 flagFinal = true;
-                                                 VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
-                                            }else{
-                                                s.setBackground(Color.white);
-                                                s.setText("");
-                                            }
-                                        }else{
-                                            if("FINAL".equals(s.getText())){
-                                                s.setBackground(Color.white);
-                                                s.setText("");
-                                                flagFinal = false;
-                                                VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
-                                            }
-                                        }
-                                    }  
-                            }
+                    jbEstado.addMouseWheelListener(new MouseAdapter(){
+                        public void mouseWheelMoved(MouseWheelEvent e){
+                            
+                           ma.setflagFinal(flagFinal);
+                           ma.setjbEstado(e);
+                           flagFinal = ma.getflagFinal();
+                           ma.getjbEstado().repaint();
                         }
-                    }
-                    s.repaint();
-                }}); 
+                    });
+//                  
+                    jbEstado.addMouseListener(new MouseAdapter(){
+                        public void mouseClicked(MouseEvent e){
+                            
+                            ma.setflagFinal(flagFinal);
+                            ma.setjbEstado(e);
+                            flagFinal = ma.getflagFinal();
+                            ma.getjbEstado().repaint();
+                        }
+                    }); 
+                    
                 }else{
                     jbEstado.addMouseWheelListener(new MouseAdapter() {
                     
@@ -308,101 +237,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             break;
                     }
                     
-                jbEstado.addMouseWheelListener(new MouseAdapter() {
-                   
-                   public void mouseWheelMoved(MouseWheelEvent e){
-                          
-                    JButton s = (JButton)e.getComponent();
-                                    
-                    
-                    if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
-                        s.setBackground(Color.black);
-                        s.setText("");
-                    }else{
-                        if(s.getBackground() == Color.black){
-                            s.setBackground(rojo);
-                            s.setText("Malo");
-                        }else{
-                            if(s.getBackground() == rojo){
-                                s.setBackground(amarillo);
-                                s.setText("Bueno");
-                            }else{
-                               if(s.getBackground() == amarillo){
-                                    s.setBackground(verde);
-                                    s.setText("Excelente");
-                                }else{
-                                        if(s.getBackground() == verde){
-                                            if(!flagFinal){
-                                                 s.setBackground(Color.white);
-                                                 s.setText("FINAL");
-                                                 flagFinal = true;
-                                                 VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
-                                            }else{
-                                                s.setBackground(Color.white);
-                                                s.setText("");
-                                            }
-                                        }else{
-                                            if("FINAL".equals(s.getText())){
-                                                s.setBackground(Color.white);
-                                                s.setText("");
-                                                flagFinal = false;
-                                                VentanaPrincipal.this.visibleConfigPoliticas(flagFinal);
-                                            }
-                                        }
-                                    }  
-                            }
+                    jbEstado.addMouseWheelListener(new MouseAdapter(){
+                        public void mouseWheelMoved(MouseWheelEvent e){
+                            
+                           ma.setflagFinal(flagFinal);
+                           ma.setjbEstado(e);
+                           flagFinal = ma.getflagFinal();
+                           ma.getjbEstado().repaint();
                         }
-                    }
-                    s.repaint();
-                   } 
-                });
-                    
-                    
-                jbEstado.addMouseListener(new MouseAdapter(){
-		
-		public void mouseClicked(MouseEvent e) {
-                    
-                  
-                    JButton s = (JButton)e.getComponent();
-                                    
-                    if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
-                        s.setBackground(Color.black);
-                        s.setText("");
-                    }else{
-                        if(s.getBackground() == Color.black){
-                            s.setBackground(rojo);
-                            s.setText("Malo");
-                        }else{
-                            if(s.getBackground() == rojo){
-                                s.setBackground(amarillo);
-                                s.setText("Bueno");
-                            }else{
-                               if(s.getBackground() == amarillo){
-                                    s.setBackground(verde);
-                                    s.setText("Excelente");
-                                }else{
-                                        if(s.getBackground() == verde){
-                                            if(!flagFinal){
-                                                 s.setBackground(Color.white);
-                                                 s.setText("FINAL");
-                                                 flagFinal = true;
-                                            }else{
-                                                s.setBackground(Color.white);
-                                                s.setText("");
-                                            }
-                                        }else{
-                                            if("FINAL".equals(s.getText())){
-                                                s.setBackground(Color.white);
-                                                s.setText("");
-                                                flagFinal = false;
-                                            }
-                                        }
-                                    }  
-                            }
+                    });
+//                  
+                    jbEstado.addMouseListener(new MouseAdapter(){
+                        public void mouseClicked(MouseEvent e){
+                            
+                            ma.setflagFinal(flagFinal);
+                            ma.setjbEstado(e);
+                            flagFinal = ma.getflagFinal();
+                            ma.getjbEstado().repaint();
                         }
-                    }
-                    s.repaint();
-                }});
+                    }); 
                     
                 }else{
                     switch(this.aleatorio(1, 5)){
