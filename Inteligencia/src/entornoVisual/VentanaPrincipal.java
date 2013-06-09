@@ -437,7 +437,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jBAvanza = new javax.swing.JButton();
         jLabelItera = new javax.swing.JLabel();
-        jLabelDiferencia = new javax.swing.JLabel();
         jLabelContador = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
@@ -485,6 +484,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jpSuperior.add(jrbManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
 
         jbGenerarTablero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jbGenerarTablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Accept32.png"))); // NOI18N
         jbGenerarTablero.setText("Generar escenario");
         jbGenerarTablero.setEnabled(false);
         jbGenerarTablero.addActionListener(new java.awt.event.ActionListener() {
@@ -496,21 +496,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jlConfigPoliticas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlConfigPoliticas.setText("Configuración de la Política:");
-        jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 200, 20));
+        jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 200, 20));
 
         jlPolitica.setText("Política: ");
-        jpSuperior.add(jlPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
+        jpSuperior.add(jlPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
 
         jlEpsilon.setText("Epsilon:");
         jlEpsilon.setName(""); // NOI18N
-        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, -1, -1));
+        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, -1, -1));
 
         jtfEpsTau.setText("0.1");
-        jpSuperior.add(jtfEpsTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 40, -1));
+        jpSuperior.add(jtfEpsTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 40, -1));
 
         jlTau.setText("Tau: ");
         jlTau.setName(""); // NOI18N
-        jpSuperior.add(jlTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 70, -1));
+        jpSuperior.add(jlTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 70, -1));
 
         jrbSoftMax.setText("SoftMax");
         jrbSoftMax.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -518,7 +518,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbSoftMaxMouseClicked(evt);
             }
         });
-        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
+        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, -1, -1));
 
         jrbEGreedy.setText("E-Greedy");
         jrbEGreedy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -531,10 +531,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbEGreedyActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 40, -1, -1));
+        jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, -1, -1));
 
         jlAusenciaEstadoFinal.setText("*Advertencia: El escenario no tiene un estado \"Final\"");
-        jpSuperior.add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, -1, -1));
+        jpSuperior.add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
 
         getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 140));
 
@@ -545,40 +545,44 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextCantidadEpisodios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextCantidadEpisodios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextCantidadEpisodiosActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextCantidadEpisodios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 140, -1));
+        jPanel1.add(jTextCantidadEpisodios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 120, 30));
 
+        jBEntrena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Fast-forward32.png"))); // NOI18N
         jBEntrena.setText("Entrenar");
+        jBEntrena.setEnabled(false);
         jBEntrena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBEntrenaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 80, 50));
+        jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 120, 50));
 
         jLabel1.setText("Ciclos de entrenamiento");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 150, 40));
 
+        jBAvanza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Font32.png"))); // NOI18N
         jBAvanza.setText("Avanzar");
+        jBAvanza.setEnabled(false);
         jBAvanza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAvanzaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 80, 50));
+        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 120, 50));
 
         jLabelItera.setText("Iteraciones Realizadas");
-        jPanel1.add(jLabelItera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
-        jPanel1.add(jLabelDiferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 140, 30));
-        jLabelDiferencia.getAccessibleContext().setAccessibleDescription("");
+        jPanel1.add(jLabelItera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 140, 30));
+        jLabelContador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 120, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 200, 310));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 170, 310));
 
         pack();
         setLocationRelativeTo(null);
@@ -592,9 +596,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbSoftMax.setVisible(visible);
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
-
-        //
-        
+        jTextCantidadEpisodios.setText(" ");
+        jLabelContador.setText(" ");
         if(jrbAuto.isSelected()){
         String aux = (String)jcbDim.getSelectedItem();
         switch(aux){
@@ -609,6 +612,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             case "10x10":this.cargarTableroAleatorio(10);
                 break;
         }    
+        
         }else{
             if(jrbManual.isSelected()){
                String aux = (String)jcbDim.getSelectedItem();
@@ -624,9 +628,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 case "10x10":this.cargarTableroManual(10);
                     break;
                }    
-            } 
+           
+            }
+            
         }
-        
+       jBEntrena.setEnabled(true); 
     }//GEN-LAST:event_jbGenerarTableroActionPerformed
 
     private void jrbManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbManualActionPerformed
@@ -669,6 +675,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbSoftMaxMouseClicked
 
     private void jBEntrenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrenaActionPerformed
+        
         String userdata = jTextCantidadEpisodios.getText();
         int val;
         
@@ -684,6 +691,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         Configuraciones.setCantEpisodios(val);
         iniciarEntrenamiento();
+        jBAvanza.setEnabled(true);
+        jBEntrena.setEnabled(false);
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
@@ -819,7 +828,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBEntrena;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabelContador;
-    public static javax.swing.JLabel jLabelDiferencia;
     private javax.swing.JLabel jLabelItera;
     public static javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
