@@ -91,8 +91,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
                     System.out.println("Estado final");
                     System.out.println(estadoFinal);
-                    //Entrenador.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
-
                     episodios= new Episodio[Configuraciones.cantEpisodios];
       
                     while((contadorEpisodios<Configuraciones.cantEpisodios)){
@@ -102,9 +100,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     }
         
                     System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
-                    
+                    jBAvanza.setEnabled(true);
                 throw new UnsupportedOperationException("Not supported yet.");
                 }
+            
             };
 
             iniciarEntrenamiento.execute();
@@ -596,6 +595,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbSoftMax.setVisible(visible);
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
+        jBEntrena.setEnabled(false);
+        jBAvanza.setEnabled(false);
         jTextCantidadEpisodios.setText(" ");
         jLabelContador.setText(" ");
         if(jrbAuto.isSelected()){
@@ -676,7 +677,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jBEntrenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrenaActionPerformed
         
-        String userdata = jTextCantidadEpisodios.getText();
+        String userdata = jTextCantidadEpisodios.getText().trim();
         int val;
         
         try
@@ -691,7 +692,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         Configuraciones.setCantEpisodios(val);
         iniciarEntrenamiento();
-        jBAvanza.setEnabled(true);
+        
         jBEntrena.setEnabled(false);
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
