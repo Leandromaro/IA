@@ -7,6 +7,7 @@ package entornoVisual;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -17,11 +18,17 @@ import java.awt.event.MouseWheelListener;
 import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
+import javax.swing.SwingWorker;
 import javax.swing.border.Border;
 import logica.Configuraciones;
 import logica.Entrenador;
+import logica.Episodio;
 import logica.Estado;
 import logica.PoliticaEGreedy;
+import logica.PoliticaSoftMax;
 import logica.ProgressBar;
 import logica.QMat;
 import logica.RMat;
@@ -34,6 +41,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private Boolean estadoFinal;
     private Border blackline;
     private Boolean flagFinal;
+    private int contadorEpisodios;
 //    blackline = BorderFactory.createLineBorder(Color.black);
     
     private ColoresyFormas cf = new ColoresyFormas();
@@ -43,6 +51,69 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form VentanaPrincipal
      */
+    
+    
+    private Episodio[] episodios;
+    
+     public void iniciarEntrenamiento(){
+         
+        try{   
+            final SwingWorker iniciarEntrenamiento = new SwingWorker(){
+             @Override
+              protected Object doInBackground() throws Exception {
+
+                    contadorEpisodios=0;
+                    jLabelContador.setText(String.valueOf(contadorEpisodios));
+                    
+                    RMat mat= obtenerRdesdePantalla();
+
+                    Configuraciones.setInicial(0,0);
+
+                    mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
+                    mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
+                    mat.imprimirTab(); 
+
+                    QMat matrizQ= new QMat(mat);
+                    System.out.println(matrizQ);
+
+            //        if (jrbEGreedy.isSelected()){
+            //            PoliticaEGreedy politica= new PoliticaEGreedy();
+            //            double e = Double.parseDouble(jtfEpsTau.getText());
+            //            Configuraciones.setEpsilon(e);
+            //        }
+            //        if (jrbSoftMax.isSelected()){
+                        PoliticaSoftMax politica= new PoliticaSoftMax();
+            //            double t = Double.parseDouble(jtfEpsTau.getText());
+            //            Configuraciones.setTau(t);
+            //        }
+                    //ProgressBar p =new ProgressBar();
+
+                    Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
+                    System.out.println("Estado final");
+                    System.out.println(estadoFinal);
+                    //Entrenador.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
+
+                    episodios= new Episodio[Configuraciones.cantEpisodios];
+      
+                    while((contadorEpisodios<Configuraciones.cantEpisodios)){
+                        episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,politica,mat,contadorEpisodios);
+                        contadorEpisodios++;
+                        jLabelContador.setText(String.valueOf(contadorEpisodios));
+                    }
+        
+                    System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
+                    
+                throw new UnsupportedOperationException("Not supported yet.");
+                }
+            };
+
+            iniciarEntrenamiento.execute();
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this,"Error" , e.toString(), 1);
+        }
+    }
+    
     public VentanaPrincipal() {
         initComponents();
      
@@ -361,7 +432,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlAusenciaEstadoFinal = new javax.swing.JLabel();
         jpTablero = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextCantidadEpisodios = new javax.swing.JTextField();
         jBEntrena = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jBAvanza = new javax.swing.JButton();
@@ -474,12 +545,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextCantidadEpisodios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextCantidadEpisodiosActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 140, -1));
+        jPanel1.add(jTextCantidadEpisodios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 140, -1));
 
         jBEntrena.setText("Entrenar");
         jBEntrena.addActionListener(new java.awt.event.ActionListener() {
@@ -487,7 +558,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jBEntrenaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 90, 50));
+        jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 80, 50));
 
         jLabel1.setText("Ciclos de entrenamiento");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 150, 40));
@@ -498,7 +569,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jBAvanzaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 90, 50));
+        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 80, 50));
 
         jLabelItera.setText("Iteraciones Realizadas");
         jPanel1.add(jLabelItera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
@@ -598,40 +669,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbSoftMaxMouseClicked
 
     private void jBEntrenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrenaActionPerformed
+        String userdata = jTextCantidadEpisodios.getText();
+        int val;
         
-        RMat mat= this.obtenerRdesdePantalla();
-        
-        Configuraciones.setInicial(0,0);
-
-        mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
-        mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
-        mat.imprimirTab(); 
-
-        QMat matrizQ= new QMat(mat);
-        System.out.println(matrizQ);
-
-//        if (jrbEGreedy.isSelected()){
-            PoliticaEGreedy politica= new PoliticaEGreedy();
-//            double e = Double.parseDouble(jtfEpsTau.getText());
-//            Configuraciones.setEpsilon(e);
-//        }
-//        if (jrbSoftMax.isSelected()){
-//            PoliticaSoftMax politica= new PoliticaSoftMax();
-//            double t = Double.parseDouble(jtfEpsTau.getText());
-//            Configuraciones.setTau(t);
-//        }
-        ProgressBar p =new ProgressBar();
-        
-        Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
-        System.out.println("Estado final");
-        System.out.println(estadoFinal);
-        Entrenador.entrenar(Configuraciones.cantEpisodios, matrizQ, estadoFinal, politica, mat);
-        
+        try
+        {
+           val = Integer.parseInt(userdata);
+        }
+        catch (NumberFormatException nfe)
+        {
+           JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+           jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
+           val = Configuraciones.cantEpisodios;
+        }
+        Configuraciones.setCantEpisodios(val);
+        iniciarEntrenamiento();
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
         //recorriendo para ver mejor camino
-        QMat matrizQ = Entrenador.getEpisodios()[Configuraciones.cantEpisodios-1].getMatrizQ();
+        QMat matrizQ = episodios[Configuraciones.cantEpisodios-1].getMatrizQ();
         Estado estadoInicial= matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
         Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
         System.out.println(estadoInicial);
@@ -655,9 +712,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jBAvanzaActionPerformed
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextCantidadEpisodiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantidadEpisodiosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextCantidadEpisodiosActionPerformed
 
     private void jrbEGreedyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEGreedyActionPerformed
         // TODO add your handling code here:
@@ -766,7 +823,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelItera;
     public static javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextCantidadEpisodios;
     private javax.swing.JButton jbGenerarTablero;
     private javax.swing.JComboBox jcbDim;
     private javax.swing.JLabel jlAusenciaEstadoFinal;

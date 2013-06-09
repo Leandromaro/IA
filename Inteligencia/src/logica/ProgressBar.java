@@ -45,14 +45,12 @@ public class ProgressBar {
         }
     }
     public static class Hilo implements Runnable{
+      public void run() {
 
-        
-        public void run() {
-        episodios= new Episodio[Configuraciones.getCantEpisodios()];
         int i=0;
         
            while((i<100)){
-//                episodios[i]= new Episodio(MQ,EF,P,R,i);
+
                 barra.setValue(i);
                 barra.repaint();
             try {
@@ -63,8 +61,7 @@ public class ProgressBar {
                 
                 i++;
            }
-        System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ());
-        
+       
         }
 }
 }

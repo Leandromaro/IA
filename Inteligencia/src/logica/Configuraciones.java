@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 public class Configuraciones {
     
     private static double gamma = 0.8;
-    private static double ValorNeutro= 0;
+    private static double ValorNeutro= 0.15;
     private static double valorPared= -1;
     private static double valorMalo = 0.30;
     private static double valorBueno= 0.60;
@@ -25,7 +25,7 @@ public class Configuraciones {
     public static int filaF;
     public static int colI;
     public static int colF;
-    public static int cantEpisodios= 500;
+    public static int cantEpisodios= 750;
     public static double epsilon=0.1;
     public static double tau=50;
     
