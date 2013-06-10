@@ -40,7 +40,7 @@ import logica.RMat;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     
-    private Boolean estadoFinal;
+    public static Boolean estadoFinal =false;
     private Border blackline;
     private Boolean flagFinal;
     private int contadorEpisodios;
@@ -118,10 +118,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         initComponents();
      
-        jlAusenciaEstadoFinal.setVisible(false);
-        jlTau.setVisible(false);
-        jlEpsilon.setVisible(false);
-        this.visibleConfigPoliticas(false);
+        VentanaPrincipal.vistaConfigPoliticas(false);
 
     }
 
@@ -131,12 +128,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(dim,dim));
           
-        blackline = BorderFactory.createLineBorder(Color.black);
-                       
-        flagFinal = false;
-        ma.setflagFinal(false);
-        ma1.setflagFinal(false);
-        
+        blackline = BorderFactory.createLineBorder(Color.black);                 
          
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
@@ -151,9 +143,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     jbEstado.addMouseWheelListener(new MouseAdapter(){
                         public void mouseWheelMoved(MouseWheelEvent e){
                             
-                           ma.setflagFinal(flagFinal);
                            ma.setjbEstado(e);
-                           flagFinal = ma.getflagFinal();
                            ma.getjbEstado().repaint();
                         }
                     });
@@ -161,9 +151,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     jbEstado.addMouseListener(new MouseAdapter(){
                         public void mouseClicked(MouseEvent e){
                             
-                            ma.setflagFinal(flagFinal);
                             ma.setjbEstado(e);
-                            flagFinal = ma.getflagFinal();
                             ma.getjbEstado().repaint();
                         }
                     }); 
@@ -172,9 +160,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     jbEstado.addMouseWheelListener(new MouseAdapter(){
                         public void mouseWheelMoved(MouseWheelEvent e){
                             
-                           ma1.setflagFinal(flagFinal);
                            ma1.setjbEstado(e);
-                           flagFinal = ma1.getflagFinal();
                            ma1.getjbEstado().repaint();
                         }
                     });
@@ -182,9 +168,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     jbEstado.addMouseListener(new MouseAdapter(){
                         public void mouseClicked(MouseEvent e){
                             
-                            ma1.setflagFinal(flagFinal);
                             ma1.setjbEstado(e);
-                            flagFinal = ma1.getflagFinal();
                             ma1.getjbEstado().repaint();
                         }
                     }); 
@@ -207,8 +191,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         blackline = BorderFactory.createLineBorder(Color.black);
         
         flagFinal = true;
-        ma.setflagFinal(true);
-        ma1.setflagFinal(true);
                 
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
@@ -404,6 +386,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
         jbEstado.repaint();
         return jbEstado;     
+    }
+    
+    public static void vistaConfigPoliticas(Boolean flag){
+        
+        jlConfigPoliticas.setVisible(flag);
+        jlPolitica.setVisible(flag);
+        jlEpsilon.setVisible(flag);
+        jlTau.setVisible(flag);
+        jtfEpsTau.setVisible(flag);
+        jrbEGreedy.setVisible(flag);
+        jrbSoftMax.setVisible(flag);
+        
     }
     
     /**
@@ -607,6 +601,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbSoftMax.setVisible(visible);
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
+        
         jBEntrena.setEnabled(false);
         jBAvanza.setEnabled(false);
         jTextCantidadEpisodios.setText(" ");
@@ -790,13 +785,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     matR.mat[i][j]=Configuraciones.getValorMalo();
                 }
                
-                if(txt == "Bueno" || txt == "B"){
+                if("Bueno".equals(txt) || "B".equals(txt)){
                     matR.mat[i][j]=Configuraciones.getValorBueno();
                 }
-                if(txt == "Excelente" || txt == "E"){
+                if("Excelente".equals(txt) || "E".equals(txt)){
                     matR.mat[i][j]=Configuraciones.getValorExcelente();
                 }
-                if(txt == "Malo" || txt == "M"){
+                if("Malo".equals(txt) || "M".equals(txt)){
                     matR.mat[i][j]=Configuraciones.getValorMalo();
                 }
                 if(fondo == Color.WHITE){
@@ -807,7 +802,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     matR.mat[i][j]=Configuraciones.getValorPared();
                 }
                 
-                if(txt== "FINAL" || txt=="F"){
+                if("FINAL".equals(txt) || "F".equals(txt)){
                     matR.mat[i][j]=Configuraciones.getValorFinal();
                     Configuraciones.setFinal(i,j);
                 }
@@ -864,20 +859,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField jTextCantidadEpisodios;
     private javax.swing.JButton jbGenerarTablero;
     private javax.swing.JComboBox jcbDim;
-    private javax.swing.JLabel jlAusenciaEstadoFinal;
+    public static javax.swing.JLabel jlAusenciaEstadoFinal;
     private javax.swing.JLabel jlConfig;
-    private javax.swing.JLabel jlConfigPoliticas;
+    public static javax.swing.JLabel jlConfigPoliticas;
     private javax.swing.JLabel jlDim;
-    private javax.swing.JLabel jlEpsilon;
+    public static javax.swing.JLabel jlEpsilon;
     private javax.swing.JLabel jlManOAlea;
-    private javax.swing.JLabel jlPolitica;
-    private javax.swing.JLabel jlTau;
+    public static javax.swing.JLabel jlPolitica;
+    public static javax.swing.JLabel jlTau;
     private javax.swing.JPanel jpSuperior;
     private javax.swing.JPanel jpTablero;
     private javax.swing.JRadioButton jrbAuto;
-    private javax.swing.JRadioButton jrbEGreedy;
+    public static javax.swing.JRadioButton jrbEGreedy;
     private javax.swing.JRadioButton jrbManual;
-    private javax.swing.JRadioButton jrbSoftMax;
-    private javax.swing.JTextField jtfEpsTau;
+    public static javax.swing.JRadioButton jrbSoftMax;
+    public static javax.swing.JTextField jtfEpsTau;
     // End of variables declaration//GEN-END:variables
 }

@@ -63,20 +63,24 @@ public class EvJBChico {
                         s.setText("E");
                     }else{
                         if("E".equals(s.getText())){
-                            if(!flagFinal){
+                            if(!VentanaPrincipal.estadoFinal){
                                  s.setBackground(Color.white);
                                  s.setText("F");
-                                 flagFinal = true;
+                                 VentanaPrincipal.estadoFinal = true;
+                                 VentanaPrincipal.vistaConfigPoliticas(true);
+                                 VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
 
                             }else{
                                 s.setBackground(Color.white);
-                                s.setText("");
+                                s.setText("");                           
                             }
                         }else{
                             if("F".equals(s.getText())){
                                 s.setBackground(Color.white);
                                 s.setText("");
-                                flagFinal = false;
+                                VentanaPrincipal.estadoFinal = false;
+                                VentanaPrincipal.vistaConfigPoliticas(false);
+                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
 
                             }
                         }
@@ -108,10 +112,12 @@ public class EvJBChico {
                         s.setText("E");
                     }else{
                         if("E".equals(s.getText())){
-                            if(!flagFinal){
+                            if(!VentanaPrincipal.estadoFinal){
                                  s.setBackground(Color.white);
                                  s.setText("F");
-                                 flagFinal = true;
+                                 VentanaPrincipal.estadoFinal = true;
+                                 VentanaPrincipal.vistaConfigPoliticas(false);
+                                 VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
 
                             }else{
                                 s.setBackground(Color.white);
@@ -121,7 +127,9 @@ public class EvJBChico {
                             if("F".equals(s.getText())){
                                 s.setBackground(Color.white);
                                 s.setText("");
-                                flagFinal = false;
+                                VentanaPrincipal.estadoFinal = false;
+                                VentanaPrincipal.vistaConfigPoliticas(true);
+                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
 
                             }
                         }

@@ -66,19 +66,23 @@ public class EvJBGrande extends MouseAdapter{
                         s.setText("Excelente");
                     }else{
                         if("Excelente".equals(s.getText())){
-                            if(!flagFinal){
+                            if(!VentanaPrincipal.estadoFinal){
                                 s.setBackground(Color.white);
                                 s.setText("FINAL");
-                                flagFinal = true;
+                                VentanaPrincipal.estadoFinal = true;
+                                VentanaPrincipal.vistaConfigPoliticas(true);
+                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                             }else{
-                            s.setBackground(Color.white);
-                            s.setText("");
+                                s.setBackground(Color.white);
+                                s.setText("");
                             }
                         }else{
                             if("FINAL".equals(s.getText())){
-                            s.setBackground(Color.white);
-                            s.setText("");
-                            flagFinal = false;
+                                s.setBackground(Color.white);
+                                s.setText("");
+                                VentanaPrincipal.estadoFinal = false;
+                                VentanaPrincipal.vistaConfigPoliticas(false);
+                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
                             }
                         }
                     } 
@@ -110,10 +114,12 @@ public class EvJBGrande extends MouseAdapter{
                         s.setText("Excelente");
                     }else{
                         if("Excelente".equals(s.getText())){
-                            if(!flagFinal){
+                            if(!VentanaPrincipal.estadoFinal){
                                 s.setBackground(Color.white);
                                 s.setText("FINAL");
-                                flagFinal = true;
+                                VentanaPrincipal.estadoFinal = true;
+                                VentanaPrincipal.vistaConfigPoliticas(true);
+                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                             }else{
                                 s.setBackground(Color.white);
                                 s.setText("");
@@ -122,7 +128,9 @@ public class EvJBGrande extends MouseAdapter{
                             if("FINAL".equals(s.getText())){
                                 s.setBackground(Color.white);
                                 s.setText("");
-                                flagFinal = false;
+                                VentanaPrincipal.estadoFinal = false;
+                                VentanaPrincipal.vistaConfigPoliticas(false);
+                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
                             }
                         }
                     } 

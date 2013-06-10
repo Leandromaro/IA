@@ -6,7 +6,8 @@ import logica.Episodio;
 //import org.jfree.ui.*;
 import org.jfree.chart.*;
 import org.jfree.chart.plot.*;
-//import org.jfree.chart.entity.*;
+//import org.jfree.chart.entity.*
+
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.data.xy.XYSeries;
@@ -23,7 +24,7 @@ public LineChart(String title,Episodio[] episodios){
     super();
     
         //recorro y cargo el grafico
-       coleccion.removeAllSeries();
+        coleccion.removeAllSeries();
         valoresDeEpisodio.clear();
         
         
