@@ -7,31 +7,21 @@ package entornoVisual;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Cursor;
 import java.awt.Dialog;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 import javax.swing.border.Border;
 import logica.Configuraciones;
-import logica.Entrenador;
 import logica.Episodio;
 import logica.Estado;
 import logica.PoliticaEGreedy;
-import logica.PoliticaSoftMax;
-import logica.ProgressBar;
 import logica.QMat;
 import logica.RMat;
 /**
@@ -120,6 +110,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      
         VentanaPrincipal.vistaConfigPoliticas(false);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+        jPanel1.setVisible(false);
 
     }
 
@@ -404,6 +395,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jtfEpsTau.setVisible(flag);
         jrbEGreedy.setVisible(flag);
         jrbSoftMax.setVisible(flag);
+        jbConfirmar.setVisible(flag);
         
     }
     
@@ -433,6 +425,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbSoftMax = new javax.swing.JRadioButton();
         jrbEGreedy = new javax.swing.JRadioButton();
         jlAusenciaEstadoFinal = new javax.swing.JLabel();
+        jbConfirmar = new javax.swing.JButton();
         jpTablero = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTextCantidadEpisodios = new javax.swing.JTextField();
@@ -507,7 +500,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jlEpsilon.setText("Epsilon:");
         jlEpsilon.setName(""); // NOI18N
-        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, -1, -1));
+        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
 
         jtfEpsTau.setText("0.1");
         jpSuperior.add(jtfEpsTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 40, -1));
@@ -539,6 +532,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jlAusenciaEstadoFinal.setText("*Advertencia: El escenario no tiene un estado \"Final\"");
         jpSuperior.add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
+
+        jbConfirmar.setText("Confirmar Escenario y Politicas");
+        jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConfirmarActionPerformed(evt);
+            }
+        });
+        jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 210, 120));
 
         getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 140));
 
@@ -757,6 +758,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        // panelCorrida.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
+
+        jpSuperior.setEnabled(false);
+        jPanel1.setVisible(true);
+    }//GEN-LAST:event_jbConfirmarActionPerformed
+
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
         String aux = (String)jcbDim.getSelectedItem();
@@ -864,6 +871,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JTextField jTextCantidadEpisodios;
+    public static javax.swing.JButton jbConfirmar;
     private javax.swing.JButton jbGenerarTablero;
     private javax.swing.JComboBox jcbDim;
     public static javax.swing.JLabel jlAusenciaEstadoFinal;
