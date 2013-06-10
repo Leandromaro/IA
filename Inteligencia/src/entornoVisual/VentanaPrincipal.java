@@ -119,6 +119,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
      
         VentanaPrincipal.vistaConfigPoliticas(false);
+        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
 
     }
 
@@ -128,7 +129,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(dim,dim));
           
-        blackline = BorderFactory.createLineBorder(Color.black);                 
+        blackline = BorderFactory.createLineBorder(Color.black);
+        
+        VentanaPrincipal.vistaConfigPoliticas(false);
+        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
          
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
@@ -191,6 +195,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         blackline = BorderFactory.createLineBorder(Color.black);
         
         flagFinal = true;
+        
+        VentanaPrincipal.vistaConfigPoliticas(true);
+        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                 
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
