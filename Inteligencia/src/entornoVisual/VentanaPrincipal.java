@@ -122,6 +122,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
           
         blackline = BorderFactory.createLineBorder(Color.black);
         
+        VentanaPrincipal.estadoFinal = false;
         VentanaPrincipal.vistaConfigPoliticas(false);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
          
@@ -185,7 +186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         blackline = BorderFactory.createLineBorder(Color.black);
         
-        flagFinal = true;
+        VentanaPrincipal.estadoFinal = true;
         
         VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
