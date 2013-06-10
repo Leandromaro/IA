@@ -7,6 +7,8 @@ package entornoVisual;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dialog;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -77,12 +79,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     System.out.println(matrizQ);
 
             //        if (jrbEGreedy.isSelected()){
-            //            PoliticaEGreedy politica= new PoliticaEGreedy();
+                        PoliticaEGreedy politica= new PoliticaEGreedy();
             //            double e = Double.parseDouble(jtfEpsTau.getText());
             //            Configuraciones.setEpsilon(e);
             //        }
             //        if (jrbSoftMax.isSelected()){
-                        PoliticaSoftMax politica= new PoliticaSoftMax();
+//                        PoliticaSoftMax politica= new PoliticaSoftMax();
             //            double t = Double.parseDouble(jtfEpsTau.getText());
             //            Configuraciones.setTau(t);
             //        }
@@ -218,7 +220,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 
                 //if(matR[i][j]==Configuraciones.Pared){
                 //jbEstado.setBackground(Color.black);
-                
+               
+   
                 if (dim < 8){
                     switch(this.aleatorio(1, 5)){
                     
@@ -437,6 +440,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jBAvanza = new javax.swing.JButton();
         jLabelItera = new javax.swing.JLabel();
         jLabelContador = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -581,7 +585,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelContador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 120, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 170, 310));
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 120, 50));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 170, 380));
 
         pack();
         setLocationRelativeTo(null);
@@ -730,6 +742,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbEGreedyActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //panelCorrida.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        
+        LineChart grafico = new LineChart("valres de matriz q ",episodios);
+        grafico.setSize(800, 600);
+        grafico.setLocation(this.getLocation());
+        grafico.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+        grafico.setResizable(true);
+        grafico.setVisible(true);
+        
+       // panelCorrida.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
         String aux = (String)jcbDim.getSelectedItem();
@@ -748,7 +773,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Configuraciones.setDimension(dimension);
         
         RMat matR= new RMat(Configuraciones.getDimension());
-        
+//        int indice=(Configuraciones.getFilaI()*matR.dimension) + Configuraciones.getColI();
+//        if(JButton.getComponent(indice).getBackground().equals(BLACK)){
+//        
+//        }
         for(int i=0;i<matR.dimension;i++){
             for(int j=0;j<matR.dimension;j++){
                 int indice=(i*matR.dimension) + j;
@@ -827,6 +855,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAvanza;
     private javax.swing.JButton jBEntrena;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabelContador;
     private javax.swing.JLabel jLabelItera;

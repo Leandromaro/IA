@@ -58,6 +58,10 @@ public class QMat {
             }   
         }
     }
+
+    public QMat(Estado [][] matQ) {
+        this.matQ= matQ;
+    }
     
     public Estado getEstado(int posI, int posJ){
         return this.matQ[posI][posJ];
@@ -72,6 +76,17 @@ public class QMat {
             return true;
         }
         return false;
+    }
+    
+   public double getValorQ(){
+       double sum=0;
+       for (int i=0; i<this.matQ.length;i++){
+             for (int j=0; j<this.matQ.length;j++){
+//                 for (in) 
+                 sum+= matQ[i][j].accionDeMaximoValor().getValor();
+             }   
+        }
+       return sum;
     }
 
     @Override

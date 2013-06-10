@@ -14,9 +14,12 @@ public class Episodio {
     private Estado estadoFinal;
     private Politica politica;
     private RMat matrizR;
+    public double valorQ;
     
     public Episodio(QMat matrizQActual, Estado estadoFinal, Politica politica, RMat matR, int numeroEpisodio){
         //TODO:clonar matriz Q
+        this.valorQ= matrizQActual.getValorQ();
+        this.matrizQ= new QMat(matrizQActual.matQ.clone());
         this.matrizQ= matrizQActual;
         this.estadoFinal= estadoFinal;
         this.matrizR= matR;
@@ -38,7 +41,6 @@ public class Episodio {
             estadoActual= estadoProximo;
         }
     }
-
     /**
      * @return the matrizQ
      */
