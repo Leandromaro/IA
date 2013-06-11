@@ -42,19 +42,24 @@ public class Episodio {
         Estado estadoActual= this.getMatrizQ().getEstado(iRandom, jRandom);
         //mientras estado actual distinto de estado final
         int contBloqueo=0;
-
-        while(! estadoActual.equals(this.estadoFinal)&&(bloqueo!=true)){
+       
+        while(!estadoActual.equals(this.estadoFinal)&&(bloqueo!=true)){
             Estado estadoProximo = Movimiento.realizarMovimiento(estadoActual, this.getPolitica(), this.getMatrizR());
             estadoActual= estadoProximo;
             contBloqueo++;
-            if(contBloqueo== 5000){
-                bloqueo=true;
-            }
+//            if(contBloqueo== 5000){
+//                bloqueo=true;
+//                contBloqueo=0;
+//            }
         }
-        if(bloqueo==true){
-            JFrame ventana=new JFrame();
-                JOptionPane.showMessageDialog(ventana,"Agente Bloqueado o con poco entrenamiento","Error",JOptionPane.WARNING_MESSAGE);
-        }
+//        if(bloqueo==true){
+//         JFrame ventana=new JFrame();
+//         JOptionPane.showMessageDialog(ventana,"Agente Bloqueado o con poco entrenamiento","Error",JOptionPane.WARNING_MESSAGE);
+//        }
+//        else{
+//            bloqueo=false;
+//        }
+        
     }
     /**
      * @return the matrizQ

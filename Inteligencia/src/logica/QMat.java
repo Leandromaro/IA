@@ -82,8 +82,10 @@ public class QMat {
        double sum=0;
        for (int i=0; i<this.matQ.length;i++){
              for (int j=0; j<this.matQ.length;j++){
-//                 for (in) 
-                 sum+= matQ[i][j].accionDeMaximoValor().getValor();
+                 for(int k=0; k<this.getEstado(i, j).accionesPosibles.size();k++){
+                     sum+= matQ[i][j].getValorAccion(k);
+                 }
+                 
              }   
         }
        return sum;

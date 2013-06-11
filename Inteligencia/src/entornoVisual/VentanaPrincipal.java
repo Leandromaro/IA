@@ -15,11 +15,13 @@ import java.awt.event.MouseWheelEvent;
 import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import javax.swing.border.Border;
 import logica.Configuraciones;
 import logica.Episodio;
+import static logica.Episodio.bloqueo;
 import logica.Estado;
 import logica.PoliticaEGreedy;
 import logica.QMat;
@@ -438,7 +440,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jBAvanza = new javax.swing.JButton();
         jLabelItera = new javax.swing.JLabel();
         jLabelContador = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jBGrafica = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -591,15 +593,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelContador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 120, 30));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Line-chart32.png"))); // NOI18N
-        jButton1.setText("Grafica");
-        jButton1.setEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBGrafica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Line-chart32.png"))); // NOI18N
+        jBGrafica.setText("Grafica");
+        jBGrafica.setEnabled(false);
+        jBGrafica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBGraficaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 120, 50));
+        jPanel1.add(jBGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 120, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 170, 380));
 
@@ -741,10 +743,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
               JButton boton = (JButton) jpTablero.getComponent(indice);
               boton.setBorder(BorderFactory.createLineBorder(Color.magenta,4));
               estadoInicial= estadoProximo;
-              
-              
-        }
-        
+         }
+        jBGrafica.setEnabled(true);
+        jBAvanza.setEnabled(false);
     }//GEN-LAST:event_jBAvanzaActionPerformed
     private void jTextCantidadEpisodiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantidadEpisodiosActionPerformed
         // TODO add your handling code here:
@@ -754,10 +755,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbEGreedyActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jBGraficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGraficaActionPerformed
         //panelCorrida.setCursor(new Cursor(Cursor.WAIT_CURSOR));
         
-        LineChart grafico = new LineChart("valres de matriz q ",episodios);
+        LineChart grafico = new LineChart("Valores de matriz Q ",episodios);
         grafico.setSize(800, 600);
         grafico.setLocation(this.getLocation());
         grafico.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
@@ -765,7 +766,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         grafico.setVisible(true);
         
        // panelCorrida.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jBGraficaActionPerformed
 
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
@@ -873,7 +874,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAvanza;
     private javax.swing.JButton jBEntrena;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jBGrafica;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabelContador;
     private javax.swing.JLabel jLabelItera;

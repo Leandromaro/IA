@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 public class Configuraciones {
     
     private static double gamma = 0.8;
-    private static double ValorNeutro= 0.15;
+    private static double ValorNeutro= 0.30;
     private static double valorPared= -1;
-    private static double valorMalo = 0.30;
+    private static double valorMalo = 0.15;
     private static double valorBueno= 0.60;
     private static double valorExcelente = 1;
     private static double valorFinal = 1000;

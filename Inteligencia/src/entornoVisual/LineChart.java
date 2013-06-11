@@ -33,7 +33,7 @@ public LineChart(String title,Episodio[] episodios){
         }
         coleccion.addSeries(valoresDeEpisodio);
     
-        this.chart = ChartFactory.createXYLineChart("Evolución de las Aptitudes","Generaciones","Aptitudes", 
+        this.chart = ChartFactory.createXYLineChart("Evolución de la Matriz Q","Episodios","Valores de Q", 
         coleccion,
         PlotOrientation.VERTICAL,
         true,
