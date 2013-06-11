@@ -4,6 +4,9 @@
  */
 package logica;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Leandro
@@ -15,6 +18,7 @@ public class Episodio {
     private Politica politica;
     private RMat matrizR;
     public double valorQ;
+    public static boolean bloqueo=false;
     
     public Episodio(QMat matrizQActual, Estado estadoFinal, Politica politica, RMat matR, int numeroEpisodio){
         //TODO:clonar matriz Q
@@ -26,6 +30,7 @@ public class Episodio {
         this.politica= politica;
         this.numeroEpisodio= numeroEpisodio;
         this.realizarMovimientos();
+        
     }
 
     private void realizarMovimientos() {
@@ -36,9 +41,19 @@ public class Episodio {
         
         Estado estadoActual= this.getMatrizQ().getEstado(iRandom, jRandom);
         //mientras estado actual distinto de estado final
-        while(! estadoActual.equals(this.estadoFinal)){
+        int contBloqueo=0;
+
+        while(! estadoActual.equals(this.estadoFinal)&&(bloqueo!=true)){
             Estado estadoProximo = Movimiento.realizarMovimiento(estadoActual, this.getPolitica(), this.getMatrizR());
             estadoActual= estadoProximo;
+            contBloqueo++;
+            if(contBloqueo== 5000){
+                bloqueo=true;
+            }
+        }
+        if(bloqueo==true){
+            JFrame ventana=new JFrame();
+                JOptionPane.showMessageDialog(ventana,"Agente Bloqueado o con poco entrenamiento","Error",JOptionPane.WARNING_MESSAGE);
         }
     }
     /**

@@ -58,16 +58,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     jLabelContador.setText(String.valueOf(contadorEpisodios));
                     
                     RMat mat= obtenerRdesdePantalla();
-
+                    
+                    
                     Configuraciones.setInicial(0,0);
-
+                    
                     mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
                     mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
                     mat.imprimirTab(); 
-
+                    
                     QMat matrizQ= new QMat(mat);
                     System.out.println(matrizQ);
-
+                    
             //        if (jrbEGreedy.isSelected()){
                         PoliticaEGreedy politica= new PoliticaEGreedy();
             //            double e = Double.parseDouble(jtfEpsTau.getText());
@@ -84,13 +85,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     System.out.println("Estado final");
                     System.out.println(estadoFinal);
                     episodios= new Episodio[Configuraciones.cantEpisodios];
-      
+                                        
                     while((contadorEpisodios<Configuraciones.cantEpisodios)){
+                        if(Episodio.bloqueo!=true){
                         episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,politica,mat,contadorEpisodios);
                         contadorEpisodios++;
                         jLabelContador.setText(String.valueOf(contadorEpisodios));
+                        }
                     }
-        
+                    
                     System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
                     jBAvanza.setEnabled(true);
                 throw new UnsupportedOperationException("Not supported yet.");
@@ -113,7 +116,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setVisible(false);
 
     }
-
+    
    
     public void cargarTableroManual(int dim){
         jpTablero.setVisible(false);
@@ -729,6 +732,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonInicial.setBorder(BorderFactory.createLineBorder(Color.magenta,4));
         
         //mientras estado actual distinto de estado final
+        
         while(! estadoInicial.equals(estadoFinal)){
                 
               Estado estadoProximo = estadoInicial.accionDeMaximoValor().getEstadoDestino();
@@ -737,6 +741,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
               JButton boton = (JButton) jpTablero.getComponent(indice);
               boton.setBorder(BorderFactory.createLineBorder(Color.magenta,4));
               estadoInicial= estadoProximo;
+              
+              
         }
         
     }//GEN-LAST:event_jBAvanzaActionPerformed
