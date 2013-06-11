@@ -588,7 +588,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelContador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 120, 30));
 
-        jButton1.setText("jButton1");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Line-chart32.png"))); // NOI18N
+        jButton1.setText("Grafica");
+        jButton1.setEnabled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
