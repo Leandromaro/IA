@@ -397,11 +397,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlConfigPoliticas.setVisible(flag);
         jlPolitica.setVisible(flag);
         jlEpsilon.setVisible(flag);
-        jlTau.setVisible(flag);
+        jlTau.setVisible(false); //Porque arranca EGreedy por defecto
         jtfEpsTau.setVisible(flag);
         jrbEGreedy.setVisible(flag);
         jrbSoftMax.setVisible(flag);
         jbConfirmar.setVisible(flag);
+        
+        
+        jrbEGreedy.setSelected(true);
+        jrbSoftMax.setSelected(false);
         
     }
     
@@ -521,6 +525,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbSoftMaxMouseClicked(evt);
             }
         });
+        jrbSoftMax.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbSoftMaxActionPerformed(evt);
+            }
+        });
         jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, -1, -1));
 
         jrbEGreedy.setText("E-Greedy");
@@ -556,6 +565,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jTextCantidadEpisodios.setText(" 750");
         jTextCantidadEpisodios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextCantidadEpisodios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -752,7 +762,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextCantidadEpisodiosActionPerformed
 
     private void jrbEGreedyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEGreedyActionPerformed
-        // TODO add your handling code here:
+
+        jrbSoftMax.setSelected(false);
+       
     }//GEN-LAST:event_jrbEGreedyActionPerformed
 
     private void jBGraficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGraficaActionPerformed
@@ -768,11 +780,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        // panelCorrida.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_jBGraficaActionPerformed
 
+    public void enabledJPSuperior(Boolean flag){
+        jpSuperior.setEnabled(flag);
+        jlConfig.setEnabled(flag);
+        jrbAuto.setEnabled(flag);
+        jrbManual.setEnabled(flag);
+        jcbDim.setEnabled(flag);
+        jlDim.setEnabled(flag);
+        jlManOAlea.setEnabled(flag);
+        jbGenerarTablero.setEnabled(flag);
+        jlConfigPoliticas.setEnabled(flag);
+        jlPolitica.setEnabled(flag);
+        jtfEpsTau.setEnabled(flag);;
+        jrbEGreedy.setEnabled(flag);
+        jrbSoftMax.setEnabled(flag);
+        jbConfirmar.setEnabled(flag);
+        jlTau.setEnabled(flag);
+        jlEpsilon.setEnabled(flag);
+    }
+    
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
-        jpSuperior.setEnabled(false);
+        this.enabledJPSuperior(false);
         jPanel1.setVisible(true);
     }//GEN-LAST:event_jbConfirmarActionPerformed
+
+    private void jrbSoftMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSoftMaxActionPerformed
+        
+        jrbEGreedy.setSelected(false);
+    }//GEN-LAST:event_jrbSoftMaxActionPerformed
 
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
