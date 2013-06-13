@@ -565,7 +565,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextCantidadEpisodios.setText(" 750");
         jTextCantidadEpisodios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTextCantidadEpisodios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -803,6 +802,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         this.enabledJPSuperior(false);
         jPanel1.setVisible(true);
+        jTextCantidadEpisodios.setText("750");
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jrbSoftMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSoftMaxActionPerformed
