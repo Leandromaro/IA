@@ -8,7 +8,7 @@ import entornoVisual.VentanaPrincipal;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static logica.ProgressBar.barra;
+
 
 /**
  *
@@ -35,7 +35,7 @@ public class Entrenador {
         R=mat;
         episodios= new Episodio[Configuraciones.getCantEpisodios()];
         int i=0;
-        new Thread(new ProgressBar.Hilo()).start();
+//        new Thread(new ProgressBar.Hilo()).start();
             while((i<numEpisodios)){
                episodios[i]= new Episodio(MQ,EFinal,P,R,i);
 //               barra.setValue(i);
@@ -96,31 +96,31 @@ public class Entrenador {
 //
 //return decimal;
 //}
- public static class Hilo implements Runnable{
-
-        
-        @Override
-        public void run() {
-        episodios= new Episodio[Configuraciones.getCantEpisodios()];
-        int i=0;
-        
-            while((i<numEpisodios)){
-               
-               episodios[i]= new Episodio(MQ,EFinal,P,R,i);
-//               barra.setValue(i);
-//               barra.repaint();
-//               try {
-//                Thread.sleep(50);
-//                } catch (InterruptedException ex) {
-//                Logger.getLogger(ProgressBar.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-               i++;
-               }
-        
-           System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ());
- 
-        
-        
-        }
-    }
+// public static class Hilo implements Runnable{
+//
+//        
+//        @Override
+//        public void run() {
+//        episodios= new Episodio[Configuraciones.getCantEpisodios()];
+//        int i=0;
+//        
+//            while((i<numEpisodios)){
+//               
+//               episodios[i]= new Episodio(MQ,EFinal,P,R,i);
+////               barra.setValue(i);
+////               barra.repaint();
+////               try {
+////                Thread.sleep(50);
+////                } catch (InterruptedException ex) {
+////                Logger.getLogger(ProgressBar.class.getName()).log(Level.SEVERE, null, ex);
+////                }
+//               i++;
+//               }
+//        
+//           System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ());
+// 
+//        
+//        
+//        }
+//    }
 }

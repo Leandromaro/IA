@@ -136,7 +136,7 @@ public class Configuraciones {
     
     public static void setDimension(int dim) {
         if (dim<6){
-        Configuraciones.dimension = 6;    //cambiar por 6
+        Configuraciones.dimension = 6;    
         }
         else if (dim<11){
             Configuraciones.dimension = dim;

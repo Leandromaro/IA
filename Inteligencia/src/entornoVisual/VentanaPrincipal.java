@@ -88,12 +88,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     System.out.println(estadoFinal);
                     episodios= new Episodio[Configuraciones.cantEpisodios];
                                         
-                    while((contadorEpisodios<Configuraciones.cantEpisodios)){
-                        if(Episodio.bloqueo!=true){
+                    while((contadorEpisodios<Configuraciones.cantEpisodios)&&(contadorEpisodios<2000)){
+                        
                         episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,politica,mat,contadorEpisodios);
                         contadorEpisodios++;
                         jLabelContador.setText(String.valueOf(contadorEpisodios));
-                        }
+                        
                     }
                     
                     System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 

@@ -19,6 +19,7 @@ public class Episodio {
     private RMat matrizR;
     public double valorQ;
     public static boolean bloqueo=false;
+    public static int contBloqueo=0;
     
     public Episodio(QMat matrizQActual, Estado estadoFinal, Politica politica, RMat matR, int numeroEpisodio){
         //TODO:clonar matriz Q
@@ -41,26 +42,19 @@ public class Episodio {
         
         Estado estadoActual= this.getMatrizQ().getEstado(iRandom, jRandom);
         //mientras estado actual distinto de estado final
-        int contBloqueo=0;
-       
-        while(!estadoActual.equals(this.estadoFinal)&&(bloqueo!=true)){
-            Estado estadoProximo = Movimiento.realizarMovimiento(estadoActual, this.getPolitica(), this.getMatrizR());
-            estadoActual= estadoProximo;
-            contBloqueo++;
-//            if(contBloqueo== 5000){
-//                bloqueo=true;
-//                contBloqueo=0;
-//            }
+    
+       contBloqueo=0;
+       bloqueo=false;
+        while(!estadoActual.equals(this.estadoFinal)){
+            
+              Estado estadoProximo = Movimiento.realizarMovimiento(estadoActual, this.getPolitica(), this.getMatrizR());
+              estadoActual= estadoProximo; 
+            
+         
         }
-//        if(bloqueo==true){
-//         JFrame ventana=new JFrame();
-//         JOptionPane.showMessageDialog(ventana,"Agente Bloqueado o con poco entrenamiento","Error",JOptionPane.WARNING_MESSAGE);
-//        }
-//        else{
-//            bloqueo=false;
-//        }
+    }    
         
-    }
+    
     /**
      * @return the matrizQ
      */
@@ -95,4 +89,21 @@ public class Episodio {
     public RMat getMatrizR() {
         return matrizR;
     }
+
+    public static void setBloqueo(boolean bloqueo) {
+        Episodio.bloqueo = bloqueo;
+    }
+
+    public static boolean isBloqueo() {
+        return bloqueo;
+    }
+
+    public static void setContBloqueo(int contBloqueo) {
+        Episodio.contBloqueo = contBloqueo;
+    }
+
+    public static int getContBloqueo() {
+        return contBloqueo;
+    }
+    
 }
