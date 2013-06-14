@@ -45,16 +45,14 @@ public class Episodio {
         Estado estadoActual= this.getMatrizQ().getEstado(iRandom, jRandom);
         //mientras estado actual distinto de estado final
        
-        while(!estadoActual.equals(this.estadoFinal)&&(cont<Configuraciones.cantEpisodios*3)){
+        while(!estadoActual.equals(this.estadoFinal)){
                 
               Estado estadoProximo = Movimiento.realizarMovimiento(estadoActual, this.getPolitica(), this.getMatrizR());
               estadoActual= estadoProximo; 
               cont++;
          
         }
-        if (cont==Configuraciones.cantEpisodios*3){
-            VentanaPrincipal.banderaTope=true;
-        }
+       
         
 
     }    

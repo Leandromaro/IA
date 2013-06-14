@@ -89,12 +89,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
           System.out.println(estadoFinal);
           episodios= new Episodio[Configuraciones.cantEpisodios];
 
-          int TopeEpisodios=2000;
-          if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){
-              TopeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
-          } 
+//          int TopeEpisodios=2000;
+//          if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){
+//              TopeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
+//          } 
 
-          while((contadorEpisodios<Configuraciones.cantEpisodios)&&(contadorEpisodios<TopeEpisodios)){
+          while((contadorEpisodios<Configuraciones.cantEpisodios)){
 
               episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
               contadorEpisodios++;
@@ -841,10 +841,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         iniciarEntrenamiento();//llama al hilo de entrenamiento
         jBEntrena.setEnabled(false);
-        if(banderaTope==true){
-            jBAvanza.setEnabled(false);
-            
-        }
+//        if(banderaTope==true){
+//            jBAvanza.setEnabled(false);
+//            
+//        }
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
@@ -863,7 +863,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         //mientras estado actual distinto de estado final
         int cont=0;
-        while(! estadoInicial.equals(estadoFinal)&&(cont<Configuraciones.cantEpisodios*3)){
+//        int tope=100000;
+        
+        while(!estadoInicial.equals(estadoFinal)){
                 
               Estado estadoProximo = estadoInicial.accionDeMaximoValor().getEstadoDestino();
               System.out.println(estadoProximo);
@@ -875,10 +877,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
          }
         jBGrafica.setEnabled(true);
         jBAvanza.setEnabled(false);
-            if (cont==Configuraciones.cantEpisodios*3){
-                JOptionPane.showMessageDialog(this,"Agente Final Bloqueado o Agente con poco entrenamiento","Error",JOptionPane.WARNING_MESSAGE);  
-               
-            }
+//            if (cont==tope){
+//                JOptionPane.showMessageDialog(this,"ESTOY ACA","Error",JOptionPane.WARNING_MESSAGE);  
+//               
+//            }
     }//GEN-LAST:event_jBAvanzaActionPerformed
     private void jTextCantidadEpisodiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantidadEpisodiosActionPerformed
         // TODO add your handling code here:
