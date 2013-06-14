@@ -350,7 +350,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                            ma.setflagFinal(flagFinal);             
                            ma.setjbEstado(e);
                            flagFinal = ma.getflagFinal();
-                           
                            ma.getjbEstado().repaint();
                         }
                     });

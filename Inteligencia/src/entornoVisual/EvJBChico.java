@@ -64,7 +64,7 @@ public class EvJBChico {
                     }else{
                         if("E".equals(s.getText())){
                             if(!VentanaPrincipal.estadoFinal){
-                                 s.setBackground(Color.white);
+                                 s.setBackground(Color.GREEN);
                                  s.setText("F");
                                  VentanaPrincipal.estadoFinal = true;
                                  VentanaPrincipal.vistaConfigPoliticas(true);
@@ -113,7 +113,7 @@ public class EvJBChico {
                     }else{
                         if("E".equals(s.getText())){
                             if(!VentanaPrincipal.estadoFinal){
-                                 s.setBackground(Color.white);
+                                 s.setBackground(Color.GREEN);
                                  s.setText("F");
                                  VentanaPrincipal.estadoFinal = true;
                                  VentanaPrincipal.vistaConfigPoliticas(true);
