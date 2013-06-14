@@ -67,7 +67,7 @@ public class EvJBGrande extends MouseAdapter{
                     }else{
                         if("Excelente".equals(s.getText())){
                             if(!VentanaPrincipal.estadoFinal){
-                                s.setBackground(Color.white);
+                                s.setBackground(Color.GREEN);
                                 s.setText("FINAL");
                                 VentanaPrincipal.estadoFinal = true;
                                 VentanaPrincipal.vistaConfigPoliticas(true);
@@ -115,7 +115,7 @@ public class EvJBGrande extends MouseAdapter{
                     }else{
                         if("Excelente".equals(s.getText())){
                             if(!VentanaPrincipal.estadoFinal){
-                                s.setBackground(Color.white);
+                                s.setBackground(Color.GREEN);
                                 s.setText("FINAL");
                                 VentanaPrincipal.estadoFinal = true;
                                 VentanaPrincipal.vistaConfigPoliticas(true);

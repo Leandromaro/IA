@@ -335,7 +335,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         JButton jbEstado = new JButton();
         //jbEstado.setBorder(blackline);
         jbEstado.setFont(cf.font);
-        jbEstado.setBackground(Color.white);
+        jbEstado.setBackground(Color.GREEN);
     
         
         flagFinal = true;
@@ -344,11 +344,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         if(dim < 8){
             jbEstado.setText("FINAL");
+            jbEstado.setBackground(Color.GREEN);
             jbEstado.addMouseWheelListener(new MouseAdapter(){
                     public void mouseWheelMoved(MouseWheelEvent e){
                            ma.setflagFinal(flagFinal);             
                            ma.setjbEstado(e);
                            flagFinal = ma.getflagFinal();
+                           
                            ma.getjbEstado().repaint();
                         }
                     });
@@ -359,13 +361,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             ma.setflagFinal(flagFinal);
                             ma.setjbEstado(e);
                             flagFinal = ma.getflagFinal();
+                            
                             ma.getjbEstado().repaint();
                         }
                     }); 
         }
         else{
             jbEstado.setText("F");
-            
+            jbEstado.setBackground(Color.GREEN);
             jbEstado.addMouseWheelListener(new MouseAdapter(){
                         public void mouseWheelMoved(MouseWheelEvent e){
                             
@@ -723,7 +726,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
            val = Configuraciones.cantEpisodios;
         }
         Configuraciones.setCantEpisodios(val);
-        iniciarEntrenamiento();
+        iniciarEntrenamiento();//llama al hilo de entrenamiento
         
         jBEntrena.setEnabled(false);
     }//GEN-LAST:event_jBEntrenaActionPerformed
@@ -750,7 +753,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
               System.out.println(estadoProximo);
               int indice= (estadoProximo.getPosI()*Configuraciones.getDimension() ) +estadoProximo.getPosJ();
               JButton boton = (JButton) jpTablero.getComponent(indice);
-              boton.setBorder(BorderFactory.createLineBorder(Color.magenta,4));
+              boton.setBorder(BorderFactory.createLineBorder(Color.magenta,4));//cambia de color el camino
               estadoInicial= estadoProximo;
          }
         jBGrafica.setEnabled(true);
@@ -841,6 +844,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 String txt= boton.getText();
                 Color fondo= boton.getBackground();
                 
+                //cargo los valores a la matriz R dependiendo de de las letras o colores de los botones del tablero
                 if(txt.equalsIgnoreCase("Malo") || txt.equalsIgnoreCase("M")){
                     matR.mat[i][j]=Configuraciones.getValorMalo();
                 }
