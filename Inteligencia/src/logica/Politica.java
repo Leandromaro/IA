@@ -4,18 +4,10 @@
  */
 package logica;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Leandro
  */
 public interface Politica {
-    /**
-     *
-     * @param estadoActual
-     * @return
-     */
-    public Accion seleccionarAccionSiguiente(Estado estadoActual);
-   
+     public Accion seleccionarAccionSiguiente(Estado e);
 }

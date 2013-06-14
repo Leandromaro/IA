@@ -42,6 +42,10 @@ public class EvJBChico {
         this.flagFinal = flagFinal;
     }
 
+    public void setFlagFinal(Boolean flagFinal) {
+        this.flagFinal = flagFinal;
+    }
+
     public void setjbEstado(MouseWheelEvent e){
                                
         JButton s = (JButton)e.getComponent();

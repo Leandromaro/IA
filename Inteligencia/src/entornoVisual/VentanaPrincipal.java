@@ -12,6 +12,7 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
+import java.util.HashSet;
 import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -23,7 +24,9 @@ import logica.Configuraciones;
 import logica.Episodio;
 import static logica.Episodio.bloqueo;
 import logica.Estado;
+import logica.Politica;
 import logica.PoliticaEGreedy;
+import logica.PoliticaSoftMax;
 import logica.QMat;
 import logica.RMat;
 /**
@@ -35,6 +38,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static Boolean estadoFinal =false;
     private Border blackline;
     private Boolean flagFinal;
+    private Boolean flagInicial;
+    
     private int contadorEpisodios;
 //    blackline = BorderFactory.createLineBorder(Color.black);
     
@@ -42,9 +47,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     EvJBGrande ma  = new EvJBGrande();
     EvJBChico  ma1 = new EvJBChico();
-    /**
-     * Creates new form VentanaPrincipal
-     */
+    private static boolean banderaEGreedy;
+    private static boolean banderaSoftMax;
+
+    public void setFlagInicial(Boolean flagInicial) {
+        this.flagInicial = flagInicial;
+    }
+   
     
     
     private Episodio[] episodios;
@@ -56,14 +65,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
              @Override
               protected Object doInBackground() throws Exception {
 
+                    
                     contadorEpisodios=0;
                     jLabelContador.setText(String.valueOf(contadorEpisodios));
                     
                     RMat mat= obtenerRdesdePantalla();
-                    
-                    
-                    Configuraciones.setInicial(0,0);
-                    
+                                      
                     mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
                     mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
                     mat.imprimirTab(); 
@@ -71,16 +78,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     QMat matrizQ= new QMat(mat);
                     System.out.println(matrizQ);
                     
-            //        if (jrbEGreedy.isSelected()){
+                    Politica p;
+                    PoliticaEGreedy pEG= new PoliticaEGreedy();
+                    PoliticaSoftMax pSM= new PoliticaSoftMax();
+                    
+                    if (banderaEGreedy==true){
                         PoliticaEGreedy politica= new PoliticaEGreedy();
-            //            double e = Double.parseDouble(jtfEpsTau.getText());
-            //            Configuraciones.setEpsilon(e);
-            //        }
-            //        if (jrbSoftMax.isSelected()){
-//                        PoliticaSoftMax politica= new PoliticaSoftMax();
-            //            double t = Double.parseDouble(jtfEpsTau.getText());
-            //            Configuraciones.setTau(t);
-            //        }
+                        p=pEG;
+                        double e = Double.parseDouble(jtfEpsTau.getText().trim());
+                        if (e>1){
+                            JOptionPane.showMessageDialog(this,"Valores Invalidos de Epsilon, Epsilon debe variar entre 0 y 1","Error",JOptionPane.WARNING_MESSAGE);
+                        }
+                        Configuraciones.setEpsilon(e);
+                        System.out.println("POLITICA EGREEDY");
+                        
+                       
+                    }
+                    else{
+                        PoliticaSoftMax politica= new PoliticaSoftMax();
+                        p=pSM;
+                        double t = Double.parseDouble(jtfEpsTau.getText().trim());
+                        Configuraciones.setTau(t);
+                        System.out.println("POLITICA SOFTMAX");
+                    }
+                    
                     //ProgressBar p =new ProgressBar();
 
                     Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
@@ -90,7 +111,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                         
                     while((contadorEpisodios<Configuraciones.cantEpisodios)&&(contadorEpisodios<2000)){
                         
-                        episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,politica,mat,contadorEpisodios);
+                        episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
                         contadorEpisodios++;
                         jLabelContador.setText(String.valueOf(contadorEpisodios));
                         
@@ -295,7 +316,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //        Se agrega Estado Final
         jpTablero.remove(this.posAbosAleatoria(dim));
         jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
- 
+ //        Se agrega Estado Inicial
+        jpTablero.remove(this.posAbosAleatoria(dim));
+        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
         jpTablero.setVisible(true);
   }
     
@@ -385,6 +408,72 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             ma1.setjbEstado(e);
                             flagFinal = ma1.getflagFinal();
                             ma1.getjbEstado().repaint();
+                        }
+                    }); 
+            
+        }
+    
+        jbEstado.repaint();
+        return jbEstado;     
+    }
+    
+    public JButton estadoInicial(int dim){
+        blackline = BorderFactory.createLineBorder(Color.black);
+ 
+        JButton jbEstado = new JButton();
+        //jbEstado.setBorder(blackline);
+        jbEstado.setFont(cf.font);
+        jbEstado.setBackground(Color.ORANGE);
+    
+        
+        flagInicial = true;
+        
+        ma.setFlagInicial(true);
+        ma1.setflagFinal(true);
+        
+        if(dim < 8){
+            jbEstado.setText("INICIAL");
+            jbEstado.setBackground(Color.ORANGE);
+            jbEstado.addMouseWheelListener(new MouseAdapter(){
+                    public void mouseWheelMoved(MouseWheelEvent e){
+                           ma.setflagFinal(flagInicial);             
+                           ma.setjbEstado(e);
+                           flagInicial = ma.getFlagInicial();
+                           ma.getjbEstado().repaint();
+                        }
+                    });
+//                  
+                    jbEstado.addMouseListener(new MouseAdapter(){
+                        public void mouseClicked(MouseEvent e){
+
+                            ma.setflagFinal(flagFinal);
+                            ma.setjbEstado(e);
+                            flagFinal = ma.getFlagInicial();
+                            
+                            ma.getjbEstado().repaint();
+                        }
+                    }); 
+        }
+        else{
+            jbEstado.setText("I");
+            jbEstado.setBackground(Color.ORANGE);
+            jbEstado.addMouseWheelListener(new MouseAdapter(){
+                        public void mouseWheelMoved(MouseWheelEvent e){
+                            
+                           ma.setflagFinal(flagInicial);             
+                           ma.setjbEstado(e);
+                           flagInicial = ma.getFlagInicial();
+                           ma.getjbEstado().repaint();
+                        }
+                    });
+//                  
+                    jbEstado.addMouseListener(new MouseAdapter(){
+                        public void mouseClicked(MouseEvent e){
+                            
+                           ma.setflagFinal(flagInicial);             
+                           ma.setjbEstado(e);
+                           flagInicial = ma.getFlagInicial();
+                           ma.getjbEstado().repaint();
                         }
                     }); 
             
@@ -631,20 +720,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         jBEntrena.setEnabled(false);
         jBAvanza.setEnabled(false);
-        jTextCantidadEpisodios.setText(" ");
-        jLabelContador.setText(" ");
+        jTextCantidadEpisodios.setText("");
+        jLabelContador.setText("");
+        jrbEGreedy.setSelected(true);
         if(jrbAuto.isSelected()){
         String aux = (String)jcbDim.getSelectedItem();
         switch(aux){
             case "6x6":this.cargarTableroAleatorio(6);
+                jTextCantidadEpisodios.setText("750");
                 break;
             case "7x7":this.cargarTableroAleatorio(7);
+                jTextCantidadEpisodios.setText("1000");
                 break;
             case "8x8":this.cargarTableroAleatorio(8);
+                jTextCantidadEpisodios.setText("1250");
                 break;
             case "9x9":this.cargarTableroAleatorio(9);
+                jTextCantidadEpisodios.setText("1500");
                 break;
             case "10x10":this.cargarTableroAleatorio(10);
+                jTextCantidadEpisodios.setText("2000");
                 break;
         }    
         
@@ -653,14 +748,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                String aux = (String)jcbDim.getSelectedItem();
                switch(aux){
                     case "6x6":this.cargarTableroManual(6);
+                    jTextCantidadEpisodios.setText("750");
                     break;
                 case "7x7":this.cargarTableroManual(7);
+                    jTextCantidadEpisodios.setText("1000");
                     break;
                 case "8x8":this.cargarTableroManual(8);
+                    jTextCantidadEpisodios.setText("1250");
                     break;
                 case "9x9":this.cargarTableroManual(9);
+                    jTextCantidadEpisodios.setText("1500");
                     break;
                 case "10x10":this.cargarTableroManual(10);
+                    jTextCantidadEpisodios.setText("2000");
                     break;
                }    
            
@@ -725,6 +825,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
            val = Configuraciones.cantEpisodios;
         }
         Configuraciones.setCantEpisodios(val);
+        
+        
         iniciarEntrenamiento();//llama al hilo de entrenamiento
         
         jBEntrena.setEnabled(false);
@@ -804,7 +906,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         this.enabledJPSuperior(false);
         jPanel1.setVisible(true);
-        jTextCantidadEpisodios.setText("750");
+        if (jrbEGreedy.isSelected()){
+            banderaEGreedy=true;
+        }
+        else{
+            banderaSoftMax=true;
+        }
+        
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jrbSoftMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSoftMaxActionPerformed
@@ -869,7 +977,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     matR.mat[i][j]=Configuraciones.getValorFinal();
                     Configuraciones.setFinal(i,j);
                 }
-
+                if("INICIAL".equals(txt) || "I".equals(txt)){
+                    matR.mat[i][j]=Configuraciones.getValorNeutro();
+                    Configuraciones.setInicial(i, j);
+                    
+                }
                 }
             }
         }

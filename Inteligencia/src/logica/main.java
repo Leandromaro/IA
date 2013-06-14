@@ -15,8 +15,8 @@ public class main {
   Configuraciones.setDimension(4);
   mat= new RMat(Configuraciones.getDimension());
     
-  Configuraciones.setInicial(0,0);
-  Configuraciones.setFinal(3, 3);
+//  Configuraciones.setInicial(0,0);
+//  Configuraciones.setFinal(3, 3);
   
   mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
   mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
