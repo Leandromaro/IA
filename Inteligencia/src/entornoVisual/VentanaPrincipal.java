@@ -36,10 +36,11 @@ import logica.RMat;
 public class VentanaPrincipal extends javax.swing.JFrame {
     
     public static Boolean estadoFinal =false;
+    public static Boolean estadoInicial =false;
     private Border blackline;
     private Boolean flagFinal;
     private Boolean flagInicial;
-    
+    private static Politica p;
     private int contadorEpisodios;
 //    blackline = BorderFactory.createLineBorder(Color.black);
     
@@ -47,8 +48,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     EvJBGrande ma  = new EvJBGrande();
     EvJBChico  ma1 = new EvJBChico();
-    private static boolean banderaEGreedy;
-    private static boolean banderaSoftMax;
+    public static boolean banderaEGreedy;
+    public static boolean banderaSoftMax;
 
     public void setFlagInicial(Boolean flagInicial) {
         this.flagInicial = flagInicial;
@@ -77,31 +78,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     
                     QMat matrizQ= new QMat(mat);
                     System.out.println(matrizQ);
-                    
-                    Politica p;
-                    PoliticaEGreedy pEG= new PoliticaEGreedy();
-                    PoliticaSoftMax pSM= new PoliticaSoftMax();
-                    
-                    if (banderaEGreedy==true){
-                        PoliticaEGreedy politica= new PoliticaEGreedy();
-                        p=pEG;
-                        double e = Double.parseDouble(jtfEpsTau.getText().trim());
-                        if (e>1){
-                            JOptionPane.showMessageDialog(this,"Valores Invalidos de Epsilon, Epsilon debe variar entre 0 y 1","Error",JOptionPane.WARNING_MESSAGE);
-                        }
-                        Configuraciones.setEpsilon(e);
-                        System.out.println("POLITICA EGREEDY");
-                        
-                       
-                    }
-                    else{
-                        PoliticaSoftMax politica= new PoliticaSoftMax();
-                        p=pSM;
-                        double t = Double.parseDouble(jtfEpsTau.getText().trim());
-                        Configuraciones.setTau(t);
-                        System.out.println("POLITICA SOFTMAX");
-                    }
-                    
                     //ProgressBar p =new ProgressBar();
 
                     Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
@@ -149,6 +125,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         blackline = BorderFactory.createLineBorder(Color.black);
         
         VentanaPrincipal.estadoFinal = false;
+        VentanaPrincipal.estadoInicial=false;
         VentanaPrincipal.vistaConfigPoliticas(false);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
          
@@ -213,7 +190,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         blackline = BorderFactory.createLineBorder(Color.black);
         
         VentanaPrincipal.estadoFinal = true;
-        
+        VentanaPrincipal.estadoInicial=true;
         VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                 
@@ -827,6 +804,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Configuraciones.setCantEpisodios(val);
         
         
+        if (banderaEGreedy==true){
+            PoliticaEGreedy politica= new PoliticaEGreedy();
+            p=politica;
+            System.out.println("POLITICA EGREEDY");
+            
+        }
+        else{
+            PoliticaSoftMax politica= new PoliticaSoftMax();
+            p=politica;
+            
+            System.out.println("POLITICA SOFTMAX");
+            
+        }
         iniciarEntrenamiento();//llama al hilo de entrenamiento
         
         jBEntrena.setEnabled(false);
@@ -912,7 +902,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         else{
             banderaSoftMax=true;
         }
-        
+        if (banderaSoftMax){
+        double tau;
+        String SoftMaxTau = jtfEpsTau.getText().trim();
+        try
+            {
+               tau = Double.parseDouble(SoftMaxTau);
+            }
+            catch (NumberFormatException nfe)
+            {
+               JOptionPane.showMessageDialog(this,"Valores Invalidos de Tau se cargara un valor por default","Error",JOptionPane.WARNING_MESSAGE);
+               jtfEpsTau.setText(Double.toString(Configuraciones.tau));
+               tau=Configuraciones.tau;
+            }
+            Configuraciones.setEpsilon(tau);
+        }
+        if (banderaEGreedy){
+            String epsilon = jtfEpsTau.getText().trim();
+            double EpsEGreedy;
+            try
+            {
+                
+                EpsEGreedy = Double.parseDouble(epsilon);
+                
+            }
+            catch (NumberFormatException nfe)
+            {
+               JOptionPane.showMessageDialog(this,"Valores Invalidos de Epsilon se cargara un valor por default","Error",JOptionPane.WARNING_MESSAGE);
+               jtfEpsTau.setText(Double.toString(Configuraciones.epsilon));
+               EpsEGreedy=Configuraciones.epsilon;
+            }
+            Configuraciones.setEpsilon(EpsEGreedy);
+        }
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jrbSoftMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSoftMaxActionPerformed
