@@ -5,6 +5,8 @@ import javax.swing.JDialog;
 import logica.Episodio;
 //import org.jfree.ui.*;
 import org.jfree.chart.*;
+import org.jfree.chart.entity.ChartEntity;
+import org.jfree.chart.entity.XYItemEntity;
 import org.jfree.chart.plot.*;
 //import org.jfree.chart.entity.*
 
@@ -42,7 +44,6 @@ public LineChart(String title,Episodio[] episodios){
         );
         
         this.plot = (XYPlot) chart.getPlot();
-        this.plot.setNoDataMessage("No hay datos para mostrar por favor elija una generación distinta a 0");
         this.plot.setBackgroundAlpha(0.2f);
         this.plot.setBackgroundPaint(Color.WHITE); 
         setSeriesStyle(chart, 0, "line");
@@ -57,49 +58,11 @@ public LineChart(String title,Episodio[] episodios){
         setContentPane(chartpanel);
 }
 
-@Override
-public void chartMouseClicked(ChartMouseEvent event){
-//    ChartEntity chartentity = event.getEntity();
-//    if (chartentity != null){
-//        XYItemEntity xyitem=(XYItemEntity) event.getEntity(); // get clicked entity
-//        System.out.println(xyitem.getItem()+" item of "+xyitem.getSeriesIndex()+"series");
-//        int indiceIndividuo=0;
-//        Generacion generacion= GeneracionManager.getGeneracionNumero(xyitem.getItem());
-//        if(xyitem.getSeriesIndex()==0){
-//            indiceIndividuo= generacion.obtenerMejorIndividuo().getNroIndividuo();
-//        }else{
-//            if(xyitem.getSeriesIndex()==2){
-//            indiceIndividuo= generacion.obtenerPeorIndividuo().getNroIndividuo();
-//            }else{
-//                return;
-//            }
-//        }
-//        
-//        VisorPoblacion ventanaPoblacion= new VisorPoblacion(xyitem.getItem(),GeneracionManager.getGeneraciones().size(),indiceIndividuo);
-//        ventanaPoblacion.setSize(800, 600);
-//        ventanaPoblacion.setLocation(this.getLocation());
-//        ventanaPoblacion.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
-//        ventanaPoblacion.setResizable(false);
-//        ventanaPoblacion.setVisible(true);
-//    }
-}
 
-    @Override
-    public void chartMouseMoved(ChartMouseEvent event){
-//        ChartEntity chartentity = event.getEntity();
-//        if (chartentity.getClass()== XYItemEntity.class){
-//            //mostrar tooltip
-//            if (chartentity != null){
-//                XYItemEntity xyitem=(XYItemEntity) event.getEntity();
-//                if(xyitem.getSeriesIndex()==0 || xyitem.getSeriesIndex()==2){
-//                     this.setCursor(new Cursor(Cursor.HAND_CURSOR));
-//                }
-//            }
-//        }
-//        else{
-//            this.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-//        }
-    }
+
+
+
+    
     
         /** Line style: line */
     public static final String STYLE_LINE = "line";
@@ -198,6 +161,16 @@ public void chartMouseClicked(ChartMouseEvent event){
                 System.err.println("Error setting color '"+color+"' for series '"+seriesIndex+"' of chart '"+chart+"': "+e);
             }
         }
+    }
+
+    @Override
+    public void chartMouseClicked(ChartMouseEvent cme) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void chartMouseMoved(ChartMouseEvent cme) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

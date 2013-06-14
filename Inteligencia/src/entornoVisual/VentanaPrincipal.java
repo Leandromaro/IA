@@ -85,7 +85,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     System.out.println(estadoFinal);
                     episodios= new Episodio[Configuraciones.cantEpisodios];
                                         
-                    while((contadorEpisodios<Configuraciones.cantEpisodios)&&(contadorEpisodios<2000)){
+                    int TopeEpisodios=2000;
+                    if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){
+                        TopeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
+                    } 
+                    
+                    while((contadorEpisodios<Configuraciones.cantEpisodios)&&(contadorEpisodios<TopeEpisodios)){
                         
                         episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
                         contadorEpisodios++;
@@ -109,11 +114,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public VentanaPrincipal() {
         initComponents();
-     
         VentanaPrincipal.vistaConfigPoliticas(false);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
         jPanel1.setVisible(false);
-
+        jCEpsilon.setVisible(false);
+        jCTau.setVisible(false);
     }
     
    
@@ -466,7 +471,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlPolitica.setVisible(flag);
         jlEpsilon.setVisible(flag);
         jlTau.setVisible(false); //Porque arranca EGreedy por defecto
-        jtfEpsTau.setVisible(flag);
+//        jtfEpsTau.setVisible(flag);
         jrbEGreedy.setVisible(flag);
         jrbSoftMax.setVisible(flag);
         jbConfirmar.setVisible(flag);
@@ -497,13 +502,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jbGenerarTablero = new javax.swing.JButton();
         jlConfigPoliticas = new javax.swing.JLabel();
         jlPolitica = new javax.swing.JLabel();
-        jlEpsilon = new javax.swing.JLabel();
-        jtfEpsTau = new javax.swing.JTextField();
-        jlTau = new javax.swing.JLabel();
         jrbSoftMax = new javax.swing.JRadioButton();
         jrbEGreedy = new javax.swing.JRadioButton();
         jlAusenciaEstadoFinal = new javax.swing.JLabel();
         jbConfirmar = new javax.swing.JButton();
+        jlTau = new javax.swing.JLabel();
+        jlEpsilon = new javax.swing.JLabel();
+        jCEpsilon = new javax.swing.JComboBox();
+        jCTau = new javax.swing.JComboBox();
         jpTablero = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTextCantidadEpisodios = new javax.swing.JTextField();
@@ -526,10 +532,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jlConfig.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlConfig.setText("Creación del escenario:");
-        jpSuperior.add(jlConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 150, -1));
+        jpSuperior.add(jlConfig, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, -1));
 
         jlDim.setText("Dimensión:");
-        jpSuperior.add(jlDim, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        jpSuperior.add(jlDim, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jcbDim.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "6x6", "7x7", "8x8", "9x9", "10x10" }));
         jcbDim.addActionListener(new java.awt.event.ActionListener() {
@@ -537,10 +543,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jcbDimActionPerformed(evt);
             }
         });
-        jpSuperior.add(jcbDim, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
+        jpSuperior.add(jcbDim, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jlManOAlea.setText("Creación:");
-        jpSuperior.add(jlManOAlea, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 20));
+        jpSuperior.add(jlManOAlea, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
 
         jrbAuto.setText("Automática");
         jrbAuto.addActionListener(new java.awt.event.ActionListener() {
@@ -548,7 +554,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbAutoActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+        jpSuperior.add(jrbAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         jrbManual.setText("Manual");
         jrbManual.addActionListener(new java.awt.event.ActionListener() {
@@ -556,7 +562,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbManualActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        jpSuperior.add(jrbManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
 
         jbGenerarTablero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbGenerarTablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Accept32.png"))); // NOI18N
@@ -567,25 +573,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbGenerarTableroActionPerformed(evt);
             }
         });
-        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, -1, 54));
+        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, 54));
 
         jlConfigPoliticas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlConfigPoliticas.setText("Configuración de la Política:");
-        jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 200, 20));
+        jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 200, 20));
 
         jlPolitica.setText("Política: ");
-        jpSuperior.add(jlPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 40, -1, -1));
-
-        jlEpsilon.setText("Epsilon:");
-        jlEpsilon.setName(""); // NOI18N
-        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
-
-        jtfEpsTau.setText("0.1");
-        jpSuperior.add(jtfEpsTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 100, 40, -1));
-
-        jlTau.setText("Tau: ");
-        jlTau.setName(""); // NOI18N
-        jpSuperior.add(jlTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, 70, -1));
+        jpSuperior.add(jlPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, 20));
 
         jrbSoftMax.setText("SoftMax");
         jrbSoftMax.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -598,7 +593,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbSoftMaxActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 70, -1, -1));
+        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, -1, -1));
 
         jrbEGreedy.setText("E-Greedy");
         jrbEGreedy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -611,10 +606,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbEGreedyActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, -1, -1));
+        jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, 20));
 
         jlAusenciaEstadoFinal.setText("*Advertencia: El escenario no tiene un estado \"Final\"");
-        jpSuperior.add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, -1, -1));
+        jpSuperior.add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, 20));
 
         jbConfirmar.setText("Confirmar Escenario y Politicas");
         jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -623,6 +618,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 210, 120));
+
+        jlTau.setText("Tau: ");
+        jlTau.setName(""); // NOI18N
+        jpSuperior.add(jlTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, -1, -1));
+
+        jlEpsilon.setText("Epsilon:");
+        jlEpsilon.setName(""); // NOI18N
+        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, 20));
+
+        jCEpsilon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,7", "0,8", "0,9", " " }));
+        jCEpsilon.setEnabled(false);
+        jCEpsilon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCEpsilonActionPerformed(evt);
+            }
+        });
+        jpSuperior.add(jCEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 100, 50, 30));
+
+        jCTau.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", " " }));
+        jCTau.setEnabled(false);
+        jpSuperior.add(jCTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, 30));
 
         getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 140));
 
@@ -689,17 +705,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public final void visibleConfigPoliticas(Boolean visible){
         jlConfigPoliticas.setVisible(visible);
         jlPolitica.setVisible(visible);
-        jtfEpsTau.setVisible(visible);
+        
         jrbEGreedy.setVisible(visible);
         jrbSoftMax.setVisible(visible);
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
-        
+        jCEpsilon.setVisible(true);
+        jCTau.setVisible(true);
         jBEntrena.setEnabled(false);
         jBAvanza.setEnabled(false);
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
-        jrbEGreedy.setSelected(true);
+        jCEpsilon.enable(true);
         if(jrbAuto.isSelected()){
         String aux = (String)jcbDim.getSelectedItem();
         switch(aux){
@@ -769,7 +786,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jrbEGreedyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbEGreedyMouseClicked
 
-        jtfEpsTau.setVisible(true);
+//        jtfEpsTau.setVisible(true);
         jlEpsilon.setVisible(true);
         jlTau.setVisible(false);
         jrbEGreedy.setSelected(true);
@@ -779,7 +796,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jrbSoftMaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jrbSoftMaxMouseClicked
 
-        jtfEpsTau.setVisible(true);
+//        jtfEpsTau.setVisible(true);
         jlTau.setVisible(true);
         jlEpsilon.setVisible(false);
         jrbSoftMax.setSelected(true);
@@ -855,9 +872,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextCantidadEpisodiosActionPerformed
 
     private void jrbEGreedyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEGreedyActionPerformed
-
-        jrbSoftMax.setSelected(false);
-       
+        jCEpsilon.setEnabled(true);
+        jlEpsilon.setEnabled(true);
+        jCTau.setEnabled(false);
     }//GEN-LAST:event_jrbEGreedyActionPerformed
 
     private void jBGraficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGraficaActionPerformed
@@ -884,7 +901,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jbGenerarTablero.setEnabled(flag);
         jlConfigPoliticas.setEnabled(flag);
         jlPolitica.setEnabled(flag);
-        jtfEpsTau.setEnabled(flag);;
+        jCEpsilon.setEnabled(flag);;
         jrbEGreedy.setEnabled(flag);
         jrbSoftMax.setEnabled(flag);
         jbConfirmar.setEnabled(flag);
@@ -894,52 +911,31 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
-        this.enabledJPSuperior(false);
         jPanel1.setVisible(true);
         if (jrbEGreedy.isSelected()){
             banderaEGreedy=true;
         }
         else{
-            banderaSoftMax=true;
-        }
-        if (banderaSoftMax){
-        double tau;
-        String SoftMaxTau = jtfEpsTau.getText().trim();
-        try
-            {
-               tau = Double.parseDouble(SoftMaxTau);
-            }
-            catch (NumberFormatException nfe)
-            {
-               JOptionPane.showMessageDialog(this,"Valores Invalidos de Tau se cargara un valor por default","Error",JOptionPane.WARNING_MESSAGE);
-               jtfEpsTau.setText(Double.toString(Configuraciones.tau));
-               tau=Configuraciones.tau;
-            }
-            Configuraciones.setEpsilon(tau);
+                 
+        
+            Configuraciones.setEpsilon(jCTau.getSelectedIndex());
         }
         if (banderaEGreedy){
-            String epsilon = jtfEpsTau.getText().trim();
-            double EpsEGreedy;
-            try
-            {
-                
-                EpsEGreedy = Double.parseDouble(epsilon);
-                
-            }
-            catch (NumberFormatException nfe)
-            {
-               JOptionPane.showMessageDialog(this,"Valores Invalidos de Epsilon se cargara un valor por default","Error",JOptionPane.WARNING_MESSAGE);
-               jtfEpsTau.setText(Double.toString(Configuraciones.epsilon));
-               EpsEGreedy=Configuraciones.epsilon;
-            }
-            Configuraciones.setEpsilon(EpsEGreedy);
+            
+            Configuraciones.setEpsilon(jCEpsilon.getSelectedIndex());
         }
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jrbSoftMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSoftMaxActionPerformed
-        
+        jlTau.setVisible(true);
+        jCTau.setEnabled(true);
+        jCEpsilon.setEnabled(false);
         jrbEGreedy.setSelected(false);
     }//GEN-LAST:event_jrbSoftMaxActionPerformed
+
+    private void jCEpsilonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEpsilonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCEpsilonActionPerformed
 
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
@@ -1040,6 +1036,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new VentanaPrincipal().setVisible(true);
+                
             }
         });
     }
@@ -1047,6 +1044,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBAvanza;
     private javax.swing.JButton jBEntrena;
     private javax.swing.JButton jBGrafica;
+    private javax.swing.JComboBox jCEpsilon;
+    private javax.swing.JComboBox jCTau;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabelContador;
     private javax.swing.JLabel jLabelItera;
@@ -1070,6 +1069,5 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JRadioButton jrbEGreedy;
     private javax.swing.JRadioButton jrbManual;
     public static javax.swing.JRadioButton jrbSoftMax;
-    public static javax.swing.JTextField jtfEpsTau;
     // End of variables declaration//GEN-END:variables
 }
