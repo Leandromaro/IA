@@ -14,6 +14,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.util.HashSet;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -42,6 +44,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private Boolean flagInicial;
     private static Politica p;
     private int contadorEpisodios;
+    public static boolean banderaTope=false;
 //    blackline = BorderFactory.createLineBorder(Color.black);
     
     private ColoresyFormas cf = new ColoresyFormas();
@@ -62,50 +65,51 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      public void iniciarEntrenamiento(){
          
         try{   
-            final SwingWorker iniciarEntrenamiento = new SwingWorker(){
-             @Override
-              protected Object doInBackground() throws Exception {
+            final SwingWorker iniciarEntrenamiento;
+            iniciarEntrenamiento = new SwingWorker(){
+        @Override
+        protected Object doInBackground() throws Exception {
 
-                    
-                    contadorEpisodios=0;
-                    jLabelContador.setText(String.valueOf(contadorEpisodios));
-                    
-                    RMat mat= obtenerRdesdePantalla();
-                                      
-                    mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
-                    mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
-                    mat.imprimirTab(); 
-                    
-                    QMat matrizQ= new QMat(mat);
-                    System.out.println(matrizQ);
-                    //ProgressBar p =new ProgressBar();
 
-                    Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
-                    System.out.println("Estado final");
-                    System.out.println(estadoFinal);
-                    episodios= new Episodio[Configuraciones.cantEpisodios];
-                                        
-                    int TopeEpisodios=2000;
-                    if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){
-                        TopeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
-                    } 
-                    
-                    while((contadorEpisodios<Configuraciones.cantEpisodios)&&(contadorEpisodios<TopeEpisodios)){
-                        
-                        episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
-                        contadorEpisodios++;
-                        jLabelContador.setText(String.valueOf(contadorEpisodios));
-                        
-                    }
-                    
-                    System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
-                    jBAvanza.setEnabled(true);
-                throw new UnsupportedOperationException("Not supported yet.");
-                }
-            
-            };
+          contadorEpisodios=0;
+          jLabelContador.setText(String.valueOf(contadorEpisodios));
 
-            iniciarEntrenamiento.execute();
+          RMat mat= obtenerRdesdePantalla();
+
+          mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
+          mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
+          mat.imprimirTab(); 
+
+          QMat matrizQ= new QMat(mat);
+          System.out.println(matrizQ);
+          //ProgressBar p =new ProgressBar();
+
+          Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
+          System.out.println("Estado final");
+          System.out.println(estadoFinal);
+          episodios= new Episodio[Configuraciones.cantEpisodios];
+
+          int TopeEpisodios=2000;
+          if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){
+              TopeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
+          } 
+
+          while((contadorEpisodios<Configuraciones.cantEpisodios)&&(contadorEpisodios<TopeEpisodios)){
+
+              episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
+              contadorEpisodios++;
+              jLabelContador.setText(String.valueOf(contadorEpisodios));
+
+          }
+
+          System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
+          jBAvanza.setEnabled(true);
+            throw new UnsupportedOperationException("Not supported yet.");
+            }
+
+        };
+
+        iniciarEntrenamiento.execute();
 
         }catch (Exception e){
             JOptionPane.showMessageDialog(this,"Error" , e.toString(), 1);
@@ -834,9 +838,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             System.out.println("POLITICA SOFTMAX");
             
         }
-        iniciarEntrenamiento();//llama al hilo de entrenamiento
         
+        iniciarEntrenamiento();//llama al hilo de entrenamiento
         jBEntrena.setEnabled(false);
+        if(banderaTope==true){
+            jBAvanza.setEnabled(false);
+            
+        }
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
@@ -854,8 +862,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonInicial.setBorder(BorderFactory.createLineBorder(Color.magenta,4));
         
         //mientras estado actual distinto de estado final
-        
-        while(! estadoInicial.equals(estadoFinal)){
+        int cont=0;
+        while(! estadoInicial.equals(estadoFinal)&&(cont<Configuraciones.cantEpisodios*3)){
                 
               Estado estadoProximo = estadoInicial.accionDeMaximoValor().getEstadoDestino();
               System.out.println(estadoProximo);
@@ -863,9 +871,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
               JButton boton = (JButton) jpTablero.getComponent(indice);
               boton.setBorder(BorderFactory.createLineBorder(Color.magenta,4));//cambia de color el camino
               estadoInicial= estadoProximo;
+              cont++;
          }
         jBGrafica.setEnabled(true);
         jBAvanza.setEnabled(false);
+            if (cont==Configuraciones.cantEpisodios*3){
+                JOptionPane.showMessageDialog(this,"Agente Final Bloqueado o Agente con poco entrenamiento","Error",JOptionPane.WARNING_MESSAGE);  
+               
+            }
     }//GEN-LAST:event_jBAvanzaActionPerformed
     private void jTextCantidadEpisodiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantidadEpisodiosActionPerformed
         // TODO add your handling code here:

@@ -4,6 +4,7 @@
  */
 package logica;
 
+import entornoVisual.VentanaPrincipal;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -39,19 +40,23 @@ public class Episodio {
         int dimension= this.getMatrizR().getDimension();
         int iRandom= (int) Math.floor(Math.random() * dimension);
         int jRandom= (int) Math.floor(Math.random() * dimension);
-        
+//        int contadorEpisodios=0;
+        int cont=0;
         Estado estadoActual= this.getMatrizQ().getEstado(iRandom, jRandom);
         //mientras estado actual distinto de estado final
-    
-       contBloqueo=0;
-       bloqueo=false;
-        while(!estadoActual.equals(this.estadoFinal)){
-            
+       
+        while(!estadoActual.equals(this.estadoFinal)&&(cont<Configuraciones.cantEpisodios*3)){
+                
               Estado estadoProximo = Movimiento.realizarMovimiento(estadoActual, this.getPolitica(), this.getMatrizR());
               estadoActual= estadoProximo; 
-            
+              cont++;
          
         }
+        if (cont==Configuraciones.cantEpisodios*3){
+            VentanaPrincipal.banderaTope=true;
+        }
+        
+
     }    
         
     
