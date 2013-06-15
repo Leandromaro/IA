@@ -660,13 +660,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbSoftMax.setVisible(visible);
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
-        
+               
         jBEntrena.setEnabled(false);
         jBAvanza.setEnabled(false);
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
-        
-        
         
         if(jrbAuto.isSelected()){
         String aux = (String)jcbDim.getSelectedItem();
@@ -725,6 +723,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jrbAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAutoActionPerformed
 
+        jCEpsilon.setEnabled(true);
         jrbManual.setSelected(false);
         jrbAuto.setSelected(true);
         jbGenerarTablero.setEnabled(true);
@@ -790,6 +789,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jBEntrena.setEnabled(false);
         
         this.setEstadoInicialEscenario();
+        
+        
 
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
@@ -814,11 +815,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }
     
+ 
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
         //recorriendo para ver mejor camino
-        QMat matrizQ = episodios[Configuraciones.cantEpisodios-1].getMatrizQ();
-        Estado estadoInicial= matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+        QMat matrizQ = episodios[Configuraciones.cantEpisodios-1].getMatrizQ();    
+        
+        
+//        Estado estadoInicial = matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+        // setea el estado inicial
+        Estado estadoInicial= null;
+        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+            for (int j = 0; j < Configuraciones.getDimension(); j++) {
+                int indice=(i*Configuraciones.getDimension()) + j;
+                Component componente= jpTablero.getComponent(indice);
+                if(componente.getClass() == JButton.class){
+                    JButton s = (JButton)componente;
+                    if("I".equals(s.getText())){
+                        estadoInicial= matrizQ.getEstado(i,j);         
+                    }
+                }     
+            }
+        }        
+
         Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
+        
         System.out.println(estadoInicial);
         System.out.println("Movimientos:");
 

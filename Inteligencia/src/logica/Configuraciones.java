@@ -21,8 +21,8 @@ public class Configuraciones {
     private static double valorFinal = 100000;
     private static int dimension = 3; 
     private static int valorPorDefectoMatQ= 100;
-    public static int filaI;
-    public static int filaF;
+    public static int filaI=0;
+    public static int filaF=0;
     public static int colI;
     public static int colF;
     public static int cantEpisodios= 750;
