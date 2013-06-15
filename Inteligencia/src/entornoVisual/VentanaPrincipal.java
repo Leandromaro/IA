@@ -863,9 +863,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         //mientras estado actual distinto de estado final
         int cont=0;
         int x = Configuraciones.getDimension();
-        int y = 5;
+        int y;
+        if(jCEpsilon.getSelectedIndex()<0.5){
+            y = 6;
+            
+        }
+        else{
+            y = 5;
+        }
         int tope = (int) Math.pow(x, y);
-        
         while(!estadoInicial.equals(estadoFinal)&&(cont<tope)){
                 
               Estado estadoProximo = estadoInicial.accionDeMaximoValor().getEstadoDestino();

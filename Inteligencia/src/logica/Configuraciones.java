@@ -14,11 +14,11 @@ public class Configuraciones {
     
     private static double gamma = 0.8;
     private static double ValorNeutro= 0.30;
-    private static double valorPared= -1000;
+    private static double valorPared= -1;
     private static double valorMalo = 0.15;
     private static double valorBueno= 0.60;
     private static double valorExcelente = 1;
-    private static double valorFinal = 1000;
+    private static double valorFinal = 100000;
     private static int dimension = 3; 
     private static int valorPorDefectoMatQ= 0;
     public static int filaI;
