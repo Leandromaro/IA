@@ -173,6 +173,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.setVisible(false);
         jCEpsilon.setVisible(false);
         jCTau.setVisible(false);
+        jlEstadoInicial.setVisible(false);
     }
     
    
@@ -469,6 +470,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelItera = new javax.swing.JLabel();
         jLabelContador = new javax.swing.JLabel();
         jBGrafica = new javax.swing.JButton();
+        jlEstadoInicial = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -648,6 +650,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 170, 380));
 
+        jlEstadoInicial.setText("*Advertencia: Debe elegir un estado Inicial ");
+        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 320, -1));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -754,6 +759,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbSoftMaxMouseClicked
 
     private void jBEntrenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrenaActionPerformed
+        
+        jlEstadoInicial.setVisible(true);
+        jBAvanza.setEnabled(false);
         
         String userdata = jTextCantidadEpisodios.getText().trim();
         int val;
@@ -939,8 +947,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             banderaEGreedy=true;
         }
         else{
-                 
-        
             Configuraciones.setEpsilon(jCTau.getSelectedIndex());
         }
         if (banderaEGreedy){
@@ -1066,7 +1072,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBAvanza;
+    public static javax.swing.JButton jBAvanza;
     private javax.swing.JButton jBEntrena;
     private javax.swing.JButton jBGrafica;
     public static javax.swing.JComboBox jCEpsilon;
@@ -1085,6 +1091,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JLabel jlConfigPoliticas;
     private javax.swing.JLabel jlDim;
     public static javax.swing.JLabel jlEpsilon;
+    public static javax.swing.JLabel jlEstadoInicial;
     private javax.swing.JLabel jlManOAlea;
     public static javax.swing.JLabel jlPolitica;
     public static javax.swing.JLabel jlTau;

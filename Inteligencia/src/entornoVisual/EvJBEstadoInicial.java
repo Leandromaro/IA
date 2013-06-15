@@ -24,26 +24,36 @@ public class EvJBEstadoInicial {
     }
     
     public void setjbEstado(MouseWheelEvent e){
-        JButton s = (JButton)e.getComponent();
+        if(!Configuraciones.getFlagEInicialSeleccionado()){
+            JButton s = (JButton)e.getComponent();
         
-        s.setBackground(Color.white);
-        s.setText("I");
+            s.setBackground(Color.white);
+            s.setText("I");
         
-        Configuraciones.setFlagEInicialSeleccionado(true);
+            Configuraciones.setFlagEInicialSeleccionado(true);
         
-        this.jbEstado = s;
-        this.jbEstado.repaint();
+            VentanaPrincipal.jlEstadoInicial.setVisible(false);
+            VentanaPrincipal.jBAvanza.setEnabled(true);
+        
+            this.jbEstado = s;
+            this.jbEstado.repaint();
+        }
     }
     
     public void setjbEstado(MouseEvent e){
-        JButton s = (JButton)e.getComponent();
+        if(!Configuraciones.getFlagEInicialSeleccionado()){
+            JButton s = (JButton)e.getComponent();
         
-        s.setBackground(Color.white);
-        s.setText("I");
+            s.setBackground(Color.white);
+            s.setText("I");
         
-        Configuraciones.setFlagEInicialSeleccionado(true);
+            Configuraciones.setFlagEInicialSeleccionado(true);
         
-        this.jbEstado = s;
-        this.jbEstado.repaint();
+            VentanaPrincipal.jlEstadoInicial.setVisible(false);
+            VentanaPrincipal.jBAvanza.setEnabled(true);
+        
+            this.jbEstado = s;
+            this.jbEstado.repaint();
+        }
     }
 }
