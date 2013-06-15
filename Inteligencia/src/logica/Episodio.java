@@ -21,7 +21,7 @@ public class Episodio {
     public double valorQ;
     public static boolean bloqueo=false;
     public static int contBloqueo=0;
-    
+    public static int tope;
     public Episodio(QMat matrizQActual, Estado estadoFinal, Politica politica, RMat matR, int numeroEpisodio){
         //TODO:clonar matriz Q
         this.valorQ= matrizQActual.getValorQ();
@@ -44,8 +44,10 @@ public class Episodio {
         int cont=0;
         Estado estadoActual= this.getMatrizQ().getEstado(iRandom, jRandom);
         //mientras estado actual distinto de estado final
-       
-        while(!estadoActual.equals(this.estadoFinal)){
+        
+        tope=Configuraciones.getDimension();
+        tope=tope*tope*tope*tope*tope;
+        while(!estadoActual.equals(this.estadoFinal)&&(cont<tope)){
                 
               Estado estadoProximo = Movimiento.realizarMovimiento(estadoActual, this.getPolitica(), this.getMatrizR());
               estadoActual= estadoProximo; 

@@ -88,20 +88,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
           System.out.println("Estado final");
           System.out.println(estadoFinal);
           episodios= new Episodio[Configuraciones.cantEpisodios];
-
-//          int TopeEpisodios=2000;
-//          if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){
-//              TopeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
-//          } 
-
-          while((contadorEpisodios<Configuraciones.cantEpisodios)){
-
+          int cont=0;
+          int TopeEpisodios=2000;
+          if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){
+              TopeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
+          } 
+          
+          while((contadorEpisodios<Configuraciones.cantEpisodios)&&(cont<TopeEpisodios)){
               episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
               contadorEpisodios++;
               jLabelContador.setText(String.valueOf(contadorEpisodios));
-
+              cont++;
           }
-
+          if(cont==TopeEpisodios){
+              JFrame j=new JFrame();
+              JOptionPane.showMessageDialog(j,"Estoy ACA","Error",JOptionPane.WARNING_MESSAGE);
+          }
           System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
           jBAvanza.setEnabled(true);
             throw new UnsupportedOperationException("Not supported yet.");
@@ -841,10 +843,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         iniciarEntrenamiento();//llama al hilo de entrenamiento
         jBEntrena.setEnabled(false);
-//        if(banderaTope==true){
-//            jBAvanza.setEnabled(false);
-//            
-//        }
+
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
@@ -863,9 +862,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         //mientras estado actual distinto de estado final
         int cont=0;
-//        int tope=100000;
+        int x = Configuraciones.getDimension();
+        int y = 5;
+        int tope = (int) Math.pow(x, y);
         
-        while(!estadoInicial.equals(estadoFinal)){
+        while(!estadoInicial.equals(estadoFinal)&&(cont<tope)){
                 
               Estado estadoProximo = estadoInicial.accionDeMaximoValor().getEstadoDestino();
               System.out.println(estadoProximo);
@@ -877,10 +878,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
          }
         jBGrafica.setEnabled(true);
         jBAvanza.setEnabled(false);
-//            if (cont==tope){
-//                JOptionPane.showMessageDialog(this,"ESTOY ACA","Error",JOptionPane.WARNING_MESSAGE);  
-//               
-//            }
+        System.out.println(cont);
+        if (cont==tope){
+            if(jrbEGreedy.isSelected()){
+                JOptionPane.showMessageDialog(this,"Agente Bloqueado o con poco entrenamiento, pruebe con un valor de Espsilon mayor, o con mayor numero de episodios","Error",JOptionPane.WARNING_MESSAGE);
+            }
+            else{
+               JOptionPane.showMessageDialog(this,"Agente Bloqueado o con poco entrenamiento","Error",JOptionPane.WARNING_MESSAGE); 
+            }
+            
+        }
     }//GEN-LAST:event_jBAvanzaActionPerformed
     private void jTextCantidadEpisodiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantidadEpisodiosActionPerformed
         // TODO add your handling code here:
