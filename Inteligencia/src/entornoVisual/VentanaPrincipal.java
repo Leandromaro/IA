@@ -214,14 +214,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             for (int j = 0; j < dim; j++) {
                 
                 JButton jbEstado = new JButton();
-                //jbEstado.setBorder(blackline);
-                jbEstado.setFont(cf.font);
-                //cargar el background y el tex en base a lo que tiene la matriz r
+                jbEstado.setBorder(blackline);
                 
-                //if(matR[i][j]==Configuraciones.Pared){
-                //jbEstado.setBackground(Color.black);
-               
-   
+                jbEstado.setFont(cf.font);
                 if (dim < 8){
                     switch(this.aleatorio(1, 5)){
                     
@@ -276,8 +271,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jpTablero.remove(this.posAbosAleatoria(dim));
         jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
  //        Se agrega Estado Inicial
-        jpTablero.remove(this.posAbosAleatoria(dim));
-        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
+//        jpTablero.remove(this.posAbosAleatoria(dim));
+//        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
         jpTablero.setVisible(true);
   }
     
@@ -449,6 +444,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlEpsilon.setVisible(flag);
         jlTau.setVisible(false); //Porque arranca EGreedy por defecto
 //        jtfEpsTau.setVisible(flag);
+        
+        jCTau.setVisible(false);
+        jCEpsilon.setVisible(true);
         jrbEGreedy.setVisible(flag);
         jrbSoftMax.setVisible(flag);
         jbConfirmar.setVisible(flag);
@@ -557,7 +555,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 200, 20));
 
         jlPolitica.setText("Política: ");
-        jpSuperior.add(jlPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, -1, 20));
+        jpSuperior.add(jlPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, 20));
 
         jrbSoftMax.setText("SoftMax");
         jrbSoftMax.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -883,9 +881,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextCantidadEpisodiosActionPerformed
 
     private void jrbEGreedyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEGreedyActionPerformed
-        jCEpsilon.setEnabled(true);
-        jlEpsilon.setEnabled(true);
-        jCTau.setEnabled(false);
+        
+        jCEpsilon.setVisible(true);
+        jlEpsilon.setVisible(true);
+        jCTau.setVisible(false);
+        jlTau.setVisible(false);
     }//GEN-LAST:event_jrbEGreedyActionPerformed
 
     private void jBGraficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGraficaActionPerformed
@@ -938,10 +938,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jrbSoftMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSoftMaxActionPerformed
+        
+        jCEpsilon.setVisible(false);
+        jlEpsilon.setVisible(false);
+        jCTau.setVisible(true);
         jlTau.setVisible(true);
-        jCTau.setEnabled(true);
-        jCEpsilon.setEnabled(false);
-        jrbEGreedy.setSelected(false);
     }//GEN-LAST:event_jrbSoftMaxActionPerformed
 
     private void jCEpsilonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEpsilonActionPerformed
@@ -1055,8 +1056,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBAvanza;
     private javax.swing.JButton jBEntrena;
     private javax.swing.JButton jBGrafica;
-    private javax.swing.JComboBox jCEpsilon;
-    private javax.swing.JComboBox jCTau;
+    public static javax.swing.JComboBox jCEpsilon;
+    public static javax.swing.JComboBox jCTau;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabelContador;
     private javax.swing.JLabel jLabelItera;
