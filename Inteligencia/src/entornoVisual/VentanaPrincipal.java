@@ -978,11 +978,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int x = Configuraciones.getDimension();
         int y;
         if(jCEpsilon.getSelectedIndex()<0.5){
-            y = 6;
+            y = 4;
             
         }
         else{
-            y = 5;
+            y = 3;
         }
         int tope = (int) Math.pow(x, y);
         

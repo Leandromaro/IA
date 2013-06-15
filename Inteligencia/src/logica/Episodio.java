@@ -22,6 +22,7 @@ public class Episodio {
     public static boolean bloqueo=false;
     public static int contBloqueo=0;
     public static int tope;
+    public static int cont=0;
     public Episodio(QMat matrizQActual, Estado estadoFinal, Politica politica, RMat matR, int numeroEpisodio){
         //TODO:clonar matriz Q
         
@@ -42,7 +43,7 @@ public class Episodio {
         int iRandom= (int) Math.floor(Math.random() * dimension);
         int jRandom= (int) Math.floor(Math.random() * dimension);
 //        int contadorEpisodios=0;
-        int cont=0;
+        
         Estado estadoActual= this.getMatrizQ().getEstado(iRandom, jRandom);
         //mientras estado actual distinto de estado final
         

@@ -17,7 +17,12 @@ public class Movimiento {
         //seleccionamos accion con la politica pasada por parametro
         Accion accionARealizar= politica.seleccionarAccionSiguiente(estadoActual);
         //obtenemos la recompensa
-        double recompensa= matrizR.devolverR(accionARealizar.getEstadoDestino().getPosI(),accionARealizar.getEstadoDestino().getPosJ());
+        double recompensa;
+        if ((Episodio.cont % 100) == 0){
+        recompensa= matrizR.devolverR(accionARealizar.getEstadoDestino().getPosI(),accionARealizar.getEstadoDestino().getPosJ())*0.1;
+        }else{
+        recompensa= matrizR.devolverR(accionARealizar.getEstadoDestino().getPosI(),accionARealizar.getEstadoDestino().getPosJ());
+        }
         //obtenemos maximo valor que se puede obtener desde el estado proximo
         double maximoValor= accionARealizar.getEstadoDestino().maximoValorParaAcciones();
         //actualizar el valor de la accion elejida
