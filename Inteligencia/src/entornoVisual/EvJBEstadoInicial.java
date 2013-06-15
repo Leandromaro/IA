@@ -44,7 +44,7 @@ public class EvJBEstadoInicial {
         if(!Configuraciones.getFlagEInicialSeleccionado()){
             JButton s = (JButton)e.getComponent();
         
-            s.setBackground(Color.white);
+            s.setBackground(Color.orange);
             s.setText("I");
         
             Configuraciones.setFlagEInicialSeleccionado(true);
