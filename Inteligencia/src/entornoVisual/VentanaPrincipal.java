@@ -12,20 +12,15 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
-import java.util.HashSet;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 import javax.swing.border.Border;
 import logica.Configuraciones;
 import logica.Episodio;
-import static logica.Episodio.bloqueo;
 import logica.Estado;
 import logica.Politica;
 import logica.PoliticaEGreedy;
@@ -46,6 +41,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private static Politica p;
     private int contadorEpisodios;
     public static boolean banderaTope=false;
+    public static JButton jbAnterior;
+    
 //    blackline = BorderFactory.createLineBorder(Color.black);
     
     public  JButton[][] suplente; // para guardar tablero momentaneamente para las pruebas.. SIN persistencia
@@ -649,7 +646,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlExcelente.setOpaque(true);
         jpSuperior.add(jlExcelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 60, 30));
 
-        jlFinal.setBackground(new java.awt.Color(255, 255, 255));
+        jlFinal.setBackground(java.awt.Color.green);
         jlFinal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlFinal.setText("FINAL");
         jlFinal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));

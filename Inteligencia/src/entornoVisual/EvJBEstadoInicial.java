@@ -17,47 +17,78 @@ import logica.Configuraciones;
 public class EvJBEstadoInicial {
     private ColoresyFormas cf = new ColoresyFormas();
     
-    private JButton jbEstado; 
+    private JButton jbEstado;
+    private JButton jbAnterior;
     
     public JButton getjbEstado(){
         return this.jbEstado;
     }
     
     public void setjbEstado(MouseWheelEvent e){
+        
+        JButton s = (JButton)e.getComponent();
         if(!Configuraciones.getFlagEInicialSeleccionado()){
-            JButton s = (JButton)e.getComponent();
-        
-            s.setBackground(Color.white);
-            s.setText("I");
-        
-            Configuraciones.setFlagEInicialSeleccionado(true);
-        
-            VentanaPrincipal.jlEstadoInicial.setVisible(false);
-            VentanaPrincipal.jBAvanza.setEnabled(true);
-        
-            this.jbEstado = s;
-            this.jbEstado.repaint();
-        }
-    }
-    
-    public void setjbEstado(MouseEvent e){
-        if(!Configuraciones.getFlagEInicialSeleccionado()){
+            if(s.getBackground()!=Color.black){
+                jbAnterior = new JButton();
+                jbAnterior.setBackground(s.getBackground());
+                jbAnterior.setText(s.getText());
             
-            JButton s = (JButton)e.getComponent();
-            if(s.getBackground()==Color.black){
-                VentanaPrincipal.jlInicialNoPared.setVisible(true);
-            }else{
                 s.setBackground(Color.orange);
                 s.setText("I");
         
                 Configuraciones.setFlagEInicialSeleccionado(true);
+                VentanaPrincipal.jlInicialNoPared.setVisible(false);
         
                 VentanaPrincipal.jlEstadoInicial.setVisible(false);
                 VentanaPrincipal.jBAvanza.setEnabled(true);
-                VentanaPrincipal.jlInicialNoPared.setVisible(false);
             }
-            this.jbEstado = s;
-            this.jbEstado.repaint();
+            else{
+                VentanaPrincipal.jlInicialNoPared.setVisible(true);
+            }
+        }else{
+            if("I".equals(s.getText())){
+                s.setText(jbAnterior.getText());
+                s.setBackground(jbAnterior.getBackground());
+                Configuraciones.setFlagEInicialSeleccionado(false);
+                VentanaPrincipal.jlEstadoInicial.setVisible(true);
+                VentanaPrincipal.jBAvanza.setEnabled(false);
+            }
         }
+        this.jbEstado = s;
+        this.jbEstado.repaint();
+    }
+    
+    public void setjbEstado(MouseEvent e){
+        JButton s = (JButton)e.getComponent();
+        if(!Configuraciones.getFlagEInicialSeleccionado()){
+            if(s.getBackground()!=Color.black){
+                jbAnterior = new JButton();
+                jbAnterior.setBackground(s.getBackground());
+                jbAnterior.setText(s.getText());
+            
+                s.setBackground(Color.orange);
+                s.setText("I");
+        
+                Configuraciones.setFlagEInicialSeleccionado(true);
+                VentanaPrincipal.jlInicialNoPared.setVisible(false);
+        
+                VentanaPrincipal.jlEstadoInicial.setVisible(false);
+                VentanaPrincipal.jBAvanza.setEnabled(true);
+            }
+            else{
+                VentanaPrincipal.jlInicialNoPared.setVisible(true);
+            }
+        }else{
+            if("I".equals(s.getText())){
+                s.setText(jbAnterior.getText());
+                s.setBackground(jbAnterior.getBackground());
+                Configuraciones.setFlagEInicialSeleccionado(false);
+                VentanaPrincipal.jlEstadoInicial.setVisible(true);
+                VentanaPrincipal.jBAvanza.setEnabled(false);
+            }
+        }
+        this.jbEstado = s;
+        this.jbEstado.repaint();
     }
 }
+ 
