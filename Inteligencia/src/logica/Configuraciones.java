@@ -20,7 +20,7 @@ public class Configuraciones {
     private static double valorExcelente = 1;
     private static double valorFinal = 100000;
     private static int dimension = 3; 
-    private static int valorPorDefectoMatQ= 0;
+    private static int valorPorDefectoMatQ= 100;
     public static int filaI;
     public static int filaF;
     public static int colI;

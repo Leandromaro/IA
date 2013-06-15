@@ -91,6 +91,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
           episodios= new Episodio[Configuraciones.cantEpisodios];
           int cont=0;
           int TopeEpisodios=2000;
+          
           if(estadoInicial.getAccionesPosibles().isEmpty()){
               JFrame j=new JFrame();
               JOptionPane.showMessageDialog(j,"Estado Inicial Bloqueado","Error",JOptionPane.WARNING_MESSAGE);
@@ -106,10 +107,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                   jLabelContador.setText(String.valueOf(contadorEpisodios));
                   cont++;
               }
-              if(cont==TopeEpisodios){
-                  JFrame j=new JFrame();
-                  JOptionPane.showMessageDialog(j,"Llegue aca","Error",JOptionPane.WARNING_MESSAGE);
-              }  
+                
           }
               
               System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
