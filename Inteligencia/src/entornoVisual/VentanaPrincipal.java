@@ -102,12 +102,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void setFlagInicial(Boolean flagInicial) {
         this.flagInicial = flagInicial;
     }
-   
-    
-    
+  
     private Episodio[] episodios;
     
-     public void iniciarEntrenamiento(){
+    public void iniciarEntrenamiento(){
          
         try{   
             final SwingWorker iniciarEntrenamiento;
@@ -171,12 +169,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public VentanaPrincipal() {
         initComponents();
-        VentanaPrincipal.vistaConfigPoliticas(false);
+        VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
         jPanel1.setVisible(false);
-        jCEpsilon.setVisible(false);
+        jCEpsilon.setVisible(true);
         jCTau.setVisible(false);
         jlEstadoInicial.setVisible(false);
+        jrbManual.setEnabled(true);
     }
     
    
@@ -418,14 +417,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public static void vistaConfigPoliticas(Boolean flag){
         
-        jlConfigPoliticas.setVisible(flag);
-        jlPolitica.setVisible(flag);
+        jlRecompensas.setVisible(flag);
+        
         jlEpsilon.setVisible(flag);
         jlTau.setVisible(false); //Porque arranca EGreedy por defecto
 //        jtfEpsTau.setVisible(flag);
-        
+        jbConfirmar.setVisible(flag);
         jCTau.setVisible(false);
         jCEpsilon.setVisible(flag);
+        jCEpsilon.setEnabled(flag);
         jrbEGreedy.setVisible(flag);
         jrbSoftMax.setVisible(flag);
         jbConfirmar.setVisible(flag);
@@ -433,6 +433,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         jrbEGreedy.setSelected(true);
         jrbSoftMax.setSelected(false);
+        
+        
+        jlConfigPoliticas.setVisible(flag);
+        jlRecompensas.setVisible(flag);
+        jlExcelente.setVisible(flag);
+        jlFinal.setVisible(flag);
+        jSeparator1.setVisible(flag);
+        jlMalo.setVisible(flag);
+        jlbueno.setVisible(flag);
+        jSeparator2.setVisible(flag);
+        
+        jtfBueno.setVisible(flag);
+        jtfBueno.setText(Double.toString(Configuraciones.getValorBueno()));
+        jtfRegular.setVisible(flag);
+        jtfRegular.setText(Double.toString(Configuraciones.getValorNeutro()));
+        jtfMalo.setVisible(flag);
+        jtfMalo.setText(Double.toString(Configuraciones.getValorMalo()));
+        jtfExcelente.setVisible(flag);
+        jtfExcelente.setText(Double.toString(Configuraciones.getValorExcelente()));
+        jtfFinal.setVisible(flag);
+        jtfFinal.setText(Double.toString(Configuraciones.getValorFinal()));
         
     }
     
@@ -454,16 +475,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbAuto = new javax.swing.JRadioButton();
         jrbManual = new javax.swing.JRadioButton();
         jbGenerarTablero = new javax.swing.JButton();
-        jlConfigPoliticas = new javax.swing.JLabel();
-        jlPolitica = new javax.swing.JLabel();
+        jlRecompensas = new javax.swing.JLabel();
         jrbSoftMax = new javax.swing.JRadioButton();
         jrbEGreedy = new javax.swing.JRadioButton();
-        jlAusenciaEstadoFinal = new javax.swing.JLabel();
-        jbConfirmar = new javax.swing.JButton();
         jlTau = new javax.swing.JLabel();
         jlEpsilon = new javax.swing.JLabel();
         jCEpsilon = new javax.swing.JComboBox();
         jCTau = new javax.swing.JComboBox();
+        jlMalo = new javax.swing.JLabel();
+        jlRegular = new javax.swing.JLabel();
+        jlbueno = new javax.swing.JLabel();
+        jlExcelente = new javax.swing.JLabel();
+        jlFinal = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jlConfigPoliticas = new javax.swing.JLabel();
+        jbConfirmar = new javax.swing.JButton();
+        jtfFinal = new javax.swing.JTextField();
+        jtfMalo = new javax.swing.JTextField();
+        jtfRegular = new javax.swing.JTextField();
+        jtfBueno = new javax.swing.JTextField();
+        jtfExcelente = new javax.swing.JTextField();
         jpTablero = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTextCantidadEpisodios = new javax.swing.JTextField();
@@ -476,6 +508,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlEstadoInicial = new javax.swing.JLabel();
         jbGuardar = new javax.swing.JButton();
         jbGenerarGuardado = new javax.swing.JButton();
+        jlAusenciaEstadoFinal = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -530,14 +563,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbGenerarTableroActionPerformed(evt);
             }
         });
-        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, 54));
+        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, 210, 54));
 
-        jlConfigPoliticas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jlConfigPoliticas.setText("Configuración de la Política:");
-        jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 200, 20));
-
-        jlPolitica.setText("Política: ");
-        jpSuperior.add(jlPolitica, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, -1, 20));
+        jlRecompensas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlRecompensas.setText("Valores de Recompensa:");
+        jpSuperior.add(jlRecompensas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 200, 20));
 
         jrbSoftMax.setText("SoftMax");
         jrbSoftMax.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -550,7 +580,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbSoftMaxActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 70, -1, -1));
+        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, -1));
 
         jrbEGreedy.setText("E-Greedy");
         jrbEGreedy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -563,26 +593,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbEGreedyActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, 20));
-
-        jlAusenciaEstadoFinal.setText("*Advertencia: El escenario no tiene un estado \"Final\"");
-        jpSuperior.add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, -1, 20));
-
-        jbConfirmar.setText("Confirmar Escenario y Politicas");
-        jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbConfirmarActionPerformed(evt);
-            }
-        });
-        jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 210, 120));
+        jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, 20));
 
         jlTau.setText("Tau: ");
         jlTau.setName(""); // NOI18N
-        jpSuperior.add(jlTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, -1, -1));
+        jpSuperior.add(jlTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
 
         jlEpsilon.setText("Epsilon:");
         jlEpsilon.setName(""); // NOI18N
-        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, -1, 20));
+        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, 20));
 
         jCEpsilon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,7", "0,8", "0,9", " " }));
         jCEpsilon.setEnabled(false);
@@ -591,17 +610,85 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jCEpsilonActionPerformed(evt);
             }
         });
-        jpSuperior.add(jCEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(411, 100, 50, 30));
+        jpSuperior.add(jCEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 50, 30));
 
         jCTau.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", " " }));
         jCTau.setEnabled(false);
-        jpSuperior.add(jCTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, -1, 30));
+        jpSuperior.add(jCTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, 30));
 
-        getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 140));
+        jlMalo.setBackground(new java.awt.Color(240, 90, 82));
+        jlMalo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlMalo.setText("Malo");
+        jlMalo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jlMalo.setOpaque(true);
+        jpSuperior.add(jlMalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 60, 20));
+
+        jlRegular.setBackground(new java.awt.Color(255, 255, 255));
+        jlRegular.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlRegular.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jlRegular.setOpaque(true);
+        jpSuperior.add(jlRegular, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 60, 20));
+
+        jlbueno.setBackground(new java.awt.Color(220, 246, 53));
+        jlbueno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlbueno.setText("Bueno");
+        jlbueno.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jlbueno.setOpaque(true);
+        jpSuperior.add(jlbueno, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 60, 20));
+
+        jlExcelente.setBackground(new java.awt.Color(72, 237, 255));
+        jlExcelente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlExcelente.setText("Excelente");
+        jlExcelente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jlExcelente.setOpaque(true);
+        jpSuperior.add(jlExcelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 60, 20));
+
+        jlFinal.setBackground(new java.awt.Color(255, 255, 255));
+        jlFinal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlFinal.setText("FINAL");
+        jlFinal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jlFinal.setOpaque(true);
+        jpSuperior.add(jlFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 60, 20));
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jpSuperior.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 10, 120));
+
+        jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jpSuperior.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 10, 120));
+
+        jlConfigPoliticas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jlConfigPoliticas.setText("Configuración de la Política:");
+        jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 200, 20));
+
+        jbConfirmar.setText("Confirmar Escenario y Politicas");
+        jbConfirmar.setEnabled(false);
+        jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbConfirmarActionPerformed(evt);
+            }
+        });
+        jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 210, 50));
+
+        jtfFinal.setText("jTextField1");
+        jpSuperior.add(jtfFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 60, 20));
+
+        jtfMalo.setText("jTextField1");
+        jpSuperior.add(jtfMalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 60, 20));
+
+        jtfRegular.setText("jTextField1");
+        jpSuperior.add(jtfRegular, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 60, 20));
+
+        jtfBueno.setText("jTextField1");
+        jpSuperior.add(jtfBueno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 60, 20));
+
+        jtfExcelente.setText("jTextField1");
+        jpSuperior.add(jtfExcelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 60, 20));
+
+        getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 140));
 
         jpTablero.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jpTablero.setLayout(new java.awt.GridLayout(1, 0));
-        getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 450, 450));
+        getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 580, 630));
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -653,10 +740,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(jBGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 120, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 170, 380));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 170, 380));
 
         jlEstadoInicial.setText("*Advertencia: Debe elegir un estado Inicial ");
-        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 320, -1));
+        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 320, -1));
 
         jbGuardar.setText("Guardar Escenario");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -664,7 +751,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, 120, 100));
+        getContentPane().add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 390, 130, 100));
 
         jbGenerarGuardado.setText("Generar guargado");
         jbGenerarGuardado.addActionListener(new java.awt.event.ActionListener() {
@@ -672,22 +759,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbGenerarGuardadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jbGenerarGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 120, 120));
+        getContentPane().add(jbGenerarGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 500, 130, 120));
+
+        jlAusenciaEstadoFinal.setText("*Advertencia: El escenario no tiene un estado \"Final\"");
+        getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, 20));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     public final void visibleConfigPoliticas(Boolean visible){
-        jlConfigPoliticas.setVisible(visible);
-        jlPolitica.setVisible(visible);
-        
+        jlRecompensas.setVisible(visible);
+              
         jrbEGreedy.setVisible(visible);
         jrbSoftMax.setVisible(visible);
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
 
-        
+        jbConfirmar.setEnabled(true);
         jBEntrena.setEnabled(false);
         jBAvanza.setEnabled(false);
         jTextCantidadEpisodios.setText("");
@@ -952,8 +1041,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlDim.setEnabled(flag);
         jlManOAlea.setEnabled(flag);
         jbGenerarTablero.setEnabled(flag);
-        jlConfigPoliticas.setEnabled(flag);
-        jlPolitica.setEnabled(flag);
+        jlRecompensas.setEnabled(flag);
         jCEpsilon.setEnabled(flag);;
         jrbEGreedy.setEnabled(flag);
         jrbSoftMax.setEnabled(flag);
@@ -975,6 +1063,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
             Configuraciones.setEpsilon(jCEpsilon.getSelectedIndex());
         }
+        
+        Configuraciones.setValorMalo(Double.parseDouble(jtfMalo.getText()));
+        Configuraciones.setValorNeutro(Double.parseDouble(jtfRegular.getText()));
+        Configuraciones.setValorBueno(Double.parseDouble(jtfBueno.getText()));
+        Configuraciones.setValorExcelente(Double.parseDouble(jtfExcelente.getText()));
+        Configuraciones.setValorFinal(Double.parseDouble(jtfFinal.getText()));
+        
+        
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jrbSoftMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSoftMaxActionPerformed
@@ -1141,6 +1237,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelItera;
     public static javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
+    private static javax.swing.JSeparator jSeparator1;
+    private static javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextCantidadEpisodios;
     public static javax.swing.JButton jbConfirmar;
     private javax.swing.JButton jbGenerarGuardado;
@@ -1153,14 +1251,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jlDim;
     public static javax.swing.JLabel jlEpsilon;
     public static javax.swing.JLabel jlEstadoInicial;
+    private static javax.swing.JLabel jlExcelente;
+    private static javax.swing.JLabel jlFinal;
+    private static javax.swing.JLabel jlMalo;
     private javax.swing.JLabel jlManOAlea;
-    public static javax.swing.JLabel jlPolitica;
+    private static javax.swing.JLabel jlRecompensas;
+    private javax.swing.JLabel jlRegular;
     public static javax.swing.JLabel jlTau;
+    private static javax.swing.JLabel jlbueno;
     private javax.swing.JPanel jpSuperior;
     private javax.swing.JPanel jpTablero;
     private javax.swing.JRadioButton jrbAuto;
     public static javax.swing.JRadioButton jrbEGreedy;
     private javax.swing.JRadioButton jrbManual;
     public static javax.swing.JRadioButton jrbSoftMax;
+    public static javax.swing.JTextField jtfBueno;
+    public static javax.swing.JTextField jtfExcelente;
+    public static javax.swing.JTextField jtfFinal;
+    public static javax.swing.JTextField jtfMalo;
+    public static javax.swing.JTextField jtfRegular;
     // End of variables declaration//GEN-END:variables
 }

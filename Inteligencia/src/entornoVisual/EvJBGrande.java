@@ -81,6 +81,7 @@ public class EvJBGrande extends MouseAdapter{
                                 VentanaPrincipal.estadoFinal = true;
                                 VentanaPrincipal.vistaConfigPoliticas(true);
                                 VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+                                
                             }
 //                            if(!VentanaPrincipal.estadoInicial){
 //                                s.setBackground(Color.ORANGE);
