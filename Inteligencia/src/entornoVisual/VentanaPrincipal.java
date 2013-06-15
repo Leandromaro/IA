@@ -85,30 +85,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
           //ProgressBar p =new ProgressBar();
 
           Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
+          Estado estadoInicial= matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
           System.out.println("Estado final");
           System.out.println(estadoFinal);
           episodios= new Episodio[Configuraciones.cantEpisodios];
           int cont=0;
           int TopeEpisodios=2000;
-          if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){
-              TopeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
-          } 
-          
-          while((contadorEpisodios<Configuraciones.cantEpisodios)&&(cont<TopeEpisodios)){
-              episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
-              contadorEpisodios++;
-              jLabelContador.setText(String.valueOf(contadorEpisodios));
-              cont++;
-          }
-          if(cont==TopeEpisodios){
+          if(estadoInicial.getAccionesPosibles().isEmpty()){
               JFrame j=new JFrame();
-              JOptionPane.showMessageDialog(j,"Estoy ACA","Error",JOptionPane.WARNING_MESSAGE);
+              JOptionPane.showMessageDialog(j,"Estado Inicial Bloqueado","Error",JOptionPane.WARNING_MESSAGE);
           }
-          System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
-          jBAvanza.setEnabled(true);
-            throw new UnsupportedOperationException("Not supported yet.");
-            }
+          else{
+            if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){
+                  TopeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
+              } 
 
+              while((contadorEpisodios<Configuraciones.cantEpisodios)&&(cont<TopeEpisodios)){
+                  episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
+                  contadorEpisodios++;
+                  jLabelContador.setText(String.valueOf(contadorEpisodios));
+                  cont++;
+              }
+              if(cont==TopeEpisodios){
+                  JFrame j=new JFrame();
+                  JOptionPane.showMessageDialog(j,"Llegue aca","Error",JOptionPane.WARNING_MESSAGE);
+              }  
+          }
+              
+              System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
+              jBAvanza.setEnabled(true);
+              throw new UnsupportedOperationException("Not supported yet.");
+                }
+        
         };
 
         iniciarEntrenamiento.execute();
@@ -872,6 +880,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             y = 5;
         }
         int tope = (int) Math.pow(x, y);
+        
+            
+        
         while(!estadoInicial.equals(estadoFinal)&&(cont<tope)){
                 
               Estado estadoProximo = estadoInicial.accionDeMaximoValor().getEstadoDestino();
@@ -894,6 +905,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
             
         }
+        
     }//GEN-LAST:event_jBAvanzaActionPerformed
     private void jTextCantidadEpisodiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantidadEpisodiosActionPerformed
         // TODO add your handling code here:
