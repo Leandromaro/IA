@@ -29,6 +29,25 @@ public class Configuraciones {
     public static double epsilon=0.1;
     public static double tau=50;
     
+    public static boolean flagEvEstadoInicial = false;
+    public static boolean flagEInicialSeleccionado = false;
+    
+    public static boolean getFlagEInicialSeleccionado(){
+        return flagEInicialSeleccionado;
+    }
+    
+    public static void setFlagEInicialSeleccionado(boolean flag){
+        flagEInicialSeleccionado = flag;
+    }
+    
+    public static boolean getFlagEvEstadoInicial(){
+        return flagEvEstadoInicial;
+    }
+    
+    public static void setEvEstadoInicial(boolean flag){
+        flagEvEstadoInicial = flag;
+    }
+    
     public static int getFilaI() {
         return filaI;
     }

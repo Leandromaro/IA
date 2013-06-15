@@ -49,50 +49,50 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private ColoresyFormas cf = new ColoresyFormas();
     
-    EvJBGrande ma  = new EvJBGrande();
-    EvJBChico  ma1 = new EvJBChico();
+    EvJBGrande ma               = new EvJBGrande();
+    EvJBChico  ma1              = new EvJBChico();
+    EvJBEstadoInicial eInicial  = new EvJBEstadoInicial();
+    
     
     MouseAdapter mWheelMovedCambiarEstados = new MouseAdapter(){
         public void mouseWheelMoved(MouseWheelEvent e){                   
-            if(Configuraciones.getDimension() < 8){
-                ma.setjbEstado(e);
-                ma.getjbEstado().repaint();
+            if(!Configuraciones.getFlagEvEstadoInicial()){
+                if(Configuraciones.getDimension() < 8){
+                    ma.setjbEstado(e);
+                    ma.getjbEstado().repaint();
+                }
+                else{
+                    ma1.setjbEstado(e);
+                    ma1.getjbEstado().repaint();
+                }
+            }else{
+                eInicial.setjbEstado(e);
+                eInicial.getjbEstado().repaint();
             }
-            else{
-                ma1.setjbEstado(e);
-                ma1.getjbEstado().repaint();
-            }
+            
+            
             
         }
     };
         
     MouseAdapter mClickedCambiarEstados = new MouseAdapter(){
         public void mouseClicked(MouseEvent e){
-            if(Configuraciones.getDimension() < 8){
-                ma.setjbEstado(e);
-                ma.getjbEstado().repaint();
-            }
-            else{
-                ma1.setjbEstado(e);
-                ma1.getjbEstado().repaint();
+            if(!Configuraciones.getFlagEvEstadoInicial()){
+                if(Configuraciones.getDimension() < 8){
+                    ma.setjbEstado(e);
+                    ma.getjbEstado().repaint();
+                }
+                else{
+                    ma1.setjbEstado(e);
+                    ma1.getjbEstado().repaint();
+                }
+            }else{
+                eInicial.setjbEstado(e);
+                eInicial.getjbEstado().repaint();
             }
         }
     };   
-    
-//    MouseAdapter mWheelMovedBChico = new MouseAdapter(){
-//        public void mouseWheelMoved(MouseWheelEvent e){                   
-//            ma1.setjbEstado(e);
-//            ma1.getjbEstado().repaint();
-//        }
-//    };
-//        
-//    MouseAdapter mClickedBChico = new MouseAdapter(){
-//        public void mouseClicked(MouseEvent e){
-//            ma1.setjbEstado(e);
-//            ma1.getjbEstado().repaint();
-//        }
-//    };     
-    
+
     public static boolean banderaEGreedy;
     public static boolean banderaSoftMax;
 
@@ -788,21 +788,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         iniciarEntrenamiento();//llama al hilo de entrenamiento
         jBEntrena.setEnabled(false);
+        
+        this.setEstadoInicialEscenario();
 
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     public void setEstadoInicialEscenario(){
+        Configuraciones.setEvEstadoInicial(true);
         
         for (int i = 0; i < Configuraciones.getDimension(); i++) {
             for (int j = 0; j < Configuraciones.getDimension(); j++) {
                 int indice=(i*Configuraciones.getDimension()) + j;
                 Component componente= jpTablero.getComponent(indice);
                 if(componente.getClass() == JButton.class){
-                    componente.removeMouseListener(ma);
-                    componente.removeMouseWheelListener(ma);
+                    componente.removeMouseListener(mClickedCambiarEstados);
+                    componente.removeMouseWheelListener(mWheelMovedCambiarEstados);
+                    
+                    componente.addMouseListener(mClickedCambiarEstados);
+                    componente.addMouseWheelListener(mWheelMovedCambiarEstados);
+                            
                 }
                         
-            }}
+            }
+        }
+        
     }
     
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
