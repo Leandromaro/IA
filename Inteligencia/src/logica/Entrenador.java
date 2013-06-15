@@ -4,12 +4,6 @@
  */
 package logica;
 
-import entornoVisual.VentanaPrincipal;
-import java.awt.event.ActionEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-
 /**
  *
  * @author Leandro
@@ -28,12 +22,14 @@ public class Entrenador {
     }
     
     public static void entrenar(int cantEpisodios, QMat matrizQ , Estado estadoFinal , Politica politica, RMat mat){
+        
         numEpisodios=cantEpisodios;
         MQ=matrizQ;
         EFinal=estadoFinal;
         P=politica;
         R=mat;
         episodios= new Episodio[Configuraciones.getCantEpisodios()];
+        
         int i=0;
 //        new Thread(new ProgressBar.Hilo()).start();
             while((i<numEpisodios)){

@@ -345,9 +345,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         jbEstado.addMouseWheelListener(mWheelMovedCambiarEstados);                  
         jbEstado.addMouseListener(mClickedCambiarEstados);      
-    
+        
+        VentanaPrincipal.jbConfirmar.setEnabled(true);
         jbEstado.repaint();
-        return jbEstado;     
+        return jbEstado; 
+        
     }
     
     public JButton estadoInicial(int dim){
@@ -567,7 +569,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbGenerarTableroActionPerformed(evt);
             }
         });
-        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 10, 210, 54));
+        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 210, 54));
 
         jlRecompensas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlRecompensas.setText("Valores de Recompensa:");
@@ -671,7 +673,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbConfirmarActionPerformed(evt);
             }
         });
-        jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 210, 50));
+        jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, 210, 50));
 
         jtfFinal.setText("jTextField1");
         jpSuperior.add(jtfFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 70, 30));
@@ -744,10 +746,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(jBGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 120, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 240, 170, 380));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 170, 380));
 
         jlEstadoInicial.setText("*Advertencia: Debe elegir un estado Inicial ");
-        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 210, 320, -1));
+        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 320, -1));
 
         jbGuardar.setText("Guardar Escenario");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -755,7 +757,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 390, 130, 100));
+        getContentPane().add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, 130, 100));
 
         jbGenerarGuardado.setText("Generar guargado");
         jbGenerarGuardado.addActionListener(new java.awt.event.ActionListener() {
@@ -763,13 +765,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbGenerarGuardadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jbGenerarGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 500, 130, 120));
+        getContentPane().add(jbGenerarGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, 130, 120));
 
         jlAusenciaEstadoFinal.setText("*Advertencia: El escenario no tiene un estado \"Final\"");
-        getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, 20));
+        getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, -1, 20));
 
         jlInicialNoPared.setText("*El estado inicial no puede ser una pared");
-        getContentPane().add(jlInicialNoPared, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 270, -1));
+        getContentPane().add(jlInicialNoPared, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 270, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -1057,8 +1059,37 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlEpsilon.setEnabled(flag);
     }
     
+    public void setEnabledJPSuperior(boolean flag){
+        jlManOAlea.setEnabled(flag);
+        jlExcelente.setEnabled(flag);
+        jrbManual.setEnabled(flag);
+        jlConfig.setEnabled(flag);
+        jlConfigPoliticas.setEnabled(flag);
+        jlbueno.setEnabled(flag);
+        jlTau.setEnabled(flag);
+        jtfExcelente.setEnabled(flag);
+        jlMalo.setEnabled(flag);
+        jCTau.setEnabled(flag);
+        jtfBueno.setEnabled(flag);
+        jlEpsilon.setEnabled(flag);
+        jCEpsilon.setEnabled(flag);
+        jtfRegular.setEnabled(flag);
+        jbConfirmar.setEnabled(flag);
+        jbGenerarTablero.setEnabled(flag);
+        jrbAuto.setEnabled(flag);
+        jrbEGreedy.setEnabled(flag);
+        jlRecompensas.setEnabled(flag);
+        jlDim.setEnabled(flag);
+        jrbSoftMax.setEnabled(flag);
+        jtfMalo.setEnabled(flag);
+        jlRegular.setEnabled(flag);
+        jcbDim.setEnabled(flag);
+        jtfFinal.setEnabled(flag);
+    }
+    
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
+        this.setEnabledJPSuperior(false);
         jPanel1.setVisible(true);
         if (jrbEGreedy.isSelected()){
             banderaEGreedy=true;
@@ -1117,6 +1148,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jbGenerarGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarGuardadoActionPerformed
 
+        initComponents();
+        VentanaPrincipal.vistaConfigPoliticas(true);
+        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+        VentanaPrincipal.jlInicialNoPared.setVisible(false);
+        jPanel1.setVisible(false);
+        jCEpsilon.setVisible(true);
+        jCTau.setVisible(false);
+        jlEstadoInicial.setVisible(false);
+        jbGenerarTablero.setEnabled(true);
+        
         jpTablero.setVisible(false);
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(Configuraciones.getDimension(),Configuraciones.getDimension()));

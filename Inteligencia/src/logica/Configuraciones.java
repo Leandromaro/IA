@@ -4,8 +4,6 @@
  */
 package logica;
 
-import javax.swing.JTextField;
-
 /**
  *
  * @author Leandro
