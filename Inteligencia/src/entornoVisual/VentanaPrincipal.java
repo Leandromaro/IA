@@ -52,33 +52,46 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     EvJBGrande ma  = new EvJBGrande();
     EvJBChico  ma1 = new EvJBChico();
     
-    MouseAdapter mWheelMovedBGrande = new MouseAdapter(){
+    MouseAdapter mWheelMovedCambiarEstados = new MouseAdapter(){
         public void mouseWheelMoved(MouseWheelEvent e){                   
-            ma.setjbEstado(e);
-            ma.getjbEstado().repaint();
+            if(Configuraciones.getDimension() < 8){
+                ma.setjbEstado(e);
+                ma.getjbEstado().repaint();
+            }
+            else{
+                ma1.setjbEstado(e);
+                ma1.getjbEstado().repaint();
+            }
+            
         }
     };
         
-    MouseAdapter mClickedBGrande = new MouseAdapter(){
+    MouseAdapter mClickedCambiarEstados = new MouseAdapter(){
         public void mouseClicked(MouseEvent e){
-            ma.setjbEstado(e);
-            ma.getjbEstado().repaint();
+            if(Configuraciones.getDimension() < 8){
+                ma.setjbEstado(e);
+                ma.getjbEstado().repaint();
+            }
+            else{
+                ma1.setjbEstado(e);
+                ma1.getjbEstado().repaint();
+            }
         }
     };   
     
-    MouseAdapter mWheelMovedBChico = new MouseAdapter(){
-        public void mouseWheelMoved(MouseWheelEvent e){                   
-            ma1.setjbEstado(e);
-            ma1.getjbEstado().repaint();
-        }
-    };
-        
-    MouseAdapter mClickedBChico = new MouseAdapter(){
-        public void mouseClicked(MouseEvent e){
-            ma1.setjbEstado(e);
-            ma1.getjbEstado().repaint();
-        }
-    };     
+//    MouseAdapter mWheelMovedBChico = new MouseAdapter(){
+//        public void mouseWheelMoved(MouseWheelEvent e){                   
+//            ma1.setjbEstado(e);
+//            ma1.getjbEstado().repaint();
+//        }
+//    };
+//        
+//    MouseAdapter mClickedBChico = new MouseAdapter(){
+//        public void mouseClicked(MouseEvent e){
+//            ma1.setjbEstado(e);
+//            ma1.getjbEstado().repaint();
+//        }
+//    };     
     
     public static boolean banderaEGreedy;
     public static boolean banderaSoftMax;
@@ -164,6 +177,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
    
     public void cargarTableroManual(int dim){
+        
+        Configuraciones.setDimension(dim);
         jpTablero.setVisible(false);
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(dim,dim));
@@ -183,13 +198,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbEstado.setFont(cf.font);
                 jbEstado.setBackground(Color.white);
                 
-                if (dim < 8){
-                    jbEstado.addMouseWheelListener(mWheelMovedBGrande);                  
-                    jbEstado.addMouseListener(mClickedBGrande);                  
-                }else{
-                    jbEstado.addMouseWheelListener(mWheelMovedBChico);                 
-                    jbEstado.addMouseListener(mClickedBChico);                  
-                }               
+  
+                jbEstado.addMouseWheelListener(mWheelMovedCambiarEstados);                  
+                jbEstado.addMouseListener(mClickedCambiarEstados);                  
+                              
                 jpTablero.add(jbEstado);           
             }
         }
@@ -199,6 +211,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void cargarTableroAleatorio(int dim){
         //instanciar matriz, aleatoriament, y modificar codigo para que tome valores de esa matriz
        
+        Configuraciones.setDimension(dim);
         jpTablero.setVisible(false);
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(dim,dim));
@@ -236,9 +249,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         default: //jbEstado.setBackground(Color.red);
                             jbEstado.setText("OTRO");
                             break;
-                    }
-                    jbEstado.addMouseWheelListener(mWheelMovedBGrande);                  
-                    jbEstado.addMouseListener(mClickedBGrande);        
+                    }   
                 }else{
                     switch(this.aleatorio(1, 5)){
                     
@@ -258,11 +269,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         default: //jbEstado.setBackground(Color.red);
                             jbEstado.setText("OTRO");
                             break;
-                    }
-                        
-                    jbEstado.addMouseWheelListener(mWheelMovedBChico);                  
-                    jbEstado.addMouseListener(mClickedBChico);                  
+                    }        
             }
+            jbEstado.addMouseWheelListener(mWheelMovedCambiarEstados);                  
+            jbEstado.addMouseListener(mClickedCambiarEstados);    
+            
             jpTablero.add(jbEstado);
             
         }
@@ -322,50 +333,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if(dim < 8){
             jbEstado.setText("FINAL");
             jbEstado.setBackground(Color.GREEN);
-            jbEstado.addMouseWheelListener(new MouseAdapter(){
-                    public void mouseWheelMoved(MouseWheelEvent e){
-                           ma.setflagFinal(flagFinal);             
-                           ma.setjbEstado(e);
-                           flagFinal = ma.getflagFinal();
-                           ma.getjbEstado().repaint();
-                        }
-                    });
-//                  
-                    jbEstado.addMouseListener(new MouseAdapter(){
-                        public void mouseClicked(MouseEvent e){
-
-                            ma.setflagFinal(flagFinal);
-                            ma.setjbEstado(e);
-                            flagFinal = ma.getflagFinal();
-                            
-                            ma.getjbEstado().repaint();
-                        }
-                    }); 
+              
         }
         else{
             jbEstado.setText("F");
-            jbEstado.setBackground(Color.GREEN);
-            jbEstado.addMouseWheelListener(new MouseAdapter(){
-                        public void mouseWheelMoved(MouseWheelEvent e){
-                            
-                           ma1.setflagFinal(flagFinal);
-                           ma1.setjbEstado(e);
-                           flagFinal = ma1.getflagFinal();
-                           ma1.getjbEstado().repaint();
-                        }
-                    });
-//                  
-                    jbEstado.addMouseListener(new MouseAdapter(){
-                        public void mouseClicked(MouseEvent e){
-                            
-                            ma1.setflagFinal(flagFinal);
-                            ma1.setjbEstado(e);
-                            flagFinal = ma1.getflagFinal();
-                            ma1.getjbEstado().repaint();
-                        }
-                    }); 
-            
+            jbEstado.setBackground(Color.GREEN);     
         }
+        jbEstado.addMouseWheelListener(mWheelMovedCambiarEstados);                  
+        jbEstado.addMouseListener(mClickedCambiarEstados);      
     
         jbEstado.repaint();
         return jbEstado;     
@@ -446,7 +421,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 //        jtfEpsTau.setVisible(flag);
         
         jCTau.setVisible(false);
-        jCEpsilon.setVisible(true);
+        jCEpsilon.setVisible(flag);
         jrbEGreedy.setVisible(flag);
         jrbSoftMax.setVisible(flag);
         jbConfirmar.setVisible(flag);
@@ -685,13 +660,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbSoftMax.setVisible(visible);
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
-        jCEpsilon.setVisible(true);
-        jCTau.setVisible(true);
+        
         jBEntrena.setEnabled(false);
         jBAvanza.setEnabled(false);
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
-        jCEpsilon.enable(true);
+        
+        
+        
         if(jrbAuto.isSelected()){
         String aux = (String)jcbDim.getSelectedItem();
         switch(aux){
@@ -819,7 +795,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         for (int i = 0; i < Configuraciones.getDimension(); i++) {
             for (int j = 0; j < Configuraciones.getDimension(); j++) {
-                
+                int indice=(i*Configuraciones.getDimension()) + j;
+                Component componente= jpTablero.getComponent(indice);
+                if(componente.getClass() == JButton.class){
+                    componente.removeMouseListener(ma);
+                    componente.removeMouseWheelListener(ma);
+                }
+                        
             }}
     }
     
@@ -884,6 +866,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         jCEpsilon.setVisible(true);
         jlEpsilon.setVisible(true);
+        jCEpsilon.setEnabled(true);
         jCTau.setVisible(false);
         jlTau.setVisible(false);
     }//GEN-LAST:event_jrbEGreedyActionPerformed
@@ -942,6 +925,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jCEpsilon.setVisible(false);
         jlEpsilon.setVisible(false);
         jCTau.setVisible(true);
+        jCTau.setEnabled(true);
         jlTau.setVisible(true);
     }//GEN-LAST:event_jrbSoftMaxActionPerformed
 

@@ -82,13 +82,13 @@ public class EvJBGrande extends MouseAdapter{
                                 VentanaPrincipal.vistaConfigPoliticas(true);
                                 VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                             }
-                            if(!VentanaPrincipal.estadoInicial){
-                                s.setBackground(Color.ORANGE);
-                                s.setText("INICIAL");
-                                VentanaPrincipal.estadoInicial = true;
-                                VentanaPrincipal.vistaConfigPoliticas(true);
-                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-                            }
+//                            if(!VentanaPrincipal.estadoInicial){
+//                                s.setBackground(Color.ORANGE);
+//                                s.setText("INICIAL");
+//                                VentanaPrincipal.estadoInicial = true;
+//                                VentanaPrincipal.vistaConfigPoliticas(true);
+//                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+//                            }
                             else{
                                 s.setBackground(Color.white);
                                 s.setText("");
