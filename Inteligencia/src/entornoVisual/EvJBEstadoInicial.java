@@ -42,16 +42,20 @@ public class EvJBEstadoInicial {
     
     public void setjbEstado(MouseEvent e){
         if(!Configuraciones.getFlagEInicialSeleccionado()){
+            
             JButton s = (JButton)e.getComponent();
+            if(s.getBackground()==Color.black){
+                VentanaPrincipal.jlInicialNoPared.setVisible(true);
+            }else{
+                s.setBackground(Color.orange);
+                s.setText("I");
         
-            s.setBackground(Color.orange);
-            s.setText("I");
+                Configuraciones.setFlagEInicialSeleccionado(true);
         
-            Configuraciones.setFlagEInicialSeleccionado(true);
-        
-            VentanaPrincipal.jlEstadoInicial.setVisible(false);
-            VentanaPrincipal.jBAvanza.setEnabled(true);
-        
+                VentanaPrincipal.jlEstadoInicial.setVisible(false);
+                VentanaPrincipal.jBAvanza.setEnabled(true);
+                VentanaPrincipal.jlInicialNoPared.setVisible(false);
+            }
             this.jbEstado = s;
             this.jbEstado.repaint();
         }

@@ -171,6 +171,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         initComponents();
         VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+        VentanaPrincipal.jlInicialNoPared.setVisible(false);
         jPanel1.setVisible(false);
         jCEpsilon.setVisible(true);
         jCTau.setVisible(false);
@@ -510,6 +511,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jbGuardar = new javax.swing.JButton();
         jbGenerarGuardado = new javax.swing.JButton();
         jlAusenciaEstadoFinal = new javax.swing.JLabel();
+        jlInicialNoPared = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -765,6 +767,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jlAusenciaEstadoFinal.setText("*Advertencia: El escenario no tiene un estado \"Final\"");
         getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 200, -1, 20));
+
+        jlInicialNoPared.setText("*El estado inicial no puede ser una pared");
+        getContentPane().add(jlInicialNoPared, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 180, 270, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -1255,6 +1260,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static javax.swing.JLabel jlEstadoInicial;
     private static javax.swing.JLabel jlExcelente;
     private static javax.swing.JLabel jlFinal;
+    public static javax.swing.JLabel jlInicialNoPared;
     private static javax.swing.JLabel jlMalo;
     private javax.swing.JLabel jlManOAlea;
     private static javax.swing.JLabel jlRecompensas;
