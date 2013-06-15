@@ -51,6 +51,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     EvJBGrande ma  = new EvJBGrande();
     EvJBChico  ma1 = new EvJBChico();
+    
+    MouseAdapter mWheelMovedBGrande = new MouseAdapter(){
+        public void mouseWheelMoved(MouseWheelEvent e){                   
+            ma.setjbEstado(e);
+            ma.getjbEstado().repaint();
+        }
+    };
+        
+    MouseAdapter mClickedBGrande = new MouseAdapter(){
+        public void mouseClicked(MouseEvent e){
+            ma.setjbEstado(e);
+            ma.getjbEstado().repaint();
+        }
+    };   
+    
+    MouseAdapter mWheelMovedBChico = new MouseAdapter(){
+        public void mouseWheelMoved(MouseWheelEvent e){                   
+            ma1.setjbEstado(e);
+            ma1.getjbEstado().repaint();
+        }
+    };
+        
+    MouseAdapter mClickedBChico = new MouseAdapter(){
+        public void mouseClicked(MouseEvent e){
+            ma1.setjbEstado(e);
+            ma1.getjbEstado().repaint();
+        }
+    };     
+    
     public static boolean banderaEGreedy;
     public static boolean banderaSoftMax;
 
@@ -145,7 +174,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         VentanaPrincipal.estadoInicial=false;
         VentanaPrincipal.vistaConfigPoliticas(false);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
-         
+        
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 
@@ -155,42 +184,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jbEstado.setBackground(Color.white);
                 
                 if (dim < 8){
-                    
-                    jbEstado.addMouseWheelListener(new MouseAdapter(){
-                        public void mouseWheelMoved(MouseWheelEvent e){
-                            
-                           ma.setjbEstado(e);
-                           ma.getjbEstado().repaint();
-                        }
-                    });
-//                  
-                    jbEstado.addMouseListener(new MouseAdapter(){
-                        public void mouseClicked(MouseEvent e){
-                            
-                            ma.setjbEstado(e);
-                            ma.getjbEstado().repaint();
-                        }
-                    }); 
-                    
+                    jbEstado.addMouseWheelListener(mWheelMovedBGrande);                  
+                    jbEstado.addMouseListener(mClickedBGrande);                  
                 }else{
-                    jbEstado.addMouseWheelListener(new MouseAdapter(){
-                        public void mouseWheelMoved(MouseWheelEvent e){
-                            
-                           ma1.setjbEstado(e);
-                           ma1.getjbEstado().repaint();
-                        }
-                    });
-//                  
-                    jbEstado.addMouseListener(new MouseAdapter(){
-                        public void mouseClicked(MouseEvent e){
-                            
-                            ma1.setjbEstado(e);
-                            ma1.getjbEstado().repaint();
-                        }
-                    }); 
-                    
-                }
-                
+                    jbEstado.addMouseWheelListener(mWheelMovedBChico);                 
+                    jbEstado.addMouseListener(mClickedBChico);                  
+                }               
                 jpTablero.add(jbEstado);           
             }
         }
@@ -243,26 +242,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             jbEstado.setText("OTRO");
                             break;
                     }
-                    
-                    jbEstado.addMouseWheelListener(new MouseAdapter(){
-                        public void mouseWheelMoved(MouseWheelEvent e){
-                            
-                           ma.setflagFinal(flagFinal);
-                           ma.setjbEstado(e);
-                           flagFinal = ma.getflagFinal();
-                           ma.getjbEstado().repaint();
-                        }
-                    });
-//                  
-                    jbEstado.addMouseListener(new MouseAdapter(){
-                        public void mouseClicked(MouseEvent e){
-                            ma.setflagFinal(flagFinal);
-                            ma.setjbEstado(e);
-                            flagFinal = ma.getflagFinal();
-                            ma.getjbEstado().repaint();
-                        }
-                    }); 
-                    
+                    jbEstado.addMouseWheelListener(mWheelMovedBGrande);                  
+                    jbEstado.addMouseListener(mClickedBGrande);        
                 }else{
                     switch(this.aleatorio(1, 5)){
                     
@@ -284,24 +265,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             break;
                     }
                         
-                    jbEstado.addMouseWheelListener(new MouseAdapter(){
-                        public void mouseWheelMoved(MouseWheelEvent e){
-
-                           ma1.setflagFinal(flagFinal);
-                           ma1.setjbEstado(e);
-                           flagFinal = ma1.getflagFinal();
-                           ma1.getjbEstado().repaint();
-                        }
-                    });
-//                  
-                    jbEstado.addMouseListener(new MouseAdapter(){
-                        public void mouseClicked(MouseEvent e){
-                            ma1.setflagFinal(flagFinal);    
-                            ma1.setjbEstado(e);
-                            flagFinal = ma1.getflagFinal();
-                            ma1.getjbEstado().repaint();
-                        }
-                    });                     
+                    jbEstado.addMouseWheelListener(mWheelMovedBChico);                  
+                    jbEstado.addMouseListener(mClickedBChico);                  
             }
             jpTablero.add(jbEstado);
             
@@ -852,6 +817,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
+    public void setEstadoInicialEscenario(){
+        
+        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+            for (int j = 0; j < Configuraciones.getDimension(); j++) {
+                
+            }}
+    }
+    
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
         //recorriendo para ver mejor camino
         QMat matrizQ = episodios[Configuraciones.cantEpisodios-1].getMatrizQ();
