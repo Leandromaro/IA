@@ -71,7 +71,6 @@ public class EvJBChico {
                                  s.setBackground(Color.GREEN);
                                  s.setText("F");
                                  VentanaPrincipal.estadoFinal = true;
-                                 VentanaPrincipal.vistaConfigPoliticas(true);
                                  VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
 
                             }else{
@@ -83,7 +82,6 @@ public class EvJBChico {
                                 s.setBackground(Color.white);
                                 s.setText("");
                                 VentanaPrincipal.estadoFinal = false;
-                                VentanaPrincipal.vistaConfigPoliticas(false);
                                 VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
 
                             }
@@ -120,7 +118,6 @@ public class EvJBChico {
                                  s.setBackground(Color.GREEN);
                                  s.setText("F");
                                  VentanaPrincipal.estadoFinal = true;
-                                 VentanaPrincipal.vistaConfigPoliticas(true);
                                  VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
 
                             }else{
@@ -132,7 +129,6 @@ public class EvJBChico {
                                 s.setBackground(Color.white);
                                 s.setText("");
                                 VentanaPrincipal.estadoFinal = false;
-                                VentanaPrincipal.vistaConfigPoliticas(false);
                                 VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
 
                             }

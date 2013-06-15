@@ -175,7 +175,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jCEpsilon.setVisible(true);
         jCTau.setVisible(false);
         jlEstadoInicial.setVisible(false);
-        jrbManual.setEnabled(true);
+        jbGenerarTablero.setEnabled(true);
     }
     
    
@@ -190,7 +190,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         VentanaPrincipal.estadoFinal = false;
         VentanaPrincipal.estadoInicial=false;
-        VentanaPrincipal.vistaConfigPoliticas(false);
+        VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
         
         for (int i = 0; i < dim; i++) {
@@ -442,6 +442,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jSeparator1.setVisible(flag);
         jlMalo.setVisible(flag);
         jlbueno.setVisible(flag);
+        jlRegular.setVisible(flag);
         jSeparator2.setVisible(flag);
         
         jtfBueno.setVisible(flag);
@@ -546,6 +547,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         jpSuperior.add(jrbAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
+        jrbManual.setSelected(true);
         jrbManual.setText("Manual");
         jrbManual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -580,7 +582,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jrbSoftMaxActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, -1));
+        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
 
         jrbEGreedy.setText("E-Greedy");
         jrbEGreedy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -597,7 +599,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jlTau.setText("Tau: ");
         jlTau.setName(""); // NOI18N
-        jpSuperior.add(jlTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
+        jpSuperior.add(jlTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, -1, -1));
 
         jlEpsilon.setText("Epsilon:");
         jlEpsilon.setName(""); // NOI18N
@@ -614,41 +616,41 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jCTau.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", " " }));
         jCTau.setEnabled(false);
-        jpSuperior.add(jCTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, 30));
+        jpSuperior.add(jCTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, 30));
 
         jlMalo.setBackground(new java.awt.Color(240, 90, 82));
         jlMalo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlMalo.setText("Malo");
         jlMalo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jlMalo.setOpaque(true);
-        jpSuperior.add(jlMalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 60, 20));
+        jpSuperior.add(jlMalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, 60, 30));
 
         jlRegular.setBackground(new java.awt.Color(255, 255, 255));
         jlRegular.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlRegular.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jlRegular.setOpaque(true);
-        jpSuperior.add(jlRegular, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 60, 20));
+        jpSuperior.add(jlRegular, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 60, 30));
 
         jlbueno.setBackground(new java.awt.Color(220, 246, 53));
         jlbueno.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlbueno.setText("Bueno");
         jlbueno.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jlbueno.setOpaque(true);
-        jpSuperior.add(jlbueno, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 60, 20));
+        jpSuperior.add(jlbueno, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 60, 30));
 
         jlExcelente.setBackground(new java.awt.Color(72, 237, 255));
         jlExcelente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlExcelente.setText("Excelente");
         jlExcelente.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jlExcelente.setOpaque(true);
-        jpSuperior.add(jlExcelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 60, 20));
+        jpSuperior.add(jlExcelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 60, 30));
 
         jlFinal.setBackground(new java.awt.Color(255, 255, 255));
         jlFinal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlFinal.setText("FINAL");
         jlFinal.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jlFinal.setOpaque(true);
-        jpSuperior.add(jlFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 60, 20));
+        jpSuperior.add(jlFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 60, 30));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jpSuperior.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 10, 120));
@@ -670,19 +672,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 210, 50));
 
         jtfFinal.setText("jTextField1");
-        jpSuperior.add(jtfFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 60, 20));
+        jpSuperior.add(jtfFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 70, 30));
 
         jtfMalo.setText("jTextField1");
-        jpSuperior.add(jtfMalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 60, 20));
+        jpSuperior.add(jtfMalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 70, 30));
 
         jtfRegular.setText("jTextField1");
-        jpSuperior.add(jtfRegular, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 60, 20));
+        jpSuperior.add(jtfRegular, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 70, 30));
 
         jtfBueno.setText("jTextField1");
-        jpSuperior.add(jtfBueno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 60, 20));
+        jpSuperior.add(jtfBueno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 70, 30));
 
         jtfExcelente.setText("jTextField1");
-        jpSuperior.add(jtfExcelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 60, 20));
+        jpSuperior.add(jtfExcelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 70, 30));
 
         getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 140));
 
@@ -1256,7 +1258,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private static javax.swing.JLabel jlMalo;
     private javax.swing.JLabel jlManOAlea;
     private static javax.swing.JLabel jlRecompensas;
-    private javax.swing.JLabel jlRegular;
+    public static javax.swing.JLabel jlRegular;
     public static javax.swing.JLabel jlTau;
     private static javax.swing.JLabel jlbueno;
     private javax.swing.JPanel jpSuperior;
