@@ -20,6 +20,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 import javax.swing.border.Border;
 import logica.Configuraciones;
@@ -46,6 +47,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private int contadorEpisodios;
     public static boolean banderaTope=false;
 //    blackline = BorderFactory.createLineBorder(Color.black);
+    
+    public  JButton[][] suplente; // para guardar tablero momentaneamente para las pruebas.. SIN persistencia
     
     private ColoresyFormas cf = new ColoresyFormas();
     
@@ -153,7 +156,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
           }
               
               System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
-              jBAvanza.setEnabled(true);
+//              jBAvanza.setEnabled(true);
               throw new UnsupportedOperationException("Not supported yet.");
                 }
         
@@ -471,6 +474,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelContador = new javax.swing.JLabel();
         jBGrafica = new javax.swing.JButton();
         jlEstadoInicial = new javax.swing.JLabel();
+        jbGuardar = new javax.swing.JButton();
+        jbGenerarGuardado = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -653,6 +658,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jlEstadoInicial.setText("*Advertencia: Debe elegir un estado Inicial ");
         getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 320, -1));
 
+        jbGuardar.setText("Guardar Escenario");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 220, 120, 100));
+
+        jbGenerarGuardado.setText("Generar guargado");
+        jbGenerarGuardado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGenerarGuardadoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbGenerarGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 120, 120));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -665,7 +686,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jrbSoftMax.setVisible(visible);
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
-               
+
+        
         jBEntrena.setEnabled(false);
         jBAvanza.setEnabled(false);
         jTextCantidadEpisodios.setText("");
@@ -968,6 +990,43 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCEpsilonActionPerformed
 
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        
+        
+//        VentanaPrincipal.estadoFinal = false;
+//        VentanaPrincipal.estadoInicial=false;
+//        VentanaPrincipal.vistaConfigPoliticas(false);
+//        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+        suplente = new JButton[Configuraciones.getDimension()][Configuraciones.getDimension()];
+        
+        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+            for (int j = 0; j < Configuraciones.getDimension(); j++) {
+                int indice=(i*Configuraciones.getDimension()) + j;
+                Component componente= jpTablero.getComponent(indice);
+                if(componente.getClass() == JButton.class){
+                    JButton s = (JButton)componente;
+                    suplente[i][j] = s;
+                }
+            }
+        }
+        
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbGenerarGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarGuardadoActionPerformed
+
+        jpTablero.setVisible(false);
+        jpTablero.removeAll();
+        jpTablero.setLayout(new GridLayout(Configuraciones.getDimension(),Configuraciones.getDimension()));
+        
+        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+            for (int j = 0; j < Configuraciones.getDimension(); j++) {            
+                jpTablero.add((JButton)suplente[i][j]);  
+            }
+        }
+        jpTablero.setVisible(true);
+        jpTablero.repaint();
+    }//GEN-LAST:event_jbGenerarGuardadoActionPerformed
+
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
         String aux = (String)jcbDim.getSelectedItem();
@@ -1084,7 +1143,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JTextField jTextCantidadEpisodios;
     public static javax.swing.JButton jbConfirmar;
+    private javax.swing.JButton jbGenerarGuardado;
     private javax.swing.JButton jbGenerarTablero;
+    private javax.swing.JButton jbGuardar;
     private javax.swing.JComboBox jcbDim;
     public static javax.swing.JLabel jlAusenciaEstadoFinal;
     private javax.swing.JLabel jlConfig;
