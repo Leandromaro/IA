@@ -896,7 +896,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.out.println(cont);
         if (cont==tope){
             if(jrbEGreedy.isSelected()){
-                JOptionPane.showMessageDialog(this,"Agente Bloqueado o con poco entrenamiento, pruebe con un valor de Espsilon mayor, o con mayor numero de episodios","Error",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this,"Agente Bloqueado o con poco entrenamiento, pruebe con valores de Epsilon mayores, o con mayor numero de episodios","Error",JOptionPane.WARNING_MESSAGE);
             }
             else{
                JOptionPane.showMessageDialog(this,"Agente Bloqueado o con poco entrenamiento","Error",JOptionPane.WARNING_MESSAGE); 
