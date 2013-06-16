@@ -206,6 +206,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 jpTablero.add(jbEstado);           
             }
         }
+        //        Se agrega Estado Final
+        jpTablero.remove(this.posAbosAleatoria(dim));
+        jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
+ //        Se agrega Estado Inicial
+        jpTablero.remove(this.posAbosAleatoria(dim));
+        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
+        jpTablero.setVisible(true);
+        
         jpTablero.setVisible(true);       
         }
 
