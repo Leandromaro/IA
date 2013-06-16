@@ -82,8 +82,7 @@ public class Estado {
         }
         return null;
     }
-   
-           
+       
     @Override
     public boolean equals(Object estado){
         if(estado.getClass()==this.getClass()){

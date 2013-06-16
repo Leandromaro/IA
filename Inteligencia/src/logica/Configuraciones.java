@@ -11,20 +11,20 @@ package logica;
 public class Configuraciones {
     
     private static double gamma = 0.8;
-    private static double ValorNeutro= 0.30;
+    private static double ValorNeutro= 0.3;
     private static double valorPared= -1;
-    private static double valorMalo = 0.15;
-    private static double valorBueno= 0.60;
-    private static double valorExcelente = 1;
-    private static double valorFinal = 100000;
+    private static double valorMalo = 0.1;
+    private static double valorBueno= 0.5;
+    private static double valorExcelente = 0.8;
+    private static double valorFinal = 1;
     private static int dimension = 3; 
-    private static int valorPorDefectoMatQ= 1000;//valor "optimo" para que no entre en bucle con EGreedy
+    private static int valorPorDefectoMatQ= 100;//valor "optimo" para que no entre en bucle con EGreedy
     public static int filaI=0;
     public static int filaF=0;
     public static int colI;
     public static int colF;
     public static int cantEpisodios= 750;
-    public static double epsilon=0.1;
+    public static double epsilon=0.2;
     public static double tau=50;
     
     public static boolean flagEvEstadoInicial = false;
