@@ -15,15 +15,15 @@ public class Movimiento {
         Accion accionARealizar= politica.seleccionarAccionSiguiente(estadoActual);
         //obtenemos la recompensa
         double recompensa;
-        if ((Episodio.cont % 100) == 0){
-        recompensa= matrizR.devolverR(accionARealizar.getEstadoDestino().getPosI(),accionARealizar.getEstadoDestino().getPosJ())*0.1;
-        }else{
         recompensa= matrizR.devolverR(accionARealizar.getEstadoDestino().getPosI(),accionARealizar.getEstadoDestino().getPosJ());
-        }
         //obtenemos maximo valor que se puede obtener desde el estado proximo
         double maximoValor= accionARealizar.getEstadoDestino().maximoValorParaAcciones();
         //actualizar el valor de la accion elejida
-        accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor)); 
+        if ((Episodio.cont % 100) == 0){
+        accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor)*0.1); 
+        }
+        else
+        accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor)*0.1);
         //devolver al estado al que va
         return accionARealizar.getEstadoDestino();
     }
