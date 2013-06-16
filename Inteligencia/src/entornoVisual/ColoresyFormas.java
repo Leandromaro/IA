@@ -1,6 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Con este objeto se setean las formas y los colores de los estados y de la
+ * fuente de los textos que aparecen en la ventana
  */
 package entornoVisual;
 
@@ -14,11 +14,9 @@ import javax.swing.border.Border;
  */
 public final class ColoresyFormas {
 
-    private Boolean estadoFinal;
     private Border blackline;
     private Boolean flagFinal;
-    
-    
+ 
     static Font font = new Font("Arial", Font.BOLD, 9);
                 
     final  Color rojo;

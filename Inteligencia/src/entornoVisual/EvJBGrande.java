@@ -27,17 +27,6 @@ public class EvJBGrande extends MouseAdapter{
     
     private JButton jbEstado;   
     
-    private Boolean flagFinal = false;
-    private Boolean flagInicial = false;
-
-    public void setFlagInicial(Boolean flagInicial) {
-        this.flagInicial = flagInicial;
-    }
-
-    public Boolean getFlagInicial() {
-        return flagInicial;
-    }
-    
     public JButton getjbEstado(){
         return this.jbEstado;
     }
@@ -48,13 +37,6 @@ public class EvJBGrande extends MouseAdapter{
         return this.mClicked;
     }
     
-    public Boolean getflagFinal(){
-        return this.flagFinal;
-    }
-    public void setflagFinal(Boolean flagFinal){
-        this.flagFinal = flagFinal;
-    }
-
     public void setjbEstado(MouseWheelEvent e){
         JButton s = (JButton)e.getComponent();
 

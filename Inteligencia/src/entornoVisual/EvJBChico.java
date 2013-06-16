@@ -1,6 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * Con este objeto se modifica el contenido de un estado chico, esto es,
+ * de dimension mayor o igual a 8
  */
 package entornoVisual;
 
@@ -12,7 +12,7 @@ import javax.swing.JButton;
 
 /**
  *
- * @author Maty
+ *
  */
 public class EvJBChico {
  
@@ -22,9 +22,7 @@ public class EvJBChico {
     private MouseAdapter mClicked;
     
     private JButton jbEstado;   
-    
-    private Boolean flagFinal = false;
-    
+
     public JButton getjbEstado(){
         return this.jbEstado;
     }
@@ -33,17 +31,6 @@ public class EvJBChico {
     }
     public MouseAdapter getmClicked(){
         return this.mClicked;
-    }
-    
-    public Boolean getflagFinal(){
-        return this.flagFinal;
-    }
-    public void setflagFinal(Boolean flagFinal){
-        this.flagFinal = flagFinal;
-    }
-
-    public void setFlagFinal(Boolean flagFinal) {
-        this.flagFinal = flagFinal;
     }
 
     public void setjbEstado(MouseWheelEvent e){

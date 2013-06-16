@@ -33,8 +33,8 @@ import logica.RMat;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     
-    public static Boolean estadoFinal =false;
-    public static Boolean estadoInicial =false;
+    public static Boolean estadoFinal;
+    public static Boolean estadoInicial;
     private Border blackline;
     private Boolean flagFinal;
     private Boolean flagInicial;
@@ -196,7 +196,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             for (int j = 0; j < dim; j++) {
                 
                 JButton jbEstado = new JButton();
-                //jbEstado.setBorder(blackline);
+                jbEstado.setBorder(blackline);
                 jbEstado.setFont(cf.font);
                 jbEstado.setBackground(Color.white);
                 
@@ -229,7 +229,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         VentanaPrincipal.estadoFinal = true;
         VentanaPrincipal.estadoInicial=true;
         VentanaPrincipal.vistaConfigPoliticas(true);
-        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                 
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
@@ -286,12 +285,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
         }
         }    
+         //        Se agrega Estado Inicial
+        jpTablero.remove(this.posAbosAleatoria(dim));
+        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
+        VentanaPrincipal.estadoInicial = true;
+        VentanaPrincipal.jlEstadoInicial.setVisible(false);
+        
 //        Se agrega Estado Final
         jpTablero.remove(this.posAbosAleatoria(dim));
         jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
- //        Se agrega Estado Inicial
-        jpTablero.remove(this.posAbosAleatoria(dim));
-        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
+        VentanaPrincipal.estadoFinal = true;
+        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+
         jpTablero.setVisible(true);
   }
     
@@ -335,8 +340,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
         
         flagFinal = true;
-        ma.setflagFinal(true);
-        ma1.setflagFinal(true);
         
         if(dim < 8){
             jbEstado.setText("FINAL");
@@ -366,29 +369,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
         
         flagInicial = true;
-        
-        ma.setFlagInicial(true);
-        ma1.setflagFinal(true);
-        
         if(dim < 8){
             jbEstado.setText("INICIAL");
             jbEstado.setBackground(Color.ORANGE);
             jbEstado.addMouseWheelListener(new MouseAdapter(){
-                    public void mouseWheelMoved(MouseWheelEvent e){
-                           ma.setflagFinal(flagInicial);             
+                    public void mouseWheelMoved(MouseWheelEvent e){             
                            ma.setjbEstado(e);
-                           flagInicial = ma.getFlagInicial();
                            ma.getjbEstado().repaint();
                         }
                     });
 //                  
                     jbEstado.addMouseListener(new MouseAdapter(){
-                        public void mouseClicked(MouseEvent e){
-
-                            ma.setflagFinal(flagFinal);
-                            ma.setjbEstado(e);
-                            flagFinal = ma.getFlagInicial();
-                            
+                        public void mouseClicked(MouseEvent e){                    
+                            ma.setjbEstado(e);           
                             ma.getjbEstado().repaint();
                         }
                     }); 
@@ -397,25 +390,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jbEstado.setText("I");
             jbEstado.setBackground(Color.ORANGE);
             jbEstado.addMouseWheelListener(new MouseAdapter(){
-                        public void mouseWheelMoved(MouseWheelEvent e){
-                            
-                           ma.setflagFinal(flagInicial);             
+                        public void mouseWheelMoved(MouseWheelEvent e){           
                            ma.setjbEstado(e);
-                           flagInicial = ma.getFlagInicial();
                            ma.getjbEstado().repaint();
                         }
                     });
 //                  
                     jbEstado.addMouseListener(new MouseAdapter(){
-                        public void mouseClicked(MouseEvent e){
-                            
-                           ma.setflagFinal(flagInicial);             
+                        public void mouseClicked(MouseEvent e){          
                            ma.setjbEstado(e);
-                           flagInicial = ma.getFlagInicial();
                            ma.getjbEstado().repaint();
                         }
-                    }); 
-            
+                    });            
         }
     
         jbEstado.repaint();
@@ -918,12 +904,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         
         jBEntrena.setEnabled(false);
+        jBAvanza.setEnabled(true);
         iniciarEntrenamiento();//llama al hilo de entrenamiento
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
-    public void setEstadoInicialEscenario(){
-        Configuraciones.setEvEstadoInicial(true);
-        
+    public void eliminarEventos(){          
         for (int i = 0; i < Configuraciones.getDimension(); i++) {
             for (int j = 0; j < Configuraciones.getDimension(); j++) {
                 int indice=(i*Configuraciones.getDimension()) + j;
@@ -931,16 +916,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 if(componente.getClass() == JButton.class){
                     componente.removeMouseListener(mClickedCambiarEstados);
                     componente.removeMouseWheelListener(mWheelMovedCambiarEstados);
-                    
-                    componente.addMouseListener(mClickedCambiarEstados);
-                    componente.addMouseWheelListener(mWheelMovedCambiarEstados);
-                            
-                }
-                        
+                }            
             }
         }
         
     }
+    
+//    public void setEstadoInicialEscenario(){
+//        Configuraciones.setEvEstadoInicial(true);
+//        
+//        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+//            for (int j = 0; j < Configuraciones.getDimension(); j++) {
+//                int indice=(i*Configuraciones.getDimension()) + j;
+//                Component componente= jpTablero.getComponent(indice);
+//                if(componente.getClass() == JButton.class){
+//                    componente.removeMouseListener(mClickedCambiarEstados);
+//                    componente.removeMouseWheelListener(mWheelMovedCambiarEstados);
+//                    
+//                    componente.addMouseListener(mClickedCambiarEstados);
+//                    componente.addMouseWheelListener(mWheelMovedCambiarEstados);
+//                            
+//                }
+//                        
+//            }
+//        }
+//        
+//    }
     
  
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
@@ -957,7 +958,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 Component componente= jpTablero.getComponent(indice);
                 if(componente.getClass() == JButton.class){
                     JButton s = (JButton)componente;
-                    if("I".equals(s.getText())){
+                    if(("I".equals(s.getText())) | ("INICIAL".equals(s.getText()))){
                         estadoInicial= matrizQ.getEstado(i,j);         
                     }
                 }     
@@ -1088,6 +1089,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
+        this.eliminarEventos();
+        
         this.setEnabledJPSuperior(false);
         jPanel1.setVisible(true);
         if (jrbEGreedy.isSelected()){
