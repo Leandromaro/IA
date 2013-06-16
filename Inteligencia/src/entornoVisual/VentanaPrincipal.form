@@ -773,14 +773,14 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jlEstadoInicial">
       <Properties>
-        <Property name="text" type="java.lang.String" value="*Advertencia: Debe elegir un estado Inicial "/>
+        <Property name="text" type="java.lang.String" value="*Advertencia: Debe elegir un estado &quot;Inicial&quot; "/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="590" y="210" width="320" height="-1"/>
+          <AbsoluteConstraints x="590" y="170" width="320" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -812,14 +812,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jlAusenciaEstadoFinal">
       <Properties>
-        <Property name="text" type="java.lang.String" value="*Advertencia: El escenario no tiene un estado &quot;Final&quot;"/>
+        <Property name="text" type="java.lang.String" value="*Advertencia: Debe elegir un estado &quot;Final&quot;"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="590" y="200" width="-1" height="20"/>
+          <AbsoluteConstraints x="590" y="190" width="-1" height="20"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -832,7 +832,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="590" y="190" width="270" height="-1"/>
+          <AbsoluteConstraints x="590" y="230" width="270" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -47,14 +47,13 @@ public class EvJBChico {
     }
 
     public void setjbEstado(MouseWheelEvent e){
-                               
         JButton s = (JButton)e.getComponent();
 
-        if(s.getBackground() == Color.white & !("F".equals(s.getText()))){
-            s.setBackground(Color.black);
-            s.setText("");
-        }else{
-            if(s.getBackground() == Color.black){
+        if(s.getBackground() == Color.white & (!("F".equals(s.getText())) | !("I").equals(s.getText()))){
+                s.setBackground(Color.black);
+                s.setText("");
+            }else{
+            if(s.getBackground() == Color.black){  
                 s.setBackground(cf.rojo);
                 s.setText("M");
             }else{
@@ -67,82 +66,111 @@ public class EvJBChico {
                         s.setText("E");
                     }else{
                         if("E".equals(s.getText())){
-                            if(!VentanaPrincipal.estadoFinal){
-                                 s.setBackground(Color.GREEN);
-                                 s.setText("F");
-                                 VentanaPrincipal.estadoFinal = true;
-                                 VentanaPrincipal.jbConfirmar.setEnabled(true);
-                                 VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-
+                                if(!VentanaPrincipal.estadoInicial){
+                                    s.setBackground(Color.ORANGE);
+                                    s.setText("I");
+                                    VentanaPrincipal.estadoInicial = true;
+                                    VentanaPrincipal.vistaConfigPoliticas(true);
+                                    VentanaPrincipal.jlEstadoInicial.setVisible(false);
+                                }else{
+                                    if(!VentanaPrincipal.estadoFinal){
+                                        s.setBackground(Color.GREEN);
+                                        s.setText("F");
+                                        VentanaPrincipal.estadoFinal = true;
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+                                    }else{
+                                        s.setBackground(Color.white);
+                                        s.setText("");
+                                    }
+                                }    
                             }else{
-                                s.setBackground(Color.white);
-                                s.setText("");                           
+                                if("F".equals(s.getText())){
+                                    s.setBackground(Color.white);
+                                    s.setText("");
+                                    VentanaPrincipal.estadoFinal = false;
+                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+                                }
+                                if("I".equals(s.getText())){
+                                    s.setBackground(Color.white);
+                                    s.setText("");
+                                    VentanaPrincipal.estadoInicial = false;
+                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                    VentanaPrincipal.jlEstadoInicial.setVisible(true);                      
+                                } 
                             }
-                        }else{
-                            if("F".equals(s.getText())){
-                                s.setBackground(Color.white);
-                                s.setText("");
-                                VentanaPrincipal.estadoFinal = false;
-                                VentanaPrincipal.jbConfirmar.setEnabled(false);
-                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+                    }
+                }     
+            }
+        }
+        this.jbEstado = s;
+        this.jbEstado.repaint();
+    }
+      
+    public void setjbEstado(MouseEvent e){
+        JButton s = (JButton)e.getComponent();
 
+        if(s.getBackground() == Color.white & (!("F".equals(s.getText())) | !("I").equals(s.getText()))){
+                s.setBackground(Color.black);
+                s.setText("");
+            }else{
+            if(s.getBackground() == Color.black){  
+                s.setBackground(cf.rojo);
+                s.setText("M");
+            }else{
+                if("M".equals(s.getText())){
+                    s.setBackground(cf.amarillo);
+                    s.setText("B");
+                }else{
+                    if("B".equals(s.getText())){
+                        s.setBackground(cf.verde);
+                        s.setText("E");
+                    }else{
+                        if("E".equals(s.getText())){
+                                if(!VentanaPrincipal.estadoInicial){
+                                    s.setBackground(Color.ORANGE);
+                                    s.setText("I");
+                                    VentanaPrincipal.estadoInicial = true;
+                                    VentanaPrincipal.vistaConfigPoliticas(true);
+                                    VentanaPrincipal.jlEstadoInicial.setVisible(false);
+                                }else{
+                                    if(!VentanaPrincipal.estadoFinal){
+                                        s.setBackground(Color.GREEN);
+                                        s.setText("F");
+                                        VentanaPrincipal.estadoFinal = true;
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+                                    }else{
+                                        s.setBackground(Color.white);
+                                        s.setText("");
+                                    }
+                                }    
+                            }else{
+                                if("F".equals(s.getText())){
+                                    s.setBackground(Color.white);
+                                    s.setText("");
+                                    VentanaPrincipal.estadoFinal = false;
+                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+                                }
+                                if("I".equals(s.getText())){
+                                    s.setBackground(Color.white);
+                                    s.setText("");
+                                    VentanaPrincipal.estadoInicial = false;
+                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                    VentanaPrincipal.jlEstadoInicial.setVisible(true);                      
+                                } 
                             }
-                        }
-                    }  
-                }
+                    }
+                }     
             }
         }
         this.jbEstado = s;
         this.jbEstado.repaint();
     };
     
-    public void setjbEstado(MouseEvent e){
-        JButton s = (JButton)e.getComponent();
-
-        if(s.getBackground() == Color.white & !("F".equals(s.getText()))){
-            s.setBackground(Color.black);
-            s.setText("");
-        }else{
-            if(s.getBackground() == Color.black){
-                s.setBackground(cf.rojo);
-                s.setText("M");
-            }else{
-                if("M".equals(s.getText())){
-                    s.setBackground(cf.amarillo);
-                    s.setText("B");
-                }else{
-                    if("B".equals(s.getText())){
-                        s.setBackground(cf.verde);
-                        s.setText("E");
-                    }else{
-                        if("E".equals(s.getText())){
-                            if(!VentanaPrincipal.estadoFinal){
-                                 s.setBackground(Color.GREEN);
-                                 s.setText("F");
-                                 VentanaPrincipal.estadoFinal = true;
-                                 VentanaPrincipal.jbConfirmar.setEnabled(true);
-                                 VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-
-                            }else{
-                                s.setBackground(Color.white);
-                                s.setText("");
-                            }
-                        }else{
-                            if("F".equals(s.getText())){
-                                s.setBackground(Color.white);
-                                s.setText("");
-                                VentanaPrincipal.estadoFinal = false;
-                                VentanaPrincipal.jbConfirmar.setEnabled(false);
-                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
-
-                            }
-                        }
-                    }  
-                }
-            }
-        }
-        this.jbEstado = s;
-        this.jbEstado.repaint();
-    };
-        
+    public EvJBChico() {
+          
+    }
 }

@@ -190,6 +190,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         VentanaPrincipal.estadoInicial=false;
         VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+        VentanaPrincipal.jlEstadoInicial.setVisible(true);
         
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
@@ -207,13 +208,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         }
         //        Se agrega Estado Final
-        jpTablero.remove(this.posAbosAleatoria(dim));
-        jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
+//        jpTablero.remove(this.posAbosAleatoria(dim));
+//        jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
  //        Se agrega Estado Inicial
-        jpTablero.remove(this.posAbosAleatoria(dim));
-        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
-        jpTablero.setVisible(true);
-        
+//        jpTablero.remove(this.posAbosAleatoria(dim));
+//        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
         jpTablero.setVisible(true);       
         }
 
@@ -753,8 +752,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 170, 380));
 
-        jlEstadoInicial.setText("*Advertencia: Debe elegir un estado Inicial ");
-        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 210, 320, -1));
+        jlEstadoInicial.setText("*Advertencia: Debe elegir un estado \"Inicial\" ");
+        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 320, -1));
 
         jbGuardar.setText("Guardar Escenario");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -772,11 +771,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         getContentPane().add(jbGenerarGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, 130, 120));
 
-        jlAusenciaEstadoFinal.setText("*Advertencia: El escenario no tiene un estado \"Final\"");
-        getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, -1, 20));
+        jlAusenciaEstadoFinal.setText("*Advertencia: Debe elegir un estado \"Final\"");
+        getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 20));
 
         jlInicialNoPared.setText("*El estado inicial no puede ser una pared");
-        getContentPane().add(jlInicialNoPared, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 270, -1));
+        getContentPane().add(jlInicialNoPared, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, 270, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -885,7 +884,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jBEntrenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrenaActionPerformed
         
-        jlEstadoInicial.setVisible(true);
         jBAvanza.setEnabled(false);
         
         String userdata = jTextCantidadEpisodios.getText().trim();
@@ -918,13 +916,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
         }
         
-        iniciarEntrenamiento();//llama al hilo de entrenamiento
+        
         jBEntrena.setEnabled(false);
-        
-        this.setEstadoInicialEscenario();
-        
-        
-
+        iniciarEntrenamiento();//llama al hilo de entrenamiento
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     public void setEstadoInicialEscenario(){
