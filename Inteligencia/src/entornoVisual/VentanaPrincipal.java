@@ -406,6 +406,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         jlRecompensas.setVisible(flag);
         
+        jlInicialQ.setVisible(flag);
+        jtfInicialQ.setVisible(flag);
+        
+        
         jlEpsilon.setVisible(flag);
         jlTau.setVisible(false); //Porque arranca EGreedy por defecto
 //        jtfEpsTau.setVisible(flag);
@@ -442,6 +446,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jtfExcelente.setText(Double.toString(Configuraciones.getValorExcelente()));
         jtfFinal.setVisible(flag);
         jtfFinal.setText(Double.toString(Configuraciones.getValorFinal()));
+        jtfInicialQ.setVisible(flag);
+        jtfInicialQ.setText(Double.toString(Configuraciones.getValorPorDefectoMatQ()));
         
     }
     
@@ -479,11 +485,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jSeparator2 = new javax.swing.JSeparator();
         jlConfigPoliticas = new javax.swing.JLabel();
         jbConfirmar = new javax.swing.JButton();
-        jtfFinal = new javax.swing.JTextField();
+        jtfInicialQ = new javax.swing.JTextField();
         jtfMalo = new javax.swing.JTextField();
         jtfRegular = new javax.swing.JTextField();
         jtfBueno = new javax.swing.JTextField();
         jtfExcelente = new javax.swing.JTextField();
+        jtfFinal = new javax.swing.JTextField();
+        jlInicialQ = new javax.swing.JLabel();
         jpTablero = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTextCantidadEpisodios = new javax.swing.JTextField();
@@ -553,7 +561,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jbGenerarTableroActionPerformed(evt);
             }
         });
-        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 210, 54));
+        jpSuperior.add(jbGenerarTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 10, 210, 54));
 
         jlRecompensas.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jlRecompensas.setText("Valores de Recompensa:");
@@ -657,10 +665,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jbConfirmarActionPerformed(evt);
             }
         });
-        jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, 210, 50));
+        jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 210, 50));
 
-        jtfFinal.setText("jTextField1");
-        jpSuperior.add(jtfFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 70, 30));
+        jtfInicialQ.setText("jTextField1");
+        jpSuperior.add(jtfInicialQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 70, 30));
 
         jtfMalo.setText("jTextField1");
         jpSuperior.add(jtfMalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 70, 30));
@@ -673,6 +681,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jtfExcelente.setText("jTextField1");
         jpSuperior.add(jtfExcelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 70, 30));
+
+        jtfFinal.setText("jTextField1");
+        jpSuperior.add(jtfFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 70, 30));
+
+        jlInicialQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlInicialQ.setText("Q-Inicial");
+        jpSuperior.add(jlInicialQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 60, 30));
 
         getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 140));
 
@@ -1059,7 +1074,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jtfMalo.setEnabled(flag);
         jlRegular.setEnabled(flag);
         jcbDim.setEnabled(flag);
-        jtfFinal.setEnabled(flag);
+        jtfInicialQ.setEnabled(flag);
+        jlInicialQ.setEnabled(flag);
+        jtfInicialQ.setEnabled(flag);
     }
     
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
@@ -1083,7 +1100,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         Configuraciones.setValorNeutro(Double.parseDouble(jtfRegular.getText()));
         Configuraciones.setValorBueno(Double.parseDouble(jtfBueno.getText()));
         Configuraciones.setValorExcelente(Double.parseDouble(jtfExcelente.getText()));
-        Configuraciones.setValorFinal(Double.parseDouble(jtfFinal.getText()));
+        Configuraciones.setValorFinal(Double.parseDouble(jtfInicialQ.getText()));
+        Configuraciones.setValorPorDefectoMatQ(Integer.parseInt(jtfInicialQ.getText()));
         
         jBEntrena.setEnabled(true);
         
@@ -1309,6 +1327,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private static javax.swing.JLabel jlExcelente;
     private static javax.swing.JLabel jlFinal;
     public static javax.swing.JLabel jlInicialNoPared;
+    public static javax.swing.JLabel jlInicialQ;
     private static javax.swing.JLabel jlMalo;
     private javax.swing.JLabel jlManOAlea;
     private static javax.swing.JLabel jlRecompensas;
@@ -1324,6 +1343,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static javax.swing.JTextField jtfBueno;
     public static javax.swing.JTextField jtfExcelente;
     public static javax.swing.JTextField jtfFinal;
+    public static javax.swing.JTextField jtfInicialQ;
     public static javax.swing.JTextField jtfMalo;
     public static javax.swing.JTextField jtfRegular;
     // End of variables declaration//GEN-END:variables
