@@ -13,10 +13,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 import javax.swing.border.Border;
 import logica.Configuraciones;
@@ -31,7 +34,7 @@ import logica.RMat;
  *
  * @author Maty
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaPrincipal extends javax.swing.JFrame{
     
     public static Boolean estadoFinal;
     public static Boolean estadoInicial;
@@ -45,7 +48,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
 //    blackline = BorderFactory.createLineBorder(Color.black);
     
-    public  JButton[][] suplente; // para guardar tablero momentaneamente para las pruebas.. SIN persistencia
+    public  Boton[][] tableroSuplente; // para guardar tablero momentaneamente para las pruebas.. SIN persistencia
     
     private ColoresyFormas cf = new ColoresyFormas();
     
@@ -144,7 +147,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
               System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
 //              jBAvanza.setEnabled(true);
               throw new UnsupportedOperationException("Not supported yet.");
-                }
+            
+        }
         
         };
 
@@ -153,9 +157,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }catch (Exception e){
             JOptionPane.showMessageDialog(this,"Error" , e.toString(), 1);
         }
+        
+
     }
     
     public VentanaPrincipal() {
+        
         initComponents();
         VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
@@ -274,12 +281,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             
         }
         }    
-         //        Se agrega Estado Inicial
+        int aleatorio1 = this.posAbosAleatoria(dim);
         jpTablero.remove(this.posAbosAleatoria(dim));
         jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
         VentanaPrincipal.estadoInicial = true;
         VentanaPrincipal.jlEstadoInicial.setVisible(false);
         
+        int aleatorio2 = this.posAbosAleatoria(dim);
+        while(aleatorio1 == aleatorio2){
+            aleatorio2 = this.posAbosAleatoria(dim);
+        }
 //        Se agrega Estado Final
         jpTablero.remove(this.posAbosAleatoria(dim));
         jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
@@ -765,24 +776,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelContador.setText("");
         
         if(jrbAuto.isSelected()){
-        String aux = (String)jcbDim.getSelectedItem();
-        switch(aux){
-            case "6x6":this.cargarTableroAleatorio(6);
-                jTextCantidadEpisodios.setText("750");
-                break;
-            case "7x7":this.cargarTableroAleatorio(7);
-                jTextCantidadEpisodios.setText("1000");
-                break;
-            case "8x8":this.cargarTableroAleatorio(8);
-                jTextCantidadEpisodios.setText("1250");
-                break;
-            case "9x9":this.cargarTableroAleatorio(9);
-                jTextCantidadEpisodios.setText("1500");
-                break;
-            case "10x10":this.cargarTableroAleatorio(10);
-                jTextCantidadEpisodios.setText("2000");
-                break;
-        }    
+            String aux = (String)jcbDim.getSelectedItem();
+            switch(aux){
+                case "6x6":this.cargarTableroAleatorio(6);
+                    jTextCantidadEpisodios.setText("750");
+                    break;
+                case "7x7":this.cargarTableroAleatorio(7);
+                    jTextCantidadEpisodios.setText("1000");
+                    break;
+                case "8x8":this.cargarTableroAleatorio(8);
+                    jTextCantidadEpisodios.setText("1250");
+                    break;
+                case "9x9":this.cargarTableroAleatorio(9);
+                    jTextCantidadEpisodios.setText("1500");
+                    break;
+                case "10x10":this.cargarTableroAleatorio(10);
+                    jTextCantidadEpisodios.setText("2000");
+                    break;             
+            }
+            VentanaPrincipal.jbConfirmar.setVisible(true);
         
         }else{
             if(jrbManual.isSelected()){
@@ -889,6 +901,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jBEntrena.setEnabled(false);
         jBAvanza.setEnabled(true);
         iniciarEntrenamiento();//llama al hilo de entrenamiento
+        
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     public void eliminarEventos(){          
@@ -904,27 +917,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
     }
-    
-//    public void setEstadoInicialEscenario(){
-//        Configuraciones.setEvEstadoInicial(true);
-//        
-//        for (int i = 0; i < Configuraciones.getDimension(); i++) {
-//            for (int j = 0; j < Configuraciones.getDimension(); j++) {
-//                int indice=(i*Configuraciones.getDimension()) + j;
-//                Component componente= jpTablero.getComponent(indice);
-//                if(componente.getClass() == JButton.class){
-//                    componente.removeMouseListener(mClickedCambiarEstados);
-//                    componente.removeMouseWheelListener(mWheelMovedCambiarEstados);
-//                    
-//                    componente.addMouseListener(mClickedCambiarEstados);
-//                    componente.addMouseWheelListener(mWheelMovedCambiarEstados);
-//                            
-//                }
-//                        
-//            }
-//        }
-//        
-//    }
     
  
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
@@ -1093,6 +1085,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Configuraciones.setValorExcelente(Double.parseDouble(jtfExcelente.getText()));
         Configuraciones.setValorFinal(Double.parseDouble(jtfFinal.getText()));
         
+        jBEntrena.setEnabled(true);
+        
         
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
@@ -1112,19 +1106,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         
         
-//        VentanaPrincipal.estadoFinal = false;
-//        VentanaPrincipal.estadoInicial=false;
-//        VentanaPrincipal.vistaConfigPoliticas(false);
-//        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
-        suplente = new JButton[Configuraciones.getDimension()][Configuraciones.getDimension()];
+        tableroSuplente = new Boton[6][6];
         
         for (int i = 0; i < Configuraciones.getDimension(); i++) {
             for (int j = 0; j < Configuraciones.getDimension(); j++) {
                 int indice=(i*Configuraciones.getDimension()) + j;
                 Component componente= jpTablero.getComponent(indice);
                 if(componente.getClass() == JButton.class){
-                    JButton s = (JButton)componente;
-                    suplente[i][j] = s;
+                  JButton s = (JButton)componente;
+                  
+                  Boton b = new Boton();
+                  Color c = s.getBackground();
+                  Border borde = s.getBorder();
+                  b.setColor(c);
+                  b.setTexto(s.getText());
+                  b.setBorde(borde);
+                  tableroSuplente[i][j] = b;
                 }
             }
         }
@@ -1133,7 +1130,40 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void jbGenerarGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarGuardadoActionPerformed
 
-        initComponents();
+        
+//        this.removeAll();
+//        this.initComponents();
+        
+        
+        jpSuperior.setEnabled(true);
+        this.enabledJPSuperior(true);
+        this.vistaConfigPoliticas(true);
+//        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+//        VentanaPrincipal.jlInicialNoPared.setVisible(false);
+        jPanel1.setVisible(true);
+
+        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+        VentanaPrincipal.jlEstadoInicial.setVisible(false);
+        VentanaPrincipal.estadoInicial = true;
+        VentanaPrincipal.estadoFinal = true;
+        
+        jpTablero.setVisible(false);
+        jpTablero.removeAll();
+        jpTablero.setLayout(new GridLayout(Configuraciones.getDimension(),Configuraciones.getDimension()));
+        
+        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+            for (int j = 0; j < Configuraciones.getDimension(); j++) {            
+                
+                Boton b;
+                JButton s = new JButton() ;
+                b = tableroSuplente[i][j];
+                s.setBackground(b.getColor());
+                s.setText(b.getTexto());
+                s.setBorder(s.getBorder());
+                jpTablero.add(s);
+            }
+        }
+        
         VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
         VentanaPrincipal.jlInicialNoPared.setVisible(false);
@@ -1142,18 +1172,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jCTau.setVisible(false);
         jlEstadoInicial.setVisible(false);
         jbGenerarTablero.setEnabled(true);
-        
-        jpTablero.setVisible(false);
-        jpTablero.removeAll();
-        jpTablero.setLayout(new GridLayout(Configuraciones.getDimension(),Configuraciones.getDimension()));
-        
-        for (int i = 0; i < Configuraciones.getDimension(); i++) {
-            for (int j = 0; j < Configuraciones.getDimension(); j++) {            
-                jpTablero.add((JButton)suplente[i][j]);  
-            }
-        }
         jpTablero.setVisible(true);
         jpTablero.repaint();
+        VentanaPrincipal.jbConfirmar.setEnabled(true);
+        
     }//GEN-LAST:event_jbGenerarGuardadoActionPerformed
 
     private RMat obtenerRdesdePantalla(){
