@@ -447,7 +447,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jtfFinal.setVisible(flag);
         jtfFinal.setText(Double.toString(Configuraciones.getValorFinal()));
         jtfInicialQ.setVisible(flag);
-        jtfInicialQ.setText(Double.toString(Configuraciones.getValorPorDefectoMatQ()));
+        jtfInicialQ.setText(Integer.toString(Configuraciones.getValorPorDefectoMatQ()));
         
     }
     
