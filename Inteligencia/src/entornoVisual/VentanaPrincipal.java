@@ -292,8 +292,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             aleatorio2 = this.posAbosAleatoria(dim);
         }
 //        Se agrega Estado Final
-        jpTablero.remove(this.posAbosAleatoria(dim));
-        jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
+        jpTablero.remove(aleatorio2);
+        jpTablero.add(this.estadoFinal(dim), aleatorio2);
         VentanaPrincipal.estadoFinal = true;
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
 
@@ -976,8 +976,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         else{
             y = 3;
         }
-        int tope = (int) Math.pow(x, y);
-        
+//        int tope = (int) Math.pow(x, y);
+        int tope = 2000; 
             
         
         while(!estadoInicial.equals(estadoFinal)&&(cont<tope)){
@@ -1031,24 +1031,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jBGraficaActionPerformed
 
     public void enabledJPSuperior(Boolean flag){
-        jpSuperior.setEnabled(flag);
-        jlConfig.setEnabled(flag);
-        jrbAuto.setEnabled(flag);
-        jrbManual.setEnabled(flag);
-        jcbDim.setEnabled(flag);
-        jlDim.setEnabled(flag);
-        jlManOAlea.setEnabled(flag);
-        jbGenerarTablero.setEnabled(flag);
-        jlRecompensas.setEnabled(flag);
-        jCEpsilon.setEnabled(flag);;
-        jrbEGreedy.setEnabled(flag);
-        jrbSoftMax.setEnabled(flag);
-        jbConfirmar.setEnabled(flag);
-        jlTau.setEnabled(flag);
-        jlEpsilon.setEnabled(flag);
-    }
-    
-    public void setEnabledJPSuperior(boolean flag){
         jlManOAlea.setEnabled(flag);
         jlExcelente.setEnabled(flag);
         jrbManual.setEnabled(flag);
@@ -1078,6 +1060,37 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jtfInicialQ.setEnabled(flag);
     }
     
+    public void setEnabledJPSuperior(boolean flag){
+        jlManOAlea.setEnabled(flag);
+        jlExcelente.setEnabled(flag);
+        jrbManual.setEnabled(flag);
+        jlConfig.setEnabled(flag);
+        jlConfigPoliticas.setEnabled(flag);
+        jlbueno.setEnabled(flag);
+        jlTau.setEnabled(flag);
+        jtfExcelente.setEnabled(flag);
+        jlMalo.setEnabled(flag);
+        jCTau.setEnabled(flag);
+        jtfBueno.setEnabled(flag);
+        jlEpsilon.setEnabled(flag);
+        jCEpsilon.setEnabled(flag);
+        jtfRegular.setEnabled(flag);
+        jbConfirmar.setEnabled(flag);
+        jbGenerarTablero.setEnabled(flag);
+        jrbAuto.setEnabled(flag);
+        jrbEGreedy.setEnabled(flag);
+        jlRecompensas.setEnabled(flag);
+        jlDim.setEnabled(flag);
+        jrbSoftMax.setEnabled(flag);
+        jtfMalo.setEnabled(flag);
+        jlRegular.setEnabled(flag);
+        jcbDim.setEnabled(flag);
+        jtfInicialQ.setEnabled(flag);
+        jlInicialQ.setEnabled(flag);
+        jtfFinal.setEnabled(flag);
+        jlFinal.setEnabled(flag);
+    }
+    
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
         this.eliminarEventos();
@@ -1099,7 +1112,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         Configuraciones.setValorNeutro(Double.parseDouble(jtfRegular.getText()));
         Configuraciones.setValorBueno(Double.parseDouble(jtfBueno.getText()));
         Configuraciones.setValorExcelente(Double.parseDouble(jtfExcelente.getText()));
-        Configuraciones.setValorFinal(Double.parseDouble(jtfInicialQ.getText()));
+        Configuraciones.setValorFinal(Double.parseDouble(jtfFinal.getText()));
         Configuraciones.setValorPorDefectoMatQ(Integer.parseInt(jtfInicialQ.getText()));
         
         jBEntrena.setEnabled(true);
@@ -1151,7 +1164,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 //        this.removeAll();
 //        this.initComponents();
         
-        
+        jlFinal.setEnabled(true);
+        jtfFinal.setEditable(true);
         jpSuperior.setEnabled(true);
         this.enabledJPSuperior(true);
         this.vistaConfigPoliticas(true);
