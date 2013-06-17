@@ -18,7 +18,6 @@ public class EvJBEstadoInicial {
     private ColoresyFormas cf = new ColoresyFormas();
     
     private JButton jbEstado;
-    private JButton jbAnterior;
     
     public JButton getjbEstado(){
         return this.jbEstado;
@@ -27,12 +26,7 @@ public class EvJBEstadoInicial {
     public void setjbEstado(MouseWheelEvent e){
         
         JButton s = (JButton)e.getComponent();
-        if(!Configuraciones.getFlagEInicialSeleccionado()){
-            if(s.getBackground()!=Color.black){
-                jbAnterior = new JButton();
-                jbAnterior.setBackground(s.getBackground());
-                jbAnterior.setText(s.getText());
-            
+        if(!Configuraciones.getFlagEInicialSeleccionado()){         
                 s.setBackground(Color.orange);
                 s.setText("I");
         
@@ -41,14 +35,8 @@ public class EvJBEstadoInicial {
         
                 VentanaPrincipal.jlEstadoInicial.setVisible(false);
                 VentanaPrincipal.jBAvanza.setEnabled(true);
-            }
-            else{
-                VentanaPrincipal.jlInicialNoPared.setVisible(true);
-            }
         }else{
             if("I".equals(s.getText())){
-                s.setText(jbAnterior.getText());
-                s.setBackground(jbAnterior.getBackground());
                 Configuraciones.setFlagEInicialSeleccionado(false);
                 VentanaPrincipal.jlEstadoInicial.setVisible(true);
                 VentanaPrincipal.jBAvanza.setEnabled(false);
@@ -61,11 +49,7 @@ public class EvJBEstadoInicial {
     public void setjbEstado(MouseEvent e){
         JButton s = (JButton)e.getComponent();
         if(!Configuraciones.getFlagEInicialSeleccionado()){
-            if(s.getBackground()!=Color.black){
-                jbAnterior = new JButton();
-                jbAnterior.setBackground(s.getBackground());
-                jbAnterior.setText(s.getText());
-            
+            if(s.getBackground()!=Color.black){         
                 s.setBackground(Color.orange);
                 s.setText("I");
         
@@ -80,8 +64,6 @@ public class EvJBEstadoInicial {
             }
         }else{
             if("I".equals(s.getText())){
-                s.setText(jbAnterior.getText());
-                s.setBackground(jbAnterior.getBackground());
                 Configuraciones.setFlagEInicialSeleccionado(false);
                 VentanaPrincipal.jlEstadoInicial.setVisible(true);
                 VentanaPrincipal.jBAvanza.setEnabled(false);

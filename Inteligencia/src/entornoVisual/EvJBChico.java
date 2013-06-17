@@ -134,13 +134,6 @@ public class EvJBChico {
                                     }
                                 }    
                             }else{
-                                if("F".equals(s.getText())){
-                                    s.setBackground(Color.white);
-                                    s.setText("");
-                                    VentanaPrincipal.estadoFinal = false;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
-                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
-                                }
                                 if("I".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
@@ -148,6 +141,14 @@ public class EvJBChico {
                                     VentanaPrincipal.jbConfirmar.setEnabled(false);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(true);                      
                                 } 
+                                if("F".equals(s.getText())){
+                                    s.setBackground(Color.white);
+                                    s.setText("");
+                                    VentanaPrincipal.estadoFinal = false;
+                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+                                }
+                                
                             }
                     }
                 }     

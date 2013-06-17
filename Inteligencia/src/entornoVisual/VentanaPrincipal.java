@@ -51,7 +51,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     EvJBGrande ma               = new EvJBGrande();
     EvJBChico  ma1              = new EvJBChico();
-    EvJBEstadoInicial eInicial  = new EvJBEstadoInicial();
+//    EvJBEstadoInicial eInicial  = new EvJBEstadoInicial();
     
     
     MouseAdapter mWheelMovedCambiarEstados = new MouseAdapter(){
@@ -65,13 +65,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     ma1.setjbEstado(e);
                     ma1.getjbEstado().repaint();
                 }
-            }else{
-                eInicial.setjbEstado(e);
-                eInicial.getjbEstado().repaint();
-            }
-            
-            
-            
+             }     
         }
     };
         
@@ -86,9 +80,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     ma1.setjbEstado(e);
                     ma1.getjbEstado().repaint();
                 }
-            }else{
-                eInicial.setjbEstado(e);
-                eInicial.getjbEstado().repaint();
             }
         }
     };   
@@ -225,9 +216,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jpTablero.setLayout(new GridLayout(dim,dim));
         
         blackline = BorderFactory.createLineBorder(Color.black);
-        
-        VentanaPrincipal.estadoFinal = true;
-        VentanaPrincipal.estadoInicial=true;
+
         VentanaPrincipal.vistaConfigPoliticas(true);
                 
         for (int i = 0; i < dim; i++) {
@@ -334,17 +323,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         blackline = BorderFactory.createLineBorder(Color.black);
  
         JButton jbEstado = new JButton();
-        //jbEstado.setBorder(blackline);
+        jbEstado.setBorder(blackline);
         jbEstado.setFont(cf.font);
         jbEstado.setBackground(Color.GREEN);
-    
-        
-        flagFinal = true;
         
         if(dim < 8){
             jbEstado.setText("FINAL");
-            jbEstado.setBackground(Color.GREEN);
-              
+            jbEstado.setBackground(Color.GREEN);    
         }
         else{
             jbEstado.setText("F");
@@ -363,12 +348,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         blackline = BorderFactory.createLineBorder(Color.black);
  
         JButton jbEstado = new JButton();
-        //jbEstado.setBorder(blackline);
+        jbEstado.setBorder(blackline);
         jbEstado.setFont(cf.font);
         jbEstado.setBackground(Color.ORANGE);
-    
-        
-        flagInicial = true;
+
         if(dim < 8){
             jbEstado.setText("INICIAL");
             jbEstado.setBackground(Color.ORANGE);
@@ -391,15 +374,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jbEstado.setBackground(Color.ORANGE);
             jbEstado.addMouseWheelListener(new MouseAdapter(){
                         public void mouseWheelMoved(MouseWheelEvent e){           
-                           ma.setjbEstado(e);
-                           ma.getjbEstado().repaint();
+                           ma1.setjbEstado(e);
+                           ma1.getjbEstado().repaint();
                         }
                     });
 //                  
                     jbEstado.addMouseListener(new MouseAdapter(){
                         public void mouseClicked(MouseEvent e){          
-                           ma.setjbEstado(e);
-                           ma.getjbEstado().repaint();
+                           ma1.setjbEstado(e);
+                           ma1.getjbEstado().repaint();
                         }
                     });            
         }
