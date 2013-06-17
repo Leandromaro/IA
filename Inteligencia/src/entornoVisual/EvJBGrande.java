@@ -61,7 +61,7 @@ public class EvJBGrande extends MouseAdapter{
                                     s.setBackground(Color.ORANGE);
                                     s.setText("INICIAL");
                                     VentanaPrincipal.estadoInicial = true;
-//                                    VentanaPrincipal.vistaConfigPoliticas(true);
+                                    VentanaPrincipal.jbConfirmar.setEnabled(true);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
@@ -127,7 +127,7 @@ public class EvJBGrande extends MouseAdapter{
                                     s.setBackground(Color.ORANGE);
                                     s.setText("INICIAL");
                                     VentanaPrincipal.estadoInicial = true;
-                                    VentanaPrincipal.vistaConfigPoliticas(true);
+                                    VentanaPrincipal.jbConfirmar.setEnabled(true);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){

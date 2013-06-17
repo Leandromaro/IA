@@ -809,7 +809,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                     jTextCantidadEpisodios.setText("2000");
                     break;             
             }
-            VentanaPrincipal.jbConfirmar.setVisible(true);
         
         }else{
             if(jrbManual.isSelected()){

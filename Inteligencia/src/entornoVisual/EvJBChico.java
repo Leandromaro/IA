@@ -57,7 +57,7 @@ public class EvJBChico {
                                     s.setBackground(Color.ORANGE);
                                     s.setText("I");
                                     VentanaPrincipal.estadoInicial = true;
-                                    VentanaPrincipal.vistaConfigPoliticas(true);
+                                    VentanaPrincipal.jbConfirmar.setEnabled(true);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
@@ -119,7 +119,7 @@ public class EvJBChico {
                                     s.setBackground(Color.ORANGE);
                                     s.setText("I");
                                     VentanaPrincipal.estadoInicial = true;
-                                    VentanaPrincipal.vistaConfigPoliticas(true);
+                                    VentanaPrincipal.jbConfirmar.setEnabled(true);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
