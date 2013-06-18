@@ -611,7 +611,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jCGammaActionPerformed(evt);
             }
         });
-        jpSuperior.add(jCGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 50, 30));
+        jpSuperior.add(jCGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 50, 30));
 
         jCTau.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", " " }));
         jCTau.setEnabled(false);
@@ -723,7 +723,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpSuperior.add(jlInicialQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 60, 30));
 
         jlGamma.setText("Gamma:");
-        jpSuperior.add(jlGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 104, -1, 20));
+        jpSuperior.add(jlGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, 20));
 
         jCEpsilon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,7", "0,8", "0,9", " " }));
         jCEpsilon.setEnabled(false);
@@ -1153,14 +1153,12 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         this.setEnabledJPSuperior(false);
         jPanel1.setVisible(true);
         if (jrbEGreedy.isSelected()){
-            banderaEGreedy=true;
-        }
-        else{
-            Configuraciones.setEpsilon(jCTau.getSelectedIndex());
-        }
-        if (banderaEGreedy){
             
-            Configuraciones.setEpsilon(jCGamma.getSelectedIndex());
+            Configuraciones.setEpsilon(jCEpsilon.getSelectedIndex());
+        }
+        if (jrbSoftMax.isSelected()){
+            
+            Configuraciones.setEpsilon(jCTau.getSelectedIndex());
         }
         
         String malo=(jtfMalo.getText().trim()); 
@@ -1299,7 +1297,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 valorInicio = Configuraciones.getValorPorDefectoMatQ();
         }
         
-        
+        Configuraciones.setGamma(jCGamma.getSelectedIndex());
         
         
         
