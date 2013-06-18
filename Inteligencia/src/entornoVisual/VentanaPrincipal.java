@@ -677,7 +677,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jtfInicialQ.setNextFocusableComponent(jbGenerarTablero);
         jpSuperior.add(jtfInicialQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 70, 30));
 
-        jtfMalo.setText("jTextField1");
+        jtfMalo.setText(" ");
         jtfMalo.setNextFocusableComponent(jtfRegular);
         jtfMalo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -686,7 +686,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         });
         jpSuperior.add(jtfMalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 70, 30));
 
-        jtfRegular.setText("jTextField1");
+        jtfRegular.setText(" ");
         jtfRegular.setNextFocusableComponent(jtfBueno);
         jtfRegular.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -695,7 +695,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         });
         jpSuperior.add(jtfRegular, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 70, 30));
 
-        jtfBueno.setText("jTextField1");
+        jtfBueno.setText(" ");
         jtfBueno.setNextFocusableComponent(jtfExcelente);
         jtfBueno.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -704,7 +704,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         });
         jpSuperior.add(jtfBueno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 70, 30));
 
-        jtfExcelente.setText("jTextField1");
+        jtfExcelente.setText(" ");
         jtfExcelente.setNextFocusableComponent(jtfFinal);
         jtfExcelente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -713,7 +713,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         });
         jpSuperior.add(jtfExcelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 70, 30));
 
-        jtfFinal.setText("jTextField1");
+        jtfFinal.setText(" ");
         jtfFinal.setNextFocusableComponent(jtfInicialQ);
         jtfFinal.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

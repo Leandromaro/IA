@@ -572,7 +572,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfMalo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" value=" "/>
             <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jtfRegular"/>
             </Property>
@@ -591,7 +591,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfRegular">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" value=" "/>
             <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jtfBueno"/>
             </Property>
@@ -610,7 +610,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfBueno">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" value=" "/>
             <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jtfExcelente"/>
             </Property>
@@ -629,7 +629,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfExcelente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" value=" "/>
             <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jtfFinal"/>
             </Property>
@@ -648,7 +648,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jtfFinal">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
+            <Property name="text" type="java.lang.String" value=" "/>
             <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
               <ComponentRef name="jtfInicialQ"/>
             </Property>
