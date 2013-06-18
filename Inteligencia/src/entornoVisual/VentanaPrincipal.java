@@ -169,6 +169,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         VentanaPrincipal.jlInicialNoPared.setVisible(false);
         jPanel1.setVisible(false);
         jCGamma.setVisible(true);
+        jCEpsilon.setVisible(true);
+        jCEpsilon.setEnabled(true);
+        jCGamma.setEnabled(true);
         jCTau.setVisible(false);
         jlEstadoInicial.setVisible(false);
         jbGenerarTablero.setEnabled(true);
@@ -408,8 +411,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         jlInicialQ.setVisible(flag);
         jtfInicialQ.setVisible(flag);
-        
-        
+        jCGamma.setVisible(flag);
+        jlGamma.setVisible(flag);
         jlEpsilon.setVisible(flag);
         jlTau.setVisible(false); //Porque arranca EGreedy por defecto
 //        jtfEpsTau.setVisible(flag);
@@ -1066,8 +1069,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private void jrbEGreedyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEGreedyActionPerformed
         
         jCGamma.setVisible(true);
-        jlEpsilon.setVisible(true);
         jCGamma.setEnabled(true);
+        jCEpsilon.setVisible(true);
+        jCEpsilon.setEnabled(true);
+        jlEpsilon.setVisible(true);
         jCTau.setVisible(false);
         jlTau.setVisible(false);
     }//GEN-LAST:event_jrbEGreedyActionPerformed
@@ -1113,6 +1118,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jtfInicialQ.setEnabled(flag);
         jlInicialQ.setEnabled(flag);
         jtfInicialQ.setEnabled(flag);
+        jCGamma.setEnabled(flag);
+        
     }
     
     public void setEnabledJPSuperior(boolean flag){
@@ -1313,8 +1320,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
     private void jrbSoftMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSoftMaxActionPerformed
         
-        jCGamma.setVisible(false);
+        jCGamma.setVisible(true);
+        jCGamma.setEnabled(true);
         jlEpsilon.setVisible(false);
+        jCEpsilon.setVisible(false);
         jCTau.setVisible(true);
         jCTau.setEnabled(true);
         jlTau.setVisible(true);
@@ -1354,7 +1363,12 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
 //        this.removeAll();
 //        this.initComponents();
-        
+        jPanel1.setVisible(false);
+        jCGamma.setVisible(true);
+        jCEpsilon.setVisible(true);
+        jCEpsilon.setEnabled(true);
+        jCGamma.setEnabled(true);
+        jCTau.setVisible(false);
         jlFinal.setEnabled(true);
         jtfFinal.setEditable(true);
         jpSuperior.setEnabled(true);
@@ -1570,7 +1584,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static javax.swing.JLabel jlEstadoInicial;
     public static javax.swing.JLabel jlExcelente;
     public static javax.swing.JLabel jlFinal;
-    private javax.swing.JLabel jlGamma;
+    public static javax.swing.JLabel jlGamma;
     public static javax.swing.JLabel jlInicialNoPared;
     public static javax.swing.JLabel jlInicialQ;
     public static javax.swing.JLabel jlMalo;
