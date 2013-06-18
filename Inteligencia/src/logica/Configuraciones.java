@@ -11,11 +11,11 @@ package logica;
 public class Configuraciones {
     
     private static double gamma = 0.8;
-    private static double ValorNeutro= 2;
+    private static double ValorNeutro=0.20;
     private static double valorPared= -1;
-    private static double valorMalo = 1;
-    private static double valorBueno= 3;
-    private static double valorExcelente = 5;
+    private static double valorMalo = 0.05;
+    private static double valorBueno= 0.50;
+    private static double valorExcelente = 0.9;
     private static double valorFinal = 1000;
     private static int dimension = 3; 
     private static int valorPorDefectoMatQ= 100;//valor "optimo" para que no entre en bucle con EGreedy
