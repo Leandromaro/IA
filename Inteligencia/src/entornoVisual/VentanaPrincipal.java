@@ -168,7 +168,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
         VentanaPrincipal.jlInicialNoPared.setVisible(false);
         jPanel1.setVisible(false);
-        jCEpsilon.setVisible(true);
+        jCGamma.setVisible(true);
         jCTau.setVisible(false);
         jlEstadoInicial.setVisible(false);
         jbGenerarTablero.setEnabled(true);
@@ -415,8 +415,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 //        jtfEpsTau.setVisible(flag);
         jbConfirmar.setVisible(flag);
         jCTau.setVisible(false);
-        jCEpsilon.setVisible(flag);
-        jCEpsilon.setEnabled(flag);
+        jCGamma.setVisible(flag);
+        jCGamma.setEnabled(flag);
         jrbEGreedy.setVisible(flag);
         jrbSoftMax.setVisible(flag);
         jbConfirmar.setVisible(flag);
@@ -474,7 +474,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jrbEGreedy = new javax.swing.JRadioButton();
         jlTau = new javax.swing.JLabel();
         jlEpsilon = new javax.swing.JLabel();
-        jCEpsilon = new javax.swing.JComboBox();
+        jCGamma = new javax.swing.JComboBox();
         jCTau = new javax.swing.JComboBox();
         jlMalo = new javax.swing.JLabel();
         jlRegular = new javax.swing.JLabel();
@@ -492,6 +492,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jtfExcelente = new javax.swing.JTextField();
         jtfFinal = new javax.swing.JTextField();
         jlInicialQ = new javax.swing.JLabel();
+        jlGamma = new javax.swing.JLabel();
+        jCEpsilon = new javax.swing.JComboBox();
+        jSeparator3 = new javax.swing.JSeparator();
         jpTablero = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jTextCantidadEpisodios = new javax.swing.JTextField();
@@ -578,7 +581,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jrbSoftMaxActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
+        jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
 
         jrbEGreedy.setText("E-Greedy");
         jrbEGreedy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -591,7 +594,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jrbEGreedyActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, 20));
+        jpSuperior.add(jrbEGreedy, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, 20));
 
         jlTau.setText("Tau: ");
         jlTau.setName(""); // NOI18N
@@ -599,20 +602,20 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jlEpsilon.setText("Epsilon:");
         jlEpsilon.setName(""); // NOI18N
-        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, -1, 20));
+        jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, 20));
 
-        jCEpsilon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,7", "0,8", "0,9", " " }));
-        jCEpsilon.setEnabled(false);
-        jCEpsilon.addActionListener(new java.awt.event.ActionListener() {
+        jCGamma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,7", "0,8", "0,9", " " }));
+        jCGamma.setEnabled(false);
+        jCGamma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCEpsilonActionPerformed(evt);
+                jCGammaActionPerformed(evt);
             }
         });
-        jpSuperior.add(jCEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, 50, 30));
+        jpSuperior.add(jCGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, 50, 30));
 
         jCTau.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", " " }));
         jCTau.setEnabled(false);
-        jpSuperior.add(jCTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, -1, 30));
+        jpSuperior.add(jCTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, 30));
 
         jlMalo.setBackground(new java.awt.Color(240, 90, 82));
         jlMalo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -649,7 +652,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpSuperior.add(jlFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 60, 30));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jpSuperior.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 10, 120));
+        jpSuperior.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 10, 120));
 
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jpSuperior.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 10, 120));
@@ -668,32 +671,78 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 210, 50));
 
         jtfInicialQ.setText("jTextField1");
+        jtfInicialQ.setNextFocusableComponent(jbGenerarTablero);
         jpSuperior.add(jtfInicialQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 70, 30));
 
         jtfMalo.setText("jTextField1");
+        jtfMalo.setNextFocusableComponent(jtfRegular);
+        jtfMalo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfMaloKeyPressed(evt);
+            }
+        });
         jpSuperior.add(jtfMalo, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 70, 30));
 
         jtfRegular.setText("jTextField1");
+        jtfRegular.setNextFocusableComponent(jtfBueno);
+        jtfRegular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfRegularKeyPressed(evt);
+            }
+        });
         jpSuperior.add(jtfRegular, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, 70, 30));
 
         jtfBueno.setText("jTextField1");
+        jtfBueno.setNextFocusableComponent(jtfExcelente);
+        jtfBueno.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfBuenoKeyPressed(evt);
+            }
+        });
         jpSuperior.add(jtfBueno, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 70, 30));
 
         jtfExcelente.setText("jTextField1");
+        jtfExcelente.setNextFocusableComponent(jtfFinal);
+        jtfExcelente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfExcelenteKeyPressed(evt);
+            }
+        });
         jpSuperior.add(jtfExcelente, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 70, 30));
 
         jtfFinal.setText("jTextField1");
+        jtfFinal.setNextFocusableComponent(jtfInicialQ);
+        jtfFinal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfFinalKeyPressed(evt);
+            }
+        });
         jpSuperior.add(jtfFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 70, 30));
 
         jlInicialQ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlInicialQ.setText("Q-Inicial");
         jpSuperior.add(jlInicialQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 60, 30));
 
+        jlGamma.setText("Gamma:");
+        jpSuperior.add(jlGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 104, -1, 20));
+
+        jCEpsilon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,7", "0,8", "0,9", " " }));
+        jCEpsilon.setEnabled(false);
+        jCEpsilon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCEpsilonActionPerformed(evt);
+            }
+        });
+        jpSuperior.add(jCEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 50, 30));
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jpSuperior.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 10, 120));
+
         getContentPane().add(jpSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 140));
 
-        jpTablero.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jpTablero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jpTablero.setLayout(new java.awt.GridLayout(1, 0));
-        getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 580, 630));
+        getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 570, 550));
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -847,7 +896,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
     private void jrbAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAutoActionPerformed
 
-        jCEpsilon.setEnabled(true);
+        jCGamma.setEnabled(true);
         jrbManual.setSelected(false);
         jrbAuto.setSelected(true);
         jbGenerarTablero.setEnabled(true);
@@ -969,7 +1018,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         int cont=0;
         int x = Configuraciones.getDimension();
         int y;
-        if(jCEpsilon.getSelectedIndex()<0.5){
+        if(jCGamma.getSelectedIndex()<0.5){
             y = 4;
             
         }
@@ -1010,9 +1059,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
     private void jrbEGreedyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbEGreedyActionPerformed
         
-        jCEpsilon.setVisible(true);
+        jCGamma.setVisible(true);
         jlEpsilon.setVisible(true);
-        jCEpsilon.setEnabled(true);
+        jCGamma.setEnabled(true);
         jCTau.setVisible(false);
         jlTau.setVisible(false);
     }//GEN-LAST:event_jrbEGreedyActionPerformed
@@ -1043,7 +1092,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jCTau.setEnabled(flag);
         jtfBueno.setEnabled(flag);
         jlEpsilon.setEnabled(flag);
-        jCEpsilon.setEnabled(flag);
+        jCGamma.setEnabled(flag);
         jtfRegular.setEnabled(flag);
         jbConfirmar.setEnabled(flag);
         jbGenerarTablero.setEnabled(flag);
@@ -1073,7 +1122,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jCTau.setEnabled(flag);
         jtfBueno.setEnabled(flag);
         jlEpsilon.setEnabled(flag);
-        jCEpsilon.setEnabled(flag);
+        jCGamma.setEnabled(flag);
         jtfRegular.setEnabled(flag);
         jbConfirmar.setEnabled(flag);
         jbGenerarTablero.setEnabled(flag);
@@ -1105,7 +1154,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         }
         if (banderaEGreedy){
             
-            Configuraciones.setEpsilon(jCEpsilon.getSelectedIndex());
+            Configuraciones.setEpsilon(jCGamma.getSelectedIndex());
         }
         
         Configuraciones.setValorMalo(Double.parseDouble(jtfMalo.getText()));
@@ -1122,16 +1171,16 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
     private void jrbSoftMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSoftMaxActionPerformed
         
-        jCEpsilon.setVisible(false);
+        jCGamma.setVisible(false);
         jlEpsilon.setVisible(false);
         jCTau.setVisible(true);
         jCTau.setEnabled(true);
         jlTau.setVisible(true);
     }//GEN-LAST:event_jrbSoftMaxActionPerformed
 
-    private void jCEpsilonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEpsilonActionPerformed
+    private void jCGammaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCGammaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCEpsilonActionPerformed
+    }//GEN-LAST:event_jCGammaActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         
@@ -1199,7 +1248,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
         VentanaPrincipal.jlInicialNoPared.setVisible(false);
         jPanel1.setVisible(false);
-        jCEpsilon.setVisible(true);
+        jCGamma.setVisible(true);
         jCTau.setVisible(false);
         jlEstadoInicial.setVisible(false);
         jbGenerarTablero.setEnabled(true);
@@ -1208,6 +1257,44 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         VentanaPrincipal.jbConfirmar.setEnabled(true);
         
     }//GEN-LAST:event_jbGenerarGuardadoActionPerformed
+
+    private void jCEpsilonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEpsilonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCEpsilonActionPerformed
+
+    private void jtfMaloKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfMaloKeyPressed
+
+//        if(evt.KEY_PRESSED == java.awt.event.KeyEvent.VK_TAB) {
+//            jtfRegular.setFocusable(true);
+//        }  
+    }//GEN-LAST:event_jtfMaloKeyPressed
+
+    private void jtfRegularKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfRegularKeyPressed
+//        if(evt.KEY_PRESSED == java.awt.event.KeyEvent.VK_TAB) {
+//            jtfBueno.setFocusable(true);
+//        }
+    }//GEN-LAST:event_jtfRegularKeyPressed
+
+    private void jtfBuenoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfBuenoKeyPressed
+        
+//        if(evt.KEY_PRESSED == java.awt.event.KeyEvent.VK_TAB) {
+//            jtfExcelente.setFocusable(true);
+//        }
+    }//GEN-LAST:event_jtfBuenoKeyPressed
+
+    private void jtfExcelenteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfExcelenteKeyPressed
+
+//        if(evt.KEY_PRESSED == java.awt.event.KeyEvent.VK_TAB) {
+//            jtfFinal.setFocusable(true);
+//        }
+    }//GEN-LAST:event_jtfExcelenteKeyPressed
+
+    private void jtfFinalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfFinalKeyPressed
+
+//        if(evt.KEY_PRESSED == java.awt.event.KeyEvent.VK_TAB) {
+//            jtfInicialQ.setFocusable(true);
+//        }
+    }//GEN-LAST:event_jtfFinalKeyPressed
 
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
@@ -1317,6 +1404,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private javax.swing.JButton jBEntrena;
     private javax.swing.JButton jBGrafica;
     public static javax.swing.JComboBox jCEpsilon;
+    public static javax.swing.JComboBox jCGamma;
     public static javax.swing.JComboBox jCTau;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabelContador;
@@ -1325,6 +1413,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private javax.swing.JRadioButton jRadioButton1;
     private static javax.swing.JSeparator jSeparator1;
     private static javax.swing.JSeparator jSeparator2;
+    private static javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextCantidadEpisodios;
     public static javax.swing.JButton jbConfirmar;
     private javax.swing.JButton jbGenerarGuardado;
@@ -1337,16 +1426,17 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private javax.swing.JLabel jlDim;
     public static javax.swing.JLabel jlEpsilon;
     public static javax.swing.JLabel jlEstadoInicial;
-    private static javax.swing.JLabel jlExcelente;
-    private static javax.swing.JLabel jlFinal;
+    public static javax.swing.JLabel jlExcelente;
+    public static javax.swing.JLabel jlFinal;
+    private javax.swing.JLabel jlGamma;
     public static javax.swing.JLabel jlInicialNoPared;
     public static javax.swing.JLabel jlInicialQ;
-    private static javax.swing.JLabel jlMalo;
+    public static javax.swing.JLabel jlMalo;
     private javax.swing.JLabel jlManOAlea;
     private static javax.swing.JLabel jlRecompensas;
     public static javax.swing.JLabel jlRegular;
     public static javax.swing.JLabel jlTau;
-    private static javax.swing.JLabel jlbueno;
+    public static javax.swing.JLabel jlbueno;
     private javax.swing.JPanel jpSuperior;
     private javax.swing.JPanel jpTablero;
     private javax.swing.JRadioButton jrbAuto;
