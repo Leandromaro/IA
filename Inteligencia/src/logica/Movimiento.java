@@ -23,7 +23,7 @@ public class Movimiento {
         accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor)*0.1); 
         }
         else
-        accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor)*0.1);
+        accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor));
         //devolver al estado al que va
         return accionARealizar.getEstadoDestino();
     }

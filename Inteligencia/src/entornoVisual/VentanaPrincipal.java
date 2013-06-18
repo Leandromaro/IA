@@ -544,7 +544,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jrbAutoActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
+        jpSuperior.add(jrbAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
 
         jrbManual.setSelected(true);
         jrbManual.setText("Manual");
@@ -553,7 +553,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jrbManualActionPerformed(evt);
             }
         });
-        jpSuperior.add(jrbManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+        jpSuperior.add(jrbManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         jbGenerarTablero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jbGenerarTablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Accept32.png"))); // NOI18N
@@ -932,19 +932,25 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         String userdata = jTextCantidadEpisodios.getText().trim();
         int val;
-        
-        try
-        {
-           val = Integer.parseInt(userdata);
+        if (Integer.parseInt(userdata)>0){
+            
+                try
+                {
+                   val = Integer.parseInt(userdata);
+                }
+                catch (NumberFormatException nfe)
+                {
+                   JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                   jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
+                   val = Configuraciones.cantEpisodios;
+                }
+                Configuraciones.setCantEpisodios(val);
         }
-        catch (NumberFormatException nfe)
-        {
-           JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
-           jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
-           val = Configuraciones.cantEpisodios;
+        else{
+            JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+            jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
+            val = Configuraciones.cantEpisodios;
         }
-        Configuraciones.setCantEpisodios(val);
-        
         
         if (banderaEGreedy==true){
             PoliticaEGreedy politica= new PoliticaEGreedy();
