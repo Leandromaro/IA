@@ -104,7 +104,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         @Override
         protected Object doInBackground() throws Exception {
 
-
           contadorEpisodios=0;
           jLabelContador.setText(String.valueOf(contadorEpisodios));
 
@@ -166,7 +165,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         initComponents();
         VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-        VentanaPrincipal.jlInicialNoPared.setVisible(false);
         jPanel1.setVisible(false);
         jCGamma.setVisible(true);
         jCEpsilon.setVisible(true);
@@ -511,7 +509,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jbGuardar = new javax.swing.JButton();
         jbGenerarGuardado = new javax.swing.JButton();
         jlAusenciaEstadoFinal = new javax.swing.JLabel();
-        jlInicialNoPared = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -673,7 +670,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         });
         jpSuperior.add(jbConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 80, 210, 50));
 
-        jtfInicialQ.setText("jTextField1");
         jtfInicialQ.setNextFocusableComponent(jbGenerarTablero);
         jpSuperior.add(jtfInicialQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, 70, 30));
 
@@ -820,9 +816,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jlAusenciaEstadoFinal.setText("*Advertencia: Debe elegir un estado \"Final\"");
         getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 20));
-
-        jlInicialNoPared.setText("*El estado inicial no puede ser una pared");
-        getContentPane().add(jlInicialNoPared, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 230, 270, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -1334,9 +1327,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jCGammaActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        
-        
-        tableroSuplente = new Boton[6][6];
+  
+        tableroSuplente = new Boton[Configuraciones.getDimension()][Configuraciones.getDimension()];
         
         for (int i = 0; i < Configuraciones.getDimension(); i++) {
             for (int j = 0; j < Configuraciones.getDimension(); j++) {
@@ -1395,14 +1387,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 b = tableroSuplente[i][j];
                 s.setBackground(b.getColor());
                 s.setText(b.getTexto());
-                s.setBorder(s.getBorder());
+                s.setBorder(b.getBorde());
                 jpTablero.add(s);
             }
         }
         
         VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-        VentanaPrincipal.jlInicialNoPared.setVisible(false);
         jPanel1.setVisible(false);
         jCGamma.setVisible(true);
         jCTau.setVisible(false);
@@ -1585,7 +1576,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static javax.swing.JLabel jlExcelente;
     public static javax.swing.JLabel jlFinal;
     public static javax.swing.JLabel jlGamma;
-    public static javax.swing.JLabel jlInicialNoPared;
     public static javax.swing.JLabel jlInicialQ;
     public static javax.swing.JLabel jlMalo;
     private javax.swing.JLabel jlManOAlea;

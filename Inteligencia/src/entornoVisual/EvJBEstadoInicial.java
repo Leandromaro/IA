@@ -31,7 +31,6 @@ public class EvJBEstadoInicial {
                 s.setText("I");
         
                 Configuraciones.setFlagEInicialSeleccionado(true);
-                VentanaPrincipal.jlInicialNoPared.setVisible(false);
         
                 VentanaPrincipal.jlEstadoInicial.setVisible(false);
                 VentanaPrincipal.jBAvanza.setEnabled(true);
@@ -48,20 +47,12 @@ public class EvJBEstadoInicial {
     
     public void setjbEstado(MouseEvent e){
         JButton s = (JButton)e.getComponent();
-        if(!Configuraciones.getFlagEInicialSeleccionado()){
-            if(s.getBackground()!=Color.black){         
+        if(!Configuraciones.getFlagEInicialSeleccionado()){              
                 s.setBackground(Color.orange);
-                s.setText("I");
-        
+                s.setText("I");      
                 Configuraciones.setFlagEInicialSeleccionado(true);
-                VentanaPrincipal.jlInicialNoPared.setVisible(false);
-        
                 VentanaPrincipal.jlEstadoInicial.setVisible(false);
                 VentanaPrincipal.jBAvanza.setEnabled(true);
-            }
-            else{
-                VentanaPrincipal.jlInicialNoPared.setVisible(true);
-            }
         }else{
             if("I".equals(s.getText())){
                 Configuraciones.setFlagEInicialSeleccionado(false);
