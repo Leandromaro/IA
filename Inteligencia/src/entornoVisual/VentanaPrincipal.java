@@ -846,19 +846,19 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             String aux = (String)jcbDim.getSelectedItem();
             switch(aux){
                 case "6x6":this.cargarTableroAleatorio(6);
-                    jTextCantidadEpisodios.setText("750");
-                    break;
-                case "7x7":this.cargarTableroAleatorio(7);
-                    jTextCantidadEpisodios.setText("1000");
-                    break;
-                case "8x8":this.cargarTableroAleatorio(8);
-                    jTextCantidadEpisodios.setText("1250");
-                    break;
-                case "9x9":this.cargarTableroAleatorio(9);
                     jTextCantidadEpisodios.setText("1500");
                     break;
+                case "7x7":this.cargarTableroAleatorio(7);
+                    jTextCantidadEpisodios.setText("3000");
+                    break;
+                case "8x8":this.cargarTableroAleatorio(8);
+                    jTextCantidadEpisodios.setText("5000");
+                    break;
+                case "9x9":this.cargarTableroAleatorio(9);
+                    jTextCantidadEpisodios.setText("8000");
+                    break;
                 case "10x10":this.cargarTableroAleatorio(10);
-                    jTextCantidadEpisodios.setText("2000");
+                    jTextCantidadEpisodios.setText("10000");
                     break;             
             }
         
