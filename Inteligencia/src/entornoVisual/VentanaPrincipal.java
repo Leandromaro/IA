@@ -1163,12 +1163,148 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             Configuraciones.setEpsilon(jCGamma.getSelectedIndex());
         }
         
-        Configuraciones.setValorMalo(Double.parseDouble(jtfMalo.getText()));
-        Configuraciones.setValorNeutro(Double.parseDouble(jtfRegular.getText()));
-        Configuraciones.setValorBueno(Double.parseDouble(jtfBueno.getText()));
-        Configuraciones.setValorExcelente(Double.parseDouble(jtfExcelente.getText()));
-        Configuraciones.setValorFinal(Double.parseDouble(jtfFinal.getText()));
-        Configuraciones.setValorPorDefectoMatQ(Integer.parseInt(jtfInicialQ.getText()));
+        String malo=(jtfMalo.getText().trim()); 
+        double valorMalo;
+        if (Double.parseDouble(malo)>0){
+            
+        
+                     try
+                    {
+                       valorMalo = Double.parseDouble(malo);
+                    }
+                    catch (NumberFormatException nfe)
+                    {
+                       JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                       jtfMalo.setText(Integer.toString(Configuraciones.cantEpisodios));
+                       valorMalo = Configuraciones.getValorMalo();
+                    }
+        Configuraciones.setValorMalo(valorMalo);
+        }
+        else{
+               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero malo, se cargará un valor por default","Error",JOptionPane.WARNING_MESSAGE);
+               jtfMalo.setText(Double.toString(Configuraciones.getValorMalo()));
+               valorMalo = Configuraciones.getValorMalo();
+        }
+        
+        String regular=(jtfRegular.getText().trim()); 
+        double valorReg;
+        if (Double.parseDouble(regular)>0){
+            
+        
+                     try
+                    {
+                       valorReg = Double.parseDouble(regular);
+                    }
+                    catch (NumberFormatException nfe)
+                    {
+                       JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero Neutro, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                       jtfRegular.setText(Double.toString(Configuraciones.getValorNeutro()));
+                       valorReg = Configuraciones.getValorNeutro();
+                    }
+                     Configuraciones.setValorNeutro(valorReg);
+        }
+        else{
+               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero Neutro, se cargará un valor por default","Error",JOptionPane.WARNING_MESSAGE);
+               jtfRegular.setText(Double.toString(Configuraciones.getValorNeutro()));
+               valorMalo = Configuraciones.getValorNeutro();
+        }
+        
+        String bueno=(jtfBueno.getText().trim()); 
+        double valorBueno;
+        if (Double.parseDouble(bueno)>0){
+            
+        
+                     try
+                    {
+                       valorBueno = Double.parseDouble(bueno);
+                    }
+                    catch (NumberFormatException nfe)
+                    {
+                       JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero bueno, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                       jtfBueno.setText(Double.toString(Configuraciones.getValorBueno()));
+                       valorBueno = Configuraciones.getValorBueno();
+                    }
+                     Configuraciones.setValorBueno(valorBueno);
+        }
+        else{
+               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero bueno, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+               jtfBueno.setText(Double.toString(Configuraciones.getValorBueno()));
+               valorBueno = Configuraciones.getValorBueno();
+        }
+        
+        String excelente=(jtfExcelente.getText().trim()); 
+        double valorExcelente;
+        if (Double.parseDouble(excelente)>0){
+            
+        
+                     try
+                    {
+                       valorExcelente = Double.parseDouble(excelente);
+                    }
+                    catch (NumberFormatException nfe)
+                    {
+                       JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero excelente, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                       jtfExcelente.setText(Double.toString(Configuraciones.getValorExcelente()));
+                       valorExcelente = Configuraciones.getValorExcelente();
+                    }
+                     Configuraciones.setValorExcelente(valorExcelente);
+        }
+        else{
+               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero excelente, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+               jtfExcelente.setText(Double.toString(Configuraciones.getValorExcelente()));
+               valorExcelente = Configuraciones.getValorExcelente();
+        }
+        
+        String fin=(jtfFinal.getText().trim()); 
+        double valorFinal;
+        if (Double.parseDouble(fin)>0){
+                    
+                     try
+                    {
+                       valorFinal = Double.parseDouble(fin);
+                    }
+                    catch (NumberFormatException nfe)
+                    {
+                       JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero final, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                       jtfFinal.setText(Double.toString(Configuraciones.getValorFinal()));
+                       valorFinal = Configuraciones.getValorFinal();
+                    }
+                     Configuraciones.setValorFinal(valorFinal);
+        }
+        else{
+               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero final, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+               jtfFinal.setText(Double.toString(Configuraciones.getValorFinal()));
+               valorFinal = Configuraciones.getValorFinal();
+        }
+        
+        String inicio=(jtfInicialQ.getText().trim()); 
+        double valorInicio;
+        if (Double.parseDouble(inicio)>0){
+                    
+                     try
+                    {
+                       valorInicio = Double.parseDouble(inicio);
+                    }
+                    catch (NumberFormatException nfe)
+                    {
+                       JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero Q-Inicial, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                       jtfInicialQ.setText(Double.toString(Configuraciones.getValorPorDefectoMatQ()));
+                       valorInicio = Configuraciones.getValorPorDefectoMatQ();
+                    }
+                     Configuraciones.setValorFinal(valorInicio);
+        }
+        else{
+               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero Q-Inicial, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                jtfInicialQ.setText(Double.toString(Configuraciones.getValorPorDefectoMatQ()));
+                valorInicio = Configuraciones.getValorPorDefectoMatQ();
+        }
+        
+        
+        
+        
+        
+        
+       
         
         jBEntrena.setEnabled(true);
         
