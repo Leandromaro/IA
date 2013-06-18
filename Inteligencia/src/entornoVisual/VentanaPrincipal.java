@@ -528,6 +528,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpSuperior.add(jlDim, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
 
         jcbDim.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "6x6", "7x7", "8x8", "9x9", "10x10" }));
+        jcbDim.setNextFocusableComponent(jrbManual);
         jcbDim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbDimActionPerformed(evt);
@@ -539,6 +540,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpSuperior.add(jlManOAlea, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, 20));
 
         jrbAuto.setText("Automática");
+        jrbAuto.setNextFocusableComponent(jrbEGreedy);
         jrbAuto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbAutoActionPerformed(evt);
@@ -548,6 +550,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jrbManual.setSelected(true);
         jrbManual.setText("Manual");
+        jrbManual.setNextFocusableComponent(jrbAuto);
         jrbManual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbManualActionPerformed(evt);
@@ -571,6 +574,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpSuperior.add(jlRecompensas, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 200, 20));
 
         jrbSoftMax.setText("SoftMax");
+        jrbSoftMax.setNextFocusableComponent(jrbEGreedy);
         jrbSoftMax.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jrbSoftMaxMouseClicked(evt);
@@ -584,6 +588,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
 
         jrbEGreedy.setText("E-Greedy");
+        jrbEGreedy.setNextFocusableComponent(jrbSoftMax);
         jrbEGreedy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jrbEGreedyMouseClicked(evt);
@@ -615,6 +620,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jCTau.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", " " }));
         jCTau.setEnabled(false);
+        jCTau.setNextFocusableComponent(jCGamma);
         jpSuperior.add(jCTau, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, 30));
 
         jlMalo.setBackground(new java.awt.Color(240, 90, 82));
@@ -661,7 +667,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jlConfigPoliticas.setText("Configuración de la Política:");
         jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 200, 20));
 
-        jbConfirmar.setText("Confirmar Escenario y Politicas");
+        jbConfirmar.setText("Confirmar Configuración");
         jbConfirmar.setEnabled(false);
         jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -727,6 +733,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jCEpsilon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,7", "0,8", "0,9", " " }));
         jCEpsilon.setEnabled(false);
+        jCEpsilon.setNextFocusableComponent(jCGamma);
         jCEpsilon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCEpsilonActionPerformed(evt);
@@ -798,21 +805,21 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jlEstadoInicial.setText("*Advertencia: Debe elegir un estado \"Inicial\" ");
         getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 320, -1));
 
-        jbGuardar.setText("Guardar Escenario");
+        jbGuardar.setText("Guardar Configuración");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 270, 130, 100));
+        getContentPane().add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, 210, 120));
 
-        jbGenerarGuardado.setText("Generar guargado");
+        jbGenerarGuardado.setText("Mostrar Configuración Guardada");
         jbGenerarGuardado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGenerarGuardadoActionPerformed(evt);
             }
         });
-        getContentPane().add(jbGenerarGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, 130, 120));
+        getContentPane().add(jbGenerarGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, 210, 130));
 
         jlAusenciaEstadoFinal.setText("*Advertencia: Debe elegir un estado \"Final\"");
         getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 20));
@@ -1068,6 +1075,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jlEpsilon.setVisible(true);
         jCTau.setVisible(false);
         jlTau.setVisible(false);
+        jCEpsilon.setFocusable(true);
     }//GEN-LAST:event_jrbEGreedyActionPerformed
 
     private void jBGraficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGraficaActionPerformed
@@ -1319,7 +1327,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jCEpsilon.setVisible(false);
         jCTau.setVisible(true);
         jCTau.setEnabled(true);
-        jlTau.setVisible(true);
+        jCTau.setFocusable(true);
     }//GEN-LAST:event_jrbSoftMaxActionPerformed
 
     private void jCGammaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCGammaActionPerformed

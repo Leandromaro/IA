@@ -88,6 +88,9 @@
                 <StringItem index="4" value="10x10"/>
               </StringArray>
             </Property>
+            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="jrbManual"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jcbDimActionPerformed"/>
@@ -111,6 +114,9 @@
         <Component class="javax.swing.JRadioButton" name="jrbAuto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Autom&#xe1;tica"/>
+            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="jrbEGreedy"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbAutoActionPerformed"/>
@@ -125,6 +131,9 @@
           <Properties>
             <Property name="selected" type="boolean" value="true"/>
             <Property name="text" type="java.lang.String" value="Manual"/>
+            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="jrbAuto"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbManualActionPerformed"/>
@@ -174,6 +183,9 @@
         <Component class="javax.swing.JRadioButton" name="jrbSoftMax">
           <Properties>
             <Property name="text" type="java.lang.String" value="SoftMax"/>
+            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="jrbEGreedy"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jrbSoftMaxMouseClicked"/>
@@ -191,6 +203,9 @@
         <Component class="javax.swing.JRadioButton" name="jrbEGreedy">
           <Properties>
             <Property name="text" type="java.lang.String" value="E-Greedy"/>
+            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="jrbSoftMax"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jrbEGreedyMouseClicked"/>
@@ -371,6 +386,9 @@
               </StringArray>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
+            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="jCGamma"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
@@ -539,7 +557,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jbConfirmar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Confirmar Escenario y Politicas"/>
+            <Property name="text" type="java.lang.String" value="Confirmar Configuraci&#xf3;n"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
@@ -708,6 +726,9 @@
               </StringArray>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
+            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+              <ComponentRef name="jCGamma"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCEpsilonActionPerformed"/>
@@ -901,27 +922,27 @@
     </Component>
     <Component class="javax.swing.JButton" name="jbGuardar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Guardar Escenario"/>
+        <Property name="text" type="java.lang.String" value="Guardar Configuraci&#xf3;n"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbGuardarActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="770" y="270" width="130" height="100"/>
+          <AbsoluteConstraints x="770" y="250" width="210" height="120"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="jbGenerarGuardado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Generar guargado"/>
+        <Property name="text" type="java.lang.String" value="Mostrar Configuraci&#xf3;n Guardada"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbGenerarGuardadoActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="770" y="390" width="130" height="120"/>
+          <AbsoluteConstraints x="770" y="390" width="210" height="130"/>
         </Constraint>
       </Constraints>
     </Component>
