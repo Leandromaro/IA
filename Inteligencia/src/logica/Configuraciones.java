@@ -16,9 +16,9 @@ public class Configuraciones {
     private static double valorMalo = 1;
     private static double valorBueno= 3;
     private static double valorExcelente = 5;
-    private static double valorFinal = 100;
+    private static double valorFinal = 1000;
     private static int dimension = 3; 
-    private static int valorPorDefectoMatQ= 1000;//valor "optimo" para que no entre en bucle con EGreedy
+    private static int valorPorDefectoMatQ= 100;//valor "optimo" para que no entre en bucle con EGreedy
     public static int filaI=0;
     public static int filaF=0;
     public static int colI;
