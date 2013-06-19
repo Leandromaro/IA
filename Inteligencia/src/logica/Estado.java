@@ -38,6 +38,10 @@ public class Estado {
          return accionesPosibles;
     }
 
+    public void setPosJ(int posJ) {
+        this.posJ = posJ;
+    }
+
     public int getPosI() {
         return posI;
     }
@@ -50,13 +54,13 @@ public class Estado {
         this.accionesPosibles = accionesPosibles;
     }
 
+   
+    
     public void setPosI(int posI) {
         this.posI = posI;
     }
 
-    public void setPosJ(int posJ) {
-        this.posJ = posJ;
-    }
+    
     
     public double getValorAccion(int posI){
         return accionesPosibles.get(posI).getValor();
@@ -73,7 +77,8 @@ public class Estado {
         }
         return maximoValor;
     }
- 
+    
+    
    public Accion accionDeMaximoValor(){
         for(Accion acc:this.accionesPosibles){
             if(acc.getValor()==this.maximoValorParaAcciones()){
