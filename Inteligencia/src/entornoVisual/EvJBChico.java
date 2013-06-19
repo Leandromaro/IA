@@ -61,6 +61,8 @@ public class EvJBChico {
                                     if(VentanaPrincipal.estadoFinal){
                                         VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        VentanaPrincipal.jbGuardar.setVisible(true);
+                                        VentanaPrincipal.jbGuardar.setEnabled(true);
                                     }  
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
@@ -71,10 +73,14 @@ public class EvJBChico {
                                         if(VentanaPrincipal.estadoInicial){
                                             VentanaPrincipal.jbConfirmar.setEnabled(true);
                                             VentanaPrincipal.jbConfirmar.setVisible(true);
+                                            VentanaPrincipal.jbGuardar.setVisible(true);
+                                            VentanaPrincipal.jbGuardar.setEnabled(true);
                                         }  
                                     }else{
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
                                         VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                        VentanaPrincipal.jbGuardar.setVisible(true);
+                                        VentanaPrincipal.jbGuardar.setEnabled(true);
                                         s.setBackground(Color.white);
                                         s.setText("");
                                     }
@@ -94,6 +100,8 @@ public class EvJBChico {
                                 }
                                 VentanaPrincipal.jbConfirmar.setVisible(true);
                                 VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                VentanaPrincipal.jbGuardar.setVisible(true);
+                                VentanaPrincipal.jbGuardar.setEnabled(false);
                                 
                             }
                     }
@@ -132,6 +140,8 @@ public class EvJBChico {
                                     if(VentanaPrincipal.estadoFinal){
                                         VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        VentanaPrincipal.jbGuardar.setVisible(true);
+                                        VentanaPrincipal.jbGuardar.setEnabled(true);
                                     }  
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
@@ -142,6 +152,8 @@ public class EvJBChico {
                                         if(VentanaPrincipal.estadoInicial){
                                             VentanaPrincipal.jbConfirmar.setEnabled(true);
                                             VentanaPrincipal.jbConfirmar.setVisible(true);
+                                            VentanaPrincipal.jbGuardar.setVisible(true);
+                                            VentanaPrincipal.jbGuardar.setEnabled(true);
                                         }  
                                     }else{
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
@@ -165,6 +177,8 @@ public class EvJBChico {
                                 }
                                 VentanaPrincipal.jbConfirmar.setVisible(true);
                                 VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                VentanaPrincipal.jbGuardar.setVisible(true);
+                                VentanaPrincipal.jbGuardar.setEnabled(false);
                                 
                             }
                     }

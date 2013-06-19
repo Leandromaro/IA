@@ -63,8 +63,10 @@ public class EvJBGrande extends MouseAdapter{
                                     VentanaPrincipal.estadoInicial = true;
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
                                     if(VentanaPrincipal.estadoFinal){
-                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                        VentanaPrincipal.jbGuardar.setVisible(true);
+                                        VentanaPrincipal.jbGuardar.setEnabled(true);
                                     }  
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
@@ -73,12 +75,16 @@ public class EvJBGrande extends MouseAdapter{
                                         VentanaPrincipal.estadoFinal = true;
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                                         if(VentanaPrincipal.estadoInicial){
-                                            VentanaPrincipal.jbConfirmar.setEnabled(true);
                                             VentanaPrincipal.jbConfirmar.setVisible(true);
+                                            VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                            VentanaPrincipal.jbGuardar.setVisible(true);
+                                            VentanaPrincipal.jbGuardar.setEnabled(true);
                                         }  
                                     }else{
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
                                         VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                        VentanaPrincipal.jbGuardar.setVisible(true);
+                                        VentanaPrincipal.jbGuardar.setEnabled(true);
                                         s.setBackground(Color.white);
                                         s.setText("");
                                     }
@@ -98,6 +104,8 @@ public class EvJBGrande extends MouseAdapter{
                                 }
                                 VentanaPrincipal.jbConfirmar.setVisible(true);
                                 VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                VentanaPrincipal.jbGuardar.setVisible(true);
+                                VentanaPrincipal.jbGuardar.setEnabled(false);
                                 
                             }
                     }
@@ -140,6 +148,8 @@ public class EvJBGrande extends MouseAdapter{
                                     if(VentanaPrincipal.estadoFinal){
                                         VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        VentanaPrincipal.jbGuardar.setVisible(true);
+                                        VentanaPrincipal.jbGuardar.setEnabled(true);
                                     }  
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
@@ -150,6 +160,8 @@ public class EvJBGrande extends MouseAdapter{
                                         if(VentanaPrincipal.estadoInicial){
                                             VentanaPrincipal.jbConfirmar.setEnabled(true);
                                             VentanaPrincipal.jbConfirmar.setVisible(true);
+                                            VentanaPrincipal.jbGuardar.setVisible(true);
+                                            VentanaPrincipal.jbGuardar.setEnabled(true);
                                         }  
                                     }else{
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
@@ -173,6 +185,8 @@ public class EvJBGrande extends MouseAdapter{
                                 }
                                 VentanaPrincipal.jbConfirmar.setVisible(true);
                                 VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                VentanaPrincipal.jbGuardar.setVisible(true);
+                                VentanaPrincipal.jbGuardar.setEnabled(false);
                             }
                     }
                 }     

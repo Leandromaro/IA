@@ -88,9 +88,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             }
         }
     };   
-
- 
-
+    
     public void setFlagInicial(Boolean flagInicial) {
         this.flagInicial = flagInicial;
     }
@@ -215,14 +213,18 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jpTablero.add(jbEstado);           
             }
         }
-        VentanaPrincipal.estadoFinal = false;
-        VentanaPrincipal.estadoInicial=false;
-        
-//        VentanaPrincipal.vistaConfigPoliticas(true);
-        
-        jlEstadoInicial.setVisible(true);
-        jlAusenciaEstadoFinal.setVisible(true);
-        jbConfirmar.setVisible(false);
+            //  No activa los botones confirmar politica y guardar escenario 
+            // porque no tiene estado Inicial y Final la generacion manual 
+            // al principio
+            estadoInicial = false;
+            estadoFinal = false;
+            jbConfirmar.setVisible(true);
+            jbConfirmar.setEnabled(false);
+            jbGuardar.setVisible(true);
+            jbGuardar.setEnabled(false);
+            jlAusenciaEstadoFinal.setVisible(true);
+            jlEstadoInicial.setVisible(true);
+ 
         
         //        Se agrega Estado Final
 //        jpTablero.remove(this.posAbosAleatoria(dim));
@@ -315,12 +317,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpTablero.add(this.estadoFinal(dim), aleatorio2);
         VentanaPrincipal.estadoFinal = true;
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+
         
-        jbConfirmar.setEnabled(true);
-//        if(VentanaPrincipal.estadoInicial & VentanaPrincipal.estadoFinal){
-//            jbConfirmar.setEnabled(true);
-//        }
-//        
         jpTablero.setVisible(true);
   }
     
@@ -892,8 +890,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jLabelContador.setText("");
         
         if(jrbAuto.isSelected()){
-            
-            
             String aux = (String)jcbDim.getSelectedItem();
             switch(aux){
                 case "6x6":this.cargarTableroAleatorio(6);
@@ -911,10 +907,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 case "10x10":this.cargarTableroAleatorio(10);
                     jTextCantidadEpisodios.setText("10000");
                     break;             
-            }
-            jbConfirmar.setVisible(true);
-            jbConfirmar.setEnabled(true);
-        
+            } 
         }else{
             if(jrbManual.isSelected()){
                String aux = (String)jcbDim.getSelectedItem();
@@ -1441,27 +1434,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbGenerarGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarGuardadoActionPerformed
-
-        jPanel1.setVisible(false);
-        jCGamma.setVisible(true);
-        jCGamma.setEnabled(true);
-        jCEpsilon.setVisible(true);
-        jCEpsilon.setEnabled(true);
-        jCTau.setVisible(false);
-        jlFinal.setEnabled(true);
-        jtfFinal.setEditable(true);
-        jpSuperior.setEnabled(true);
-        this.enabledJPSuperior(true);
-        this.vistaConfigPoliticas(true);
-//        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-//        VentanaPrincipal.jlInicialNoPared.setVisible(false);
-        jPanel1.setVisible(true);
-
-        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-        VentanaPrincipal.jlEstadoInicial.setVisible(false);
-        VentanaPrincipal.estadoInicial = true;
-        VentanaPrincipal.estadoFinal = true;
-        
+     
         jpTablero.setVisible(false);
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(Configuraciones.getDimension(),Configuraciones.getDimension()));
@@ -1479,16 +1452,18 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             }
         }
         
-        VentanaPrincipal.vistaConfigPoliticas(true);
-        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-        jPanel1.setVisible(false);
-        jCGamma.setVisible(true);
-        jCTau.setVisible(false);
-        jlEstadoInicial.setVisible(false);
-        jbGenerarTablero.setEnabled(true);
         jpTablero.setVisible(true);
         jpTablero.repaint();
-        VentanaPrincipal.jbConfirmar.setEnabled(true);
+        
+        VentanaPrincipal.vistaConfigPoliticas(true);
+        this.enabledJPSuperior(true);
+        
+        if(VentanaPrincipal.estadoInicial & VentanaPrincipal.estadoFinal){
+            VentanaPrincipal.jbConfirmar.setEnabled(true);
+            VentanaPrincipal.jbConfirmar.setEnabled(true);
+        }
+        
+       
         
     }//GEN-LAST:event_jbGenerarGuardadoActionPerformed
 
@@ -1689,7 +1664,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private javax.swing.JButton jbEmpezarDeNuevo;
     private javax.swing.JButton jbGenerarGuardado;
     private static javax.swing.JButton jbGenerarTablero;
-    private javax.swing.JButton jbGuardar;
+    public static javax.swing.JButton jbGuardar;
     private static javax.swing.JComboBox jcbDim;
     public static javax.swing.JLabel jlAusenciaEstadoFinal;
     private static javax.swing.JLabel jlConfig;
