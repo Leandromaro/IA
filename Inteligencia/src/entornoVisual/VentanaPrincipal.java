@@ -45,6 +45,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private int contadorEpisodios;
     public static boolean banderaTope=false;
     public static JButton jbAnterior;
+   
+    public static boolean banderaEGreedy;
+    public static boolean banderaSoftMax;
+    
+    private Episodio[] episodios;
     
 //    blackline = BorderFactory.createLineBorder(Color.black);
     
@@ -87,14 +92,21 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         }
     };   
 
-    public static boolean banderaEGreedy;
-    public static boolean banderaSoftMax;
+ 
 
     public void setFlagInicial(Boolean flagInicial) {
         this.flagInicial = flagInicial;
     }
-  
-    private Episodio[] episodios;
+    public boolean getFlagInicial(){
+        return this.flagInicial;
+    }
+    public void setFlagFinal(boolean flag){
+        this.flagFinal = flag;
+    }
+    public boolean getFlagFinal(){
+        return this.flagFinal;
+    }
+    
     
     public void iniciarEntrenamiento(){
          
@@ -173,6 +185,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jCTau.setVisible(false);
         jlEstadoInicial.setVisible(false);
         jbGenerarTablero.setEnabled(true);
+        
+        jcbDim.setFocusable(true);
     }
     
    
@@ -184,13 +198,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpTablero.setLayout(new GridLayout(dim,dim));
           
         blackline = BorderFactory.createLineBorder(Color.black);
-        
-        VentanaPrincipal.estadoFinal = false;
-        VentanaPrincipal.estadoInicial=false;
-        VentanaPrincipal.vistaConfigPoliticas(true);
-        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
-        VentanaPrincipal.jlEstadoInicial.setVisible(true);
-        
+         
         for (int i = 0; i < dim; i++) {
             for (int j = 0; j < dim; j++) {
                 
@@ -206,6 +214,15 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jpTablero.add(jbEstado);           
             }
         }
+        VentanaPrincipal.estadoFinal = false;
+        VentanaPrincipal.estadoInicial=false;
+        
+//        VentanaPrincipal.vistaConfigPoliticas(true);
+        
+        jlEstadoInicial.setVisible(true);
+        jlAusenciaEstadoFinal.setVisible(true);
+        jbConfirmar.setVisible(false);
+        
         //        Se agrega Estado Final
 //        jpTablero.remove(this.posAbosAleatoria(dim));
 //        jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
@@ -562,6 +579,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jbGenerarTablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Accept32.png"))); // NOI18N
         jbGenerarTablero.setText("Generar escenario");
         jbGenerarTablero.setEnabled(false);
+        jbGenerarTablero.setNextFocusableComponent(jbGenerarTablero);
         jbGenerarTablero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGenerarTableroActionPerformed(evt);
@@ -611,6 +629,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jCGamma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,7", "0,8", "0,9", " " }));
         jCGamma.setEnabled(false);
+        jCGamma.setNextFocusableComponent(jtfMalo);
         jCGamma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCGammaActionPerformed(evt);
@@ -836,9 +855,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
 
-        jbConfirmar.setEnabled(true);
-        jBEntrena.setEnabled(false);
-        jBAvanza.setEnabled(false);
+//        jbConfirmar.setEnabled(true);
+//        jBEntrena.setEnabled(false);
+//        jBAvanza.setEnabled(false);
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
         
