@@ -990,7 +990,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private void jBEntrenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrenaActionPerformed
         
         jBAvanza.setEnabled(false);
-        
+        jbGenerarGuardado.setVisible(true);
         String userdata = jTextCantidadEpisodios.getText().trim();
         int val;
         if (Integer.parseInt(userdata)>0){
@@ -1443,7 +1443,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 }
             }
         }
-        jbGenerarGuardado.setVisible(true);
+        
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbGenerarGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarGuardadoActionPerformed
@@ -1468,12 +1468,31 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpTablero.setVisible(true);
         jpTablero.repaint();
         
+
         VentanaPrincipal.vistaConfigPoliticas(true);
-        this.enabledJPSuperior(true);
+        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+        this.setEnabledJPSuperior(true);
+        
+        jPanel1.setVisible(false);
+        jbGenerarGuardado.setVisible(false);
+        jbEmpezarDeNuevo.setVisible(false);
+        jCGamma.setVisible(true);
+        jCEpsilon.setVisible(true);
+        jCEpsilon.setEnabled(true);
+        jCGamma.setEnabled(true);
+        jCTau.setVisible(false);
+        jlEstadoInicial.setVisible(false);
+        jbGenerarTablero.setEnabled(true);
+        
+        jbGuardar.setVisible(false);
+        
+        jcbDim.setFocusable(true);
         
         if(VentanaPrincipal.estadoInicial & VentanaPrincipal.estadoFinal){
+            VentanaPrincipal.jbConfirmar.setVisible(true);
             VentanaPrincipal.jbConfirmar.setEnabled(true);
-            VentanaPrincipal.jbConfirmar.setEnabled(true);
+            VentanaPrincipal.jbGuardar.setVisible(true);
+            VentanaPrincipal.jbGuardar.setEnabled(false);
         }
         
        

@@ -163,13 +163,13 @@ public class EvJBChico {
                                     }
                                 }    
                             }else{
-                                if("INICIAL".equals(s.getText())){
+                                if("I".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
                                     VentanaPrincipal.estadoInicial = false;
                                     VentanaPrincipal.jlEstadoInicial.setVisible(true);                      
                                 } 
-                                if("FINAL".equals(s.getText())){
+                                if("F".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
                                     VentanaPrincipal.estadoFinal = false;                                    
