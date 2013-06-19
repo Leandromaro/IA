@@ -604,7 +604,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jlEpsilon.setName(""); // NOI18N
         jpSuperior.add(jlEpsilon, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, 20));
 
-        jCGamma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,7", "0,8", "0,9", " " }));
+        jCGamma.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9" }));
         jCGamma.setEnabled(false);
         jCGamma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -725,7 +725,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jlGamma.setText("Gamma:");
         jpSuperior.add(jlGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, 20));
 
-        jCEpsilon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,7", "0,8", "0,9", " " }));
+        jCEpsilon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9" }));
         jCEpsilon.setEnabled(false);
         jCEpsilon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1153,12 +1153,19 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         this.setEnabledJPSuperior(false);
         jPanel1.setVisible(true);
         if (jrbEGreedy.isSelected()){
-            
-            Configuraciones.setEpsilon(jCEpsilon.getSelectedIndex());
+            banderaEGreedy=true;
+            String epsilon = (String)jCEpsilon.getSelectedItem();
+            Double valorEp = Double.parseDouble(epsilon);
+            Configuraciones.setEpsilon(valorEp);
+            System.out.println("Epsilon "+Configuraciones.getEpsilon());
         }
         if (jrbSoftMax.isSelected()){
+
+            String tau = (String)jCTau.getSelectedItem();
+            Double valorTau = Double.parseDouble(tau);
+            Configuraciones.setTau(valorTau);
+            System.out.println("Tau "+Configuraciones.getTau());
             
-            Configuraciones.setEpsilon(jCTau.getSelectedIndex());
         }
         
         String malo=(jtfMalo.getText().trim()); 
@@ -1297,8 +1304,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 valorInicio = Configuraciones.getValorPorDefectoMatQ();
         }
         
-        Configuraciones.setGamma(jCGamma.getSelectedIndex());
         
+            String gamma = (String)jCGamma.getSelectedItem();
+            Double valorGamma = Double.parseDouble(gamma);
+            Configuraciones.setGamma(valorGamma);
+            System.out.println("Gamma "+Configuraciones.getGamma());
         
         
         
