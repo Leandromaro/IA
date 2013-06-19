@@ -134,7 +134,7 @@ public class EvJBChico {
                         if("E".equals(s.getText())){
                                 if(!VentanaPrincipal.estadoInicial){
                                     s.setBackground(Color.ORANGE);
-                                    s.setText("INICIAL");
+                                    s.setText("I");
                                     VentanaPrincipal.estadoInicial = true;
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
                                     if(VentanaPrincipal.estadoFinal){
@@ -146,7 +146,7 @@ public class EvJBChico {
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
                                         s.setBackground(Color.GREEN);
-                                        s.setText("FINAL");
+                                        s.setText("F");
                                         VentanaPrincipal.estadoFinal = true;
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                                         if(VentanaPrincipal.estadoInicial){
