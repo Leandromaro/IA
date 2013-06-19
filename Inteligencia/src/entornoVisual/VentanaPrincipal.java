@@ -1053,24 +1053,38 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         //recorriendo para ver mejor camino
         QMat matrizQ = episodios[Configuraciones.cantEpisodios-1].getMatrizQ();    
         
-        Estado estadoInicial = matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+//        Estado estadoInicial = matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
         
         // setea el estado inicial
-//        Estado estadoInicial= null;
-//        for (int i = 0; i < Configuraciones.getDimension(); i++) {
-//            for (int j = 0; j < Configuraciones.getDimension(); j++) {
-//                int indice=(i*Configuraciones.getDimension()) + j;
-//                Component componente= jpTablero.getComponent(indice);
-//                if(componente.getClass() == JButton.class){
-//                    JButton s = (JButton)componente;
-//                    if(("I".equals(s.getText())) | ("INICIAL".equals(s.getText()))){
-//                        estadoInicial= matrizQ.getEstado(i,j);         
-//                    }
-//                }     
-//            }
-//        }        
+        Estado estadoInicial= null;
+        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+            for (int j = 0; j < Configuraciones.getDimension(); j++) {
+                int indice=(i*Configuraciones.getDimension()) + j;
+                Component componente= jpTablero.getComponent(indice);
+                if(componente.getClass() == JButton.class){
+                    JButton s = (JButton)componente;
+                    if(("I".equals(s.getText())) | ("INICIAL".equals(s.getText()))){
+                        estadoInicial= matrizQ.getEstado(i,j);         
+                    }
+                }     
+            }
+        }        
 
-        Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
+//        Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
+        
+        Estado estadoFinal= null;
+        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+            for (int j = 0; j < Configuraciones.getDimension(); j++) {
+                int indice=(i*Configuraciones.getDimension()) + j;
+                Component componente= jpTablero.getComponent(indice);
+                if(componente.getClass() == JButton.class){
+                    JButton s = (JButton)componente;
+                    if(("F".equals(s.getText())) | ("FINAL".equals(s.getText()))){
+                        estadoFinal= matrizQ.getEstado(i,j);         
+                    }
+                }     
+            }
+        }        
         
         System.out.println(estadoInicial);
         System.out.println("Movimientos:");
