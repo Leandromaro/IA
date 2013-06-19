@@ -997,8 +997,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jbGenerarGuardado.setVisible(true);
         String userdata = jTextCantidadEpisodios.getText().trim();
         int val;
-        if (Integer.parseInt(userdata)>0){
-            
+        if (Integer.parseInt(userdata)>0){            
                 try
                 {
                    val = Integer.parseInt(userdata);
@@ -1008,14 +1007,14 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                    JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
                    jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
                    val = Configuraciones.cantEpisodios;
-                }
-                Configuraciones.setCantEpisodios(val);
+                }              
         }
         else{
             JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
             jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
             val = Configuraciones.cantEpisodios;
         }
+        Configuraciones.setCantEpisodios(val);
         
         if (banderaEGreedy==true){
             PoliticaEGreedy politica= new PoliticaEGreedy();
@@ -1027,11 +1026,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             PoliticaSoftMax politica= new PoliticaSoftMax();
             p=politica;
             
-            System.out.println("POLITICA SOFTMAX");
-            
+            System.out.println("POLITICA SOFTMAX");           
         }
-        
-        
+          
         jBEntrena.setEnabled(false);
         jBAvanza.setEnabled(true);
         iniciarEntrenamiento();//llama al hilo de entrenamiento
@@ -1048,8 +1045,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                     componente.removeMouseWheelListener(mWheelMovedCambiarEstados);
                 }            
             }
-        }
-        
+        }       
     }
     
  
@@ -1057,8 +1053,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         //recorriendo para ver mejor camino
         QMat matrizQ = episodios[Configuraciones.cantEpisodios-1].getMatrizQ();    
         
-        
         Estado estadoInicial = matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+        
         // setea el estado inicial
 //        Estado estadoInicial= null;
 //        for (int i = 0; i < Configuraciones.getDimension(); i++) {
@@ -1090,14 +1086,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         int x = Configuraciones.getDimension();
         int y;
         if(jCGamma.getSelectedIndex()<0.5){
-            y = 4;
-            
+            y = 4;         
         }
         else{
             y = 3;
         }
-        int tope = (int) Math.pow(x, y);
-//        int tope = 2000; 
+//        int tope = (int) Math.pow(x, y);
+        int tope = 2000; 
             
         
         while(!estadoInicial.equals(estadoFinal)&&(cont<tope)){
@@ -1450,7 +1445,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         for (int i = 0; i < Configuraciones.getDimension(); i++) {
             for (int j = 0; j < Configuraciones.getDimension(); j++) {            
-                
                 Boton b;
                 JButton s = new JButton() ;
                 b = tableroSuplente[i][j];
@@ -1538,11 +1532,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jPanel1.setVisible(false);
         jpSuperior.setEnabled(true);
         
-        
-  
-        
         this.enabledJPSuperior(true);
-        this.vistaConfigPoliticas(true);
+        VentanaPrincipal.vistaConfigPoliticas(true);
 //        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
 //        VentanaPrincipal.jlInicialNoPared.setVisible(false);
         jPanel1.setVisible(true);
