@@ -1051,7 +1051,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
  
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
         //recorriendo para ver mejor camino
-        QMat matrizQ = episodios[Configuraciones.cantEpisodios-1].getMatrizQ();    
+        QMat matQ = episodios[Configuraciones.cantEpisodios-1].getMatrizQ();    
+        
+        
+        QMat matrizQ = new QMat(matQ.matQ.clone()); 
         
 //        Estado estadoInicial = matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
         
@@ -1105,8 +1108,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         else{
             y = 3;
         }
-//        int tope = (int) Math.pow(x, y);
-        int tope = 2000; 
+        int tope = (int) Math.pow(x, y);
+//        int tope = 1000; 
             
         
         while(!estadoInicial.equals(estadoFinal)&&(cont<tope)){
@@ -1282,7 +1285,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                        jtfMalo.setText(Integer.toString(Configuraciones.cantEpisodios));
                        valorMalo = Configuraciones.getValorMalo();
                     }
-        
         }
         else{
                JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero malo, se cargará un valor por default","Error",JOptionPane.WARNING_MESSAGE);
@@ -1403,13 +1405,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             Configuraciones.setGamma(valorGamma);
             System.out.println("Gamma "+Configuraciones.getGamma());
         
-        
-        
-       
-        
-        jBEntrena.setEnabled(true);
-        
-        
+        jBEntrena.setEnabled(true);      
     }//GEN-LAST:event_jbConfirmarActionPerformed
 
     private void jrbSoftMaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSoftMaxActionPerformed
