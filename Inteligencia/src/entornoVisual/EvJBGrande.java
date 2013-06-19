@@ -61,35 +61,44 @@ public class EvJBGrande extends MouseAdapter{
                                     s.setBackground(Color.ORANGE);
                                     s.setText("INICIAL");
                                     VentanaPrincipal.estadoInicial = true;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(true);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
+                                    if(VentanaPrincipal.estadoFinal){
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                        VentanaPrincipal.jbConfirmar.setVisible(true);
+                                    }  
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
                                         s.setBackground(Color.GREEN);
                                         s.setText("FINAL");
                                         VentanaPrincipal.estadoFinal = true;
-                                        
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+                                        if(VentanaPrincipal.estadoInicial){
+                                            VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                            VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        }  
                                     }else{
+                                        VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         s.setBackground(Color.white);
                                         s.setText("");
                                     }
                                 }    
                             }else{
-                                if("FINAL".equals(s.getText())){
-                                    s.setBackground(Color.white);
-                                    s.setText("");
-                                    VentanaPrincipal.estadoFinal = false;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
-                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
-                                }
                                 if("INICIAL".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
                                     VentanaPrincipal.estadoInicial = false;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(true);                      
                                 } 
+                                if("FINAL".equals(s.getText())){
+                                    s.setBackground(Color.white);
+                                    s.setText("");
+                                    VentanaPrincipal.estadoFinal = false;                                    
+                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+                                }
+                                VentanaPrincipal.jbConfirmar.setVisible(true);
+                                VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                
                             }
                     }
                 }     
@@ -127,35 +136,43 @@ public class EvJBGrande extends MouseAdapter{
                                     s.setBackground(Color.ORANGE);
                                     s.setText("INICIAL");
                                     VentanaPrincipal.estadoInicial = true;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(true);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
+                                    if(VentanaPrincipal.estadoFinal){
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                        VentanaPrincipal.jbConfirmar.setVisible(true);
+                                    }  
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
                                         s.setBackground(Color.GREEN);
                                         s.setText("FINAL");
                                         VentanaPrincipal.estadoFinal = true;
-                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+                                        if(VentanaPrincipal.estadoInicial){
+                                            VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                            VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        }  
                                     }else{
+                                        VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         s.setBackground(Color.white);
                                         s.setText("");
                                     }
-                                }    
-                            }else{
-                                if("FINAL".equals(s.getText())){
-                                    s.setBackground(Color.white);
-                                    s.setText("");
-                                    VentanaPrincipal.estadoFinal = false;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
-                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
                                 }
+                            }else{
                                 if("INICIAL".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
                                     VentanaPrincipal.estadoInicial = false;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(true);                      
                                 } 
+                                if("FINAL".equals(s.getText())){
+                                    s.setBackground(Color.white);
+                                    s.setText("");
+                                    VentanaPrincipal.estadoFinal = false;                                    
+                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+                                }
+                                VentanaPrincipal.jbConfirmar.setVisible(true);
+                                VentanaPrincipal.jbConfirmar.setEnabled(false);
                             }
                     }
                 }     

@@ -57,35 +57,44 @@ public class EvJBChico {
                                     s.setBackground(Color.ORANGE);
                                     s.setText("I");
                                     VentanaPrincipal.estadoInicial = true;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(true);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
+                                    if(VentanaPrincipal.estadoFinal){
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                        VentanaPrincipal.jbConfirmar.setVisible(true);
+                                    }  
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
                                         s.setBackground(Color.GREEN);
                                         s.setText("F");
                                         VentanaPrincipal.estadoFinal = true;
-                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+                                        if(VentanaPrincipal.estadoInicial){
+                                            VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                            VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        }  
                                     }else{
+                                        VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         s.setBackground(Color.white);
                                         s.setText("");
                                     }
                                 }    
                             }else{
-                                if("F".equals(s.getText())){
-                                    s.setBackground(Color.white);
-                                    s.setText("");
-                                    VentanaPrincipal.estadoFinal = false;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
-                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
-                                }
                                 if("I".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
                                     VentanaPrincipal.estadoInicial = false;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(true);                      
                                 } 
+                                if("F".equals(s.getText())){
+                                    s.setBackground(Color.white);
+                                    s.setText("");
+                                    VentanaPrincipal.estadoFinal = false;                                    
+                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+                                }
+                                VentanaPrincipal.jbConfirmar.setVisible(true);
+                                VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                
                             }
                     }
                 }     
@@ -117,37 +126,45 @@ public class EvJBChico {
                         if("E".equals(s.getText())){
                                 if(!VentanaPrincipal.estadoInicial){
                                     s.setBackground(Color.ORANGE);
-                                    s.setText("I");
+                                    s.setText("INICIAL");
                                     VentanaPrincipal.estadoInicial = true;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(true);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
+                                    if(VentanaPrincipal.estadoFinal){
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                        VentanaPrincipal.jbConfirmar.setVisible(true);
+                                    }  
                                 }else{
                                     if(!VentanaPrincipal.estadoFinal){
                                         s.setBackground(Color.GREEN);
-                                        s.setText("F");
+                                        s.setText("FINAL");
                                         VentanaPrincipal.estadoFinal = true;
-                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+                                        if(VentanaPrincipal.estadoInicial){
+                                            VentanaPrincipal.jbConfirmar.setEnabled(true);
+                                            VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        }  
                                     }else{
+                                        VentanaPrincipal.jbConfirmar.setVisible(true);
+                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         s.setBackground(Color.white);
                                         s.setText("");
                                     }
                                 }    
                             }else{
-                                if("I".equals(s.getText())){
+                                if("INICIAL".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
                                     VentanaPrincipal.estadoInicial = false;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
                                     VentanaPrincipal.jlEstadoInicial.setVisible(true);                      
                                 } 
-                                if("F".equals(s.getText())){
+                                if("FINAL".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
-                                    VentanaPrincipal.estadoFinal = false;
-                                    VentanaPrincipal.jbConfirmar.setEnabled(false);
+                                    VentanaPrincipal.estadoFinal = false;                                    
                                     VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
                                 }
+                                VentanaPrincipal.jbConfirmar.setVisible(true);
+                                VentanaPrincipal.jbConfirmar.setEnabled(false);
                                 
                             }
                     }

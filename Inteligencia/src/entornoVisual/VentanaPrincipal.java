@@ -13,13 +13,10 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 import javax.swing.border.Border;
 import logica.Configuraciones;
@@ -178,6 +175,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
         jPanel1.setVisible(false);
+        jbGenerarGuardado.setVisible(false);
+        jbEmpezarDeNuevo.setVisible(false);
         jCGamma.setVisible(true);
         jCEpsilon.setVisible(true);
         jCEpsilon.setEnabled(true);
@@ -185,6 +184,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jCTau.setVisible(false);
         jlEstadoInicial.setVisible(false);
         jbGenerarTablero.setEnabled(true);
+        
+        jbGuardar.setVisible(false);
         
         jcbDim.setFocusable(true);
     }
@@ -422,38 +423,47 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     
     public static void vistaConfigPoliticas(Boolean flag){
         
-        jlRecompensas.setVisible(flag);
+        //Primer cuadrante
+        jlConfig.setVisible(flag);
+        jlDim.setVisible(flag);
+        jlManOAlea.setVisible(flag);
         
-        jlInicialQ.setVisible(flag);
-        jtfInicialQ.setVisible(flag);
-        jCGamma.setVisible(flag);
-        jlGamma.setVisible(flag);
-        jlEpsilon.setVisible(flag);
-        jlTau.setVisible(false); //Porque arranca EGreedy por defecto
-//        jtfEpsTau.setVisible(flag);
-        jbConfirmar.setVisible(flag);
-        jCTau.setVisible(false);
-        jCGamma.setVisible(flag);
-        jCGamma.setEnabled(flag);
-        jrbEGreedy.setVisible(flag);
-        jrbSoftMax.setVisible(flag);
-        jbConfirmar.setVisible(flag);
+        jcbDim.setVisible(flag);
+        jrbManual.setVisible(flag);
+        jrbAuto.setVisible(flag);  
         
-        
-        jrbEGreedy.setSelected(true);
-        jrbSoftMax.setSelected(false);
-        
-        
+        //Segundo cuadrante
         jlConfigPoliticas.setVisible(flag);
+        jlEpsilon.setVisible(flag);
+        jlTau.setVisible(flag);
+        jlGamma.setVisible(flag);
+        
+        jCEpsilon.setVisible(flag);
+        jCTau.setVisible(false); // Falso por defecto
+        jCGamma.setEnabled(flag);
+        
+        //Tercer Cuadrante
         jlRecompensas.setVisible(flag);
+        jlMalo.setVisible(flag);
+        jlRegular.setVisible(flag);
+        jlbueno.setVisible(flag);
         jlExcelente.setVisible(flag);
         jlFinal.setVisible(flag);
-        jSeparator1.setVisible(flag);
-        jlMalo.setVisible(flag);
-        jlbueno.setVisible(flag);
-        jlRegular.setVisible(flag);
-        jSeparator2.setVisible(flag);
+        jlInicialQ.setVisible(flag);
         
+        jtfMalo.setVisible(flag);
+        jtfRegular.setVisible(flag);
+        jtfBueno.setVisible(flag);
+        jtfExcelente.setVisible(flag);
+        jtfFinal.setVisible(flag);
+        jtfInicialQ.setVisible(flag);
+        
+        //Quinto Cuadrante
+        jbGenerarTablero.setVisible(flag);
+        jbConfirmar.setVisible(false); //Por defecto
+        
+        
+        // Otra cosa
         jtfBueno.setVisible(flag);
         jtfBueno.setText(Double.toString(Configuraciones.getValorBueno()));
         jtfRegular.setVisible(flag);
@@ -526,6 +536,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jbGuardar = new javax.swing.JButton();
         jbGenerarGuardado = new javax.swing.JButton();
         jlAusenciaEstadoFinal = new javax.swing.JLabel();
+        jbEmpezarDeNuevo = new javax.swing.JButton();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -576,7 +587,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpSuperior.add(jrbManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
 
         jbGenerarTablero.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jbGenerarTablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Accept32.png"))); // NOI18N
+        jbGenerarTablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Skip-forward24.png"))); // NOI18N
         jbGenerarTablero.setText("Generar escenario");
         jbGenerarTablero.setEnabled(false);
         jbGenerarTablero.setNextFocusableComponent(jbGenerarTablero);
@@ -686,6 +697,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jlConfigPoliticas.setText("Configuración de la Política:");
         jpSuperior.add(jlConfigPoliticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 200, 20));
 
+        jbConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Accept32.png"))); // NOI18N
         jbConfirmar.setText("Confirmar Configuración");
         jbConfirmar.setEnabled(false);
         jbConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -843,6 +855,15 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jlAusenciaEstadoFinal.setText("*Advertencia: Debe elegir un estado \"Final\"");
         getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 20));
 
+        jbEmpezarDeNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Counterclockwise-arrow32.png"))); // NOI18N
+        jbEmpezarDeNuevo.setText("Empezar de nuevo...");
+        jbEmpezarDeNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEmpezarDeNuevoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbEmpezarDeNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 540, 210, 130));
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -858,6 +879,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 //        jbConfirmar.setEnabled(true);
 //        jBEntrena.setEnabled(false);
 //        jBAvanza.setEnabled(false);
+        
+        jbGuardar.setVisible(true);
+        
+        
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
         
@@ -1111,71 +1136,93 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jBGraficaActionPerformed
 
     public void enabledJPSuperior(Boolean flag){
-        jlManOAlea.setEnabled(flag);
-        jlExcelente.setEnabled(flag);
-        jrbManual.setEnabled(flag);
+        
+        //Primer cuadrante
         jlConfig.setEnabled(flag);
-        jlConfigPoliticas.setEnabled(flag);
-        jlbueno.setEnabled(flag);
-        jlTau.setEnabled(flag);
-        jtfExcelente.setEnabled(flag);
-        jlMalo.setEnabled(flag);
-        jCTau.setEnabled(flag);
-        jtfBueno.setEnabled(flag);
-        jlEpsilon.setEnabled(flag);
-        jCGamma.setEnabled(flag);
-        jtfRegular.setEnabled(flag);
-        jbConfirmar.setEnabled(flag);
-        jbGenerarTablero.setEnabled(flag);
-        jrbAuto.setEnabled(flag);
-        jrbEGreedy.setEnabled(flag);
-        jlRecompensas.setEnabled(flag);
         jlDim.setEnabled(flag);
-        jrbSoftMax.setEnabled(flag);
-        jtfMalo.setEnabled(flag);
-        jlRegular.setEnabled(flag);
+        jlManOAlea.setEnabled(flag);
+        
         jcbDim.setEnabled(flag);
-        jtfInicialQ.setEnabled(flag);
-        jlInicialQ.setEnabled(flag);
-        jtfInicialQ.setEnabled(flag);
+        jrbManual.setEnabled(flag);
+        jrbAuto.setEnabled(flag);  
+        
+        //Segundo cuadrante
+        jlConfigPoliticas.setEnabled(flag);
+        jlEpsilon.setEnabled(flag);
+        jlTau.setEnabled(flag);
+        jlGamma.setEnabled(flag);
+        
+        jCEpsilon.setEnabled(flag);
+        jCTau.setEnabled(false); // Falso por defecto
         jCGamma.setEnabled(flag);
+        
+        //Tercer Cuadrante
+        jlRecompensas.setEnabled(flag);
+        jlMalo.setEnabled(flag);
+        jlRegular.setEnabled(flag);
+        jlbueno.setEnabled(flag);
+        jlExcelente.setEnabled(flag);
+        jlFinal.setEnabled(flag);
+        jlInicialQ.setEnabled(flag);
+        
+        jtfMalo.setEnabled(flag);
+        jtfRegular.setEnabled(flag);
+        jtfBueno.setEnabled(flag);
+        jtfExcelente.setEnabled(flag);
+        jtfFinal.setEnabled(flag);
+        jtfInicialQ.setEnabled(flag);
+        
+        //Quinto Cuadrante
+        jbGenerarTablero.setEnabled(flag);
+        jbConfirmar.setEnabled(false); //Por defecto
         
     }
     
     public void setEnabledJPSuperior(boolean flag){
-        jlManOAlea.setEnabled(flag);
-        jlExcelente.setEnabled(flag);
-        jrbManual.setEnabled(flag);
+        //Primer cuadrante
         jlConfig.setEnabled(flag);
-        jlConfigPoliticas.setEnabled(flag);
-        jlbueno.setEnabled(flag);
-        jlTau.setEnabled(flag);
-        jtfExcelente.setEnabled(flag);
-        jlMalo.setEnabled(flag);
-        jCTau.setEnabled(flag);
-        jtfBueno.setEnabled(flag);
-        jlEpsilon.setEnabled(flag);
-        jCGamma.setEnabled(flag);
-        jtfRegular.setEnabled(flag);
-        jbConfirmar.setEnabled(flag);
-        jbGenerarTablero.setEnabled(flag);
-        jrbAuto.setEnabled(flag);
-        jrbEGreedy.setEnabled(flag);
-        jlRecompensas.setEnabled(flag);
         jlDim.setEnabled(flag);
-        jrbSoftMax.setEnabled(flag);
-        jtfMalo.setEnabled(flag);
-        jlRegular.setEnabled(flag);
+        jlManOAlea.setEnabled(flag);
+        
         jcbDim.setEnabled(flag);
-        jtfInicialQ.setEnabled(flag);
-        jlInicialQ.setEnabled(flag);
-        jtfFinal.setEnabled(flag);
+        jrbManual.setEnabled(flag);
+        jrbAuto.setEnabled(flag);  
+        
+        //Segundo cuadrante
+        jlConfigPoliticas.setEnabled(flag);
+        jlEpsilon.setEnabled(flag);
+        jlTau.setEnabled(flag);
+        jlGamma.setEnabled(flag);
+        
+        jCEpsilon.setEnabled(flag);
+        jCTau.setEnabled(false); // Falso por defecto
+        jCGamma.setEnabled(flag);
+        
+        //Tercer Cuadrante
+        jlRecompensas.setEnabled(flag);
+        jlMalo.setEnabled(flag);
+        jlRegular.setEnabled(flag);
+        jlbueno.setEnabled(flag);
+        jlExcelente.setEnabled(flag);
         jlFinal.setEnabled(flag);
+        jlInicialQ.setEnabled(flag);
+        
+        jtfMalo.setEnabled(flag);
+        jtfRegular.setEnabled(flag);
+        jtfBueno.setEnabled(flag);
+        jtfExcelente.setEnabled(flag);
+        jtfFinal.setEnabled(flag);
+        jtfInicialQ.setEnabled(flag);
+        
+        //Quinto Cuadrante
+        jbGenerarTablero.setEnabled(flag);
+        jbConfirmar.setEnabled(false); //Por defecto
     }
     
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
         this.eliminarEventos();
+        jbEmpezarDeNuevo.setVisible(true);
         
         this.setEnabledJPSuperior(false);
         jPanel1.setVisible(true);
@@ -1382,19 +1429,16 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 }
             }
         }
-        
+        jbGenerarGuardado.setVisible(true);
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbGenerarGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarGuardadoActionPerformed
 
-        
-//        this.removeAll();
-//        this.initComponents();
         jPanel1.setVisible(false);
         jCGamma.setVisible(true);
+        jCGamma.setEnabled(true);
         jCEpsilon.setVisible(true);
         jCEpsilon.setEnabled(true);
-        jCGamma.setEnabled(true);
         jCTau.setVisible(false);
         jlFinal.setEnabled(true);
         jtfFinal.setEditable(true);
@@ -1477,6 +1521,42 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 //            jtfInicialQ.setFocusable(true);
 //        }
     }//GEN-LAST:event_jtfFinalKeyPressed
+
+    private void jbEmpezarDeNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEmpezarDeNuevoActionPerformed
+
+        jPanel1.setVisible(false);
+        jpSuperior.setEnabled(true);
+        
+        
+  
+        
+        this.enabledJPSuperior(true);
+        this.vistaConfigPoliticas(true);
+//        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+//        VentanaPrincipal.jlInicialNoPared.setVisible(false);
+        jPanel1.setVisible(true);
+
+        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+        VentanaPrincipal.jlEstadoInicial.setVisible(false);
+        VentanaPrincipal.estadoInicial = true;
+        VentanaPrincipal.estadoFinal = true;
+        
+        jpTablero.setVisible(false);
+        jpTablero.removeAll();
+        jpTablero.setLayout(new GridLayout(Configuraciones.getDimension(),Configuraciones.getDimension()));
+        
+        VentanaPrincipal.vistaConfigPoliticas(true);
+        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
+        jPanel1.setVisible(false);
+        jCGamma.setVisible(true);
+        jCTau.setVisible(false);
+        jlEstadoInicial.setVisible(false);
+        jbGenerarTablero.setEnabled(true);
+        jpTablero.setVisible(true);
+        jpTablero.repaint();
+        VentanaPrincipal.jbConfirmar.setEnabled(true);
+        
+    }//GEN-LAST:event_jbEmpezarDeNuevoActionPerformed
 
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
@@ -1598,14 +1678,15 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private static javax.swing.JSeparator jSeparator3;
     private javax.swing.JTextField jTextCantidadEpisodios;
     public static javax.swing.JButton jbConfirmar;
+    private javax.swing.JButton jbEmpezarDeNuevo;
     private javax.swing.JButton jbGenerarGuardado;
-    private javax.swing.JButton jbGenerarTablero;
+    private static javax.swing.JButton jbGenerarTablero;
     private javax.swing.JButton jbGuardar;
-    private javax.swing.JComboBox jcbDim;
+    private static javax.swing.JComboBox jcbDim;
     public static javax.swing.JLabel jlAusenciaEstadoFinal;
-    private javax.swing.JLabel jlConfig;
+    private static javax.swing.JLabel jlConfig;
     public static javax.swing.JLabel jlConfigPoliticas;
-    private javax.swing.JLabel jlDim;
+    private static javax.swing.JLabel jlDim;
     public static javax.swing.JLabel jlEpsilon;
     public static javax.swing.JLabel jlEstadoInicial;
     public static javax.swing.JLabel jlExcelente;
@@ -1613,16 +1694,16 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static javax.swing.JLabel jlGamma;
     public static javax.swing.JLabel jlInicialQ;
     public static javax.swing.JLabel jlMalo;
-    private javax.swing.JLabel jlManOAlea;
+    private static javax.swing.JLabel jlManOAlea;
     private static javax.swing.JLabel jlRecompensas;
     public static javax.swing.JLabel jlRegular;
     public static javax.swing.JLabel jlTau;
     public static javax.swing.JLabel jlbueno;
     private javax.swing.JPanel jpSuperior;
     private javax.swing.JPanel jpTablero;
-    private javax.swing.JRadioButton jrbAuto;
+    private static javax.swing.JRadioButton jrbAuto;
     public static javax.swing.JRadioButton jrbEGreedy;
-    private javax.swing.JRadioButton jrbManual;
+    private static javax.swing.JRadioButton jrbManual;
     public static javax.swing.JRadioButton jrbSoftMax;
     public static javax.swing.JTextField jtfBueno;
     public static javax.swing.JTextField jtfExcelente;
