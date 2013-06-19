@@ -1058,21 +1058,21 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         QMat matrizQ = episodios[Configuraciones.cantEpisodios-1].getMatrizQ();    
         
         
-//        Estado estadoInicial = matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+        Estado estadoInicial = matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
         // setea el estado inicial
-        Estado estadoInicial= null;
-        for (int i = 0; i < Configuraciones.getDimension(); i++) {
-            for (int j = 0; j < Configuraciones.getDimension(); j++) {
-                int indice=(i*Configuraciones.getDimension()) + j;
-                Component componente= jpTablero.getComponent(indice);
-                if(componente.getClass() == JButton.class){
-                    JButton s = (JButton)componente;
-                    if(("I".equals(s.getText())) | ("INICIAL".equals(s.getText()))){
-                        estadoInicial= matrizQ.getEstado(i,j);         
-                    }
-                }     
-            }
-        }        
+//        Estado estadoInicial= null;
+//        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+//            for (int j = 0; j < Configuraciones.getDimension(); j++) {
+//                int indice=(i*Configuraciones.getDimension()) + j;
+//                Component componente= jpTablero.getComponent(indice);
+//                if(componente.getClass() == JButton.class){
+//                    JButton s = (JButton)componente;
+//                    if(("I".equals(s.getText())) | ("INICIAL".equals(s.getText()))){
+//                        estadoInicial= matrizQ.getEstado(i,j);         
+//                    }
+//                }     
+//            }
+//        }        
 
         Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
         
@@ -1096,8 +1096,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         else{
             y = 3;
         }
-//        int tope = (int) Math.pow(x, y);
-        int tope = 2000; 
+        int tope = (int) Math.pow(x, y);
+//        int tope = 2000; 
             
         
         while(!estadoInicial.equals(estadoFinal)&&(cont<tope)){
