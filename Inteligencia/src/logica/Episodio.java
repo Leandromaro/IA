@@ -28,8 +28,8 @@ public class Episodio {
         //TODO:clonar matriz Q
         
         this.valorQ= matrizQActual.getValorQ();
-        this.matrizQ= new QMat(matrizQActual.matQ.clone());
-        this.matrizQ= matrizQActual;
+        this.matrizQ = new QMat(matrizQActual.matQ.clone());
+        this.matrizQ = matrizQActual;
         this.estadoFinal= estadoFinal;
         this.matrizR= matR;
         this.politica= politica;

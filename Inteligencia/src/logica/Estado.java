@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Leandro
  */
-public class Estado {
+public class Estado implements Cloneable{
     
     public ArrayList<Accion> accionesPosibles;
     private double valor;

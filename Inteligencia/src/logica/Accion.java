@@ -8,7 +8,7 @@ package logica;
  *
  * @author Leandro
  */
-public class Accion {
+public class Accion implements Cloneable{
     private Estado estadoOrigen;
     private Estado estadoDestino;
     private double valor;

@@ -10,7 +10,7 @@ package logica;
  */
 public class Configuraciones {
     
-    private static double gamma = 0.6;
+    private static double gamma = 0.4;
     private static double ValorNeutro=0.3;
     private static double valorPared= -1;
     private static double valorMalo = 0.1;
