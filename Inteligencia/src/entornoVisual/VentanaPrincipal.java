@@ -435,7 +435,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         //Segundo cuadrante
         jlConfigPoliticas.setVisible(flag);
         jlEpsilon.setVisible(flag);
-        jlTau.setVisible(flag);
+        jlTau.setVisible(false); //Por defecto
         jlGamma.setVisible(flag);
         
         jCEpsilon.setVisible(flag);
@@ -1149,7 +1149,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         //Segundo cuadrante
         jlConfigPoliticas.setEnabled(flag);
         jlEpsilon.setEnabled(flag);
-        jlTau.setEnabled(flag);
+        jlTau.setEnabled(false); //Por defecto
         jlGamma.setEnabled(flag);
         
         jCEpsilon.setEnabled(flag);
