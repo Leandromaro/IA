@@ -68,15 +68,7 @@ public class QMat {
         return this.matQ[posI][posJ];
     }
     
-    public void limpiarQ(){
-        for(int i=0; i<Configuraciones.getDimension();i++){
-            for(int j=0; j<Configuraciones.getDimension();j++){
-                for(int k=0; k<this.getEstado(i, j).accionesPosibles.size();k++){
-                    this.matQ[i][j].accionesPosibles.remove(k);
-                }
-            }
-        }
-    }
+    
   
     
     

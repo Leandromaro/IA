@@ -898,11 +898,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 //        jBAvanza.setEnabled(false);
         
         jbGuardar.setVisible(true);
-        
-        if (jrbManual.isSelected()){
-            jtfInicialQ.setText("0");
-            jtfInicialQ.enable(false);
-        }
+//        
+//        if (jrbManual.isSelected()){
+//            jtfInicialQ.setText("0");
+//            jtfInicialQ.enable(false);
+//        }
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
         
