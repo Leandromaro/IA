@@ -298,6 +298,19 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             jbEstado.addMouseWheelListener(mWheelMovedCambiarEstados);                  
             jbEstado.addMouseListener(mClickedCambiarEstados);    
             
+            //  Se activa los botones confirmar politica y guardar escenario 
+            // porque  tiene estado Inicial y Final la generacion aleatoria
+            // al principio
+            estadoInicial = true;
+            estadoFinal = true;
+            jbConfirmar.setVisible(true);
+            jbConfirmar.setEnabled(true);
+            jbGuardar.setVisible(true);
+            jbGuardar.setEnabled(true);
+            jlAusenciaEstadoFinal.setVisible(false);
+            jlEstadoInicial.setVisible(false);
+            
+            
             jpTablero.add(jbEstado);
             
         }
