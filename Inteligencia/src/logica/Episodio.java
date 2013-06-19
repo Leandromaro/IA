@@ -23,6 +23,7 @@ public class Episodio {
     public static int contBloqueo=0;
     public static int tope;
     public static int cont=0;
+    
     public Episodio(QMat matrizQActual, Estado estadoFinal, Politica politica, RMat matR, int numeroEpisodio){
         //TODO:clonar matriz Q
         

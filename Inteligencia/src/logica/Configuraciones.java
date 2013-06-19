@@ -19,8 +19,8 @@ public class Configuraciones {
     private static double valorFinal = 1000;
     private static int dimension = 3; 
     private static int valorPorDefectoMatQ= 100;//valor "optimo" para que no entre en bucle con EGreedy
-    public static int filaI=0;
-    public static int filaF=0;
+    public static int filaI;
+    public static int filaF;
     public static int colI;
     public static int colF;
     public static int cantEpisodios= 750;
