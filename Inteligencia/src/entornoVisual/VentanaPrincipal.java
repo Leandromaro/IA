@@ -315,7 +315,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpTablero.add(this.estadoFinal(dim), aleatorio2);
         VentanaPrincipal.estadoFinal = true;
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-
+        
+        if(VentanaPrincipal.estadoInicial & VentanaPrincipal.estadoFinal){
+            jbConfirmar.setEnabled(true);
+        }
         jpTablero.setVisible(true);
   }
     
