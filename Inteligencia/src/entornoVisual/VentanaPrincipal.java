@@ -316,9 +316,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         VentanaPrincipal.estadoFinal = true;
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
         
-        if(VentanaPrincipal.estadoInicial & VentanaPrincipal.estadoFinal){
-            jbConfirmar.setEnabled(true);
-        }
+        jbConfirmar.setEnabled(true);
+//        if(VentanaPrincipal.estadoInicial & VentanaPrincipal.estadoFinal){
+//            jbConfirmar.setEnabled(true);
+//        }
+//        
         jpTablero.setVisible(true);
   }
     
@@ -879,7 +881,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
 
-//        jbConfirmar.setEnabled(true);
+
 //        jBEntrena.setEnabled(false);
 //        jBAvanza.setEnabled(false);
         
@@ -890,6 +892,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jLabelContador.setText("");
         
         if(jrbAuto.isSelected()){
+            
+            
             String aux = (String)jcbDim.getSelectedItem();
             switch(aux){
                 case "6x6":this.cargarTableroAleatorio(6);
@@ -908,6 +912,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                     jTextCantidadEpisodios.setText("10000");
                     break;             
             }
+            jbConfirmar.setVisible(true);
+            jbConfirmar.setEnabled(true);
         
         }else{
             if(jrbManual.isSelected()){
@@ -933,7 +939,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             }
             
         }
-       jBEntrena.setEnabled(true); 
     }//GEN-LAST:event_jbGenerarTableroActionPerformed
 
     private void jrbManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbManualActionPerformed
