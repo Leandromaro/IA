@@ -632,6 +632,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         });
         jpSuperior.add(jrbSoftMax, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
 
+        jrbEGreedy.setSelected(true);
         jrbEGreedy.setText("E-Greedy");
         jrbEGreedy.setNextFocusableComponent(jrbSoftMax);
         jrbEGreedy.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -898,7 +899,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         jbGuardar.setVisible(true);
         
-        
+        if (jrbManual.isSelected()){
+            jtfInicialQ.setText("0");
+            jtfInicialQ.enable(false);
+        }
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
         
@@ -1372,7 +1376,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         String inicio=(jtfInicialQ.getText().trim()); 
         double valorInicio;
-        if (Double.parseDouble(inicio)>0){
+        if (Double.parseDouble(inicio)>=0){
                     
                      try
                     {

@@ -22,12 +22,7 @@ public class Movimiento {
         if ((Episodio.cont % 100) == 0){
         accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor)*0.1); 
         }
-        if ((Episodio.cont % 1000) == 0){
-        accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor)*0.01); 
-        }
-        if ((Episodio.cont % 10000) == 0){
-        accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor)*0.001); 
-        }
+       
         else
         accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor));
         //devolver al estado al que va
