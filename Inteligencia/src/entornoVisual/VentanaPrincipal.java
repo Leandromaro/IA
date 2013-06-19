@@ -1448,7 +1448,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbGenerarGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarGuardadoActionPerformed
-     
+        
         jpTablero.setVisible(false);
         jpTablero.removeAll();
         jpTablero.setLayout(new GridLayout(Configuraciones.getDimension(),Configuraciones.getDimension()));

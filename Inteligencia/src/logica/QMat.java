@@ -15,7 +15,8 @@ public class QMat {
     public Estado matQ[][];
     
     public QMat(RMat matR) {
-       //obtener dimension 
+       
+        //obtener dimension 
        int dimension= matR.getDimension();
        //creamos la matriz de estados
        matQ= new Estado[dimension][dimension];
@@ -66,7 +67,16 @@ public class QMat {
     public Estado getEstado(int posI, int posJ){
         return this.matQ[posI][posJ];
     }
-  
+    
+    public void limpiarQ(){
+        for(int i=0; i<Configuraciones.getDimension();i++){
+            for(int j=0; j<Configuraciones.getDimension();j++){
+                for(int k=0; k<this.getEstado(i, j).accionesPosibles.size();k++){
+                    this.matQ[i][j].accionesPosibles.remove(k);
+                }
+            }
+        }
+    }
   
     
     
