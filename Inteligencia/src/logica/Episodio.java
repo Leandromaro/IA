@@ -4,10 +4,6 @@
  */
 package logica;
 
-import entornoVisual.VentanaPrincipal;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Leandro
@@ -43,7 +39,7 @@ public class Episodio {
         int dimension= this.getMatrizR().getDimension();
         int iRandom= (int) Math.floor(Math.random() * dimension);
         int jRandom= (int) Math.floor(Math.random() * dimension);
-//        int contadorEpisodios=0;
+
         
         Estado estadoActual= this.getMatrizQ().getEstado(iRandom, jRandom);
         //mientras estado actual distinto de estado final

@@ -48,15 +48,15 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     
     private Episodio[] episodios;
     
-//    blackline = BorderFactory.createLineBorder(Color.black);
+
     
-    public  Boton[][] tableroSuplente; // para guardar tablero momentaneamente para las pruebas.. SIN persistencia
+    
     
     private ColoresyFormas cf = new ColoresyFormas();
     
     EvJBGrande ma               = new EvJBGrande();
     EvJBChico  ma1              = new EvJBChico();
-//    EvJBEstadoInicial eInicial  = new EvJBEstadoInicial();
+
     
     
     MouseAdapter mWheelMovedCambiarEstados = new MouseAdapter(){
@@ -122,7 +122,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
           QMat matrizQ= new QMat(mat);
           System.out.println(matrizQ);
-          //ProgressBar p =new ProgressBar();
+          
 
           Estado estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
           Estado estadoInicial= matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
@@ -151,7 +151,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
           }
               
               System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
-//              jBAvanza.setEnabled(true);
+
               throw new UnsupportedOperationException("Not supported yet.");
             
         }
@@ -173,7 +173,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         VentanaPrincipal.vistaConfigPoliticas(true);
         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
         jPanel1.setVisible(false);
-        jbGenerarGuardado.setVisible(false);
+        
         jbEmpezarDeNuevo.setVisible(false);
         jCGamma.setVisible(true);
         jCEpsilon.setVisible(true);
@@ -183,7 +183,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jlEstadoInicial.setVisible(false);
         jbGenerarTablero.setEnabled(true);
         
-        jbGuardar.setVisible(false);
+        
         
         jcbDim.setFocusable(true);
     }
@@ -220,18 +220,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             estadoFinal = false;
             jbConfirmar.setVisible(true);
             jbConfirmar.setEnabled(false);
-            jbGuardar.setVisible(true);
-            jbGuardar.setEnabled(false);
+            
             jlAusenciaEstadoFinal.setVisible(true);
             jlEstadoInicial.setVisible(true);
  
-        
-        //        Se agrega Estado Final
-//        jpTablero.remove(this.posAbosAleatoria(dim));
-//        jpTablero.add(this.estadoFinal(dim), this.posAbosAleatoria(dim));
- //        Se agrega Estado Inicial
-//        jpTablero.remove(this.posAbosAleatoria(dim));
-//        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
         jpTablero.setVisible(true);       
         }
 
@@ -305,8 +297,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             estadoFinal = true;
             jbConfirmar.setVisible(true);
             jbConfirmar.setEnabled(true);
-            jbGuardar.setVisible(true);
-            jbGuardar.setEnabled(true);
+            
             jlAusenciaEstadoFinal.setVisible(false);
             jlEstadoInicial.setVisible(false);
             
@@ -548,18 +539,16 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jLabelItera = new javax.swing.JLabel();
         jLabelContador = new javax.swing.JLabel();
         jBGrafica = new javax.swing.JButton();
-        jlEstadoInicial = new javax.swing.JLabel();
-        jbGuardar = new javax.swing.JButton();
-        jbGenerarGuardado = new javax.swing.JButton();
-        jlAusenciaEstadoFinal = new javax.swing.JLabel();
         jbEmpezarDeNuevo = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jlEstadoInicial = new javax.swing.JLabel();
+        jlAusenciaEstadoFinal = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
         setMinimumSize(new java.awt.Dimension(800, 600));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jpSuperior.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -831,13 +820,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jBAvanzaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 120, 50));
+        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 120, 50));
 
         jLabelItera.setText("Iteraciones Realizadas");
-        jPanel1.add(jLabelItera, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+        jPanel1.add(jLabelItera, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
         jLabelContador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 120, 30));
+        jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 120, 30));
 
         jBGrafica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Line-chart32.png"))); // NOI18N
         jBGrafica.setText("Grafica");
@@ -847,48 +836,24 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jBGraficaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 120, 50));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 170, 380));
-
-        jlEstadoInicial.setText("*Advertencia: Debe elegir un estado \"Inicial\" ");
-        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 320, -1));
-
-        jbGuardar.setText("Guardar Configuración");
-        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbGuardarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 250, 210, 120));
-
-        jbGenerarGuardado.setText("Mostrar Configuración Guardada");
-        jbGenerarGuardado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbGenerarGuardadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jbGenerarGuardado, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 390, 210, 130));
-
-        jlAusenciaEstadoFinal.setText("*Advertencia: Debe elegir un estado \"Final\"");
-        getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 20));
+        jPanel1.add(jBGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 120, 50));
 
         jbEmpezarDeNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Counterclockwise-arrow32.png"))); // NOI18N
-        jbEmpezarDeNuevo.setText("Empezar de nuevo...");
+        jbEmpezarDeNuevo.setText("Reiniciar");
         jbEmpezarDeNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEmpezarDeNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(jbEmpezarDeNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 540, 210, 130));
+        jPanel1.add(jbEmpezarDeNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 120, 50));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 640, 120, 40));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 310, 300));
+
+        jlEstadoInicial.setText("*Advertencia: Debe elegir un estado \"Inicial\" ");
+        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 320, -1));
+
+        jlAusenciaEstadoFinal.setText("*Advertencia: Debe elegir un estado \"Final\"");
+        getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 20));
 
         pack();
         setLocationRelativeTo(null);
@@ -903,15 +868,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
 
 
-//        jBEntrena.setEnabled(false);
-//        jBAvanza.setEnabled(false);
-        
-        jbGuardar.setVisible(true);
-//        
-//        if (jrbManual.isSelected()){
-//            jtfInicialQ.setText("0");
-//            jtfInicialQ.enable(false);
-//        }
+
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
         
@@ -1003,7 +960,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private void jBEntrenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrenaActionPerformed
         
         jBAvanza.setEnabled(false);
-        jbGenerarGuardado.setVisible(true);
+        
         String userdata = jTextCantidadEpisodios.getText().trim();
         int val;
         if (Integer.parseInt(userdata)>0){            
@@ -1066,7 +1023,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         QMat matrizQ = new QMat(matQ.matQ.clone()); 
         
-//        Estado estadoInicial = matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+
         
         // setea el estado inicial
         Estado estadoInicial= null;
@@ -1433,83 +1390,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         // TODO add your handling code here:
     }//GEN-LAST:event_jCGammaActionPerformed
 
-    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-  
-        tableroSuplente = new Boton[Configuraciones.getDimension()][Configuraciones.getDimension()];
-        
-        for (int i = 0; i < Configuraciones.getDimension(); i++) {
-            for (int j = 0; j < Configuraciones.getDimension(); j++) {
-                int indice=(i*Configuraciones.getDimension()) + j;
-                Component componente= jpTablero.getComponent(indice);
-                if(componente.getClass() == JButton.class){
-                  JButton s = (JButton)componente;
-                  
-                  Boton b = new Boton();
-                  Color c = s.getBackground();
-                  Border borde = s.getBorder();
-                  b.setColor(c);
-                  b.setTexto(s.getText());
-                  b.setBorde(borde);
-                  tableroSuplente[i][j] = b;
-                }
-            }
-        }
-        
-    }//GEN-LAST:event_jbGuardarActionPerformed
-
-    private void jbGenerarGuardadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarGuardadoActionPerformed
-
-        
-        jpTablero.setVisible(false);
-        jpTablero.removeAll();
-        jpTablero.setLayout(new GridLayout(Configuraciones.getDimension(),Configuraciones.getDimension()));
-        
-        for (int i = 0; i < Configuraciones.getDimension(); i++) {
-            for (int j = 0; j < Configuraciones.getDimension(); j++) {            
-                Boton b;
-                JButton s = new JButton() ;
-                b = tableroSuplente[i][j];
-                s.setBackground(b.getColor());
-                s.setText(b.getTexto());
-                s.setBorder(b.getBorde());
-                jpTablero.add(s);
-            }
-        }
-        
-        jpTablero.setVisible(true);
-        jpTablero.repaint();
-        
-
-        VentanaPrincipal.vistaConfigPoliticas(true);
-        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-        this.setEnabledJPSuperior(true);
-        
-        jPanel1.setVisible(false);
-        jbGenerarGuardado.setVisible(false);
-        jbEmpezarDeNuevo.setVisible(false);
-        jCGamma.setVisible(true);
-        jCEpsilon.setVisible(true);
-        jCEpsilon.setEnabled(true);
-        jCGamma.setEnabled(true);
-        jCTau.setVisible(false);
-        jlEstadoInicial.setVisible(false);
-        jbGenerarTablero.setEnabled(true);
-        
-        jbGuardar.setVisible(false);
-        
-        jcbDim.setFocusable(true);
-        
-        if(VentanaPrincipal.estadoInicial & VentanaPrincipal.estadoFinal){
-            VentanaPrincipal.jbConfirmar.setVisible(true);
-            VentanaPrincipal.jbConfirmar.setEnabled(true);
-            VentanaPrincipal.jbGuardar.setVisible(true);
-            VentanaPrincipal.jbGuardar.setEnabled(false);
-        }
-        
-       
-        
-    }//GEN-LAST:event_jbGenerarGuardadoActionPerformed
-
     private void jCEpsilonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCEpsilonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCEpsilonActionPerformed
@@ -1580,101 +1460,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         VentanaPrincipal.jbConfirmar.setEnabled(true);
         
     }//GEN-LAST:event_jbEmpezarDeNuevoActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-       //instanciar matriz, aleatoriament, y modificar codigo para que tome valores de esa matriz
-        int a=1;
-        Configuraciones.setDimension(7);
-        jpTablero.setVisible(false);
-        jpTablero.removeAll();
-        jpTablero.setLayout(new GridLayout(7,7));
-        
-        blackline = BorderFactory.createLineBorder(Color.black);
-
-        VentanaPrincipal.vistaConfigPoliticas(true);
-                
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                
-                JButton jbEstado = new JButton();
-                jbEstado.setBorder(blackline);
-                
-                jbEstado.setFont(cf.font);
-                a=1;
-                if(i==0 & j!=0){
-                    a=1;
-                }
-                if(i==j-1){
-                    a=3;
-                }
-                if(i!=0 & j==0){
-                    a=5;
-                }
-                if(i==j){
-                    a=3;
-                }
-                if(i==6 & j<6){
-                    a=5;
-                }
-            
-                
-                switch(a){
-
-                    case 1: jbEstado.setBackground(Color.white);
-                        break;
-                    case 2: jbEstado.setBackground(Color.black);
-                        break;
-                    case 3:jbEstado.setBackground(cf.rojo);
-                        jbEstado.setText("Malo");
-                        break;
-                    case 4: jbEstado.setBackground(cf.amarillo);
-                        jbEstado.setText("Bueno");
-                        break;
-                    case 5: jbEstado.setBackground(cf.verde);
-                        jbEstado.setText("Excelente");
-                        break;
-                    default: //jbEstado.setBackground(Color.red);
-                        jbEstado.setText("OTRO");
-                        break;
-                }   
-
-            jbEstado.addMouseWheelListener(mWheelMovedCambiarEstados);                  
-            jbEstado.addMouseListener(mClickedCambiarEstados);    
-            
-            //  Se activa los botones confirmar politica y guardar escenario 
-            // porque  tiene estado Inicial y Final la generacion aleatoria
-            // al principio
-            estadoInicial = true;
-            estadoFinal = true;
-            jbConfirmar.setVisible(true);
-            jbConfirmar.setEnabled(true);
-            jbGuardar.setVisible(true);
-            jbGuardar.setEnabled(true);
-            jlAusenciaEstadoFinal.setVisible(false);
-            jlEstadoInicial.setVisible(false);
-            
-            
-            jpTablero.add(jbEstado);
-            
-        }
-        }    
-  
-        jpTablero.remove(0);
-        jpTablero.add(this.estadoInicial(7), 0);
-        VentanaPrincipal.estadoInicial = true;
-        VentanaPrincipal.jlEstadoInicial.setVisible(false);
-        
-//        Se agrega Estado Final
-        jpTablero.remove(48);
-        jpTablero.add(this.estadoFinal(7), 48);
-        VentanaPrincipal.estadoFinal = true;
-        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-
-        jcbDim.setSelectedIndex(1);
-        jpTablero.setVisible(true);   
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
@@ -1783,7 +1568,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static javax.swing.JButton jBAvanza;
     private javax.swing.JButton jBEntrena;
     private javax.swing.JButton jBGrafica;
-    private javax.swing.JButton jButton1;
     public static javax.swing.JComboBox jCEpsilon;
     public static javax.swing.JComboBox jCGamma;
     public static javax.swing.JComboBox jCTau;
@@ -1798,9 +1582,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private javax.swing.JTextField jTextCantidadEpisodios;
     public static javax.swing.JButton jbConfirmar;
     private javax.swing.JButton jbEmpezarDeNuevo;
-    private javax.swing.JButton jbGenerarGuardado;
     private static javax.swing.JButton jbGenerarTablero;
-    public static javax.swing.JButton jbGuardar;
     private static javax.swing.JComboBox jcbDim;
     public static javax.swing.JLabel jlAusenciaEstadoFinal;
     private static javax.swing.JLabel jlConfig;

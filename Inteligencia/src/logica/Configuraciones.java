@@ -9,7 +9,7 @@ package logica;
  * @author Leandro
  */
 public class Configuraciones {
-    
+    //valores por defecto a utilizar
     private static double gamma = 0.4;
     private static double ValorNeutro=0.3;
     private static double valorPared= -1;

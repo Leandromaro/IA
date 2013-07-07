@@ -46,7 +46,7 @@ public class Aleatorio {
     public Aleatorio(){
         
         aleatorio = Math.random();
-        //double valorInfimo=Math.random()*0.000001;
+        
         
         if (aleatorio <=0.2) {
             aleatorio = Configuraciones.getValorPared();
