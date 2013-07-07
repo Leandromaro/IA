@@ -11,13 +11,14 @@ import java.util.ArrayList;
  * @author Leandro
  */
 public class PoliticaEGreedy implements Politica {
-private ArrayList<Estado> estadosAnteriores= new ArrayList<>();
+
 
 @Override
 public Accion seleccionarAccionSiguiente(Estado estadoActual) {
         Accion accionSiguiente= null;
-        PoliticaAleatoria politicaAleatoria= new PoliticaAleatoria();
+        
         if(Math.random()<Configuraciones.getEpsilon()){
+            PoliticaAleatoria politicaAleatoria= new PoliticaAleatoria();
             accionSiguiente= politicaAleatoria.seleccionarAccionSiguiente(estadoActual);    
         }else{
             
@@ -25,7 +26,7 @@ public Accion seleccionarAccionSiguiente(Estado estadoActual) {
           
         }
         //System.out.println(accionSiguiente);
-        estadosAnteriores.add(accionSiguiente.getEstadoDestino());
+  
         return accionSiguiente;
     }
   
