@@ -58,16 +58,16 @@ public class EvJBChico {
                                     s.setText("I");
                                     VentanaPrincipal.estadoInicial = true;
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
-                                    if(VentanaPrincipal.estadoFinal){
+                                    if(VentanaPrincipal.banderaEstadoFinal){
                                         VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
                                        
                                     }  
                                 }else{
-                                    if(!VentanaPrincipal.estadoFinal){
+                                    if(!VentanaPrincipal.banderaEstadoFinal){
                                         s.setBackground(Color.GREEN);
                                         s.setText("F");
-                                        VentanaPrincipal.estadoFinal = true;
+                                        VentanaPrincipal.banderaEstadoFinal = true;
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                                         if(VentanaPrincipal.estadoInicial){
                                             VentanaPrincipal.jbConfirmar.setEnabled(true);
@@ -92,7 +92,7 @@ public class EvJBChico {
                                 if("F".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
-                                    VentanaPrincipal.estadoFinal = false;                                    
+                                    VentanaPrincipal.banderaEstadoFinal = false;                                    
                                     VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
                                 }
                                 VentanaPrincipal.jbConfirmar.setVisible(true);
@@ -133,16 +133,16 @@ public class EvJBChico {
                                     s.setText("I");
                                     VentanaPrincipal.estadoInicial = true;
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
-                                    if(VentanaPrincipal.estadoFinal){
+                                    if(VentanaPrincipal.banderaEstadoFinal){
                                         VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
                                        
                                     }  
                                 }else{
-                                    if(!VentanaPrincipal.estadoFinal){
+                                    if(!VentanaPrincipal.banderaEstadoFinal){
                                         s.setBackground(Color.GREEN);
                                         s.setText("F");
-                                        VentanaPrincipal.estadoFinal = true;
+                                        VentanaPrincipal.banderaEstadoFinal = true;
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                                         if(VentanaPrincipal.estadoInicial){
                                             VentanaPrincipal.jbConfirmar.setEnabled(true);
@@ -166,7 +166,7 @@ public class EvJBChico {
                                 if("F".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
-                                    VentanaPrincipal.estadoFinal = false;                                    
+                                    VentanaPrincipal.banderaEstadoFinal = false;                                    
                                     VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
                                 }
                                 VentanaPrincipal.jbConfirmar.setVisible(true);

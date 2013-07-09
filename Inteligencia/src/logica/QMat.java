@@ -68,10 +68,6 @@ public class QMat {
         return this.matQ[posI][posJ];
     }
     
-    
-  
-    
-    
     private boolean indicesValidos(int i, int j, int dimension){
          //i y j son validos si estan dentro de la matriz
         if(i>=0 && j>=0 && i<dimension && j<dimension){

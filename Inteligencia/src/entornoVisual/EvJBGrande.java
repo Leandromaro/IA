@@ -62,16 +62,16 @@ public class EvJBGrande extends MouseAdapter{
                                     s.setText("INICIAL");
                                     VentanaPrincipal.estadoInicial = true;
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
-                                    if(VentanaPrincipal.estadoFinal){
+                                    if(VentanaPrincipal.banderaEstadoFinal){
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
                                         VentanaPrincipal.jbConfirmar.setEnabled(true);
                                        
                                     }  
                                 }else{
-                                    if(!VentanaPrincipal.estadoFinal){
+                                    if(!VentanaPrincipal.banderaEstadoFinal){
                                         s.setBackground(Color.GREEN);
                                         s.setText("FINAL");
-                                        VentanaPrincipal.estadoFinal = true;
+                                        VentanaPrincipal.banderaEstadoFinal = true;
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                                         if(VentanaPrincipal.estadoInicial){
                                             VentanaPrincipal.jbConfirmar.setVisible(true);
@@ -96,7 +96,7 @@ public class EvJBGrande extends MouseAdapter{
                                 if("FINAL".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
-                                    VentanaPrincipal.estadoFinal = false;                                    
+                                    VentanaPrincipal.banderaEstadoFinal = false;                                    
                                     VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
                                 }
                                 VentanaPrincipal.jbConfirmar.setVisible(true);
@@ -109,7 +109,7 @@ public class EvJBGrande extends MouseAdapter{
             }
         }
         
-        if((VentanaPrincipal.estadoInicial) & (VentanaPrincipal.estadoFinal)){
+        if((VentanaPrincipal.estadoInicial) & (VentanaPrincipal.banderaEstadoFinal)){
             VentanaPrincipal.jbConfirmar.setEnabled(true);
         }
         this.jbEstado = s;
@@ -141,16 +141,16 @@ public class EvJBGrande extends MouseAdapter{
                                     s.setText("INICIAL");
                                     VentanaPrincipal.estadoInicial = true;
                                     VentanaPrincipal.jlEstadoInicial.setVisible(false);
-                                    if(VentanaPrincipal.estadoFinal){
+                                    if(VentanaPrincipal.banderaEstadoFinal){
                                         VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         VentanaPrincipal.jbConfirmar.setVisible(true);
                                         
                                     }  
                                 }else{
-                                    if(!VentanaPrincipal.estadoFinal){
+                                    if(!VentanaPrincipal.banderaEstadoFinal){
                                         s.setBackground(Color.GREEN);
                                         s.setText("FINAL");
-                                        VentanaPrincipal.estadoFinal = true;
+                                        VentanaPrincipal.banderaEstadoFinal = true;
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
                                         if(VentanaPrincipal.estadoInicial){
                                             VentanaPrincipal.jbConfirmar.setEnabled(true);
@@ -174,7 +174,7 @@ public class EvJBGrande extends MouseAdapter{
                                 if("FINAL".equals(s.getText())){
                                     s.setBackground(Color.white);
                                     s.setText("");
-                                    VentanaPrincipal.estadoFinal = false;                                    
+                                    VentanaPrincipal.banderaEstadoFinal = false;                                    
                                     VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
                                 }
                                 VentanaPrincipal.jbConfirmar.setVisible(true);

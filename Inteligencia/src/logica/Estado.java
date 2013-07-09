@@ -5,6 +5,8 @@
 package logica;
 
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -25,6 +27,7 @@ public class Estado implements Cloneable{
     
     @Override
     public String toString(){
+               
         StringBuilder desc= new StringBuilder();
         desc.append(" E:(");
         desc.append(this.getPosI());
