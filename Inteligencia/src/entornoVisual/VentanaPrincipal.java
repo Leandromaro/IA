@@ -1196,6 +1196,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         iniciarEntrenamiento();//llama al hilo de entrenamiento
         
+        
         this.agregarEvEstadoIncial();
         
     }//GEN-LAST:event_jBEntrenaActionPerformed
