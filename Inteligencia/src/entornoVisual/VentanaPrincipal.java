@@ -162,14 +162,16 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         episodios=new Episodio[Configuraciones.cantEpisodios]; 
         //seteo valores para controlar el entrenamiento
         cont=0;
-        topeEpisodios=2000;
+        
         TotalEpisodios=Configuraciones.cantEpisodios;
         contadorEpisodios=0;
           
         if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){//controla el tope de episodios
             topeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
         } 
-            
+        else{
+            topeEpisodios=2000;
+        }    
           avanzar(cont, topeEpisodios, matrizQ, estadoFinal, mat);//Avanza en el entrenamiento
 
           System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ());//imprime el ultimo episodio 
@@ -234,6 +236,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             jBAvanza1.setEnabled(false);
             jbDetener.setEnabled(false);
             jbReanudar.setEnabled(false);
+            cont=0;
         }
     }
      
@@ -1667,6 +1670,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpSuperior.setEnabled(true);
         jBAvanza.setEnabled(false);
         contadorEpisodios=0;
+        EpisodioStop=0;
+        TotalEpisodios=0;
         
         reinicio=true;
         
@@ -1695,6 +1700,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpTablero.setVisible(true);
         jpTablero.repaint();
         VentanaPrincipal.jbConfirmar.setEnabled(true);
+        
         
     }//GEN-LAST:event_jbEmpezarDeNuevoActionPerformed
 

@@ -19,6 +19,8 @@ public class Episodio {
     public static int contBloqueo=0;
     public static int tope;
     public static int cont=0;
+    public static int contDeIngreso=0;
+    
     
     public Episodio(QMat matrizQActual, Estado estadoFinal, Politica politica, RMat matR, int numeroEpisodio){
         //Creo un nuevo episodios
@@ -48,6 +50,11 @@ public class Episodio {
         int x = Configuraciones.getDimension();
         int y = 5;
         tope = (int) Math.pow(x, y);
+        contDeIngreso++;
+        if(contDeIngreso==2){
+            cont=0;
+            contDeIngreso=0;
+        }
         
         while(!estadoActual.equals(this.estadoFinal)&&(cont<tope)){//mientras el estado actual sea <> al estado final y el cont sea menor que el tope, realizo movimientos
               Estado estadoProximo = Movimiento.realizarMovimiento(estadoActual, this.getPolitica(), this.getMatrizR());// 
