@@ -52,7 +52,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     
     
     private static boolean detener =false;
-    private static boolean reanudar =false;
+   
     private static int EpisodioStop=0;
     private static int TotalEpisodios=0;
     
@@ -247,7 +247,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                      detener=false;  
                      contadorEpisodios=EpisodioStop;
                   }  
-
+                  //avanza de a un movimiento
                   avanzarUnaVez(cont, topeEpisodios, matrizQ, estadoFinal, mat);
 
                   System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
@@ -264,7 +264,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }
     
     private void avanzarUnaVez(int cont, int TopeEpisodios, QMat matrizQ, Estado estadoFinal, RMat mat) throws NumberFormatException {
-                   
+        //Si no se llegua al tope de episodios y no este detenido creo un episodio nuevo y lo almaceno en el arreglo de episodios           
         if((contadorEpisodios<TotalEpisodios)&&(cont<TopeEpisodios)&&(!detener)){
             episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
             contadorEpisodios++;
@@ -1286,8 +1286,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         JButton botonInicial = (JButton) jpTablero.getComponent(ind);
         botonInicial.setBorder(BorderFactory.createLineBorder(Color.magenta,4));
         
-        
+        //seteo valores necesarios para el bucle
         int cont=0;
+        //seteo un tope en funcion a la dimension del tablero
         int x = Configuraciones.getDimension();
         int y;
         if(jCGamma.getSelectedIndex()<0.5){
@@ -1314,11 +1315,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
               int indice= (estadoProximo.getPosI()*Configuraciones.getDimension() ) +estadoProximo.getPosJ();//genero un indice porque los botones son un arreglo y Q una matriz
               JButton boton = (JButton) jpTablero.getComponent(indice);
               boton.setBorder(BorderFactory.createLineBorder(Color.magenta,4));//cambia de color el camino
-              estadoInicial= estadoProximo;
+              estadoInicial= estadoProximo;//avanzo de estado
               cont++;
          }
-//        jBGrafica.setEnabled(true);
-//        jBAvanza.setEnabled(false);
+        //imprime una ventana si el agente se bloqueo
         System.out.println(cont);
         if (cont==tope){
             if(jrbEGreedy.isSelected()){
@@ -1695,18 +1695,21 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jbEmpezarDeNuevoActionPerformed
 
     private void jbDetenerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDetenerActionPerformed
+        //Activa la bandera de detener para que se detenga el entrenamiento
         detener=true;
+        //Habilito y desabilito los botones Reanudar y Detener respectivamente
         jbReanudar.setEnabled(true);
         jbDetener.setEnabled(false);
-
+        //almaceno el numero del episodio donde se detuvo
         EpisodioStop=contadorEpisodios;
         
         
     }//GEN-LAST:event_jbDetenerActionPerformed
 
     private void jbReanudarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbReanudarActionPerformed
+        //desabilito la bandera para que continue el entrenamiento
         jbDetener.setEnabled(true);
-        reanudar=true;
+      
         reanudarEntrenamiento();//llama al hilo de entrenamiento
        
     }//GEN-LAST:event_jbReanudarActionPerformed
@@ -1724,8 +1727,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jMatrizQActionPerformed
 
     private void jBAvanza1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanza1ActionPerformed
+        //habilito el boton de Matriz Q
         jMatrizQ.setEnabled(true);
-        if (avanzoUnaVez==0){
+        
+        if (avanzoUnaVez==0){// si no se avanzo nunca, hago lo mismo que el boton de entrenamiento
             //Inicio entrenamiento como la 1ra vez
             jBAvanza.setEnabled(false);
             jbDetener.setEnabled(true);
