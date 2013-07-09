@@ -63,7 +63,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static RMat mat;
     
     public static boolean reinicio=false;
-    
+    private static int contAvanza=0;//controlo si avanzo mas de una vez, quito los bordes del tablero
     
     private ColoresyFormas cf = new ColoresyFormas();
     
@@ -586,12 +586,17 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jBAvanza = new javax.swing.JButton();
         jLabelItera = new javax.swing.JLabel();
         jLabelContador = new javax.swing.JLabel();
-        jBGrafica = new javax.swing.JButton();
         jbEmpezarDeNuevo = new javax.swing.JButton();
         jbDetener = new javax.swing.JButton();
         jbReanudar = new javax.swing.JButton();
         jMatrizQ = new javax.swing.JButton();
         jBAvanza1 = new javax.swing.JButton();
+        jBGrafica = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jlEstadoInicial = new javax.swing.JLabel();
         jlAusenciaEstadoFinal = new javax.swing.JLabel();
 
@@ -845,7 +850,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpTablero.setLayout(new java.awt.GridLayout(1, 0));
         getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 570, 550));
 
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextCantidadEpisodios.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -854,9 +859,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jTextCantidadEpisodiosActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextCantidadEpisodios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 120, 30));
+        jPanel1.add(jTextCantidadEpisodios, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 140, 30));
 
-        jBEntrena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Fast-forward32.png"))); // NOI18N
+        jBEntrena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/control_right.png"))); // NOI18N
         jBEntrena.setText("Entrenar");
         jBEntrena.setEnabled(false);
         jBEntrena.addActionListener(new java.awt.event.ActionListener() {
@@ -864,12 +869,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jBEntrenaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 120, 50));
+        jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 140, 50));
 
+        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         jLabel1.setText("Ciclos de entrenamiento");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 150, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 150, 40));
 
-        jBAvanza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Font32.png"))); // NOI18N
+        jBAvanza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/control_double_right.png"))); // NOI18N
         jBAvanza.setText("Avanzar");
         jBAvanza.setEnabled(false);
         jBAvanza.addActionListener(new java.awt.event.ActionListener() {
@@ -877,13 +883,60 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jBAvanzaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 120, 50));
+        jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 140, 50));
 
+        jLabelItera.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
         jLabelItera.setText("Iteraciones Realizadas");
-        jPanel1.add(jLabelItera, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
+        jPanel1.add(jLabelItera, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         jLabelContador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 120, 30));
+        jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 140, 30));
+
+        jbEmpezarDeNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/arrow_circle_right.png"))); // NOI18N
+        jbEmpezarDeNuevo.setText("Reiniciar");
+        jbEmpezarDeNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEmpezarDeNuevoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbEmpezarDeNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 140, 50));
+
+        jbDetener.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/control_pause.png"))); // NOI18N
+        jbDetener.setText("Detener");
+        jbDetener.setEnabled(false);
+        jbDetener.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDetenerActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbDetener, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 140, 50));
+
+        jbReanudar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/control_right.png"))); // NOI18N
+        jbReanudar.setText("Continuar");
+        jbReanudar.setEnabled(false);
+        jbReanudar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbReanudarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbReanudar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 140, 50));
+
+        jMatrizQ.setText("MatrizQ");
+        jMatrizQ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMatrizQActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jMatrizQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 140, 50));
+
+        jBAvanza1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/control_stop_right.png"))); // NOI18N
+        jBAvanza1.setText("Avanzar");
+        jBAvanza1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAvanza1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBAvanza1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 140, 50));
 
         jBGrafica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Line-chart32.png"))); // NOI18N
         jBGrafica.setText("Grafica");
@@ -893,56 +946,35 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jBGraficaActionPerformed(evt);
             }
         });
-        jPanel1.add(jBGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 120, 50));
+        jPanel1.add(jBGrafica, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 140, 50));
 
-        jbEmpezarDeNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Counterclockwise-arrow32.png"))); // NOI18N
-        jbEmpezarDeNuevo.setText("Reiniciar");
-        jbEmpezarDeNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbEmpezarDeNuevoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbEmpezarDeNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 120, 50));
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 310, 10));
 
-        jbDetener.setText("Detener");
-        jbDetener.setEnabled(false);
-        jbDetener.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbDetenerActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbDetener, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 120, 50));
+        jLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel2.setText("Iniciar Entrenamiento");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        jbReanudar.setText("Continuar");
-        jbReanudar.setEnabled(false);
-        jbReanudar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbReanudarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbReanudar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 120, 50));
+        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 310, 10));
 
-        jMatrizQ.setText("MatrizQ");
-        jMatrizQ.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMatrizQActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jMatrizQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 120, 50));
+        jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel3.setText("Avanzar hacia el Objetivo");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
 
-        jBAvanza1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Skip-forward24.png"))); // NOI18N
-        jBAvanza1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBAvanza1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jBAvanza1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 120, 50));
+        jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 0, 30)); // NOI18N
+        jLabel4.setText("Botones Adicionales");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 270, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 310, 350));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 310, 400));
 
+        jlEstadoInicial.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jlEstadoInicial.setText("*Advertencia: Debe elegir un estado \"Inicial\" ");
         getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 320, -1));
 
+        jlAusenciaEstadoFinal.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
         jlAusenciaEstadoFinal.setText("*Advertencia: Debe elegir un estado \"Final\"");
         getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 20));
 
@@ -1116,7 +1148,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         
         QMat matrizQ = new QMat(matQ.matQ.clone()); 
-        
+        contAvanza++;
 
         
         // setea el estado inicial
@@ -1177,7 +1209,18 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         }
         
 
-            
+        if (contAvanza>1){//quito el borde rosado
+            for (int i = 0; i < Configuraciones.getDimension(); i++) {
+            for (int j = 0; j < Configuraciones.getDimension(); j++) {
+                int indice=(i*Configuraciones.getDimension()) + j;
+                Component componente= jpTablero.getComponent(indice);
+                if(componente.getClass() == JButton.class){
+                    JButton s = (JButton)componente;
+                    s.repaint();
+                }     
+            }
+        }   
+        }    
         
         
         while(!estadoInicial.equals(estadoFinal)&&(cont<tope)){
@@ -1721,6 +1764,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static javax.swing.JComboBox jCGamma;
     public static javax.swing.JComboBox jCTau;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     public static javax.swing.JLabel jLabelContador;
     private javax.swing.JLabel jLabelItera;
     private javax.swing.JButton jMatrizQ;
@@ -1730,6 +1776,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private static javax.swing.JSeparator jSeparator2;
     private static javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextField jTextCantidadEpisodios;
     public static javax.swing.JButton jbConfirmar;
     private javax.swing.JButton jbDetener;
