@@ -887,7 +887,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tempus Sans ITC" size="12" style="0"/>
+              <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ciclos de entrenamiento"/>
           </Properties>
@@ -920,13 +920,13 @@
         <Component class="javax.swing.JLabel" name="jLabelItera">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tempus Sans ITC" size="12" style="0"/>
+              <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Iteraciones Realizadas"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="160" y="10" width="-1" height="-1"/>
+              <AbsoluteConstraints x="170" y="5" width="-1" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -999,7 +999,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jMatrizQ">
           <Properties>
-            <Property name="text" type="java.lang.String" value="MatrizQ"/>
+            <Property name="text" type="java.lang.String" value="Matriz Q"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMatrizQActionPerformed"/>
@@ -1063,7 +1063,7 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tempus Sans ITC" size="12" style="0"/>
+              <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Iniciar Entrenamiento"/>
           </Properties>
@@ -1093,7 +1093,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tempus Sans ITC" size="12" style="0"/>
+              <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Avanzar hacia el Objetivo"/>
           </Properties>
@@ -1106,13 +1106,13 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tempus Sans ITC" size="30" style="0"/>
+              <Font name="Tahoma" size="12" style="0"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Botones Adicionales"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="190" width="270" height="30"/>
+              <AbsoluteConstraints x="110" y="180" width="110" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -1121,7 +1121,7 @@
     <Component class="javax.swing.JLabel" name="jlEstadoInicial">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tempus Sans ITC" size="14" style="0"/>
+          <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="*Advertencia: Debe elegir un estado &quot;Inicial&quot; "/>
       </Properties>
@@ -1137,7 +1137,7 @@
     <Component class="javax.swing.JLabel" name="jlAusenciaEstadoFinal">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tempus Sans ITC" size="14" style="0"/>
+          <Font name="Tahoma" size="12" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="*Advertencia: Debe elegir un estado &quot;Final&quot;"/>
       </Properties>

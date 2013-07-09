@@ -63,7 +63,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static RMat mat;
     
     public static boolean reinicio=false;
+    
     private static int contAvanza=0;//controlo si avanzo mas de una vez, quito los bordes del tablero
+    
+    public static int avanzoUnaVez=0;
     
     private ColoresyFormas cf = new ColoresyFormas();
     
@@ -213,8 +216,51 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             
         }
     }
+     
+    public void reanudarEntrenamientoUnaVez(){
+         
+        try{   
+            final SwingWorker reanudarEntrenamientoUnaVez;
+            reanudarEntrenamientoUnaVez = new SwingWorker(){
+            @Override
+            protected Object doInBackground() throws Exception {
+
+                  if(detener==true){//controlo si se prendio el boton de detener
+                     detener=false;  
+                     contadorEpisodios=EpisodioStop;
+                  }  
+
+                  avanzarUnaVez(cont, topeEpisodios, matrizQ, estadoFinal, mat);
+
+                  System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
+
+                  throw new UnsupportedOperationException("Not supported yet."); 
+            }
+        };
+            
+        reanudarEntrenamientoUnaVez.execute();
+
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this,"Error" , e.toString(), 1);
+        }
+    }
     
-    
+    private void avanzarUnaVez(int cont, int TopeEpisodios, QMat matrizQ, Estado estadoFinal, RMat mat) throws NumberFormatException {
+                   
+        if((contadorEpisodios<TotalEpisodios)&&(cont<TopeEpisodios)&&(!detener)){
+            episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
+            contadorEpisodios++;
+            jLabelContador.setText(String.valueOf(contadorEpisodios));
+            cont++;
+        }
+                       
+        String userdata = jTextCantidadEpisodios.getText().trim();//controlo que si llega al valor tope de Episodios. Habilito el boton Avanzar
+        int val = Integer.parseInt(userdata);
+        if(contadorEpisodios==val){
+            jBAvanza.setEnabled(true);
+            
+        }
+    }
     public VentanaPrincipal() {
         
         initComponents();
@@ -871,7 +917,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         });
         jPanel1.add(jBEntrena, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 140, 50));
 
-        jLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Ciclos de entrenamiento");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 150, 40));
 
@@ -885,9 +931,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         });
         jPanel1.add(jBAvanza, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 140, 50));
 
-        jLabelItera.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabelItera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelItera.setText("Iteraciones Realizadas");
-        jPanel1.add(jLabelItera, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+        jPanel1.add(jLabelItera, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 5, -1, 30));
 
         jLabelContador.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(jLabelContador, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 140, 30));
@@ -921,7 +967,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         });
         jPanel1.add(jbReanudar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 140, 50));
 
-        jMatrizQ.setText("MatrizQ");
+        jMatrizQ.setText("Matriz Q");
         jMatrizQ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMatrizQActionPerformed(evt);
@@ -952,7 +998,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jSeparator5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 310, 10));
 
-        jLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel2.setText("Iniciar Entrenamiento");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
@@ -960,21 +1006,21 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jSeparator7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 310, 10));
 
-        jLabel3.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Avanzar hacia el Objetivo");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 0, 30)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Botones Adicionales");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 270, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 110, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 310, 400));
 
-        jlEstadoInicial.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jlEstadoInicial.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlEstadoInicial.setText("*Advertencia: Debe elegir un estado \"Inicial\" ");
         getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 320, -1));
 
-        jlAusenciaEstadoFinal.setFont(new java.awt.Font("Tempus Sans ITC", 0, 14)); // NOI18N
+        jlAusenciaEstadoFinal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlAusenciaEstadoFinal.setText("*Advertencia: Debe elegir un estado \"Final\"");
         getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 20));
 
@@ -1639,17 +1685,63 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jMatrizQActionPerformed
 
     private void jBAvanza1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanza1ActionPerformed
-        if(detener==false){
+        if (avanzoUnaVez==0){
+            //Inicio entrenamiento como la 1ra vez
+            jBAvanza.setEnabled(false);
+            jbDetener.setEnabled(true);
+            jBGrafica.setEnabled(true);
+
+            String userdata = jTextCantidadEpisodios.getText().trim();
+
+            int val;
+            if (Integer.parseInt(userdata)>0){            
+                    try
+                    {
+                       val = Integer.parseInt(userdata);
+                    }
+                    catch (NumberFormatException nfe)
+                    {
+                       JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                       jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
+                       val = Configuraciones.cantEpisodios;
+                    }              
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
+                val = Configuraciones.cantEpisodios;
+            }
+            Configuraciones.setCantEpisodios(val);
+
+            if (banderaEGreedy==true){
+                PoliticaEGreedy politica= new PoliticaEGreedy();
+                p=politica;
+                System.out.println("POLITICA EGREEDY");
+
+            }
+            else{
+                PoliticaSoftMax politica= new PoliticaSoftMax();
+                p=politica;
+
+                System.out.println("POLITICA SOFTMAX");           
+            }
+
+            jBEntrena.setEnabled(false);
+
+
+            iniciarEntrenamiento();//llama al hilo de entrenamiento
+
+            //Detengo
             detener=true;
-            reanudarEntrenamiento();
-            detener=true;
+            jbReanudar.setEnabled(true);
+            jbDetener.setEnabled(false);
+            EpisodioStop=contadorEpisodios;
+            //incrementeo el contador para que reanude de a uno
+            avanzoUnaVez++;
         }
-        
-//        jbDetener.setEnabled(true);
-//        reanudar=true;
-//        detener=true;
-        EpisodioStop=contadorEpisodios;
-        
+        else{//reanudo entrenamiento de a uno
+            reanudarEntrenamientoUnaVez();
+        }
     }//GEN-LAST:event_jBAvanza1ActionPerformed
 
     private RMat obtenerRdesdePantalla(){
