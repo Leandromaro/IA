@@ -53,6 +53,7 @@ public class QWindow extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        tablaQ.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tablaQ.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
 
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, filasQ, tablaQ, "bindingQ");
@@ -60,10 +61,10 @@ public class QWindow extends javax.swing.JDialog {
         columnBinding.setColumnName("Estado");
         columnBinding.setColumnClass(String.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc1}"));
-        columnBinding.setColumnName("Diagonal Izquierda 1");
+        columnBinding.setColumnName("1");
         columnBinding.setColumnClass(Double.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc2}"));
-        columnBinding.setColumnName("Arriba 2");
+        columnBinding.setColumnName("↑ 2");
         columnBinding.setColumnClass(Double.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc3}"));
         columnBinding.setColumnName("Diagonal Derecha 3");

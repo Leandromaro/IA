@@ -50,6 +50,11 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tablaQ">
           <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tempus Sans ITC" size="12" style="0"/>
             </Property>
@@ -114,11 +119,11 @@
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc1}">
-                <BindingParameter name="NAME" value="Diagonal Izquierda 1"/>
+                <BindingParameter name="NAME" value="1"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc2}">
-                <BindingParameter name="NAME" value="Arriba 2"/>
+                <BindingParameter name="NAME" value="&#x2191; 2"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc3}">

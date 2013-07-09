@@ -968,6 +968,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jPanel1.add(jbReanudar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 140, 50));
 
         jMatrizQ.setText("Matriz Q");
+        jMatrizQ.setEnabled(false);
         jMatrizQ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMatrizQActionPerformed(evt);
@@ -1131,7 +1132,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jBAvanza.setEnabled(false);
         jbDetener.setEnabled(true);
         jBGrafica.setEnabled(true);
-        
+        jMatrizQ.setEnabled(true);
         String userdata = jTextCantidadEpisodios.getText().trim();
        
         int val;
@@ -1685,6 +1686,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jMatrizQActionPerformed
 
     private void jBAvanza1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanza1ActionPerformed
+        jMatrizQ.setEnabled(true);
         if (avanzoUnaVez==0){
             //Inicio entrenamiento como la 1ra vez
             jBAvanza.setEnabled(false);
