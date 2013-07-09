@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
     <Component class="java.util.ArrayList" name="filasQ">
       <AuxValues>
@@ -50,6 +50,14 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tablaQ">
           <Properties>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tempus Sans ITC" size="12" style="0"/>
+            </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -111,35 +119,35 @@
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc1}">
-                <BindingParameter name="NAME" value="Valor Acc1"/>
+                <BindingParameter name="NAME" value="1"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc2}">
-                <BindingParameter name="NAME" value="Valor Acc2"/>
+                <BindingParameter name="NAME" value="&#x2191; 2"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc3}">
-                <BindingParameter name="NAME" value="Valor Acc3"/>
+                <BindingParameter name="NAME" value="Diagonal Derecha 3"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc4}">
-                <BindingParameter name="NAME" value="Valor Acc4"/>
+                <BindingParameter name="NAME" value="Derecha 4"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc5}">
-                <BindingParameter name="NAME" value="Valor Acc5"/>
+                <BindingParameter name="NAME" value="Diagonal Derecha 5"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc6}">
-                <BindingParameter name="NAME" value="Valor Acc6"/>
+                <BindingParameter name="NAME" value="Abajo 6"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc7}">
-                <BindingParameter name="NAME" value="Valor Acc7"/>
+                <BindingParameter name="NAME" value="Diagonal Izquierda 7"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc8}">
-                <BindingParameter name="NAME" value="Valor Acc8"/>
+                <BindingParameter name="NAME" value="Izquierda 8"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
             </BindingProperty>
