@@ -1051,15 +1051,15 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         });
         jPanel1.add(jBBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 140, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 310, 460));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 310, 460));
 
         jlEstadoInicial.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlEstadoInicial.setText("*Advertencia: Debe elegir un estado \"Inicial\" ");
-        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 320, -1));
+        getContentPane().add(jlEstadoInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 320, -1));
 
         jlAusenciaEstadoFinal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlAusenciaEstadoFinal.setText("*Advertencia: Debe elegir un estado \"Final\"");
-        getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, -1, 20));
+        getContentPane().add(jlAusenciaEstadoFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 190, -1, 20));
 
         pack();
         setLocationRelativeTo(null);
@@ -1817,9 +1817,15 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 if(componente.getClass() == JButton.class){
                     JButton s = (JButton)componente;
                     s.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));//cambia de color el camino
-                }     
+                    if(("I".equals(s.getText())) | ("INICIAL".equals(s.getText()))){
+                        s.setBackground(Color.white);
+                        s.setText("");
+                    }
+                } 
+                
             }
-        }      
+        }
+         
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private RMat obtenerRdesdePantalla(){
