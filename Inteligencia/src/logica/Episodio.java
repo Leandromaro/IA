@@ -50,7 +50,7 @@ public class Episodio {
         int x = Configuraciones.getDimension();
         int y = 5;
         tope = (int) Math.pow(x, y);
-        contDeIngreso++;
+        contDeIngreso++;//Controlo si ingresa mas de una vez y pongo a cero el contador para que pueda realizar movimientos
         if(contDeIngreso==2){
             cont=0;
             contDeIngreso=0;

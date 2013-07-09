@@ -669,6 +669,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jSeparator7 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jBBorrar = new javax.swing.JButton();
         jlEstadoInicial = new javax.swing.JLabel();
         jlAusenciaEstadoFinal = new javax.swing.JLabel();
 
@@ -945,7 +946,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel1.setText("Ciclos de entrenamiento");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 150, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 40));
 
         jBAvanza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/control_double_right.png"))); // NOI18N
         jBAvanza.setText("Avanzar");
@@ -1041,7 +1042,16 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jLabel4.setText("Botones Adicionales");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 110, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 310, 400));
+        jBBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Trash-can32.png"))); // NOI18N
+        jBBorrar.setText("Borrar");
+        jBBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBorrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jBBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 140, 50));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 220, 310, 460));
 
         jlEstadoInicial.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlEstadoInicial.setText("*Advertencia: Debe elegir un estado \"Inicial\" ");
@@ -1799,6 +1809,19 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         }
     }//GEN-LAST:event_jBAvanza1ActionPerformed
 
+    private void jBBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBorrarActionPerformed
+        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+            for (int j = 0; j < Configuraciones.getDimension(); j++) {
+                int indice=(i*Configuraciones.getDimension()) + j;
+                Component componente= jpTablero.getComponent(indice);
+                if(componente.getClass() == JButton.class){
+                    JButton s = (JButton)componente;
+                    s.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));//cambia de color el camino
+                }     
+            }
+        }      
+    }//GEN-LAST:event_jBBorrarActionPerformed
+
     private RMat obtenerRdesdePantalla(){
         int dimension= 0;
         String aux = (String)jcbDim.getSelectedItem();
@@ -1905,6 +1928,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton jBAvanza;
     private javax.swing.JButton jBAvanza1;
+    private javax.swing.JButton jBBorrar;
     private javax.swing.JButton jBEntrena;
     private javax.swing.JButton jBGrafica;
     public static javax.swing.JComboBox jCEpsilon;
