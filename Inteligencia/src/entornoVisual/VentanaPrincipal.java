@@ -62,7 +62,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static Estado estadoFinal;
     public static RMat mat;
     
-    
+    public static boolean reinicio=false;
     
     
     private ColoresyFormas cf = new ColoresyFormas();
@@ -210,7 +210,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         int val = Integer.parseInt(userdata);
         if(contadorEpisodios==val){
             jBAvanza.setEnabled(true);
-            //contadorEpisodios=0;
+            
         }
     }
     
@@ -1536,6 +1536,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jBAvanza.setEnabled(false);
         contadorEpisodios=0;
         
+        reinicio=true;
+        
         this.enabledJPSuperior(true);
         VentanaPrincipal.vistaConfigPoliticas(true);
 //        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
@@ -1583,6 +1585,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
     private void jMatrizQActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMatrizQActionPerformed
        // QVentana QVent= new QVentana();
+        ventanaMovimientos vMov= new ventanaMovimientos();
+        vMov.setVisible(true);
         QWindow qWindow= new QWindow(episodios[contadorEpisodios-1].getMatrizQ());
         qWindow.setSize(this.getSize());
         qWindow.setLocation(this.getLocation());
@@ -1592,6 +1596,16 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jMatrizQActionPerformed
 
     private void jBAvanza1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanza1ActionPerformed
+        if(detener==false){
+            detener=true;
+            reanudarEntrenamiento();
+            detener=true;
+        }
+        
+//        jbDetener.setEnabled(true);
+//        reanudar=true;
+//        detener=true;
+        EpisodioStop=contadorEpisodios;
         
     }//GEN-LAST:event_jBAvanza1ActionPerformed
 

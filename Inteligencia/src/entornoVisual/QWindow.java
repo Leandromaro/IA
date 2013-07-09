@@ -53,33 +53,35 @@ public class QWindow extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        tablaQ.setFont(new java.awt.Font("Tempus Sans ITC", 0, 12)); // NOI18N
+
         org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ, filasQ, tablaQ, "bindingQ");
         org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${estado}"));
         columnBinding.setColumnName("Estado");
         columnBinding.setColumnClass(String.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc1}"));
-        columnBinding.setColumnName("Valor Acc1");
+        columnBinding.setColumnName("Diagonal Izquierda 1");
         columnBinding.setColumnClass(Double.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc2}"));
-        columnBinding.setColumnName("Valor Acc2");
+        columnBinding.setColumnName("Arriba 2");
         columnBinding.setColumnClass(Double.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc3}"));
-        columnBinding.setColumnName("Valor Acc3");
+        columnBinding.setColumnName("Diagonal Derecha 3");
         columnBinding.setColumnClass(Double.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc4}"));
-        columnBinding.setColumnName("Valor Acc4");
+        columnBinding.setColumnName("Derecha 4");
         columnBinding.setColumnClass(Double.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc5}"));
-        columnBinding.setColumnName("Valor Acc5");
+        columnBinding.setColumnName("Diagonal Derecha 5");
         columnBinding.setColumnClass(Double.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc6}"));
-        columnBinding.setColumnName("Valor Acc6");
+        columnBinding.setColumnName("Abajo 6");
         columnBinding.setColumnClass(Double.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc7}"));
-        columnBinding.setColumnName("Valor Acc7");
+        columnBinding.setColumnName("Diagonal Izquierda 7");
         columnBinding.setColumnClass(Double.class);
         columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${valorAcc8}"));
-        columnBinding.setColumnName("Valor Acc8");
+        columnBinding.setColumnName("Izquierda 8");
         columnBinding.setColumnClass(Double.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
