@@ -231,7 +231,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         int val = Integer.parseInt(userdata);
         if(contadorEpisodios==val){
             jBAvanza.setEnabled(true);
-            
+            jBAvanza1.setEnabled(false);
+            jbDetener.setEnabled(false);
+            jbReanudar.setEnabled(false);
         }
     }
      
@@ -276,7 +278,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         int val = Integer.parseInt(userdata);
         if(contadorEpisodios==val){
             jBAvanza.setEnabled(true);
-            
+            jBAvanza1.setEnabled(false);
+            jbDetener.setEnabled(false);
+            jbReanudar.setEnabled(false);
         }
     }
     public VentanaPrincipal() {
