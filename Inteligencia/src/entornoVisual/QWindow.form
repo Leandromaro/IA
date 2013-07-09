@@ -119,35 +119,35 @@
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc1}">
-                <BindingParameter name="NAME" value="1"/>
+                <BindingParameter name="NAME" value="Movimiento 1"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc2}">
-                <BindingParameter name="NAME" value="&#x2191; 2"/>
+                <BindingParameter name="NAME" value="Movimiento 2"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc3}">
-                <BindingParameter name="NAME" value="Diagonal Derecha 3"/>
+                <BindingParameter name="NAME" value="Movimiento 3"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc4}">
-                <BindingParameter name="NAME" value="Derecha 4"/>
+                <BindingParameter name="NAME" value="Movimiento 4"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc5}">
-                <BindingParameter name="NAME" value="Diagonal Derecha 5"/>
+                <BindingParameter name="NAME" value="Movimiento 5"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc6}">
-                <BindingParameter name="NAME" value="Abajo 6"/>
+                <BindingParameter name="NAME" value="Movimiento 6"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc7}">
-                <BindingParameter name="NAME" value="Diagonal Izquierda 7"/>
+                <BindingParameter name="NAME" value="Movimiento 7"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
               <Subbinding sourcePath="${valorAcc8}">
-                <BindingParameter name="NAME" value="Izquierda 8"/>
+                <BindingParameter name="NAME" value="Movimiento 8"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Double.class"/>
               </Subbinding>
             </BindingProperty>
