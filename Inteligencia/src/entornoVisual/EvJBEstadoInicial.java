@@ -5,6 +5,7 @@
 package entornoVisual;
 
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import javax.swing.JButton;
@@ -15,53 +16,76 @@ import logica.Configuraciones;
  * @author Maty
  */
 public class EvJBEstadoInicial {
-    private ColoresyFormas cf = new ColoresyFormas();
+   private ColoresyFormas cf = new ColoresyFormas();
     
-    private JButton jbEstado;
+    private MouseAdapter mWheelMoved;
+    private MouseAdapter mClicked;
     
+    private JButton jbEstado;   
+
     public JButton getjbEstado(){
         return this.jbEstado;
     }
+    public MouseAdapter getmWheelMoved(){
+        return this.mWheelMoved;
+    }
+    public MouseAdapter getmClicked(){
+        return this.mClicked;
+    }
     
     public void setjbEstado(MouseWheelEvent e){
-        
         JButton s = (JButton)e.getComponent();
-        if(!Configuraciones.getFlagEInicialSeleccionado()){         
-                s.setBackground(Color.orange);
-                s.setText("I");
-        
-                Configuraciones.setFlagEInicialSeleccionado(true);
-        
-                VentanaPrincipal.jlEstadoInicial.setVisible(false);
-                VentanaPrincipal.jBAvanza.setEnabled(true);
+        if(!VentanaPrincipal.estadoInicial){         
+                
+            // Resguardo el estado anterior
+            VentanaPrincipal.jbAnterior.setBackground(s.getBackground());
+            VentanaPrincipal.jbAnterior.setText(s.getText());
+            //Actualizo el Estado Inicial
+            s.setBackground(Color.orange);
+            s.setText("I");
+            
+            VentanaPrincipal.estadoInicial = true;
+            VentanaPrincipal.jlEstadoInicial.setVisible(false);
+            VentanaPrincipal.jBAvanza.setEnabled(true);
         }else{
-            if("I".equals(s.getText())){
-                Configuraciones.setFlagEInicialSeleccionado(false);
+                //Actualizo el Estado con los valores anteriores a que sea 
+                // seleccionado como estado Inicial
+                s.setBackground(VentanaPrincipal.jbAnterior.getBackground());
+                s.setText(VentanaPrincipal.jbAnterior.getText());
+                
+                VentanaPrincipal.estadoInicial = false;
                 VentanaPrincipal.jlEstadoInicial.setVisible(true);
                 VentanaPrincipal.jBAvanza.setEnabled(false);
-            }
         }
         this.jbEstado = s;
         this.jbEstado.repaint();
     }
     
     public void setjbEstado(MouseEvent e){
+        
+        
+        
+        
+        
         JButton s = (JButton)e.getComponent();
-        if(!Configuraciones.getFlagEInicialSeleccionado()){              
-                s.setBackground(Color.orange);
-                s.setText("I");      
-                Configuraciones.setFlagEInicialSeleccionado(true);
-                VentanaPrincipal.jlEstadoInicial.setVisible(false);
-                VentanaPrincipal.jBAvanza.setEnabled(true);
-        }else{
-            if("I".equals(s.getText())){
-                Configuraciones.setFlagEInicialSeleccionado(false);
-                VentanaPrincipal.jlEstadoInicial.setVisible(true);
-                VentanaPrincipal.jBAvanza.setEnabled(false);
+         
+                
+            // Resguardo el estado anterior
+//            VentanaPrincipal.jbAnterior.setBackground(s.getBackground());
+//            VentanaPrincipal.jbAnterior.setText(s.getText());
+            //Actualizo el Estado Inicial
+            if(!VentanaPrincipal.estadoInicial){
+              s.setBackground(Color.orange);
+              s.setText("I");
+            
+            VentanaPrincipal.estadoInicial = true;
+            VentanaPrincipal.jlEstadoInicial.setVisible(false);
+            VentanaPrincipal.jBAvanza.setEnabled(true); 
             }
-        }
+            
+
         this.jbEstado = s;
         this.jbEstado.repaint();
-    }
+    };
 }
  

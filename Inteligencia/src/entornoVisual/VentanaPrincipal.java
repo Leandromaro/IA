@@ -69,6 +69,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     
     EvJBGrande ma               = new EvJBGrande();
     EvJBChico  ma1              = new EvJBChico();
+    EvJBEstadoInicial ma2       = new EvJBEstadoInicial();
 
     
     
@@ -101,6 +102,22 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             }
         }
     };   
+    
+    MouseAdapter mClickedEstadoInicial = new MouseAdapter(){
+        public void mouseClicked(MouseEvent e){
+            if(!Configuraciones.getFlagEvEstadoInicial()){
+                if(Configuraciones.getDimension() < 8){
+                    ma2.setjbEstado(e);
+                    ma2.getjbEstado().repaint();
+                }
+                else{
+                    ma2.setjbEstado(e);
+                    ma2.getjbEstado().repaint();
+                }
+            }
+        }
+    };     
+    
     
     public void setFlagInicial(Boolean flagInicial) {
         this.flagInicial = flagInicial;
@@ -251,8 +268,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jbEstado.setBorder(blackline);
                 jbEstado.setFont(cf.font);
                 jbEstado.setBackground(Color.white);
-                
-  
+
                 jbEstado.addMouseWheelListener(mWheelMovedCambiarEstados);                  
                 jbEstado.addMouseListener(mClickedCambiarEstados);                  
                               
@@ -260,7 +276,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             }
         }
             //  No activa los botones confirmar politica y guardar escenario 
-            // porque no tiene estado Inicial y Final la generacion manual 
+            // porque no tiene estado Final la generacion manual 
             // al principio
             estadoInicial = false;
             banderaEstadoFinal = false;
@@ -268,7 +284,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             jbConfirmar.setEnabled(false);
             
             jlAusenciaEstadoFinal.setVisible(true);
-            jlEstadoInicial.setVisible(true);
+            jlEstadoInicial.setVisible(false);
  
         jpTablero.setVisible(true);       
         }
@@ -352,16 +368,18 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             
         }
         }    
-        int aleatorio1 = this.posAbosAleatoria(dim);
-        jpTablero.remove(this.posAbosAleatoria(dim));
-        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
-        VentanaPrincipal.estadoInicial = true;
-        VentanaPrincipal.jlEstadoInicial.setVisible(false);
+//        int aleatorio1 = this.posAbosAleatoria(dim);
+        
+        // Se seteaba el estado inicial (No hay que hacerlo es este momento)
+//        jpTablero.remove(this.posAbosAleatoria(dim));
+//        jpTablero.add(this.estadoInicial(dim), this.posAbosAleatoria(dim));
+//        VentanaPrincipal.estadoInicial = true;
+//        VentanaPrincipal.jlEstadoInicial.setVisible(false);
         
         int aleatorio2 = this.posAbosAleatoria(dim);
-        while(aleatorio1 == aleatorio2){
-            aleatorio2 = this.posAbosAleatoria(dim);
-        }
+//        while(aleatorio1 == aleatorio2){
+//            aleatorio2 = this.posAbosAleatoria(dim);
+//        }
 //        Se agrega Estado Final
         jpTablero.remove(aleatorio2);
         jpTablero.add(this.estadoFinal(dim), aleatorio2);
@@ -1050,6 +1068,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
     private void jBEntrenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrenaActionPerformed
         
+        // Se eliminan los eventos de cada estado y se agrega a cada boton el
+        // evento para setear el estado inicial
+        VentanaPrincipal.jlEstadoInicial.setVisible(true);
+        
+        
         jBAvanza.setEnabled(false);
         jbDetener.setEnabled(true);
         jBGrafica.setEnabled(true);
@@ -1094,6 +1117,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         iniciarEntrenamiento();//llama al hilo de entrenamiento
         
+        this.agregarEvEstadoIncial();
+        
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     public void eliminarEventos(){          
@@ -1105,6 +1130,23 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                     componente.removeMouseListener(mClickedCambiarEstados);
                     componente.removeMouseWheelListener(mWheelMovedCambiarEstados);
                 }            
+            }
+        }       
+    }
+    
+      public void agregarEvEstadoIncial(){ 
+        
+        VentanaPrincipal.estadoInicial = false;
+        VentanaPrincipal.jlEstadoInicial.setVisible(true);
+        VentanaPrincipal.jBAvanza.setEnabled(false);
+            
+        for (int i = 0; i < Configuraciones.getDimension(); i++) {
+            for (int j = 0; j < Configuraciones.getDimension(); j++) {
+                int indice=(i*Configuraciones.getDimension()) + j;
+                Component componente= jpTablero.getComponent(indice);
+                if(componente.getClass() == JButton.class){
+                    componente.addMouseListener(mClickedEstadoInicial);
+                }    
             }
         }       
     }
@@ -1320,6 +1362,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private void jbConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbConfirmarActionPerformed
 
         this.eliminarEventos();
+        
         jbEmpezarDeNuevo.setVisible(true);
         
         this.setEnabledJPSuperior(false);

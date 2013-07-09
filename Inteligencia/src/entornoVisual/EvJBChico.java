@@ -36,7 +36,7 @@ public class EvJBChico {
     public void setjbEstado(MouseWheelEvent e){
         JButton s = (JButton)e.getComponent();
 
-        if(s.getBackground() == Color.white & (!("F".equals(s.getText())) | !("I").equals(s.getText()))){
+        if(s.getBackground() == Color.white & (!("F".equals(s.getText())))){
                 s.setBackground(Color.black);
                 s.setText("");
             }else{
@@ -52,54 +52,29 @@ public class EvJBChico {
                         s.setBackground(cf.verde);
                         s.setText("E");
                     }else{
-                        if("E".equals(s.getText())){
-                                if(!VentanaPrincipal.estadoInicial){
-                                    s.setBackground(Color.ORANGE);
-                                    s.setText("I");
-                                    VentanaPrincipal.estadoInicial = true;
-                                    VentanaPrincipal.jlEstadoInicial.setVisible(false);
-                                    if(VentanaPrincipal.banderaEstadoFinal){
-                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
-                                        VentanaPrincipal.jbConfirmar.setVisible(true);
-                                       
-                                    }  
-                                }else{
-                                    if(!VentanaPrincipal.banderaEstadoFinal){
-                                        s.setBackground(Color.GREEN);
-                                        s.setText("F");
-                                        VentanaPrincipal.banderaEstadoFinal = true;
-                                        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-                                        if(VentanaPrincipal.estadoInicial){
-                                            VentanaPrincipal.jbConfirmar.setEnabled(true);
-                                            VentanaPrincipal.jbConfirmar.setVisible(true);
-                                            
-                                        }  
-                                    }else{
-                                        VentanaPrincipal.jbConfirmar.setVisible(true);
-                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
-                   
-                                        s.setBackground(Color.white);
-                                        s.setText("");
-                                    }
-                                }    
+                        if("E".equals(s.getText())){   
+                            if(!VentanaPrincipal.banderaEstadoFinal){
+                                s.setBackground(Color.GREEN);
+                                s.setText("F");
+                                VentanaPrincipal.banderaEstadoFinal = true;
+                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);                                                              
                             }else{
-                                if("I".equals(s.getText())){
-                                    s.setBackground(Color.white);
-                                    s.setText("");
-                                    VentanaPrincipal.estadoInicial = false;
-                                    VentanaPrincipal.jlEstadoInicial.setVisible(true);                      
-                                } 
-                                if("F".equals(s.getText())){
-                                    s.setBackground(Color.white);
-                                    s.setText("");
-                                    VentanaPrincipal.banderaEstadoFinal = false;                                    
-                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
-                                }
-                                VentanaPrincipal.jbConfirmar.setVisible(true);
-                                VentanaPrincipal.jbConfirmar.setEnabled(false);
-                                
-                                
+                                s.setBackground(Color.white);
+                                s.setText("");
                             }
+                            VentanaPrincipal.jbConfirmar.setEnabled(true);
+                            VentanaPrincipal.jbConfirmar.setVisible(true);
+                        }else{
+                            if("F".equals(s.getText())){
+                                s.setBackground(Color.white);
+                                s.setText("");
+                                VentanaPrincipal.banderaEstadoFinal = false;                                    
+                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+                            }
+                            VentanaPrincipal.jbConfirmar.setVisible(true);
+                            VentanaPrincipal.jbConfirmar.setEnabled(false);     
+                        } 
+                                     
                     }
                 }     
             }
@@ -111,7 +86,7 @@ public class EvJBChico {
     public void setjbEstado(MouseEvent e){
         JButton s = (JButton)e.getComponent();
 
-        if(s.getBackground() == Color.white & (!("F".equals(s.getText())) | !("I").equals(s.getText()))){
+        if(s.getBackground() == Color.white & (!("F".equals(s.getText())))){
                 s.setBackground(Color.black);
                 s.setText("");
             }else{
@@ -127,53 +102,29 @@ public class EvJBChico {
                         s.setBackground(cf.verde);
                         s.setText("E");
                     }else{
-                        if("E".equals(s.getText())){
-                                if(!VentanaPrincipal.estadoInicial){
-                                    s.setBackground(Color.ORANGE);
-                                    s.setText("I");
-                                    VentanaPrincipal.estadoInicial = true;
-                                    VentanaPrincipal.jlEstadoInicial.setVisible(false);
-                                    if(VentanaPrincipal.banderaEstadoFinal){
-                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
-                                        VentanaPrincipal.jbConfirmar.setVisible(true);
-                                       
-                                    }  
-                                }else{
-                                    if(!VentanaPrincipal.banderaEstadoFinal){
-                                        s.setBackground(Color.GREEN);
-                                        s.setText("F");
-                                        VentanaPrincipal.banderaEstadoFinal = true;
-                                        VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
-                                        if(VentanaPrincipal.estadoInicial){
-                                            VentanaPrincipal.jbConfirmar.setEnabled(true);
-                                            VentanaPrincipal.jbConfirmar.setVisible(true);
-                                            
-                                        }  
-                                    }else{
-                                        VentanaPrincipal.jbConfirmar.setVisible(true);
-                                        VentanaPrincipal.jbConfirmar.setEnabled(true);
-                                        s.setBackground(Color.white);
-                                        s.setText("");
-                                    }
-                                }    
+                        if("E".equals(s.getText())){   
+                            if(!VentanaPrincipal.banderaEstadoFinal){
+                                s.setBackground(Color.GREEN);
+                                s.setText("F");
+                                VentanaPrincipal.banderaEstadoFinal = true;
+                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);                                                              
                             }else{
-                                if("I".equals(s.getText())){
-                                    s.setBackground(Color.white);
-                                    s.setText("");
-                                    VentanaPrincipal.estadoInicial = false;
-                                    VentanaPrincipal.jlEstadoInicial.setVisible(true);                      
-                                } 
-                                if("F".equals(s.getText())){
-                                    s.setBackground(Color.white);
-                                    s.setText("");
-                                    VentanaPrincipal.banderaEstadoFinal = false;                                    
-                                    VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
-                                }
-                                VentanaPrincipal.jbConfirmar.setVisible(true);
-                                VentanaPrincipal.jbConfirmar.setEnabled(false);
-                                
-                                
+                                s.setBackground(Color.white);
+                                s.setText("");
                             }
+                            VentanaPrincipal.jbConfirmar.setEnabled(true);
+                            VentanaPrincipal.jbConfirmar.setVisible(true);
+                        }else{
+                            if("F".equals(s.getText())){
+                                s.setBackground(Color.white);
+                                s.setText("");
+                                VentanaPrincipal.banderaEstadoFinal = false;                                    
+                                VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
+                            }
+                            VentanaPrincipal.jbConfirmar.setVisible(true);
+                            VentanaPrincipal.jbConfirmar.setEnabled(false);     
+                        } 
+                                     
                     }
                 }     
             }
