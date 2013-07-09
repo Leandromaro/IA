@@ -63,9 +63,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static RMat mat;
     
     public static boolean reinicio=false;
-    
-    private static int contAvanza=0;//controlo si avanzo mas de una vez, quito los bordes del tablero
-    
+          
     public static int avanzoUnaVez=0;
     
     private ColoresyFormas cf = new ColoresyFormas();
@@ -143,36 +141,38 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             iniciarEntrenamiento = new SwingWorker(){
         @Override
         protected Object doInBackground() throws Exception {
-
+        //imprimo en el label el contador de episodios    
         jLabelContador.setText(String.valueOf(contadorEpisodios));
 
-        mat= obtenerRdesdePantalla();
+        mat= obtenerRdesdePantalla();//obtiene la matriz Q del arreglo de botones
 
-        mat.setInicial(Configuraciones.filaI, Configuraciones.colI);
-        mat.setFinal(Configuraciones.filaF, Configuraciones.colF);
-        mat.imprimirTab(); 
+        mat.setInicial(Configuraciones.filaI, Configuraciones.colI);//Almaceno las posiciones del estado Inicial si existiese
+        mat.setFinal(Configuraciones.filaF, Configuraciones.colF);//Almaceno las posiciones del estado Final
+        mat.imprimirTab(); //imprimo por consola la matriz R
 
-        matrizQ= new QMat(mat);
-        System.out.println(matrizQ);
+        matrizQ= new QMat(mat);//creo una nueva matriz Q
+        System.out.println(matrizQ);//imprimo por consola la matriz Q
 
-
+        //obtengo el estado final
         estadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
-        //Estado estadoInicial= matrizQ.getEstado(Configuraciones.getFilaI(),Configuraciones.getColI());
+        //imprimo el estado final
         System.out.println("Estado final");
         System.out.println(estadoFinal);
+        //Creo un arreglo de episodios
         episodios=new Episodio[Configuraciones.cantEpisodios]; 
+        //seteo valores para controlar el entrenamiento
         cont=0;
         topeEpisodios=2000;
         TotalEpisodios=Configuraciones.cantEpisodios;
         contadorEpisodios=0;
           
-            if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){
-                  topeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
-            } 
+        if(Integer.parseInt(jTextCantidadEpisodios.getText().trim())>2000){//controla el tope de episodios
+            topeEpisodios=Integer.parseInt(jTextCantidadEpisodios.getText().trim());
+        } 
+            
+          avanzar(cont, topeEpisodios, matrizQ, estadoFinal, mat);//Avanza en el entrenamiento
 
-          avanzar(cont, topeEpisodios, matrizQ, estadoFinal, mat);
-
-          System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ()); 
+          System.out.println(episodios[Configuraciones.cantEpisodios-1].getMatrizQ());//imprime el ultimo episodio 
 
           throw new UnsupportedOperationException("Not supported yet.");
 
@@ -218,7 +218,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     
     
      private void avanzar(int cont, int TopeEpisodios, QMat matrizQ, Estado estadoFinal, RMat mat) throws NumberFormatException {
-                   
+        
+        //mientras no se llegue al tope de episodios y no este detenido voy creando episodios nuevos y se almacenan en el arreglo de episodios
         while((contadorEpisodios<TotalEpisodios)&&(cont<TopeEpisodios)&&(!detener)){
             episodios[contadorEpisodios]= new Episodio(matrizQ,estadoFinal,p,mat,contadorEpisodios);
             contadorEpisodios++;
@@ -1152,13 +1153,14 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         VentanaPrincipal.jlEstadoInicial.setVisible(true);
         
         
-        jBAvanza.setEnabled(false);
-        jbDetener.setEnabled(true);
-        jBGrafica.setEnabled(true);
-        jMatrizQ.setEnabled(true);
-        String userdata = jTextCantidadEpisodios.getText().trim();
+        jBAvanza.setEnabled(false);//desactivo el boton de Avanzar
+        jbDetener.setEnabled(true);//Activo el boton de Detener
+        jBGrafica.setEnabled(true);//Activo el boton de Grafico
+        jMatrizQ.setEnabled(true);//Activo el boton de Matriz Q
+        
+        String userdata = jTextCantidadEpisodios.getText().trim(); //obtengo el numero de episodios del label
        
-        int val;
+        int val;//parseo los valores a int y capturo las Excepciones
         if (Integer.parseInt(userdata)>0){            
                 try
                 {
@@ -1176,8 +1178,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
             val = Configuraciones.cantEpisodios;
         }
-        Configuraciones.setCantEpisodios(val);
-        
+        //fin de parseo
+        Configuraciones.setCantEpisodios(val);//seteo los valores en Configuraciones
+        //Verifico las banderas para setear la politica
         if (banderaEGreedy==true){
             PoliticaEGreedy politica= new PoliticaEGreedy();
             p=politica;
@@ -1190,13 +1193,12 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             
             System.out.println("POLITICA SOFTMAX");           
         }
-          
-        jBEntrena.setEnabled(false);
+        //fin de la verificaciones  
+        jBEntrena.setEnabled(false);//desabilito el boton de Entrenamiento
         
         
         iniciarEntrenamiento();//llama al hilo de entrenamiento
-        
-        
+               
         this.agregarEvEstadoIncial();
         
     }//GEN-LAST:event_jBEntrenaActionPerformed
@@ -1234,15 +1236,16 @@ public class VentanaPrincipal extends javax.swing.JFrame{
  
     private void jBAvanzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAvanzaActionPerformed
         //recorriendo para ver mejor camino
+        //obtengo la matriz Q del ultimo episodio
         QMat matQ = episodios[Configuraciones.cantEpisodios-1].getMatrizQ();    
         
-        
         QMat matrizQ = new QMat(matQ.matQ.clone()); 
-        contAvanza++;
+        
 
         
         // setea el estado inicial
         Estado estadoInicial= null;
+        //recorre todo el arreglo de botones hasta encontrar el estado Inicial
         for (int i = 0; i < Configuraciones.getDimension(); i++) {
             for (int j = 0; j < Configuraciones.getDimension(); j++) {
                 int indice=(i*Configuraciones.getDimension()) + j;
@@ -1258,7 +1261,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
 //        Estado banderaEstadoFinal= matrizQ.getEstado(Configuraciones.getFilaF(),Configuraciones.getColF());
         
+        // setea el estado final
         Estado estadoFinal= null;
+        //recorre todo el arreglo de botones hasta encontrar el estado Final
         for (int i = 0; i < Configuraciones.getDimension(); i++) {
             for (int j = 0; j < Configuraciones.getDimension(); j++) {
                 int indice=(i*Configuraciones.getDimension()) + j;
@@ -1281,7 +1286,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         JButton botonInicial = (JButton) jpTablero.getComponent(ind);
         botonInicial.setBorder(BorderFactory.createLineBorder(Color.magenta,4));
         
-        //mientras estado actual distinto de estado final
+        
         int cont=0;
         int x = Configuraciones.getDimension();
         int y;
@@ -1299,25 +1304,14 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         }
         
 
-        if (contAvanza>1){//quito el borde rosado
-            for (int i = 0; i < Configuraciones.getDimension(); i++) {
-            for (int j = 0; j < Configuraciones.getDimension(); j++) {
-                int indice=(i*Configuraciones.getDimension()) + j;
-                Component componente= jpTablero.getComponent(indice);
-                if(componente.getClass() == JButton.class){
-                    JButton s = (JButton)componente;
-                    s.repaint();
-                }     
-            }
-        }   
-        }    
+         
         
-        
+        //mientras estado actual distinto de estado final recorro la matriz Q y cambio el color
         while(!estadoInicial.equals(estadoFinal)&&(cont<tope)){
                 
               Estado estadoProximo = estadoInicial.accionDeMaximoValor().getEstadoDestino();
-              System.out.println(estadoProximo);
-              int indice= (estadoProximo.getPosI()*Configuraciones.getDimension() ) +estadoProximo.getPosJ();
+              System.out.println(estadoProximo);//imprime por consola el estado proximo
+              int indice= (estadoProximo.getPosI()*Configuraciones.getDimension() ) +estadoProximo.getPosJ();//genero un indice porque los botones son un arreglo y Q una matriz
               JButton boton = (JButton) jpTablero.getComponent(indice);
               boton.setBorder(BorderFactory.createLineBorder(Color.magenta,4));//cambia de color el camino
               estadoInicial= estadoProximo;

@@ -8,6 +8,6 @@ package logica;
  *
  * @author Leandro
  */
-public interface Politica {
-     public Accion seleccionarAccionSiguiente(Estado e);
+public interface Politica {//Interface para las politicas
+     public Accion seleccionarAccionSiguiente(Estado e);//Metodo Abstracto
 }

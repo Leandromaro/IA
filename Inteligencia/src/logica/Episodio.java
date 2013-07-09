@@ -21,8 +21,7 @@ public class Episodio {
     public static int cont=0;
     
     public Episodio(QMat matrizQActual, Estado estadoFinal, Politica politica, RMat matR, int numeroEpisodio){
-        //TODO:clonar matriz Q
-        
+        //Creo un nuevo episodios
         this.valorQ= matrizQActual.getValorQ();
         this.matrizQ = new QMat(matrizQActual.matQ.clone());
         this.matrizQ = matrizQActual;
@@ -30,8 +29,9 @@ public class Episodio {
         this.matrizR= matR;
         this.politica= politica;
         this.numeroEpisodio= numeroEpisodio;
-        this.realizarMovimientos();
-        
+        //
+        this.realizarMovimientos();//realiza un movimiento
+        //
     }
 
     private void realizarMovimientos() {
@@ -40,20 +40,19 @@ public class Episodio {
         int iRandom= (int) Math.floor(Math.random() * dimension);
         int jRandom= (int) Math.floor(Math.random() * dimension);
 
-        
+        //obtengo el estado actual
         Estado estadoActual= this.getMatrizQ().getEstado(iRandom, jRandom);
         //mientras estado actual distinto de estado final
         
+        //genero un tope de iteraciones para controlar los bucles
         int x = Configuraciones.getDimension();
         int y = 5;
         tope = (int) Math.pow(x, y);
         
-        while(!estadoActual.equals(this.estadoFinal)&&(cont<tope)){
-                
-              Estado estadoProximo = Movimiento.realizarMovimiento(estadoActual, this.getPolitica(), this.getMatrizR());
+        while(!estadoActual.equals(this.estadoFinal)&&(cont<tope)){//mientras el estado actual sea <> al estado final y el cont sea menor que el tope, realizo movimientos
+              Estado estadoProximo = Movimiento.realizarMovimiento(estadoActual, this.getPolitica(), this.getMatrizR());// 
               estadoActual= estadoProximo; 
               cont++;
-         
         }
        
         

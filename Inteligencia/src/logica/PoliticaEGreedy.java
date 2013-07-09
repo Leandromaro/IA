@@ -15,19 +15,16 @@ public class PoliticaEGreedy implements Politica {
 
 @Override
 public Accion seleccionarAccionSiguiente(Estado estadoActual) {
-        Accion accionSiguiente= null;
+        Accion accionSiguiente= null;//creo una nueva accionSiguiente
         
-        if(Math.random()<Configuraciones.getEpsilon()){
-            PoliticaAleatoria politicaAleatoria= new PoliticaAleatoria();
-            accionSiguiente= politicaAleatoria.seleccionarAccionSiguiente(estadoActual);    
+        if(Math.random()<Configuraciones.getEpsilon()){//Genero n° aleatorios y verifico que sea menor que epsilon
+            PoliticaAleatoria politicaAleatoria= new PoliticaAleatoria();//Exploro
+            accionSiguiente= politicaAleatoria.seleccionarAccionSiguiente(estadoActual);//Exploro    
         }else{
-            
-            accionSiguiente= estadoActual.accionDeMaximoValor();
+            accionSiguiente= estadoActual.accionDeMaximoValor();//Exploto
           
         }
-        //System.out.println(accionSiguiente);
-  
-        return accionSiguiente;
+        return accionSiguiente;//devuelvo la accionSiguiente
     }
   
 

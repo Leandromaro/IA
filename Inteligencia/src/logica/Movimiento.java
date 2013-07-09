@@ -19,13 +19,13 @@ public class Movimiento {
         //obtenemos maximo valor que se puede obtener desde el estado proximo
         double maximoValor= accionARealizar.getEstadoDestino().maximoValorParaAcciones();
         //actualizar el valor de la accion elejida
-        if ((Episodio.cont % 100) == 0){
-            accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor)*0.5); 
-        }
-       
-        else{
+//        if ((Episodio.cont % 100) == 0){
+//            accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor)*0.5); 
+//        }
+//       
+//        else{
         accionARealizar.setValor(recompensa+ (Configuraciones.getGamma()*maximoValor));
-        }
+//        }
         //devolver al estado al que va
         return accionARealizar.getEstadoDestino();
     }

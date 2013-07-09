@@ -13,21 +13,10 @@ import java.util.ArrayList;
 public class PoliticaAleatoria implements Politica{
 
     @Override
-    public Accion seleccionarAccionSiguiente(Estado estadoActual) {
-        int indiceRandom= (int) Math.floor(Math.random() * estadoActual.getAccionesPosibles().size());
-        //checkear que acciones siguientes sea mayor a cero
+    public Accion seleccionarAccionSiguiente(Estado estadoActual) {//genero un numero aleatorio y lo multiplico por el size de las acciones posibles 
+        int indiceRandom= (int) Math.floor(Math.random() * estadoActual.getAccionesPosibles().size());//y lo redondeo hacia abajo para obtener una acciones aleatoria
         return estadoActual.getAccionesPosibles().get(indiceRandom );
     }
-
-//    @Override
-//     public boolean existe(ArrayList<Estado> estadosAnteriores, Estado estadoSiguiente) {
-//        boolean bandera=false;
-//        for (int i=0; i<estadosAnteriores.size();i++){
-//            if (estadosAnteriores.get(i).equals(estadoSiguiente)){
-//                bandera=true;
-//            }
-//        }
-//        return bandera;
-//    }
+    
     
 }
