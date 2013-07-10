@@ -326,16 +326,18 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         blackline = BorderFactory.createLineBorder(Color.black);
          
         for (int i = 0; i < dim; i++) {
+            String posI=Integer.toString(i);
             for (int j = 0; j < dim; j++) {
-                
+                String posJ=Integer.toString(j);
                 JButton jbEstado = new JButton();
                 jbEstado.setBorder(blackline);
                 jbEstado.setFont(cf.font);
                 jbEstado.setBackground(Color.white);
-
+                
                 jbEstado.addMouseWheelListener(mWheelMovedCambiarEstados);                  
                 jbEstado.addMouseListener(mClickedCambiarEstados);                  
-                              
+                jbEstado.setText("( "+ posI+", "+ posJ + " )");              
+                jbEstado.setName("( "+ posI+", "+ posJ + " )");
                 jpTablero.add(jbEstado);           
             }
         }
@@ -362,17 +364,19 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpTablero.setLayout(new GridLayout(dim,dim));
         
         blackline = BorderFactory.createLineBorder(Color.black);
-
+        
         VentanaPrincipal.vistaConfigPoliticas(true);
                 
         for (int i = 0; i < dim; i++) {
+            String posI=Integer.toString(i);
             for (int j = 0; j < dim; j++) {
-                
+                String posJ=Integer.toString(j);
                 JButton jbEstado = new JButton();
                 jbEstado.setBorder(blackline);
                 
                 jbEstado.setFont(cf.font);
-                
+                jbEstado.setText("( "+ posI+", "+ posJ + " )");
+                jbEstado.setName("( "+ posI+", "+ posJ + " )");
                 if (dim < 8){
                     switch(this.aleatorio(1, 5)){
                     
@@ -381,13 +385,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                         case 2: jbEstado.setBackground(Color.black);
                             break;
                         case 3:jbEstado.setBackground(cf.rojo);
-                            jbEstado.setText("Malo");
+                            
                             break;
                         case 4: jbEstado.setBackground(cf.amarillo);
-                            jbEstado.setText("Bueno");
+                            
                             break;
                         case 5: jbEstado.setBackground(cf.verde);
-                            jbEstado.setText("Excelente");
+                            
                             break;
                         default: //jbEstado.setBackground(Color.red);
                             jbEstado.setText("OTRO");
@@ -401,13 +405,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                         case 2: jbEstado.setBackground(Color.black);
                             break;
                         case 3: jbEstado.setBackground(cf.rojo);
-                            jbEstado.setText("M");
+                            
                             break;
                         case 4: jbEstado.setBackground(cf.amarillo);
-                            jbEstado.setText("B");
+                            
                             break;
                         case 5: jbEstado.setBackground(cf.verde);
-                            jbEstado.setText("E");
+                            
                             break;
                         default: //jbEstado.setBackground(Color.red);
                             jbEstado.setText("OTRO");
