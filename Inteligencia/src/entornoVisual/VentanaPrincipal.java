@@ -1077,8 +1077,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
 
-
-
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
         
@@ -1829,7 +1827,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 
             }
         }
-         
+        this.agregarEvEstadoIncial();
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private RMat obtenerRdesdePantalla(){

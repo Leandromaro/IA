@@ -64,7 +64,9 @@ public class EvJBEstadoInicial {
     public void setjbEstado(MouseEvent e){
         
         JButton s = (JButton)e.getComponent();
-         
+        
+        
+      if(!VentanaPrincipal.estadoInicial){    
         if(Configuraciones.getDimension() < 8){
             if(!VentanaPrincipal.estadoInicial){
               s.setBackground(Color.orange);
@@ -81,6 +83,8 @@ public class EvJBEstadoInicial {
         VentanaPrincipal.jlEstadoInicial.setVisible(false);
         VentanaPrincipal.jBAvanza.setVisible(true);
         VentanaPrincipal.jBAvanza.setEnabled(true); 
+
+        }
         this.jbEstado = s;
         this.jbEstado.repaint();
     };
