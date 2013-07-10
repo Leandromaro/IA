@@ -43,7 +43,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private static Politica p;
     private int contadorEpisodios;
     public static boolean banderaTope=false;
+    
+    //Atributos para memorizar que habia antes del estado inicial
     public static JButton jbAnterior;
+    public static int ii;
+    public static int jj;
+    public static int abss;
+    // ---------------------------------
    
     public static boolean banderaEGreedy;
     public static boolean banderaSoftMax;
@@ -1274,7 +1280,10 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 if(componente.getClass() == JButton.class){
                     JButton s = (JButton)componente;
                     if(("I".equals(s.getText())) | ("INICIAL".equals(s.getText()))){
-                        estadoInicial= matrizQ.getEstado(i,j);         
+                        estadoInicial= matrizQ.getEstado(i,j); 
+                        
+                        VentanaPrincipal.ii = i; // aca atrapo la posicion del estado Inicial
+                        VentanaPrincipal.jj = j;
                     }
                 }     
             }

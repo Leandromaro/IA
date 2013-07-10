@@ -34,6 +34,7 @@ public class EvJBEstadoInicial {
     }
     
     public void setjbEstado(MouseWheelEvent e){
+        
         JButton s = (JButton)e.getComponent();
         if(!VentanaPrincipal.estadoInicial){         
                 
@@ -64,23 +65,33 @@ public class EvJBEstadoInicial {
     public void setjbEstado(MouseEvent e){
         
         JButton s = (JButton)e.getComponent();
-         
-        if(Configuraciones.getDimension() < 8){
-            if(!VentanaPrincipal.estadoInicial){
-              s.setBackground(Color.orange);
-              s.setText("INICIAL");
+        
+        VentanaPrincipal.jbAnterior = s; // Guardo lo que tenia el estado INicial antes
+        
+        if(!VentanaPrincipal.estadoInicial){
+            if(Configuraciones.getDimension() < 8){
+                if(!VentanaPrincipal.estadoInicial){
+                  s.setBackground(Color.orange);
+                  s.setText("INICIAL");               
+                }
+            }else{
+                if(!VentanaPrincipal.estadoInicial){
+                  s.setBackground(Color.orange);
+                  s.setText("I");
+                }
             }
+            
+           
+            
+            VentanaPrincipal.estadoInicial = true;
+            VentanaPrincipal.jlEstadoInicial.setVisible(false);
+            VentanaPrincipal.jBAvanza.setVisible(true);
+            VentanaPrincipal.jBAvanza.setEnabled(true); 
         }else{
-            if(!VentanaPrincipal.estadoInicial){
-              s.setBackground(Color.orange);
-              s.setText("I");
-            }
-        }  
-                    
-        VentanaPrincipal.estadoInicial = true;
-        VentanaPrincipal.jlEstadoInicial.setVisible(false);
-        VentanaPrincipal.jBAvanza.setVisible(true);
-        VentanaPrincipal.jBAvanza.setEnabled(true); 
+            VentanaPrincipal.jlEstadoInicial.setVisible(true);
+        }
+                     
+        
         this.jbEstado = s;
         this.jbEstado.repaint();
     };
