@@ -245,7 +245,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             jbReanudar.setEnabled(false);
             cont=0;
             
-            this.agregarEvEstadoIncial();
+            this.agregarEvEstadoInicial();
         }
     }
      
@@ -293,7 +293,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             jBAvanza1.setEnabled(false);
             jbDetener.setEnabled(false);
             jbReanudar.setEnabled(false);
-            this.agregarEvEstadoIncial();
+            //this.agregarEvEstadoInicial();
         }
     }
     public VentanaPrincipal() {
@@ -1224,13 +1224,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             System.out.println("POLITICA SOFTMAX");           
         }
         //fin de la verificaciones  
-        jBEntrena.setEnabled(false);//desabilito el boton de Entrenamiento
-        
+        jBEntrena.setEnabled(false);//desabilito el boton de Entrenamiento 
         
         iniciarEntrenamiento();//llama al hilo de entrenamiento
-               
         
-        
+        this.agregarEvEstadoInicial();
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
     public void eliminarEventos(){          
@@ -1246,7 +1244,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         }       
     }
     
-      public void agregarEvEstadoIncial(){ 
+      public void agregarEvEstadoInicial(){ 
         
         VentanaPrincipal.estadoInicial = false;
         VentanaPrincipal.jlEstadoInicial.setVisible(true);
@@ -1840,12 +1838,17 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                     if(("I".equals(s.getText())) | ("INICIAL".equals(s.getText()))){
                         s.setBackground(VentanaPrincipal.jbAnterior.getBackground());
                         s.setText(VentanaPrincipal.jbAnterior.getText());
+                        VentanaPrincipal.estadoInicial = false;
+                        VentanaPrincipal.jlEstadoInicial.setVisible(true);
+                        
                     }
                 } 
                 
             }
+        
         }
-        this.agregarEvEstadoIncial();
+        VentanaPrincipal.jBAvanza.setEnabled(false); 
+        //this.agregarEvEstadoInicial();
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private RMat obtenerRdesdePantalla(){

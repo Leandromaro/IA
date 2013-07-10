@@ -65,32 +65,34 @@ public class EvJBEstadoInicial {
     public void setjbEstado(MouseEvent e){
         
         JButton s = (JButton)e.getComponent();
-
-        if(!VentanaPrincipal.estadoInicial){
-            VentanaPrincipal.jbAnterior.setBackground(s.getBackground()); // Guardo lo que tenia el estado INicial antes
-            VentanaPrincipal.jbAnterior.setText(s.getText());
-            if(Configuraciones.getDimension() < 8){
-                if(!VentanaPrincipal.estadoInicial){
+        
+        if(s.getBackground() == Color.BLACK){
+            
+        }else{
+            if(!VentanaPrincipal.estadoInicial){
+            
+                VentanaPrincipal.jbAnterior.setBackground(s.getBackground()); // Guardo lo que tenia el estado INicial antes
+                VentanaPrincipal.jbAnterior.setText(s.getText());
+                if(Configuraciones.getDimension() < 8){
                   s.setBackground(Color.orange);
-                  s.setText("INICIAL");               
-                }
-            }else{
-                if(!VentanaPrincipal.estadoInicial){
+                  s.setText("INICIAL");                    
+                }else{
                   s.setBackground(Color.orange);
                   s.setText("I");
                 }
-                
-            VentanaPrincipal.estadoInicial = true;
-            VentanaPrincipal.jlEstadoInicial.setVisible(false);
-            VentanaPrincipal.jBAvanza.setVisible(true);
-            VentanaPrincipal.jBAvanza.setEnabled(true); 
+
+                VentanaPrincipal.estadoInicial = true;
+                VentanaPrincipal.jlEstadoInicial.setVisible(false);
+                VentanaPrincipal.jBAvanza.setVisible(true);
+                VentanaPrincipal.jBAvanza.setEnabled(true); 
+            }else{
+//                VentanaPrincipal.jlEstadoInicial.setVisible(true);
             }
-        }else{
-            VentanaPrincipal.jlEstadoInicial.setVisible(true);
+
+            this.jbEstado = s;
+            this.jbEstado.repaint();
         }
-                     
-        this.jbEstado = s;
-        this.jbEstado.repaint();
+        
     };
 }
  
