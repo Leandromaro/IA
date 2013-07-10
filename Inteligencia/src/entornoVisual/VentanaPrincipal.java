@@ -45,7 +45,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     public static boolean banderaTope=false;
     
     //Atributos para memorizar que habia antes del estado inicial
-    public static JButton jbAnterior;
+    public static JButton jbAnterior = new JButton();
     public static int ii;
     public static int jj;
     public static int abss;
