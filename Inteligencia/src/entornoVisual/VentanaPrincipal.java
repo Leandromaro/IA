@@ -233,11 +233,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         String userdata = jTextCantidadEpisodios.getText().trim();//controlo que si llega al valor tope de Episodios. Habilito el boton Avanzar
         int val = Integer.parseInt(userdata);
         if(contadorEpisodios==val){
-            //jBAvanza.setEnabled(true);
+            
             jBAvanza1.setEnabled(false);
             jbDetener.setEnabled(false);
             jbReanudar.setEnabled(false);
             cont=0;
+            
+            this.agregarEvEstadoIncial();
         }
     }
      
@@ -281,10 +283,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         String userdata = jTextCantidadEpisodios.getText().trim();//controlo que si llega al valor tope de Episodios. Habilito el boton Avanzar
         int val = Integer.parseInt(userdata);
         if(contadorEpisodios==val){
-            jBAvanza.setEnabled(true);
+            
             jBAvanza1.setEnabled(false);
             jbDetener.setEnabled(false);
             jbReanudar.setEnabled(false);
+            this.agregarEvEstadoIncial();
         }
     }
     public VentanaPrincipal() {
@@ -1049,6 +1052,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jBBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Trash-can32.png"))); // NOI18N
         jBBorrar.setText("Borrar");
+        jBBorrar.setEnabled(false);
         jBBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBorrarActionPerformed(evt);
@@ -1219,7 +1223,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         iniciarEntrenamiento();//llama al hilo de entrenamiento
                
-        this.agregarEvEstadoIncial();
+        
         
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
@@ -1349,7 +1353,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             }
             
         }
-        
+        jBBorrar.setEnabled(true);
     }//GEN-LAST:event_jBAvanzaActionPerformed
     private void jTextCantidadEpisodiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantidadEpisodiosActionPerformed
         // TODO add your handling code here:
