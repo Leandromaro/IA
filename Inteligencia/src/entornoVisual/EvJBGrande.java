@@ -39,7 +39,10 @@ public class EvJBGrande extends MouseAdapter{
     
     public void setjbEstado(MouseWheelEvent e){
         JButton s = (JButton)e.getComponent();
-
+        
+        String textoAnterior;
+        textoAnterior=s.getName();
+        
         if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
                 s.setBackground(Color.black);
                 s.setText("");
