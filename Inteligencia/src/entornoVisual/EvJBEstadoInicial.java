@@ -65,8 +65,9 @@ public class EvJBEstadoInicial {
     public void setjbEstado(MouseEvent e){
         
         JButton s = (JButton)e.getComponent();
-        
-        VentanaPrincipal.jbAnterior = s; // Guardo lo que tenia el estado INicial antes
+        VentanaPrincipal.jbAnterior = new JButton();
+        VentanaPrincipal.jbAnterior.setBackground(s.getBackground()); // Guardo lo que tenia el estado INicial antes
+        VentanaPrincipal.jbAnterior.setText(s.getText());
         
         if(!VentanaPrincipal.estadoInicial){
             if(Configuraciones.getDimension() < 8){

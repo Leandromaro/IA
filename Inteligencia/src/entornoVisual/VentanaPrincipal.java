@@ -1083,8 +1083,6 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }
     private void jbGenerarTableroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGenerarTableroActionPerformed
 
-
-
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
         
@@ -1831,14 +1829,14 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                     JButton s = (JButton)componente;
                     s.setBorder(BorderFactory.createLineBorder(Color.BLACK,1));//cambia de color el camino
                     if(("I".equals(s.getText())) | ("INICIAL".equals(s.getText()))){
-                        s.setBackground(Color.white);
-                        s.setText("");
+                        s.setBackground(VentanaPrincipal.jbAnterior.getBackground());
+                        s.setText(VentanaPrincipal.jbAnterior.getText());
                     }
                 } 
                 
             }
         }
-         
+        this.agregarEvEstadoIncial();
     }//GEN-LAST:event_jBBorrarActionPerformed
 
     private RMat obtenerRdesdePantalla(){
