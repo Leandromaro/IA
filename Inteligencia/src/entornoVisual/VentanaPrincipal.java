@@ -362,6 +362,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jbEstado.setBorder(blackline);
                 
                 jbEstado.setFont(cf.font);
+                
                 if (dim < 8){
                     switch(this.aleatorio(1, 5)){
                     
@@ -614,6 +615,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
         jpSuperior = new javax.swing.JPanel();
         jlConfig = new javax.swing.JLabel();
         jlDim = new javax.swing.JLabel();
@@ -674,6 +676,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jlAusenciaEstadoFinal = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
@@ -921,7 +925,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jpTablero.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jpTablero.setLayout(new java.awt.GridLayout(1, 0));
-        getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 570, 550));
+        getContentPane().add(jpTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 560, 560));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1937,6 +1941,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     private javax.swing.JButton jBBorrar;
     private javax.swing.JButton jBEntrena;
     private javax.swing.JButton jBGrafica;
+    private javax.swing.JButton jButton1;
     public static javax.swing.JComboBox jCEpsilon;
     public static javax.swing.JComboBox jCGamma;
     public static javax.swing.JComboBox jCTau;
