@@ -39,29 +39,31 @@ public class EvJBGrande extends MouseAdapter{
     
     public void setjbEstado(MouseWheelEvent e){
         JButton s = (JButton)e.getComponent();
-        
         String textoAnterior;
-        textoAnterior=s.getName();
-        
+        textoAnterior=s.getName();  
         if(s.getBackground() == Color.white & !("FINAL".equals(s.getText()))){
                 s.setBackground(Color.black);
-                s.setText("");
+//                s.setText("");
+                  
             }else{
             if(s.getBackground() == Color.black){  
                 s.setBackground(cf.rojo);
-                s.setText("Malo");
+//                s.setText("Malo");
+                   
             }else{
-                if("Malo".equals(s.getText())){
+                if(cf.rojo.equals(s.getBackground())){//Malo".equals(s.getText())){
+                    
                     s.setBackground(cf.amarillo);
-                    s.setText("Bueno");
+//                    s.setText("Bueno");
                 }else{
-                    if("Bueno".equals(s.getText())){
+                    if(cf.amarillo.equals(s.getBackground())){
                         s.setBackground(cf.verde);
-                        s.setText("Excelente");
+//                        s.setText("Excelente");
                     }else{
-                        if("Excelente".equals(s.getText())){
+                        if(cf.verde.equals(s.getBackground())){
                                     if(!VentanaPrincipal.banderaEstadoFinal){
                                         s.setBackground(Color.GREEN);
+                                        textoAnterior=s.getText();
                                         s.setText("FINAL");
                                         VentanaPrincipal.banderaEstadoFinal = true;
                                         VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(false);
@@ -73,12 +75,12 @@ public class EvJBGrande extends MouseAdapter{
                                         VentanaPrincipal.jbConfirmar.setEnabled(true);
                                         
                                         s.setBackground(Color.white);
-                                        s.setText("");
+//                                        s.setText(textoAnterior);
                                     }
                             }else{
                                 if("FINAL".equals(s.getText())){
                                     s.setBackground(Color.white);
-                                    s.setText("");
+                                    s.setText(textoAnterior);
                                     VentanaPrincipal.banderaEstadoFinal = false;                                    
                                     VentanaPrincipal.jlAusenciaEstadoFinal.setVisible(true);
                                 }

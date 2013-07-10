@@ -801,7 +801,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jCGammaActionPerformed(evt);
             }
         });
-        jpSuperior.add(jCGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 50, 20));
+        jpSuperior.add(jCGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 50, 20));
 
         jCTau.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "100", " " }));
         jCTau.setEnabled(false);
@@ -915,7 +915,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jpSuperior.add(jlInicialQ, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 60, 30));
 
         jlGamma.setText("Gamma:");
-        jpSuperior.add(jlGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 60, 20));
+        jpSuperior.add(jlGamma, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 60, 20));
 
         jCEpsilon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9" }));
         jCEpsilon.setEnabled(false);
@@ -1061,7 +1061,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 110, 30));
 
         jBBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Trash-can32.png"))); // NOI18N
-        jBBorrar.setText("Borrar");
+        jBBorrar.setText("Borrar Camino");
         jBBorrar.setEnabled(false);
         jBBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1094,7 +1094,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jTextCantidadEpisodios.setText("");
         jLabelContador.setText("");
-        
+        jrbEGreedy.setSelected(true);
+        jrbSoftMax.setSelected(false);
         if(jrbAuto.isSelected()){
             String aux = (String)jcbDim.getSelectedItem();
             switch(aux){
@@ -1195,10 +1196,15 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         String userdata = jTextCantidadEpisodios.getText().trim(); //obtengo el numero de episodios del label
        
         int val;//parseo los valores a int y capturo las Excepciones
-        if (Integer.parseInt(userdata)>0){            
+            
                 try
                 {
                    val = Integer.parseInt(userdata);
+                   if(val<0){
+                     JOptionPane.showMessageDialog(this,"Valores Negativos Invalidos para Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                     jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
+                     val = Configuraciones.cantEpisodios;  
+                   }
                 }
                 catch (NumberFormatException nfe)
                 {
@@ -1206,12 +1212,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                    jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
                    val = Configuraciones.cantEpisodios;
                 }              
-        }
-        else{
-            JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
-            jTextCantidadEpisodios.setText(Integer.toString(Configuraciones.cantEpisodios));
-            val = Configuraciones.cantEpisodios;
-        }
+       
         //fin de parseo
         Configuraciones.setCantEpisodios(val);//seteo los valores en Configuraciones
         //Verifico las banderas para setear la politica
@@ -1357,7 +1358,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         System.out.println(cont);
         if (cont==tope){
             if(jrbEGreedy.isSelected()){
-                JOptionPane.showMessageDialog(this,"Agente Bloqueado o con poco entrenamiento, pruebe con valores de Epsilon mayores, o con mayor numero de episodios","Error",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this,"Agente Bloqueado o con poco entrenamiento, pruebe con configuraciones de politica mayores, o con mayor numero de episodios","Error",JOptionPane.WARNING_MESSAGE);
             }
             else{
                JOptionPane.showMessageDialog(this,"Agente Bloqueado o con poco entrenamiento","Error",JOptionPane.WARNING_MESSAGE); 
@@ -1509,31 +1510,37 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         String malo=(jtfMalo.getText().trim()); 
         double valorMalo;
-        if (Double.parseDouble(malo)>0){
                      try
                     {
                        valorMalo = Double.parseDouble(malo);
+                       if(valorMalo<0){
+                            JOptionPane.showMessageDialog(this,"Valores Negativos Invalidos para Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                            jtfMalo.setText(Double.toString(Configuraciones.getValorMalo()));
+                            valorMalo = Configuraciones.getValorMalo();
+                        }
                     }
                     catch (NumberFormatException nfe)
                     {
                        JOptionPane.showMessageDialog(this,"Valores Invalidos de Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
-                       jtfMalo.setText(Integer.toString(Configuraciones.cantEpisodios));
+                       jtfMalo.setText(Double.toString(Configuraciones.getValorMalo()));
                        valorMalo = Configuraciones.getValorMalo();
                     }
-        }
-        else{
-               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero malo, se cargará un valor por default","Error",JOptionPane.WARNING_MESSAGE);
-               jtfMalo.setText(Double.toString(Configuraciones.getValorMalo()));
-               valorMalo = Configuraciones.getValorMalo();
-        }
+        
         Configuraciones.setValorMalo(valorMalo);
         
         String regular=(jtfRegular.getText().trim()); 
         double valorReg;
-        if (Double.parseDouble(regular)>0){
-                     try
+        
+       
+                    try
                     {
                        valorReg = Double.parseDouble(regular);
+                       if(valorReg<0){
+                            JOptionPane.showMessageDialog(this,"Valores Negativos Invalidos para Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                            jtfRegular.setText(Double.toString(Configuraciones.getValorNeutro()));
+                            valorReg = Configuraciones.getValorNeutro();
+                        }
+                       
                     }
                     catch (NumberFormatException nfe)
                     {
@@ -1542,20 +1549,20 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                        valorReg = Configuraciones.getValorNeutro();
                     }
                      
-        }
-        else{
-               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero Neutro, se cargará un valor por default","Error",JOptionPane.WARNING_MESSAGE);
-               jtfRegular.setText(Double.toString(Configuraciones.getValorNeutro()));
-               valorReg = Configuraciones.getValorNeutro();
-        }
+       
         Configuraciones.setValorNeutro(valorReg);
         
         String bueno=(jtfBueno.getText().trim()); 
         double valorBueno;
-        if (Double.parseDouble(bueno)>0){
+       
                      try
                     {
                        valorBueno = Double.parseDouble(bueno);
+                       if(valorBueno<0){
+                            JOptionPane.showMessageDialog(this,"Valores Negativos Invalidos para Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                            jtfBueno.setText(Double.toString(Configuraciones.getValorBueno()));
+                            valorBueno = Configuraciones.getValorBueno(); 
+                        }
                     }
                     catch (NumberFormatException nfe)
                     {
@@ -1563,20 +1570,21 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                        jtfBueno.setText(Double.toString(Configuraciones.getValorBueno()));
                        valorBueno = Configuraciones.getValorBueno();
                     }           
-        }
-        else{
-               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero bueno, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
-               jtfBueno.setText(Double.toString(Configuraciones.getValorBueno()));
-               valorBueno = Configuraciones.getValorBueno();
-        }
+        
+        
         Configuraciones.setValorBueno(valorBueno);
         
         String excelente=(jtfExcelente.getText().trim()); 
         double valorExcelente;
-        if (Double.parseDouble(excelente)>0){
+        
                      try
                     {
                        valorExcelente = Double.parseDouble(excelente);
+                       if(valorExcelente<0){
+                            JOptionPane.showMessageDialog(this,"Valores Negativos Invalidos para Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                            jtfExcelente.setText(Double.toString(Configuraciones.getValorExcelente()));
+                            valorExcelente = Configuraciones.getValorExcelente();  
+                       }   
                     }
                     catch (NumberFormatException nfe)
                     {
@@ -1584,20 +1592,21 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                        jtfExcelente.setText(Double.toString(Configuraciones.getValorExcelente()));
                        valorExcelente = Configuraciones.getValorExcelente();
                     }                  
-        }
-        else{
-               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero excelente, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
-               jtfExcelente.setText(Double.toString(Configuraciones.getValorExcelente()));
-               valorExcelente = Configuraciones.getValorExcelente();
-        }
+        
         Configuraciones.setValorExcelente(valorExcelente);
         
         String fin=(jtfFinal.getText().trim()); 
         double valorFinal;
-        if (Double.parseDouble(fin)>0){
+        
                      try
                     {
                        valorFinal = Double.parseDouble(fin);
+                       if(valorFinal<0){
+                            JOptionPane.showMessageDialog(this,"Valores Negativos Invalidos para Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                            jtfFinal.setText(Double.toString(Configuraciones.getValorFinal()));
+                            valorFinal = Configuraciones.getValorFinal();
+                       }  
+                       
                     }
                     catch (NumberFormatException nfe)
                     {
@@ -1605,20 +1614,21 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                        jtfFinal.setText(Double.toString(Configuraciones.getValorFinal()));
                        valorFinal = Configuraciones.getValorFinal();
                     }                
-        }
-        else{
-               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero final, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
-               jtfFinal.setText(Double.toString(Configuraciones.getValorFinal()));
-               valorFinal = Configuraciones.getValorFinal();
-        }
+        
         Configuraciones.setValorFinal(valorFinal);
         
         String inicio=(jtfInicialQ.getText().trim()); 
         int valorInicio;
-        if (Double.parseDouble(inicio)>=0){       
+        
                      try
                     {
                        valorInicio = Integer.parseInt(inicio);
+                       if(valorInicio<0){
+                            JOptionPane.showMessageDialog(this,"Valores Negativos Invalidos para Entenamiento, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
+                            jtfInicialQ.setText(Double.toString(Configuraciones.getValorPorDefectoMatQ()));
+                            valorInicio = Configuraciones.getValorPorDefectoMatQ();
+                           
+                       }
                     }
                     catch (NumberFormatException nfe)
                     {
@@ -1627,12 +1637,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                        valorInicio = Configuraciones.getValorPorDefectoMatQ();
                     }
                      
-        }
-        else{
-               JOptionPane.showMessageDialog(this,"Valor incorrecto de casillero Q-Inicial, se cargará un numero de ciclos por default","Error",JOptionPane.WARNING_MESSAGE);
-                jtfInicialQ.setText(Double.toString(Configuraciones.getValorPorDefectoMatQ()));
-                valorInicio = Configuraciones.getValorPorDefectoMatQ();
-        }
+        
         Configuraciones.setValorPorDefectoMatQ(valorInicio);
         
             String gamma = (String)jCGamma.getSelectedItem();
@@ -1706,6 +1711,8 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         TotalEpisodios=0;
         jBBorrar.setEnabled(false);
         reinicio=true;
+        jrbEGreedy.setSelected(true);
+        jrbSoftMax.setSelected(false);
         
         this.enabledJPSuperior(true);
         VentanaPrincipal.vistaConfigPoliticas(true);
