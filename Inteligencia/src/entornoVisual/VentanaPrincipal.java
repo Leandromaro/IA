@@ -7,6 +7,7 @@ package entornoVisual;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Cursor;
 import java.awt.Dialog;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -238,11 +239,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         String userdata = jTextCantidadEpisodios.getText().trim();//controlo que si llega al valor tope de Episodios. Habilito el boton Avanzar
         int val = Integer.parseInt(userdata);
         if(contadorEpisodios==val){
-            jBAvanza.setEnabled(true);
+            
             jBAvanza1.setEnabled(false);
             jbDetener.setEnabled(false);
             jbReanudar.setEnabled(false);
             cont=0;
+            
+            this.agregarEvEstadoIncial();
         }
     }
      
@@ -286,10 +289,11 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         String userdata = jTextCantidadEpisodios.getText().trim();//controlo que si llega al valor tope de Episodios. Habilito el boton Avanzar
         int val = Integer.parseInt(userdata);
         if(contadorEpisodios==val){
-            jBAvanza.setEnabled(true);
+            
             jBAvanza1.setEnabled(false);
             jbDetener.setEnabled(false);
             jbReanudar.setEnabled(false);
+            this.agregarEvEstadoIncial();
         }
     }
     public VentanaPrincipal() {
@@ -982,7 +986,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
                 jbEmpezarDeNuevoActionPerformed(evt);
             }
         });
-        jPanel1.add(jbEmpezarDeNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 140, 50));
+        jPanel1.add(jbEmpezarDeNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 290, 50));
 
         jbDetener.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/control_pause.png"))); // NOI18N
         jbDetener.setText("Detener");
@@ -1054,12 +1058,13 @@ public class VentanaPrincipal extends javax.swing.JFrame{
 
         jBBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Trash-can32.png"))); // NOI18N
         jBBorrar.setText("Borrar");
+        jBBorrar.setEnabled(false);
         jBBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBBorrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jBBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 140, 50));
+        jPanel1.add(jBBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 140, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 220, 310, 460));
 
@@ -1224,7 +1229,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         
         iniciarEntrenamiento();//llama al hilo de entrenamiento
                
-        this.agregarEvEstadoIncial();
+        
         
     }//GEN-LAST:event_jBEntrenaActionPerformed
 
@@ -1357,7 +1362,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
             }
             
         }
-        
+        jBBorrar.setEnabled(true);
     }//GEN-LAST:event_jBAvanzaActionPerformed
     private void jTextCantidadEpisodiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCantidadEpisodiosActionPerformed
         // TODO add your handling code here:
@@ -1376,7 +1381,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
     }//GEN-LAST:event_jrbEGreedyActionPerformed
 
     private void jBGraficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGraficaActionPerformed
-        //panelCorrida.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        jpSuperior.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        jpTablero.setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        jPanel1.setCursor(new Cursor(Cursor.WAIT_CURSOR));
         
         LineChart grafico = new LineChart("Valores de matriz Q ",episodios);
         grafico.setSize(800, 600);
@@ -1385,7 +1392,9 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         grafico.setResizable(true);
         grafico.setVisible(true);
         
-       // panelCorrida.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        jpSuperior.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        jpTablero.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        jPanel1.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_jBGraficaActionPerformed
 
     public void enabledJPSuperior(Boolean flag){

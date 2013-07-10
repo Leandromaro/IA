@@ -65,9 +65,7 @@ public class EvJBEstadoInicial {
     public void setjbEstado(MouseEvent e){
         
         JButton s = (JButton)e.getComponent();
-        
-        
-        
+
         if(!VentanaPrincipal.estadoInicial){
             VentanaPrincipal.jbAnterior.setBackground(s.getBackground()); // Guardo lo que tenia el estado INicial antes
             VentanaPrincipal.jbAnterior.setText(s.getText());
@@ -81,19 +79,16 @@ public class EvJBEstadoInicial {
                   s.setBackground(Color.orange);
                   s.setText("I");
                 }
-            }
-            
-           
-            
+                
             VentanaPrincipal.estadoInicial = true;
             VentanaPrincipal.jlEstadoInicial.setVisible(false);
             VentanaPrincipal.jBAvanza.setVisible(true);
             VentanaPrincipal.jBAvanza.setEnabled(true); 
+            }
         }else{
             VentanaPrincipal.jlEstadoInicial.setVisible(true);
         }
                      
-        
         this.jbEstado = s;
         this.jbEstado.repaint();
     };
