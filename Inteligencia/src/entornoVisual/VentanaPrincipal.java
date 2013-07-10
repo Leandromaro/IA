@@ -1700,7 +1700,7 @@ public class VentanaPrincipal extends javax.swing.JFrame{
         contadorEpisodios=0;
         EpisodioStop=0;
         TotalEpisodios=0;
-        
+        jBBorrar.setEnabled(false);
         reinicio=true;
         
         this.enabledJPSuperior(true);
