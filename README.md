@@ -1,6 +1,6 @@
-Inteligencia Artificial
+Inteligencia Artificial - Artificial Intelligence  
 ==
-# Aprendizaje por Refuerzo
+# Aprendizaje por Refuerzo - Reinforcement Learning
 
 This project was made to be presented at the university, it uses different techniques of Reinforcement Learning. It was made only to have a good point of view of how this artificial technique works.  
 
@@ -11,11 +11,6 @@ El proyecto fue realizado como estudio de las tecnicas de aprendizaje por refuer
 1. Download the project: `git clone https://github.com/Leandromaro/IA.git`
 2. Build with your IDE
 3. Run: `java -jar 'project'`
-
-1. Descarga el projecto: `git clone https://github.com/Leandromaro/IA.git`
-2. Compilar con la IDE
-3. Correrlo: `java -jar 'project'`
-
 
 ## Contributing
 
